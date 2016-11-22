@@ -1,0 +1,15 @@
+[submodule "lib/npm"]
+	path = lib/npm
+	url = https://github.com/Enterprise-connect/ec-lib-npm.git
+[submodule "lib/java"]
+	path = lib/java
+	url = https://github.com/Enterprise-connect/ec-lib-java.git
+[submodule "examples/springboot"]
+	path = examples/springboot
+	url = https://github.com/Enterprise-connect/ec-example-springboot.git
+[submodule "examples/java/springboot"]
+	path = examples/java/springboot
+	url = https://github.com/Enterprise-connect/ec-example-springboot.git
+[submodule "examples/nodejs/cf-node-app"]
+	path = examples/nodejs/cf-node-app
+	url = https://github.com/Enterprise-connect/ec-example-node-cf.git
