@@ -36,7 +36,7 @@ function jenkins_checkin (){
     
     #cp ./README.md ./${DIST}/README_${ARTIFACT}.md
     #cd ./${DIST}
-    op=$(git status --porcelain)
+    #op=$(git status --porcelain)
 
     git add .
     git commit -m "EC Build#${BUILD_VER} check-in."  &> /dev/null
