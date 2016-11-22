@@ -58,9 +58,9 @@ function jenkins_checkin (){
         #git push origin master 
 
 	
-    #else 
-#	echo "No changes are detected"; 
-#	exit 0; 
+    else 
+	echo "No changes are detected"
+	exit 3 
     fi;
 }
 
