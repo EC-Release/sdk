@@ -13,8 +13,8 @@
 
 #set -x
 #set -x
-#set -e
-
+set -e
+set -o
 function docker_run () {
     export https_proxy=${PROXY}
     #docker pull golang
