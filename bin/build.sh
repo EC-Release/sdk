@@ -45,8 +45,7 @@ function jenkins_checkin (){
     if [ $? -eq 0 ];
     then
 	echo "Change's being pushed.";
-        git push origin master
-
+        #git push origin master
     else 
 	echo "No update has been made." ||
 	exit 0;
