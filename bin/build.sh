@@ -42,7 +42,6 @@ function jenkins_checkin (){
 
     git add .
     git commit -m "EC Build#${BUILD_VER} check-in." ||
-	
     if [ $? -eq 0 ]
     then
         git push origin master ||
