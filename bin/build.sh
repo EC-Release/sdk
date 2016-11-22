@@ -63,6 +63,7 @@ function jenkins_checkin (){
 	echo "No changes are detected"
 	#exit 0 
     fi;
+    echo "rwer"
 }
 
 function readinputs () {
