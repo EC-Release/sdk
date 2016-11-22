@@ -40,11 +40,12 @@ function jenkins_checkin (){
     #cd ./${DIST}
     #op=$(git status --porcelain)
 
-    git add . &> /dev/null;
+    git add . &> /dev/null
+    echo "e1"
     git commit -m "EC Build#${BUILD_VER} check-in."  &> /dev/null;
     if [ $? -eq 0 ] ;
     then
-	echo "rewr"
+	echo "e2"
 	#exit 5
 	#exit 0
 	#echo "$?";
@@ -60,10 +61,10 @@ function jenkins_checkin (){
 
 	
     else 
-	echo "No changes are detected"
+	echo "e3"
 	#exit 0 
     fi;
-    echo "rwer"
+    echo "e4"
 }
 
 function readinputs () {
