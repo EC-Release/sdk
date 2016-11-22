@@ -48,7 +48,7 @@ function jenkins_checkin (){
 		if [ $? -eq 0 ];
 		then 
 		    {
-			it push origin master &&
+			git push origin master &&
 			    echo "Change has been pushed."
 		    } || echo "Push error"
 		else 
