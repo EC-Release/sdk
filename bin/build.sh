@@ -35,11 +35,6 @@ function docker_run () {
 
 function jenkins_checkin (){
 
-    #exit 1;
-    #cp ./README.md ./${DIST}/README_${ARTIFACT}.md
-    #cd ./${DIST}
-    #op=$(git status --porcelain)
-
     git add .
 
     {
