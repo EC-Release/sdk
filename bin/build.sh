@@ -45,7 +45,10 @@ function jenkins_checkin (){
 		    {
 			git push origin master &&
 			    echo "Change has been pushed."
-		    } || echo "Push error"
+		    } || {
+			echo "Push error"
+			exit 1
+		    }
 		else 
 		    echo "No update has been made."
 		    exit 0
@@ -55,7 +58,6 @@ function jenkins_checkin (){
 	echo "git commit error."
 	exit 0
     }
-    echo "hello"
 }
 
 function readinputs () {
