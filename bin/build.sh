@@ -44,8 +44,9 @@ function jenkins_checkin (){
     git commit -m "EC Build#${BUILD_VER} check-in." ||
     if [ $? -eq 0 ];
     then
-        op=$(git push origin master) &&
-	echo "Change has been pushed. $op";
+	echo "Change's being pushed.";
+        git push origin master
+
     else 
 	echo "No update has been made." ||
 	exit 0;
