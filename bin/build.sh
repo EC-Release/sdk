@@ -11,7 +11,7 @@
 #  author: chia.chang@ge.com
 #
 
-#set -x
+set -x
 set -e
 
 function docker_run () {
@@ -42,6 +42,7 @@ function jenkins_checkin (){
     git add . &> /dev/null
     git commit -m "EC Build#${BUILD_VER} check-in."  &> /dev/null
     if [ $? -eq 0 ] ; then
+
 	exit 5
 	#exit 0
 	#echo "$?";
