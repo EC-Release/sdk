@@ -14,7 +14,7 @@
 #set -x
 #set -x
 set -e
-set -o verbose
+set -o allexport
 function docker_run () {
     export https_proxy=${PROXY}
     #docker pull golang
