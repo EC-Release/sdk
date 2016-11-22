@@ -60,7 +60,7 @@ function jenkins_checkin (){
 	
     else 
 	echo "No changes are detected"
-	exit 3 
+	exit 0 
     fi;
 }
 
