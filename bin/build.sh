@@ -12,6 +12,7 @@
 #
 
 #set -x
+set -v
 set -e
 
 function docker_run () {
