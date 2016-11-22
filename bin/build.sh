@@ -38,10 +38,10 @@ function jenkins_checkin (){
     #cd ./${DIST}
     #op=$(git status --porcelain)
 
-    git add .
-    git commit -m "EC Build#${BUILD_VER} check-in."  &> /dev/null
+    git add . &> /dev/null
     if [ $? -eq 0 ] ; then
 
+	git commit -m "EC Build#${BUILD_VER} check-in."
         #git push origin master 
 
 	echo "The changes has been pushed."; 
