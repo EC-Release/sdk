@@ -51,7 +51,7 @@ function jenkins_checkin (){
 	echo "No update has been made."
     fi
 
-    exit 0
+    #exit 0
     
     
 }
