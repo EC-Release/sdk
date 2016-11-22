@@ -39,7 +39,7 @@ function jenkins_checkin (){
     op=$(git status --porcelain)
 
     git add .
-    git commit -m "EC Build#${BUILD_VER} check-in."  &> /dev/null;
+    git commit -m "EC Build#${BUILD_VER} check-in."  &> /dev/null
     if [ $? -eq 0 ] ; then
 
 	git push origin master 
