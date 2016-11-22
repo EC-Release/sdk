@@ -42,7 +42,7 @@ function jenkins_checkin (){
     git add . &> /dev/null
     git commit -m "EC Build#${BUILD_VER} check-in."  &> /dev/null
     if [ $? -eq 0 ] ; then
-	printf "test"
+	exit 5
 	#exit 0
 	#echo "$?";
 	
