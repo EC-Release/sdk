@@ -55,7 +55,6 @@ function jenkins_checkin (){
 		fi;
 	    }
     } || {
-	echo "git commit error."
 	exit 0
     }
 }
