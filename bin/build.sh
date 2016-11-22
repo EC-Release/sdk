@@ -40,10 +40,10 @@ function jenkins_checkin (){
     #cd ./${DIST}
     #op=$(git status --porcelain)
 
-    op=$(git add .)
-    echo $op
-    op=$(git commit -m "EC Build#${BUILD_VER} check-in.")
-    echo $op
+    git add . &> /dev/null
+    #echo $op
+    git commit -m "EC Build#${BUILD_VER} check-in." &> /dev/null
+    #echo $op
     if [ $? -eq 0 ] ;
     then
 	echo "e2"
