@@ -40,32 +40,21 @@ function jenkins_checkin (){
     #cd ./${DIST}
     #op=$(git status --porcelain)
 
-    git add . &> /dev/null
-    #echo $op
+    git add .
     git commit -m "EC Build#${BUILD_VER} check-in." ||
-    #echo $op
-    if [ $? -eq 0 ] ;
-    then
-	echo "e2"
-	#exit 5
-	#exit 0
-	#echo "$?";
 	
-#	if [ $? -eq 0 ] ; then
-#	    echo "The changes has been pushed.";
-#	else
-	    #echo "catch";
-	    #exit 0
-	    
-	#fi;
-        #git push origin master 
-
+    if [ $? -eq 0 ]
+    then
+        git push origin master ||
+	echo "Change has been pushed."
 	
     else 
-	echo "e3"
-	#exit 0 
-    fi;
-    echo "e4"
+	echo "No update has been made."
+    fi ||
+
+    exit 0
+    
+    
 }
 
 function readinputs () {
