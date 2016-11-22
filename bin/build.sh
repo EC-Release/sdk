@@ -47,7 +47,7 @@ function jenkins_checkin (){
 	    echo "The changes has been pushed.";
 	else
 	    echo "catch"
-	    
+	    exit 0
 	    
 	fi;
         #git push origin master 
