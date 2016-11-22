@@ -33,28 +33,32 @@ function docker_run () {
 }
 
 function jenkins_checkin (){
-    
+
+    #exit 1;
     #cp ./README.md ./${DIST}/README_${ARTIFACT}.md
     #cd ./${DIST}
     #op=$(git status --porcelain)
 
     git add . &> /dev/null
+    git commit -m "EC Build#${BUILD_VER} check-in."  &> /dev/null
     if [ $? -eq 0 ] ; then
-       #echo "$?";
-	git commit -m "EC Build#${BUILD_VER} check-in."  &> /dev/null
-	if [ $? -eq 0 ] ; then
-	    echo "The changes has been pushed.";
-	else
-	    echo "catch";
-	    exit 0
+	echo "test"
+	#exit 0
+	#echo "$?";
+	
+#	if [ $? -eq 0 ] ; then
+#	    echo "The changes has been pushed.";
+#	else
+	    #echo "catch";
+	    #exit 0
 	    
-	fi;
+	#fi;
         #git push origin master 
 
 	
-    else 
-	echo "No changes are detected"; 
-	exit 0; 
+    #else 
+#	echo "No changes are detected"; 
+#	exit 0; 
     fi;
 }
 
