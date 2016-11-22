@@ -41,13 +41,13 @@ function jenkins_checkin (){
     #op=$(git status --porcelain)
 
     git add .
-    git commit -m "EC Build#${BUILD_VER} check-in." ||
+    git commit -m "EC Build#${BUILD_VER} check-in." &&
     if [ $? -eq 0 ];
     then
-	echo "Change's being pushed.";
+	echo "Change's being pushed."
         #git push origin master
     else 
-	echo "No update has been made." ||
+	echo "No update has been made."
 	exit 0;
     fi;
     
