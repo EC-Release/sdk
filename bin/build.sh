@@ -55,7 +55,7 @@ function jenkins_checkin (){
 	echo "git commit error."
 	exit 0
     }
-    
+    echo "hello"
 }
 
 function readinputs () {
