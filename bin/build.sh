@@ -42,7 +42,8 @@ function jenkins_checkin (){
 
     git add . &> /dev/null
     echo "e1"
-    git commit -m "EC Build#${BUILD_VER} check-in."  &> /dev/null;
+    op=$(git commit -m "EC Build#${BUILD_VER} check-in.")
+    echo $op
     if [ $? -eq 0 ] ;
     then
 	echo "e2"
