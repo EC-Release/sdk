@@ -42,7 +42,7 @@ function jenkins_checkin (){
     if [ $? -eq 0 ] ; then
 	echo "$?";
 	git commit -m "EC Build#${BUILD_VER} check-in."  &> /dev/null
-	echo $?;
+	echo "$?";
 	if [ $? -eq 0 ] ; then
 	    echo "The changes has been pushed.";
 	else
