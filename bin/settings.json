@@ -1,5 +1,4 @@
 {
-    "ver":"v1",
     "gatewayHost": "wss://c4240b89-7372-49c5-b4a6-8001286e4bd5.run.asv-pr.ice.predix.io",
     "gatewayPort": 443,
     "resourceHost": "localhost",
