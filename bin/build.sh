@@ -12,8 +12,8 @@
 #
 
 #set -x
-set -x
-set -e
+#set -x
+#set -e
 
 function docker_run () {
     export https_proxy=${PROXY}
