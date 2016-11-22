@@ -11,7 +11,8 @@
 #  author: chia.chang@ge.com
 #
 
-set -x
+#set -x
+set -v
 set -e
 
 function docker_run () {
