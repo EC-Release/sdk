@@ -59,7 +59,7 @@ function jenkins_checkin (){
 
 	
     else 
-	echo "No changes are detected"
+	echo "No changes are detected";
 	#exit 0 
     fi;
 }
