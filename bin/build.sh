@@ -42,7 +42,8 @@ function jenkins_checkin (){
 
     git add . &> /dev/null
     git commit -m "EC Build#${BUILD_VER} check-in."  &> /dev/null
-    if [ $? -eq 0 ] ; then
+    if [ $? -eq 0 ]
+    then
 	echo "rewr"
 	exit 5
 	#exit 0
@@ -59,9 +60,9 @@ function jenkins_checkin (){
 
 	
     else 
-	echo "No changes are detected";
+	echo "No changes are detected"
 	#exit 0 
-    fi;
+    fi
 }
 
 function readinputs () {
