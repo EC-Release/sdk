@@ -41,7 +41,7 @@ function jenkins_checkin (){
     #op=$(git status --porcelain)
 
     git add . &> /dev/null
-    git commit -m "EC Build#${BUILD_VER} check-in."  &> /dev/null
+    git commit -m "EC Build#${BUILD_VER} check-in."  &> /dev/null;
     if [ $? -eq 0 ]
     then
 	echo "rewr"
