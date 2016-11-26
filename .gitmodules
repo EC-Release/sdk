@@ -19,3 +19,6 @@
 [submodule "examples/android"]
 	path = examples/android
 	url = https://github.com/Enterprise-connect/ec-lib-android.git
+[submodule "examples/mqtt"]
+	path = examples/mqtt
+	url = https://d1722e79106273f4a91245897f0ea91fdd2a2818@github.com/Enterprise-connect/ec-mqtt.git
