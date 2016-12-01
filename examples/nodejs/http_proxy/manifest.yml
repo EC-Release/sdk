@@ -1,0 +1,9 @@
+---
+applications:
+  - name: ec-cf-app
+    memory: 1024M
+    instances: 1
+    stack: cflinuxfs2
+    path: .
+    command: node ./server-cf
+    buildpack: https://github.com/cloudfoundry/buildpack-nodejs.git
