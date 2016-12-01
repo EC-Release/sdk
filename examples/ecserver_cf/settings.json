@@ -1,0 +1,12 @@
+{
+    "_proxy":{
+	"host":"http://8.8.8.8",
+	"port":80
+    },
+    "gatewayHost": "wss://c9241a5f-58d3-454d-a930-2389a12345.run.aws-usw02-pr.ice.predix.io",
+    "gatewayPort": 443,
+    "resourceHost": "7.7.7.7",
+    "resourcePort": 12345,
+    "id": "191001",
+    "oauthToken": "your UAA token"
+}

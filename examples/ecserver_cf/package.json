@@ -1,0 +1,11 @@
+{
+    "name": "server-daemon-pilot",
+    "description": "EC Server Daemon Pilot.",    
+    "dependencies": {},
+    "license": "ISC",
+    "engines": {
+    "node": "^6.2.1",
+    "npm": "*"
+    },
+    "devDependencies": {}
+}
