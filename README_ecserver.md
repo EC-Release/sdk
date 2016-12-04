@@ -1,4 +1,8 @@
 # ec-server-daemon
+Repo | Build Status
+--- | ---
+[EC SDK](https://github.com/Enterprise-connect/ec-sdk) | <a href='https://predix1.jenkins.build.ge.com/job/Enterprise-Connect/job/EC%20Server%20Daemon%20CLI/'><img src='https://predix1.jenkins.build.ge.com/job/Enterprise-Connect/job/EC%20Server%20Daemon%20CLI/badge/icon'></a>
+
  - Enterprise-Connect Server Daemon/CLI
 
 ## Usage
