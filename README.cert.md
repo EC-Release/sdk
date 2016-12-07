@@ -1,15 +1,15 @@
-# ec-sdk
-Enterprise-Connect SDK
+# EC Cert Programme
+Enterprise-Connect Connectivity based on TLS/SSL certification.
 
-##Download
-```
-git clone --recursive https://github.com/Enterprise-connect/ec-sdk.git
-```
-##Documents
-[EC Original docs](README.origin.md)
+##Diagrams
+###EC Predix Architecture
+![alt tag](docs/Predix Overall Architecture.png)
 
-[EC Predix Gateway service usage docs](README.predix.service.md)
+###Subscribers Cert Request
+![alt tag](docs/Cert Flow (Subscribers).png)
 
-[EC Server Usage](README_ecserver.md)
+###Cert Signing Process
+![alt tag](docs/Cert Flow (Backend).png)
 
-[EC Client Usage](README_ecserver.md)
+###Cert Validation with EC Gateway
+![alt tag](docs/Cert Flow (Validation).png)
