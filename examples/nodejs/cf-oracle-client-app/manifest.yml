@@ -1,0 +1,9 @@
+---
+applications:
+  - name: ec-oracle-node-test
+    memory: 1024M
+    instances: 1
+    stack: cflinuxfs2
+    path: .
+    command: ./ec_oracle_run.sh
+    buildpack: https://github.com/cloudfoundry/buildpack-nodejs.git

@@ -1,0 +1,14 @@
+{
+    "name": "oracle-node-run",
+    "description": "Oracle Node App",
+    "_scripts":{
+	"preinstall":"export OCI_LIB_DIR=$TMPDIR/instantclient && export OCI_INC_DIR=$TMPDIR/instantclient/sdk/include && export LD_LIBRARY_PATH=$TMPDIR/instantclient && ls -al $TMPDIR/instantclient"
+    },
+    "dependencies": {},
+    "license": "ISC",
+    "engines": {
+	"node": "^6.2.1",
+	"npm": "*"
+    },
+    "devDependencies": {}
+}
