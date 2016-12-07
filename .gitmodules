@@ -25,3 +25,9 @@
 [submodule "examples/nodejs/ec-example-node-oracledb"]
 	path = examples/nodejs/ec-example-node-oracledb
 	url = https://9f92ecdb1e167561eb87b5e0cac86507e5f7fd6a@github.com/Enterprise-connect/ec-example-node-oracledb.git
+[submodule "examples/nodejs/--force"]
+	path = examples/nodejs/--force
+	url = https://8f21f21cfc36331bd13059ac620029e61e2d72b8@github.com/Enterprise-connect/ec-example-node-oracledb.git
+[submodule "examples/nodejs/ec-oracle-sample-app"]
+	path = examples/nodejs/ec-oracle-sample-app
+	url = https://8f21f21cfc36331bd13059ac620029e61e2d72b8@github.com/Enterprise-connect/ec-example-node-oracledb.git
