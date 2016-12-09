@@ -6,7 +6,7 @@ Enterprise-Connect Connectivity based on TLS/SSL certification.
 ![alt tag](docs/Predix Overall Architecture.png)
 
 ###Subscribers Cert Request
-![alt tag](docs/Cert Flow (Subscribers).png){:width="500px"}
+![alt tag](docs/Cert Flow (Subscribers).png){:width="100px"}
 
 ###Cert Signing Process
 ![alt tag](docs/Cert Flow (Backend).png)
