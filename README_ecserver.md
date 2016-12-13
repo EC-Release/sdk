@@ -8,11 +8,11 @@ Downloads | Build Status
 ## Usage
 
 ```shellscript
-$ ./ecserver -h
-Usage of ./ecserver:
+$ ./ecclient -h
+Usage of ./ecclient:
   -file string
     	EC Server settings.json file path. (default "./settings.json")
   -ver
-    	Show EC Server version.
+    	Show EC Client version.
 ``` 
  
