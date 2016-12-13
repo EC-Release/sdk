@@ -3,15 +3,15 @@ Downloads | Build Status
 --- | ---
 [EC SDK](https://github.com/Enterprise-connect/ec-sdk) | <a href='https://predix1.jenkins.build.ge.com/job/Enterprise-Connect/EC Server Daemon CLI'><img src='https://predix1.jenkins.build.ge.com/buildStatus/icon?job=Enterprise-Connect/EC Server Daemon CLI'></a>
 
- - Enterprise-Connect Client Daemon/CLI
+ - Enterprise-Connect Server Daemon/CLI
 
 ## Usage
 
 ```shellscript
-$ ./ecclient -h
-Usage of ./ecclient:
+$ ./ecserver -h
+Usage of ./ecserver:
   -file string
     	EC Server settings.json file path. (default "./settings.json")
   -ver
-    	Show EC Client version.
+    	Show EC Server version.
 ``` 
