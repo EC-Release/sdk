@@ -5,17 +5,13 @@ Downloads | Build Status
 
  - Enterprise-Connect Client Daemon/CLI
 
+## Usage
+
+```shellscript
 $ ./ecclient -h
 Usage of ./ecclient:
   -file string
-     EC Client settings.json file path. (default "./settings.json")
+    	EC Server settings.json file path. (default "./settings.json")
   -ver
-     Show EC Client version.
-  -mem int
-     Specify listening port# for the health check request.
-  -cid string
-     Specify client id for auto-refresh the OAuth2 token.
-  -csc string
-     Specify client secret for auto-refresh the OAuth2 token.
-  -tkn string
-     Specify refresh-token for the OAuth2 provider.
+    	Show EC Client version.
+``` 
