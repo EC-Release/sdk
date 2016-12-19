@@ -4,9 +4,6 @@
 [submodule "lib/java"]
 	path = lib/java
 	url = https://github.com/Enterprise-connect/ec-lib-java.git
-[submodule "examples/springboot"]
-	path = examples/springboot
-	url = https://github.com/Enterprise-connect/ec-example-springboot.git
 [submodule "examples/java/springboot"]
 	path = examples/java/springboot
 	url = https://github.com/Enterprise-connect/ec-example-springboot.git
