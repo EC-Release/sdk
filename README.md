@@ -17,4 +17,4 @@ git clone --recursive https://github.com/Enterprise-connect/ec-sdk.git
 [EC Client Usage](README_ecserver.md)
 
 ##Contribution
-The SDK was created in a open-source form with the vision of a greater private cloud, making computer network more secure and at the same time, clearing the barriers in the world. The EC team recognises every indiviual's contribution and is actively looking for partners who share the same vision.
+The SDK was created in a open-source form with the vision of a greater private cloud, making computer network more secure and at the same time, clearing the political barriers in the world. The EC team recognises every indiviual's contribution and is actively looking for partners who share the same vision.
