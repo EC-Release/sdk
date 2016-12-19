@@ -22,6 +22,6 @@
 [submodule "examples/mqtt"]
 	path = examples/mqtt
 	url = https:/github.com/Enterprise-connect/ec-mqtt.git
-[submodule "examples/nodejs/ec-example-node-oracledb"]
-	path = examples/nodejs/ec-example-node-oracledb
+[submodule "examples/nodejs/ec-oracle-sample-app"]
+	path = examples/nodejs/ec-oracle-sample-app
 	url = https://github.com/Enterprise-connect/ec-example-node-oracledb.git
