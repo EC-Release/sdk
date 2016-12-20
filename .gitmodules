@@ -22,9 +22,9 @@
 [submodule "examples/nodejs/ec-oracle-sample-app"]
 	path = examples/nodejs/ec-oracle-sample-app
 	url = https://github.com/Enterprise-connect/ec-example-node-oracledb.git
-[submodule "examples/nodejs/ec-server-cf-push"]
-	path = examples/nodejs/ec-server-cf-push
-	url = https://github.com/Enterprise-connect/ec-server-cf-push.git
 [submodule "examples/nodejs/ec-http-proxy-cf"]
 	path = examples/nodejs/ec-http-proxy-cf
 	url = https://github.com/Enterprise-connect/ec-http-proxy.git
+[submodule "examples/cloudfoundry"]
+	path = examples/cloudfoundry
+	url = https://github.com/Enterprise-connect/ec-server-cf-push.git
