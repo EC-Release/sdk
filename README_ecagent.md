@@ -36,7 +36,7 @@ Usage of ./ecagent:
   -tkn string
     	Specify the OAuthToken. This token may expire depending on your OAuth provisioner.
   -ver
-    	Show EC Server version.
+    	Show EC Agent version.
 
 ``` 
  
