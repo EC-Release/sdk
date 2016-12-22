@@ -1,0 +1,15 @@
+{
+    "_proxy":{
+	"host":"http://proxy-src.research.ge.com",
+	"port":8080
+    },
+    "gatewayHost": "wss://4b2cae1b-3396-4f8e-b5ae-87186474a330.run.aws-usw02-pr.ice.predix.io",
+    "gatewayPort": 443,
+    "_gatewayHost": "ws://localhost",
+    "_gatewayPort": 8989,
+    "resourceHost": "localhost",
+    "resourcePort": 5432,
+    "id": "191001",
+    "oauthToken": "NGIyY2FlMWItMzM5Ni00ZjhlLWI1YWUtODcxODY0NzRhMzMw",
+    "_oauthToken": "dGVzdC1jaGlh"
+}
