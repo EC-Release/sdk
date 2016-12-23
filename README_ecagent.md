@@ -8,13 +8,13 @@ Downloads | Build Status
 ## Usage
 ```shellscript
 $ ./ecagent -h
-Usage of ./ecagent:
--aid string
+Usage of ./ecagent_darwin:
+  -aid string
     	Specify the agent Id assigned by the EC Service. You may find it in the Cloud Foundry VCAP_SERVICE
   -cid string
-    	Specify client Id to auto-refresh the OAuth2 token.
+    	Specify the client Id to auto-refresh the OAuth2 token.
   -csc string
-    	Specify client secret to auto-refresh theOAuth2 token.
+    	Specify the client secret to auto-refresh the OAuth2 token.
   -dur int
     	Specify the duration for the next token refresh in seconds. (default 100 years)
   -hst string
@@ -22,7 +22,7 @@ Usage of ./ecagent:
   -lpt int
     	Specify the EC port# if the "client" mode is set. By default 7990 (default 7990)
   -mod string
-    	Specify the EC Agent Mode ("client" or "server". "server" By default) (default "server")
+    	Specify the EC Agent Mode in "client" or "server". (default "server")
   -oa2 string
     	Specify URL of the OAuth2 provisioner. E.g. https://<somedomain>/oauth/token
   -pxy string
@@ -34,9 +34,9 @@ Usage of ./ecagent:
   -tid string
     	Specify the Target EC Server Id if the "client" mode is set (default "191001")
   -tkn string
-    	Specify the OAuthToken. This token may expire depending on your OAuth provisioner.
+    	Specify the OAuth Token. The token may expire depending on your OAuth provisioner. This flag is ignored if OAuth2 Auto-Refresh were set.
   -ver
-    	Show EC Agent version.
+    	Show EC Agent's version.
 
 ``` 
  
