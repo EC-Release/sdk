@@ -28,9 +28,4 @@ The SDK examples were created in the open-source form with the vision of a great
  - Allow Loopback access.
  - Add token validation API from the EC Service.
  
-###v1.8_fukuoka
- - Remove EC Server/Client components.
- - Introduce the new Hybid-Mode EC component- "Agent"
- - Remove JSON dependency. Make the flags mandatory in the CLI.
- - Add Auto-Refresh Token feature(s).
- - Bug fix for a concurrent map IO Read/Write B issue, causing the EC system instability. 
+###[more](https://github.com/Enterprise-connect/ec-sdk/releases)
