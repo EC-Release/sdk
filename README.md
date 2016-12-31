@@ -32,4 +32,4 @@ The SDK examples were created in the open-source form with the vision of a great
  - Allow Loopback access.
  - Add token validation API from the EC Service.
  
-###[more](https://github.com/Enterprise-connect/ec-sdk/releases)
+[more](https://github.com/Enterprise-connect/ec-sdk/releases)
