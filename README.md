@@ -6,7 +6,7 @@ The Enterprise-Connect SDK. We track down every single reported issue and are pa
 [![Travis branch](https://img.shields.io/travis/rust-lang/rust/master.svg)](https://travis-ci.org/)
 
 ##Download
-```shell
+```bash
 git clone --recursive https://github.com/Enterprise-connect/ec-sdk.git
 ```
 ##Documents
