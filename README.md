@@ -1,6 +1,8 @@
 # ec-sdk
 The Enterprise-Connect SDK. We track down every single reported issue and are passionate in solving problems. Please leave your feedbacks/concerns [here](https://github.com/Enterprise-connect/ec-sdk/issues). You're encouraged to make a pull request.
 
+[![GitHub version](https://badge.fury.io/gh/Enterprise-connect%2Fec-sdk.svg)](https://badge.fury.io/gh/Enterprise-connect%2Fec-sdk)
+
 ##Download
 ```
 git clone --recursive https://github.com/Enterprise-connect/ec-sdk.git
