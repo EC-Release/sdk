@@ -18,7 +18,16 @@ git clone --recursive https://github.com/Enterprise-connect/ec-sdk.git
 The SDK examples were created in the open-source form with the vision of a greater private cloud and at the same time, making computer network more secure. The EC team recognises every indiviual's contribution and is actively looking for partners who share the same vision.
 
 ##Release History
-[v1.8_fukuoka](https://github.com/Enterprise-connect/ec-sdk/releases) (Current)
+[v1.28_fukuoka](https://github.com/Enterprise-connect/ec-sdk/releases) current
+ - Introducing the "Gateway" mode of EC Agent.
+ - Add the Service URL as mandatory flag for the gateway.
+ - Fix proxy settings. https://github.com/Enterprise-connect/ec-sdk/issues/7
+ - Add session information for exceptions. https://github.com/Enterprise-connect/ec-sdk/issues/9
+ - System stability updates. Prevent memory deadlock.
+ - Improve IP Filter, supporting IPv4/IPv6 in CiDR Net.
+ - Allow Loopback access.
+ - Add token validation API from the EC Service.
+v1.8_fukuoka
  - Remove EC Server/Client components.
  - Introduce the new Hybid-Mode EC component- "Agent"
  - Remove JSON dependency. Make the flags mandatory in the CLI.
