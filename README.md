@@ -27,6 +27,7 @@ The SDK examples were created in the open-source form with the vision of a great
  - Improve IP Filter, supporting IPv4/IPv6 in CiDR Net.
  - Allow Loopback access.
  - Add token validation API from the EC Service.
+ 
 ###v1.8_fukuoka
  - Remove EC Server/Client components.
  - Introduce the new Hybid-Mode EC component- "Agent"
