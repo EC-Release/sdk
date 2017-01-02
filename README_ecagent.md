@@ -59,11 +59,11 @@ Usage of ./bin/ecagent_darwin:
 
 ##Example usage in Server mode
 ```shellscript
-$\>./ecagent_darwin -aid 191001 -hst wss://ec-chia-app-7.run.aws-usw02-pr.ice.predix.io -rht localhost -rpt 5432 -cid <id> -csc <secret> -oa2 https://helo-a69c-4cc5-83bd-459aa307a307.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token -dur 30 -mod server
+$\>./ecagent_darwin -aid 191001 -hst wss://ec-chia-app-7.run.aws-usw02-pr.ice.predix.io -rht localhost -rpt 5432 -cid <id> -csc <secret> -oa2 https://helo-a69c-4cc5-83bd-459aa307a307.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token -dur 300 -mod server
 ```
 ##Example usage in Client mode
 ```shellscript
-$\>./ecagent_darwin -mod client -aid 191000 -hst wss://ec-chia-app-7.run.aws-usw02-pr.ice.predix.io -lpt 7990 -tid 191001 -oa2 https://helo-a69c-4cc5-83bd-459aa307a307.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token -cid <id> -csc <secret> -dur 30
+$\>./ecagent_darwin -mod client -aid 191000 -hst wss://ec-chia-app-7.run.aws-usw02-pr.ice.predix.io -lpt 7990 -tid 191001 -oa2 https://helo-a69c-4cc5-83bd-459aa307a307.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token -cid <id> -csc <secret> -dur 300
 ```
 
 ##Example usage in Gateway mode
