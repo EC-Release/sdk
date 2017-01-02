@@ -20,13 +20,17 @@ The SDK examples were created in the open-source form with the vision of a great
 
 ##Release History
 ###[v1.28_fukuoka](https://github.com/Enterprise-connect/ec-sdk/releases) current
- - Introducing the "Gateway" mode of EC Agent.
- - Add the Service URL as mandatory flag for the gateway.
- - Fix proxy settings. https://github.com/Enterprise-connect/ec-sdk/issues/7
- - Add session information for exceptions. https://github.com/Enterprise-connect/ec-sdk/issues/9
- - System stability updates. Prevent memory deadlock.
- - Improve IP Filter, supporting IPv4/IPv6 in CiDR Net.
- - Allow Loopback access.
- - Add token validation API from the EC Service.
+- Introducing the "Gateway" mode of EC Agent.
+- Add the Service URL as mandatory flag for the gateway.
+- Fix proxy settings. https://github.com/Enterprise-connect/ec-sdk/issues/7
+- Add session information for exceptions. https://github.com/Enterprise-connect/ec-sdk/issues/9
+- System stability updates. Prevent memory deadlock.
+- Improve IP Filter, supporting IPv4/IPv6 in CiDR Net.
+- Allow Loopback access.
+- Add token validation API from the EC Service.
+- Add Usage reporting. usage calculation.
+- Add health port listener.
+- Some bug fixes.
+- Docs clean up.
  
 [more](https://github.com/Enterprise-connect/ec-sdk/releases)
