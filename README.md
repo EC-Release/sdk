@@ -32,5 +32,6 @@ The SDK examples were created in the open-source form with the vision of a great
 - Add health port listener.
 - Some bug fixes.
 - Docs clean up.
+- Super Connection Auto-Reconnect.
  
 [more](https://github.com/Enterprise-connect/ec-sdk/releases)
