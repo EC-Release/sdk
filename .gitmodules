@@ -25,6 +25,6 @@
 [submodule "examples/nodejs/ec-http-proxy-cf"]
 	path = examples/nodejs/ec-http-proxy-cf
 	url = https://github.com/Enterprise-connect/ec-http-proxy.git
-[submodule "examples/cloudfoundry"]
-	path = examples/cloudfoundry
-	url = https://github.com/Enterprise-connect/ec-server-cf-push.git
+[submodule "examples/ec-agent-cf-push"]
+	path = examples/ec-agent-cf-push
+	url = https://github.com/Enterprise-connect/ec-agent-cf-push.git
