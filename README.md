@@ -18,8 +18,12 @@ git clone --recursive https://github.com/Enterprise-connect/ec-sdk.git
 ##Contribution
 The SDK examples were created in the open-source form with the vision of a greater private cloud and at the same time, making computer network more secure. The EC team recognises every indiviual's contribution and is actively looking for partners who share the same vision.
 
+##Contributors
+[Springboot](https://github.com/Enterprise-connect/ec-springboot-II/tree/master) by [avnsri4986](https://github.com/avnsri4986)
+[EC Robot](https://github.com/orgs/Enterprise-connect/people/ec-robot)
+
 ##Release History
-###[v1.28_fukuoka](https://github.com/Enterprise-connect/ec-sdk/releases) current
+###[v1.2.52_fukuoka](https://github.com/Enterprise-connect/ec-sdk/releases) current
 - Introducing the "Gateway" mode of EC Agent.
 - Add the Service URL as mandatory flag for the gateway.
 - Fix proxy settings. https://github.com/Enterprise-connect/ec-sdk/issues/7
