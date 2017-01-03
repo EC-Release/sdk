@@ -66,7 +66,7 @@ $\>./ecagent_darwin -aid 191001 -hst wss://ec-chia-app-7.run.aws-usw02-pr.ice.pr
 $\>./ecagent_darwin -mod client -aid 191000 -hst wss://ec-chia-app-7.run.aws-usw02-pr.ice.predix.io -lpt 7990 -tid 191001 -oa2 https://helo-a69c-4cc5-83bd-459aa307a307.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token -cid <id> -csc <secret> -dur 300
 ```
 
-##Example usage in Gateway (Experiment)
+##Example usage in Gateway mode
 ```shellscript
 $\>./ecagent_darwin -mod gateway -lpt 8989 -zon helo-1f98-4ea8-ad48-a96d38ba2931 -sst https://helo-1f98-4ea8-ad48-a96d38ba2931.run.aws-usw02-pr.ice.predix.io
 ```
