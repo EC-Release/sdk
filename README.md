@@ -21,8 +21,6 @@ The SDK examples were created in the open-source form with the vision of a great
 ##Contributors
 [Springboot](https://github.com/Enterprise-connect/ec-springboot-II/tree/master) by [avnsri4986](https://github.com/avnsri4986)
 
-[EC Robot](https://github.com/orgs/Enterprise-connect/people/ec-robot)
-
 ##Release History
 ###[v1.2.52_fukuoka](https://github.com/Enterprise-connect/ec-sdk/releases) current
 - Introducing the "Gateway" mode of EC Agent.
