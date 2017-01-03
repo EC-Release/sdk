@@ -28,3 +28,6 @@
 [submodule "examples/ec-agent-cf-push"]
 	path = examples/ec-agent-cf-push
 	url = https://github.com/Enterprise-connect/ec-agent-cf-push.git
+[submodule "examples/java/ec-springboot-II"]
+	path = examples/java/ec-springboot-II
+	url = https://github.com/Enterprise-connect/ec-springboot-II.git
