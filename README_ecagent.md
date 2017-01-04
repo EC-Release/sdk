@@ -9,7 +9,7 @@ Downloads | Build Status
 ```shellscript
 $ ./ecagent -h
 Usage of ./bin/ecagent_darwin:
--aid string
+  -aid string
     	Specify the agent Id assigned by the EC Service. You may find it in the Cloud Foundry VCAP_SERVICE
   -bkl string
     	Specify the ip(s) blocklist in the IPv4/IPv6 format. Concatenate ips by comma. E.g. 10.20.30.5, 2002:4559:1FE2::4559:1FE2
@@ -19,6 +19,8 @@ Usage of ./bin/ecagent_darwin:
     	Specify the relative path of a digital certificate to operate the EC agent. (.pfx, .cer, .p7s, .der, .pem, .crt)
   -csc string
     	Specify the client secret to auto-refresh the OAuth2 token.
+  -dbg
+    	Turn on debug mode. This will introduce more error information. E.g. connection error.
   -dur int
     	Specify the duration for the next token refresh in seconds. (default 100 years)
   -hca string
