@@ -18,7 +18,7 @@ git clone --recursive https://github.com/Enterprise-connect/ec-sdk.git
 ##Contribution
 The SDK examples were created in the open-source form with the vision of a greater private cloud and at the same time, making computer network more secure. The EC team recognises every indiviual's contribution and is actively looking for partners who share the same vision.
 
-##Contributors
+##Credits
 [Springboot](https://github.com/Enterprise-connect/ec-springboot-II/tree/master) by [avnsri4986](https://github.com/avnsri4986)
 
 ##Release History
