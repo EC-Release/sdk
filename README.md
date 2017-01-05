@@ -22,7 +22,7 @@ The SDK examples were created in the open-source form with the vision of a great
 [Springboot](https://github.com/Enterprise-connect/ec-springboot-II/tree/master) by [avnsri4986](https://github.com/avnsri4986)
 
 ##Release History
-###[v1.2.64_fukuoka](https://github.com/Enterprise-connect/ec-sdk/releases) current
+###[v1.2.70_fukuoka](https://github.com/Enterprise-connect/ec-sdk/releases) current
 - Introducing the "Gateway" mode of EC Agent.
 - Add the Service URL as mandatory flag for the gateway.
 - Fix proxy settings. https://github.com/Enterprise-connect/ec-sdk/issues/7
@@ -36,5 +36,6 @@ The SDK examples were created in the open-source form with the vision of a great
 - Some bug fixes.
 - Docs clean up.
 - Super Connection Auto-Reconnect.
+- Add Debug mode
  
 [more](https://github.com/Enterprise-connect/ec-sdk/releases)
