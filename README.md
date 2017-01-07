@@ -9,11 +9,6 @@ The Enterprise-Connect SDK. We track down every single reported issue and are pa
 ```bash
 git clone --recursive https://github.com/Enterprise-connect/ec-sdk.git
 ```
-##Documents
-
-[EC Agent Usage](README_ecagent.md)
-
-[EC Misc. Docs](https://github.com/Enterprise-connect/ec-misc-docs)
 
 ##Contribution
 The SDK examples were created in the open-source form with the vision of a greater private cloud and at the same time, making computer network more secure. The EC team recognises every indiviual's contribution and is actively looking for partners who share the same vision.
