@@ -28,7 +28,7 @@ The SDK examples were created in the open-source form with the vision of a great
 - Add token validation API from the EC Service.
 - Add Usage reporting. usage calculation.
 - Add health port listener.
-- Some bug fixes.
+- Some bug fixes. https://github.com/Enterprise-connect/ec-sdk/issues/14
 - Docs clean up.
 - Super Connection Auto-Reconnect.
 - Add Debug mode
