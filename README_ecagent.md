@@ -8,7 +8,7 @@ Downloads | Build Status
 ## Usage
 ```shellscript
 $ ./ecagent -h
-Usage of ./bin/ecagent_darwin:
+Usage of ./bin/ecagent:
   -aid string
     	Specify the agent Id assigned by the EC Service. You may find it in the Cloud Foundry VCAP_SERVICE
   -bkl string
@@ -24,7 +24,7 @@ Usage of ./bin/ecagent_darwin:
   -dur int
     	Specify the duration for the next token refresh in seconds. (default 100 years)
   -hca string
-    	Specify a port# to turn on the Healthcheck API. This flag is always on when in the "gateway mode" with the provisioned local port.
+    	Specify a port# to turn on the Healthcheck API. This flag is always on when in the "gateway mode" with the provisioned local port. Upon provisioned, the api is available at <agent_uri>/health.
   -hst string
     	Specify the EC Gateway URI. E.g. wss://<somedomain>:8989
   -inf
