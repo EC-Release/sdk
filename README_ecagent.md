@@ -4,6 +4,10 @@ Downloads | Build Status
 [EC SDK](https://github.com/Enterprise-connect/ec-sdk) | <a href='https://predix1.jenkins.build.ge.com/job/Enterprise-Connect/EC Server Daemon CLI'><img src='https://predix1.jenkins.build.ge.com/buildStatus/icon?job=Enterprise-Connect/EC Server Daemon CLI'></a>
 
  - Introducing the Enterprise-Connect Agent Daemon/CLI
+ 
+## Available Artifact Types
+`ecagent_<os>_<dns-resolving>`
+For instance, if my machine ran a Linux distribution with a configurable dns resolver, I should use the artifact `ecagent_linux_var`
 
 ## Usage
 ```shellscript
@@ -83,4 +87,4 @@ $\>./ecagent_darwin -mod gateway -lpt 8989 -zon helo-1f98-4ea8-ad48-a96d38ba2931
 -tkn <admin-token-in-VCAP_SERVICES>
 ```
 
-- The token for the gateway is required for the EC service access. E.g. Usage Reporting, certification, etc.
+- The token for the gateway is required for the EC service access. E.g. Usage Reporting, certificate, etc.
