@@ -23,6 +23,8 @@ Usage of ./bin/ecagent:
     	Turn on debug mode. This will introduce more error information. E.g. connection error.
   -dur int
     	Specify the duration for the next token refresh in seconds. (default 100 years)
+  -gen
+    	Generate a certificate request for the usage validation purpose.
   -hca string
     	Specify a port# to turn on the Healthcheck API. This flag is always on when in the "gateway mode" with the provisioned local port. Upon provisioned, the api is available at <agent_uri>/health.
   -hst string
@@ -32,7 +34,7 @@ Usage of ./bin/ecagent:
   -lpt string
     	Specify the EC port# if the "client" mode is set. (default "7990")
   -mod string
-    	Specify the EC Agent Mode in "client", "server", or "gateway". (default "server")
+    	Specify the EC Agent Mode in "client", "server", or "gateway". (default "agent")
   -oa2 string
     	Specify URL of the OAuth2 provisioner. E.g. https://<somedomain>/oauth/token
   -pct string
