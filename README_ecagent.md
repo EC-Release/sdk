@@ -80,7 +80,7 @@ $\>./ecagent_darwin -mod client -aid 191000 -hst wss://ec-chia-app-7.run.aws-usw
 ```shellscript
 $\>./ecagent_darwin -mod gateway -lpt 8989 -zon helo-1f98-4ea8-ad48-a96d38ba2931 \
 -sst https://helo-1f98-4ea8-ad48-a96d38ba2931.run.aws-usw02-pr.ice.predix.io \
--tkn <base64(admin:<secret><your-zone-id>)>
+-tkn <admin-token-in-VCAP_SERVICES>
 ```
 
-- The token for the gateway is required for the EC service access. E.g. Usage Reporting 
+- The token for the gateway is required for the EC service access. E.g. Usage Reporting, certification, etc.
