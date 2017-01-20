@@ -31,3 +31,6 @@
 [submodule "examples/java/ec-springboot-II"]
 	path = examples/java/ec-springboot-II
 	url = https://github.com/Enterprise-connect/ec-springboot-II.git
+[submodule "examples/python/ec-python3"]
+	path = examples/python/ec-python3
+	url = https://github.com/Enterprise-connect/ec-python3
