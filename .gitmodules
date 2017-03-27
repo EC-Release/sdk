@@ -36,4 +36,4 @@
 	url = https://github.com/Enterprise-connect/ec-python3
 [submodule "examples/nodejs/data-migration-example"]
 	path = examples/nodejs/data-migration-example
-	url = https://a290687fb470e5e0f357b9a01ede7c29c6a48ab3@github.com/Enterprise-connect/data-migration-example.git
+	url = https://github.com/Enterprise-connect/data-migration-example.git
