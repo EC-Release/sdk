@@ -28,6 +28,9 @@
 [submodule "examples/java/ec-springboot-II"]
 	path = examples/java/ec-springboot-II
 	url = https://github.com/Enterprise-connect/ec-springboot-II.git
+[submodule "examples/java/ec-springboot-sp-gradle"]
+	path = examples/java/ec-springboot-sp-gradle
+	url = https://github.com/Enterprise-connect/ec-springboot-sp-gradle
 [submodule "examples/python/ec-python3"]
 	path = examples/python/ec-python3
 	url = https://github.com/Enterprise-connect/ec-python3
