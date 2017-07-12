@@ -1,13 +1,26 @@
 # ec-agent-daemon
-Downloads | Build Status
---- | ---
-[EC SDK](https://github.com/Enterprise-connect/ec-sdk) | <a href='https://predix1.jenkins.build.ge.com/job/Enterprise-Connect/EC Server Daemon CLI'><img src='https://predix1.jenkins.build.ge.com/buildStatus/icon?job=Enterprise-Connect/EC Server Daemon CLI'></a>
 
- - Introducing the Enterprise-Connect Agent Daemon/CLI
+GoDoc | SDK | Env | Status
+--- | --- | --- | ---
+Production | [Download](https://github.com/Enterprise-connect/ec-sdk) | Predix West | N/A
+[Beta](https://ec-sdk-doc-sendai.run.aws-usw02-dev.ice.predix.io) | [Download](https://github.build.ge.com/Enterprise-Connect/ec-sdk/tree/beta) | Predix CF3 | [![Travis branch](https://img.shields.io/travis/rust-lang/rust/master.svg)](https://travis-ci.org/)
  
 ## Available Artifact Types
 `ecagent_<os>_<dns-resolving>`
 For instance, if my machine ran a Linux distribution with a configurable dns resolver, I should use the artifact `ecagent_linux_var`
+
+## Build
+### Requirement
+ - To build the actual agent artifact, it would require docker with Go 1.8.3. https://github.com/docker-library/golang/blob/97b2ff201ec59b9a037197d132c64eb937370c64/1.8/Dockerfile
+ - GNU make.
+ - Agent comp. packages. Avaialble in Agent SDK. https://github.build.ge.com/Enterprise-Connect/ec-sdk/lib
+ 
+### Todo
+ - copy both folders src/pkg found in the root repo to your ${GOPATH}
+ - privision build env vars.
+ - run ./build.sh
+ - the build script will output the binary artifacts (cross-platforms) to the internal/external SDK repo, depends on the env vars.  
+
 
 ## Usage
 ```shellscript
