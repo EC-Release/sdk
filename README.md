@@ -18,15 +18,20 @@ tar -xvzf ./path/to/ec-sdk/dist/ecagent_linux_sys.tar.gz
 ## Verify checksum
 ### Linux
 ```bash
-sha256 ./path/to/file/ecagent_linux_sys
+$ sha256 ./path/to/file/ecagent_linux_sys
+b3bf9cd9686e
+$ awk 's=index($0,"b3bf9cd9686e") { print "line=" NR, "start position=" s}' checksum.txt 
 ```
 ### Mac OS
 ```
-shasum -a 256 ./path/to/file/ecagent_linux_sys
+$ shasum -a 256 ./path/to/file/ecagent_linux_sys
+b3bf9cd9686e
+$ awk 's=index($0,"b3bf9cd9686e") { print "line=" NR, "start position=" s}' checksum.txt 
 ```
 ### Windows
 ```bash
-CertUtil -hashfile C:\path\to\file\ecagent_windows.exe sha256
+c: \> CertUtil -hashfile C:\path\to\file\ecagent_windows.exe sha256
+b3bf9cd9686e (find the checksum in the checksum.txt)
 ```
 
 ## Contribution
