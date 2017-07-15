@@ -10,7 +10,7 @@ The Enterprise-Connect SDK. [Visit the wiki to get familiar with EC](https://git
 git clone --recursive https://github.com/Enterprise-connect/ec-sdk.git
 ```
 
-## Agent usage
+## Extract the Agent
 ```bash
 tar -xvzf ./path/to/ec-sdk/dist/ecagent_linux_sys.tar.gz
 ```
