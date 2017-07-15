@@ -15,7 +15,7 @@ git clone --recursive https://github.com/Enterprise-connect/ec-sdk.git
 tar -xvzf ./path/to/ec-sdk/dist/ecagent_linux_sys.tar.gz
 ```
 
-## Verify checksum
+## Verify the checksum
 ### Linux
 ```bash
 $ sha256 ./path/to/file/ecagent_linux_sys
