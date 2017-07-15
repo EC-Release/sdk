@@ -10,6 +10,25 @@ The Enterprise-Connect SDK. [Visit the wiki to get familiar with EC](https://git
 git clone --recursive https://github.com/Enterprise-connect/ec-sdk.git
 ```
 
+## Untar the Agent for usage
+```bash
+tar -xvzf ecagent_linux_sys.tar.gz
+```
+
+## Verify checksum
+### Linux
+```bash
+sha256 ./path/to/file/ecagent_linux_sys
+```
+### Mac OS
+```
+shasum -a 256 ./path/to/file/ecagent_linux_sys
+```
+### Windows
+```bash
+CertUtil -hashfile C:\path\to\file\ecagent_windows.exe sha256
+```
+
 ## Contribution
 The SDK examples were created in the open-source form with the vision of a greater private cloud and at the same time, making computer network more secure. The EC team recognises every indiviual's contribution and is actively looking for partners who share the same vision.
 
