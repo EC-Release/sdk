@@ -35,7 +35,7 @@ line=2 start position=1
 c: \> CertUtil -hashfile C:\path\to\file\ecagent_windows.exe sha256
 b3bf9cd9686e (find the checksum in the checksum.txt)
 ```
-## Homebrew installation (experienment)
+## Homebrew installation (experiment)
 - This will install the agent for you as well as setup your local EC development environment
 ```bash
  $ brew install ecagent
