@@ -12,7 +12,7 @@
 	url = https://github.com/Enterprise-connect/ec-lib-ios.git
 [submodule "examples/android"]
 	path = examples/android
-	url = https://github.com/Enterprise-connect/ec-lib-android.git
+	url = https://github.com/Enterprise-connect/ec-android-sample.git
 [submodule "examples/mqtt"]
 	path = examples/mqtt
 	url = https://github.com/Enterprise-connect/ec-mqtt.git
