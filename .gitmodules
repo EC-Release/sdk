@@ -21,7 +21,7 @@
 	url = https://github.com/Enterprise-connect/ec-node-oracledb-sample.git
 [submodule "examples/nodejs/ec-http-proxy-cf"]
 	path = examples/nodejs/ec-http-proxy-cf
-	url = https://github.com/Enterprise-connect/ec-http-proxy.git
+	url = https://github.com/Enterprise-connect/ec-http-proxy-app.git 
 [submodule "examples/ec-agent-cf-push"]
 	path = examples/ec-agent-cf-push
 	url = https://github.com/Enterprise-connect/ec-agent-cf-push-sample.git
