@@ -6,7 +6,7 @@
 	url = https://github.com/Enterprise-connect/ec-lib-java.git
 [submodule "examples/java/springboot"]
 	path = examples/java/springboot
-	url = https://github.com/Enterprise-connect/ec-example-springboot.git
+	url = https://github.com/Enterprise-connect/ec-springboot-sample-app.git
 [submodule "examples/ios"]
 	path = examples/ios
 	url = https://github.com/Enterprise-connect/ec-ios-sample.git
@@ -15,10 +15,10 @@
 	url = https://github.com/Enterprise-connect/ec-android-sample.git
 [submodule "examples/mqtt"]
 	path = examples/mqtt
-	url = https://github.com/Enterprise-connect/ec-mqtt.git
+	url = https://github.com/Enterprise-connect/ec-mqtt-sample.git
 [submodule "examples/nodejs/ec-oracle-sample-app"]
 	path = examples/nodejs/ec-oracle-sample-app
-	url = https://github.com/Enterprise-connect/ec-example-node-oracledb.git
+	url = https://github.com/Enterprise-connect/ec-node-oracledb-sample.git
 [submodule "examples/nodejs/ec-http-proxy-cf"]
 	path = examples/nodejs/ec-http-proxy-cf
 	url = https://github.com/Enterprise-connect/ec-http-proxy.git
@@ -27,13 +27,13 @@
 	url = https://github.com/Enterprise-connect/ec-agent-cf-push-sample.git
 [submodule "examples/java/ec-springboot-II"]
 	path = examples/java/ec-springboot-II
-	url = https://github.com/Enterprise-connect/ec-springboot-II.git
+	url = https://github.com/Enterprise-connect/ec-springboot-II-sample-app.git
 [submodule "examples/java/ec-springboot-sp-gradle"]
 	path = examples/java/ec-springboot-sp-gradle
-	url = https://github.com/Enterprise-connect/ec-springboot-sp-gradle
+	url = https://github.com/Enterprise-connect/ec-springboot-gradle-app.git
 [submodule "examples/python/ec-python3"]
 	path = examples/python/ec-python3
-	url = https://github.com/Enterprise-connect/ec-python3
+	url = https://github.com/Enterprise-connect/ec-python3-sample.git
 [submodule "examples/nodejs/data-migration-example"]
 	path = examples/nodejs/data-migration-example
-	url = https://github.com/Enterprise-connect/data-migration-example.git
+	url = https://github.com/Enterprise-connect/ec-data-migration-sample.git
