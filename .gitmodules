@@ -9,7 +9,7 @@
 	url = https://github.com/Enterprise-connect/ec-example-springboot.git
 [submodule "examples/ios"]
 	path = examples/ios
-	url = https://github.com/Enterprise-connect/ec-lib-ios.git
+	url = https://github.com/Enterprise-connect/ec-ios-sample.git
 [submodule "examples/android"]
 	path = examples/android
 	url = https://github.com/Enterprise-connect/ec-android-sample.git
