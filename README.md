@@ -5,6 +5,22 @@ The Enterprise-Connect SDK. [Visit the wiki to get familiar with EC](https://git
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/Enterprise-connect/ec-sdk)
 [![Travis branch](https://img.shields.io/travis/rust-lang/rust/master.svg)](https://travis-ci.org/)
 
+## System Requirement
+### Hardware
+- 7Mb system storage memory
+- 32Mb DRAM.
+
+### Instruction/OS
+- ARM32/64.(Raspian, Symbian)
+-  Windows 32/64
+- Android.
+- iOS.
+- Linux 32/64.
+- Mac OS X (Darwin)
+
+### Load Balancing (Optional)
+- [Cloud Foundry Diego Cell](https://docs.cloudfoundry.org/concepts/diego/diego-architecture.html)
+
 ## Download
 ```bash
 git clone --recursive https://github.com/Enterprise-connect/ec-sdk.git
