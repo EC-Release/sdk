@@ -37,3 +37,6 @@
 [submodule "examples/nodejs/data-migration-example"]
 	path = examples/nodejs/data-migration-example
 	url = https://github.com/Enterprise-connect/ec-data-migration-sample.git
+[submodule "examples/dotnet/ec-dotnet-sample-I"]
+	path = examples/dotnet/ec-dotnet-sample-I
+	url = https://github.com/Enterprise-connect/ec-dotnet-sample-I.git
