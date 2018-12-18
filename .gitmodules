@@ -40,6 +40,3 @@
 [submodule "examples/dotnet/ec-dotnet-sample-I"]
 	path = examples/dotnet/ec-dotnet-sample-I
 	url = https://github.com/Enterprise-connect/ec-dotnet-sample-I.git
-[submodule "lib/go"]
-	path = lib/go
-	url = https://github.build.ge.com/212359746/wzlib-go.git
