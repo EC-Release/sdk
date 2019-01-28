@@ -8,7 +8,7 @@ The Enterprise-Connect SDK. [Visit the wiki to get familiar with EC](https://git
 ## Credits
 - [Springboot sample app](https://github.com/Enterprise-connect/ec-springboot-II/tree/master) by [avnsri4986](https://github.com/avnsri4986)
 - [Python3+ sample app/lib](https://github.com/Enterprise-connect/ec-python3) by [avnsri4986](https://github.com/avnsri4986)
-- [Microsoft .NET framework](https://github.com/Enterprise-connect/ec-dotnet-sample-I)
+- [Microsoft .NET framework](https://github.com/Enterprise-connect/ec-dotnet-sample-I) by [Aberto Gorni]9https://github.com/gorniAbertoGeDigital)
 ## Contribution Policy
 The SDK were created in the open-source form with the vision of a greater private cloud and at the same time, making computer network more secure. This repo is built/maintained by **only developers/pratners [who share the same vision](#)**. Any updates without a PR review of the author will be overridden by the X-Robot, a Digital-Founry CI Autobot.
 
