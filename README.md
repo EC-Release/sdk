@@ -5,12 +5,16 @@ The Enterprise-Connect SDK. [Visit the wiki to get familiar with EC](https://git
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/Enterprise-connect/ec-sdk)
 [![Travis branch](https://img.shields.io/travis/rust-lang/rust/master.svg)](https://travis-ci.org/)
 
+## Contribution
+The SDK examples were created in the open-source form with the vision of a greater private cloud and at the same time, making computer network more secure. The EC team recognises every indiviual's contribution and is actively looking for partners who share the same vision.
+
 ## System Requirement
 ### Hardware
-- 7Mb system storage memory
+- 15Mb system storage memory
 - 32Mb DRAM.
 
 ### Instruction/OS
+- Sun/Oracle Solaris SPARC64
 - ARM32/64.(Raspian, Symbian)
 -  Windows 32/64
 - Android.
@@ -56,9 +60,6 @@ b3bf9cd9686e (find the checksum in the checksum.txt)
 ```bash
  $ brew install ecagent
  ```
-
-## Contribution
-The SDK examples were created in the open-source form with the vision of a greater private cloud and at the same time, making computer network more secure. The EC team recognises every indiviual's contribution and is actively looking for partners who share the same vision.
 
 ## Credits
 - [Springboot sample app](https://github.com/Enterprise-connect/ec-springboot-II/tree/master) by [avnsri4986](https://github.com/avnsri4986)
