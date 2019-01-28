@@ -1,0 +1,65 @@
+ec-plugin:
+  kepware(template):
+    status: Inactive
+    command: ./main
+    in:
+      type: mqtt|websocket|opcua|opcda|http
+      config:
+        cid: clientId
+        usr: user
+        pwd: pwd
+        hst: 10.10.10.1
+        prt: 1883
+        tpc: opcData/cleanRoom|opcData/vacuum|clearwater
+    out (example grpceh):
+      type: grpceh
+      config:
+        ptc: grpc
+        uri: event-hub-aws-usw02-cf3-dev.data-services.predix.io:443
+        px-header: Predix-Zone-Id
+        px-zone: <zone>
+        cid: <cid>
+        csc: <csc>
+        oauth: https://uaa-dashboard.run.aws-usw02-dev.ice.predix.io/oauth/token
+    out (threadconn):
+      type: vandan
+      config:
+        uri: http://10.227.84.78/event-hub/machine-data
+        auth: basic
+        usr: <usr>
+        pwd: <pwd>
+    out (from Vandan's team):
+      type: proto-px
+      config:
+        ptc: grpc
+        uri: 'event-hub-aws-usw02-cf3-dev.data-services.predix.io:443'
+        px-header: 'Predix-Zone-Id'
+        px-zone: <zone>
+        cid: <cid>
+        csc: <csc>
+        oauth: 'https://<zone>.predix-uaa.run.aws-usw02-dev.ice.predix.io/oauth/token'
+        pxy: 'http://PITC-Zscaler-Americas-Cincinnati3PR.proxy.corporate.ge.com'
+  kepware:
+    status: active
+    command: ./main
+    in:
+      type: mqtt
+      config:
+        cid: data-ingestion
+        usr: <usr>
+        pwd: <pwd>
+        hst: localhost
+        prt: 7883
+        tpc: opcData/vacuum
+    out:
+      type: proto-px
+      config:
+        sbj: clearwater
+        ptc: grpc
+        uri: 'event-hub-aws-usw02.data-services.predix.io:443'
+        px-header: 'Predix-Zone-Id'
+        px-zone: <zone>
+        cid: <cid>
+        csc: <csc>
+        oauth: 'https://<zone>.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token'
+        pxy: 'http://PITC-Zscaler-Americas-Cincinnati3PR.proxy.corporate.ge.com:80'

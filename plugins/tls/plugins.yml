@@ -1,0 +1,9 @@
+ec-plugin:
+  tls:
+    status: active
+    schema: https
+    hostname: www.flowdock.com
+    tlsport: "443"
+    proxy: "http://3.28.29.241:88"
+    port: "8997"
+    command: ./tls
