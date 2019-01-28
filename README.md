@@ -29,14 +29,11 @@ The SDK were created in the open-source form with the vision of a greater privat
 ### Load Balancing (Optional)
 - [Cloud Foundry Diego Cell](https://docs.cloudfoundry.org/concepts/diego/diego-architecture.html)
 
-## Download
+## Download|Run
 ```bash
-git clone --recursive https://github.com/Enterprise-connect/ec-sdk.git
-```
-
-## Extract the Agent
-```bash
-tar -xvzf ./path/to/ec-sdk/dist/ecagent_linux_sys.tar.gz
+wget https://github.com/Enterprise-connect/ec-x-sdk/blob/v1beta.fukuoka.1665/dist/ecagent_linux_sys.tar.gz && \
+tar -xvzf ecagent_linux_sys.tar.gz && \
+ecagent_linux_sys -ver
 ```
 
 ## Verify the checksum
