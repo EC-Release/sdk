@@ -4,7 +4,12 @@ The Enterprise-Connect Ultimate SDK Repo. [Visit the wiki to get familiar with E
 [![GitHub version](https://badge.fury.io/gh/Enterprise-connect%2Fec-sdk.svg)](https://badge.fury.io/gh/Enterprise-connect%2Fec-sdk)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/Enterprise-connect/ec-sdk)
 [![Travis branch](https://img.shields.io/travis/rust-lang/rust/master.svg)](https://travis-ci.org/)
-
+## Vision
+At EC Agent, as developers/contributors, we believe that-
+ * Computer network should operate beyond realms.
+ * No users be asked to give away privacy in exchange for information.
+ * No one should govern people's privacy, work, or devices, other than themselves.
+ * There is no best practice, but rather always are better practices.
 ## Credits
 - [Springboot sample app](https://github.com/Enterprise-connect/ec-springboot-II/tree/master) by [avnsri4986](https://github.com/avnsri4986)
 - [Python3+ sample app/lib](https://github.com/Enterprise-connect/ec-python3) by [avnsri4986](https://github.com/avnsri4986)
