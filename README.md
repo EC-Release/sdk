@@ -34,7 +34,7 @@ The SDK were created in the open-source form with the vision of a greater privat
 ### Load Balancing (Optional)
 - [Cloud Foundry Diego Cell](https://docs.cloudfoundry.org/concepts/diego/diego-architecture.html)
 
-## How to build an agent binary
+## Build a Binary
 - **[The internal instruction available here](https://github.build.ge.com/Enterprise-Connect/ec-agent)** entails the building process for the agent binary in this sdk.
 
 ## Download & Run
