@@ -6,10 +6,10 @@ The Enterprise-Connect Ultimate SDK Repo. [Visit the wiki to get familiar with E
 [![Travis branch](https://img.shields.io/travis/rust-lang/rust/master.svg)](https://travis-ci.org/)
 ## Vision
 At EC Agent, as developers/contributors, we believe that-
- * Computer network should operate beyond politics/realms.
+ * Computer network should always be within our reach, and operated beyond political boundries.
  * No users be asked to give away privacy in exchange for information.
- * No one should govern people's privacy, work, or devices, other than themselves.
- * There is no best practice, but rather always are better practices.
+ * No ones should govern people's privacy, work, or devices, other than themselves.
+ * There should not exist the best practice, but rather always better practices.
 ## Credits
 - [Springboot sample app](https://github.com/Enterprise-connect/ec-springboot-II/tree/master) by [avnsri4986](https://github.com/avnsri4986)
 - [Python3+ sample app/lib](https://github.com/Enterprise-connect/ec-python3) by [avnsri4986](https://github.com/avnsri4986)
