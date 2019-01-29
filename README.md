@@ -15,7 +15,7 @@ At EC Agent, as developers/contributors, we believe that-
 - [Python3+ sample app/lib](https://github.com/Enterprise-connect/ec-python3) by [avnsri4986](https://github.com/avnsri4986)
 - [Microsoft .NET framework](https://github.com/Enterprise-connect/ec-dotnet-sample-I) by [Aberto Gorni](https://github.com/gorniAbertoGeDigital)
 ## Contribution Policy
-The SDK were created in the open-source form with the vision of a greater private cloud and at the same time, making computer network more secure. This repo is built/maintained **only by developers/pratners [who share the same vision](#)**. Any updates without a PR review by the authors will be overridden by the X-Robot, a Digital-Founry CI Autobot.
+The SDK were created in the open-source form with the vision of a greater private cloud and at the same time, making computer network more secure. This repo is built/maintained **only by developers/pratners [who share the same vision](https://github.com/Enterprise-connect/ec-x-sdk/blob/v1beta/README.md#vision)**. Any updates without a PR review by the authors will be overridden by the X-Robot, a Digital-Founry CI Autobot.
 
 ## System Requirement
 ### Hardware
