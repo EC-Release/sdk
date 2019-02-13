@@ -22,7 +22,7 @@ The SDK were created in the open-source form with the vision of a greater privat
 
 ## Usage
 
-Please refer to [the official usage document](https://github.com/Enterprise-connect/documentation)
+Please refer to [the official usage document](https://github.com/Enterprise-connect/documentation), as well as our [modes guide](./ec-modes.md), to get familiar with how a typical script is configured for all available EC agent modes.
 
 ## System Requirement
 ### Hardware
