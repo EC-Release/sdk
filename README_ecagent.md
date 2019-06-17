@@ -1,77 +1,103 @@
-# ec-sdk-buildpack
+# ec-agent-daemon
 
-This repo was created to support building out the official EC SDK.
+GoDoc | SDK | Env | Status
+--- | --- | --- | ---
+Production | [Download](https://github.com/Enterprise-connect/ec-sdk) | Predix West | N/A
+[Beta](https://ec-sdk-doc-sendai.run.aws-usw02-dev.ice.predix.io) | [Download](https://github.build.ge.com/Enterprise-Connect/ec-sdk/tree/beta) | Predix CF3 | [![Travis branch](https://img.shields.io/travis/rust-lang/rust/master.svg)](https://travis-ci.org/)
+ 
+## Available Artifact Types
+`ecagent_<os>_<dns-resolving>`
+For instance, if my machine ran a Linux distribution with a configurable dns resolver, I should use the artifact `ecagent_linux_var`
 
-### Related products
+## Build
+### Requirement
+ - To build the actual agent artifact, it would require docker with Go 1.8.3. https://github.com/docker-library/golang/blob/97b2ff201ec59b9a037197d132c64eb937370c64/1.8/Dockerfile
+ - GNU make.
+ - Agent comp. packages. Avaialble in Agent SDK. https://github.build.ge.com/Enterprise-Connect/ec-sdk/lib
+ 
+### Todo
+ - copy both folders src/pkg found in the root repo to your ${GOPATH}
+ - privision build env vars.
+ - run ./build.sh
+ - the build script will output the binary artifacts (cross-platforms) to the internal/external SDK repo, depends on the env vars.  
 
-Execute the buildpack will result in the following plugins/artifacts and will be checked-in in [the SDK](https://github.build.ge.com/Enterprise-Connect/ec-sdk) -
 
-* TLS plugin: [bin](https://github.build.ge.com/Enterprise-Connect/ec-sdk/tree/beta/plugins/tls) | [source code](https://github.build.ge.com/212359746/tls-wzlib-plugin)
-* VLAN plugin: [bin](https://github.build.ge.com/Enterprise-Connect/ec-sdk/tree/beta/plugins/vln) | [source code](https://github.build.ge.com/212359746/ipmod-wzlib-plugin)
-* PTC Kepware/px-eventhub: [bin](https://github.build.ge.com/Enterprise-Connect/ec-sdk/tree/beta/plugins/kepware) | [source code](https://github.build.ge.com/212359746/kepware-wzlib-plugin)
-* EC Agent: [bin](https://github.build.ge.com/Enterprise-Connect/ec-sdk/tree/beta/dist) | [source code](https://github.build.ge.com/Enterprise-Connect/ec-agent)
+## Usage
+```shellscript
+$ ./ecagent -h
+Usage of ./bin/ecagent:
+  -aid string
+    	Specify the agent Id assigned by the EC Service. You may find it in the Cloud Foundry VCAP_SERVICE
+  -bkl string
+    	Specify the ip(s) blocklist in the IPv4/IPv6 format. Concatenate ips by comma. E.g. 10.20.30.5, 2002:4559:1FE2::4559:1FE2
+  -cid string
+    	Specify the client Id to auto-refresh the OAuth2 token.
+  -crt string
+    	Specify the relative path of a digital certificate to operate the EC agent. (.pfx, .cer, .p7s, .der, .pem, .crt)
+  -csc string
+    	Specify the client secret to auto-refresh the OAuth2 token.
+  -dbg
+    	Turn on debug mode. This will introduce more error information. E.g. connection error.
+  -dur int
+    	Specify the duration for the next token refresh in seconds. (default 100 years)
+  -gen
+    	Generate a certificate request for the usage validation purpose.
+  -hca string
+    	Specify a port# to turn on the Healthcheck API. This flag is always on when in the "gateway mode" with the provisioned local port. Upon provisioned, the api is available at <agent_uri>/health.
+  -hst string
+    	Specify the EC Gateway URI. E.g. wss://<somedomain>:8989
+  -inf
+    	The Product Information.
+  -lpt string
+    	Specify the EC port# if the "client" mode is set. (default "7990")
+  -mod string
+    	Specify the EC Agent Mode in "client", "server", or "gateway". (default "agent")
+  -oa2 string
+    	Specify URL of the OAuth2 provisioner. E.g. https://<somedomain>/oauth/token
+  -pct string
+    	Specify the relative path to a TLS cert when operate as the gateway as desired. E.g. ./path/to/cert.pem.
+  -pky string
+    	Specify the relative path to a TLS key when operate as the gateway as desired. E.g. ./path/to/key.pem.
+  -pxy string
+    	Specify a local Proxy service. E.g. http://hello.world.com:8080
+  -rht string
+    	Specify the Resource Host if the "server" mode is set. E.g. <someip>, <somedomain>
+  -rpt string
+    	Specify the Resource Port# if the "server" mode is set. E.g. 8989, 38989
+  -sst string
+    	Specify the EC Service URI. E.g. https://<service.of.predix.io>
+  -tid string
+    	Specify the Target EC Server Id if the "client" mode is set (default "191001")
+  -tkn string
+    	Specify the OAuth Token. The token may expire depending on your OAuth provisioner. This flag is ignored if OAuth2 Auto-Refresh were set.
+  -ver
+    	Show EC Agent's version.
+  -wtl string
+    	Specify the ip(s) whitelist in the cidr net format. Concatenate ips by comma. E.g. 89.24.9.0/24, 7.6.0.0/16 (default "0.0.0.0/0,::/0")
+  -zon string
+    	Specify the Zone/Service Inst. Id. required in the "gateway" mode.
+``` 
 
-### Build an agent with the docker image
-
-The [agent buildpack image](dtr.predix.io/dig-digiconnect/ec-agent-builder) conviniently includes all dependencies and components to build the EC-Agent-relate products. Please refer to [these steps to build a custom agent binary](https://github.build.ge.com/Enterprise-Connect/ec-agent#build)
-
-### Setup a CI/CD pipeline by using this buildpack
-
-This buildpack depends on the following environment variables-
-
-* *REPO*: Internal EC-SDK Repo URL.	
-* *BRANCH*: The SDK branch.	
-* *PROXY_URL*: Proxy settings.
-* *GITTOKEN*: github.build.ge.com user token for the internal SDK push.	 
-*	*GITPUBTKN*: github.com user token for the SDK push. This includes the homebrew ruby formula. 	
-* *DTRUSR*: A dtr.predix.io cred for images push. 	
-* *DTRPWD*
-
-*OR*
-
-### If you are granted access to the digi-digiconnect org @dtr.predix.io, you may use the Digital-Foundry Jenkins to access all builds-
-
-```shell
-#enable docker gRPC API for DIND
-dockerd -H 0.0.0.0:2375 -H unix:///var/run/docker.sock
-
-#login into the DTR repo in Predix. This enables pull the image.
-docker login dtr.predix.io -u <username> -p <password>
-
-#launch the digital-foundry jenkins instance
-BUILD_PATH=$(pwd)/build_home \
-docker run \
---rm \
--e DOCKER_HOST=<this should resolve by your vm. E.g. 10.0.2.15. 127.0.0.1 when no vm> \
--e HTTPS_PROXY=${https_proxy} \
--e NO_PROXY=${no_proxy} \
--p 8080:8080 \
--v /var/run/docker.sock:/var/run/docker.sock \
--v ${BUILD_PATH}:/build \
-dtr.predix.io/dig-digiconnect/digital-foundry:v1beta
+##Example usage in Server mode
+```shellscript
+$\>./ecagent_darwin -aid 191001 -hst wss://ec-chia-app-7.run.aws-usw02-pr.ice.predix.io \
+-rht localhost -rpt 5432 -cid <id> -csc <secret> \
+-oa2 https://helo-a69c-4cc5-83bd-459aa307a307.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token \
+-dur 300 -mod server
+```
+##Example usage in Client mode
+```shellscript
+$\>./ecagent_darwin -mod client -aid 191000 -hst wss://ec-chia-app-7.run.aws-usw02-pr.ice.predix.io \
+-lpt 7990 -tid 191001 \
+-oa2 https://helo-a69c-4cc5-83bd-459aa307a307.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token \
+-cid <id> -csc <secret> -dur 300
 ```
 
-The Digital-Foundry self-provisioning Jenkins instance adopts the concept of DIND (Docker-in -Docker) which allows the EC/TC (tc-subscription series) software bundles be built anywhere with the docker-daemon installed. Since the DIND Jenkins instance requires the docker native API access via gRPC, developers would need to enable the local dockrd with the TCP access as it's specified above. You may consider [enable the API via systemctl refers to the official docker](https://docs.docker.com/install/linux/linux-postinstall/#configuring-remote-access-with-systemd-unit-file) for further usage.
+##Example usage in Gateway mode
+```shellscript
+$\>./ecagent_darwin -mod gateway -lpt 8989 -zon helo-1f98-4ea8-ad48-a96d38ba2931 \
+-sst https://helo-1f98-4ea8-ad48-a96d38ba2931.run.aws-usw02-pr.ice.predix.io \
+-tkn <admin-token-in-VCAP_SERVICES>
+```
 
-If everything worked as expected, you may now browse the Jenkins instance locally at http://localhost:8080/job/EC/job/Core/job/EC-SDK-Build-Beta/ and VIEW the build detail. FYI ***annonymous users will need the DC Admin account to execute/modify jobs***. Please contact the team for the credential.
-
-#### What to expect in the Digital-Foundry Jenkins
-
-The instance contains the following builds-
-##### Enterprise-Connect
-* [SDK](https://github.build.ge.com/Enterprise-Connect/ec-sdk)
-* [Agent](https://github.build.ge.com/Enterprise-Connect/ec-agent)
-* [Single-Tenance Service](https://github.build.ge.com/Enterprise-Connect/ec-service)
-* [CF Broker](https://github.build.ge.com/Enterprise-Connect/ec-predix-service-broker)
-* Test Automation
-
-##### Thread-Connect
-* [xcalr CA/Subscription API](https://github.build.ge.com/Thread-Connect/tc-xcaler)
-* [tc-proxy nifi registry](https://github.build.ge.com/Thread-Connect/tc-proxy)
-* [CF Broker](https://github.build.ge.com/Thread-Connect/tc-broker)
-
-
-
-
-
-
+- The token for the gateway is required for the EC service access. E.g. Usage Reporting, certificate, etc.
