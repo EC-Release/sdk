@@ -1,23 +1,32 @@
-revision: v1.1beta
-- env: ec-aws
+revision: v1.1beta.watcher
+- env: DC_AWS #cert
+  license: SERVER_X1 #cert
+  role: DEVELOPER #cert
+  mode: gateway
+  instance: 3
+  duration: 24 #hour
   revision: v1.1beta.fukuoka.1708
-  configURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta_watcher/watcher.yml
+  configURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta.watcher/watcher.yml
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
   plugins:
   - name: kepware
-    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/kepware/kepware_linux_sys
-  - name: vlan
-    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/vln/vln_linux_sys
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/kepware_linux_sys
+  - name: vln
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/vln_linux_sys
   - name: tls
-    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/tls/tls_linux_sys
-- env: power-ec
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/tls_linux_sys
+- env: POWER_AWS
+  license: SERVER_X5
+  role: ADMIN
+  mode: gateway
+  instance: 5
   revision: v1.hokkaido.209
-  configURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta_watcher/watcher.yml
+  configURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta.watcher/watcher.yml
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
   plugins:
   - name: kepware
-    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/kepware/kepware_linux_sys
-  - name: vlan
-    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/vln/vln_linux_sys
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/kepware_linux_sys
+  - name: vln
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/vln_linux_sys
   - name: tls
-    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/tls/tls_linux_sys
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/tls_linux_sys
