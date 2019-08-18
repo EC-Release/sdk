@@ -1,4 +1,5 @@
 revision: v1.1beta.watcher
+location: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta.watcher/watcher.yml
 - env: DC_AWS #cert
   license: SERVER_X1 #cert
   role: DEVELOPER #cert
