@@ -7,7 +7,6 @@ location: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta
   instance: 3
   duration: 24 #hour
   revision: v1.1beta.fukuoka.1708
-  configURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta.watcher/watcher.yml
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
   plugins:
   - name: kepware
@@ -22,7 +21,6 @@ location: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta
   mode: gateway
   instance: 5
   revision: v1.hokkaido.209
-  configURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta.watcher/watcher.yml
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
   plugins:
   - name: kepware
