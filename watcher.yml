@@ -6,7 +6,7 @@ bootstrap:
   license: SERVER_X1 #cert
   role: DEVELOPER #cert
   scope: app.auth #cert
-  mode: gateway #cert
+  mode: gateway,server,client,gw:server,gw:client #cert
   instance: 3
   duration: 1
   initPort: 17991
@@ -19,11 +19,11 @@ bootstrap:
     url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/vln_linux_sys
   - name: tls
     url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/tls_linux_sys
-- env: DC_AWS #cert
-  license: SERVER_X1 #cert
-  role: DEVELOPER #cert
-  scope: app.auth #cert
-  mode: gateway #cert
+- env: POWER_EC
+  license: SERVER_X5
+  role: ADMIN
+  scope: app.auth
+  mode: gateway
   instance: 5
   duration: 24
   initPort: 17991
