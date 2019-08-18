@@ -1,10 +1,12 @@
 ---
 revision: v1.1beta.watcher
 location: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta.watcher/watcher.yml
-- env: DC_AWS
-  license: SERVER_X1
-  role: DEVELOPER
-  mode: gateway
+bootstrap: 
+- env: DC_AWS #cert
+  license: SERVER_X1 #cert
+  role: DEVELOPER #cert
+  scope: app.auth #cert
+  mode: gateway #cert
   instance: 3
   duration: 1
   initPort: 17991
@@ -17,10 +19,11 @@ location: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta
     url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/vln_linux_sys
   - name: tls
     url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/tls_linux_sys
-- env: POWER_AWS
-  license: SERVER_X5
-  role: ADMIN
-  mode: gateway
+- env: DC_AWS #cert
+  license: SERVER_X1 #cert
+  role: DEVELOPER #cert
+  scope: app.auth #cert
+  mode: gateway #cert
   instance: 5
   duration: 24
   initPort: 17991
