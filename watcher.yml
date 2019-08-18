@@ -21,7 +21,7 @@ location: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta
   role: ADMIN
   mode: gateway
   instance: 5
-  duration: 24 #hour
+  duration: 24
   initPort: 17991
   revision: v1.hokkaido.209
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
