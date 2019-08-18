@@ -5,7 +5,8 @@ location: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta
   role: DEVELOPER #cert
   mode: gateway
   instance: 3
-  duration: 24 #hour
+  duration: 1 #hour
+  initPort: 17991
   revision: v1.1beta.fukuoka.1708
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
   plugins:
@@ -20,6 +21,8 @@ location: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta
   role: ADMIN
   mode: gateway
   instance: 5
+  duration: 24 #hour
+  initPort: 17991
   revision: v1.hokkaido.209
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
   plugins:
