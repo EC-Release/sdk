@@ -12,6 +12,7 @@ bootstrap:
   initPort: 17991
   revision: v1.1beta.fukuoka.1708
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
+  exec: "ls -al;yam install docker;./agent -ver;"
   plugins:
   - name: kepware
     url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/kepware_linux_sys
@@ -29,6 +30,7 @@ bootstrap:
   initPort: 17991
   revision: v1.hokkaido.209
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
+  exec: "./agent -ver"
   plugins:
   - name: kepware
     url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/kepware_linux_sys
