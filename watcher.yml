@@ -10,7 +10,7 @@ bootstrap:
   instance: 3
   duration: 1
   initPort: 17991
-  revision: v1.1beta.fukuoka.1708
+  revision: v1.1beta.fukuoka.1709
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
   exec: "ls -al;yam install docker;./agent -ver;"
   plugins:
