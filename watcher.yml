@@ -7,6 +7,8 @@ bootstrap:
   role: DEVELOPER #cert
   scope: app.auth #cert
   mode: gateway,server,client,gw:server,gw:client #cert
+  os: linux
+  arch: amd64
   instance: 3
   duration: 1
   initPort: 27991
@@ -25,6 +27,8 @@ bootstrap:
   role: DEVELOPER #cert
   scope: app.auth #cert
   mode: gateway,server,client,gw:server,gw:client #cert
+  os: linux
+  arch: amd64
   instance: 3
   duration: 1
   initPort: 17991
@@ -43,6 +47,8 @@ bootstrap:
   role: ADMIN
   scope: app.auth
   mode: gateway
+  os: linux
+  arch: amd64
   instance: 5
   duration: 24
   initPort: 17991
