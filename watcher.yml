@@ -22,7 +22,7 @@ bootstrap:
     url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/vln_linux_sys
   - name: tls
     url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/tls_linux_sys
-- env: default
+- env: DEFAULT
   license: SERVER_X5 #cert
   role: DEVELOPER #cert
   scope: app.auth #cert
@@ -37,11 +37,11 @@ bootstrap:
   exec: "ls -al;"
   plugins:
   - name: kepware
-    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/kepware__sys
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/kepware_darwin_sys
   - name: vln
-    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/vln_linux_sys
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/vln_darwin_sys
   - name: tls
-    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/tls_linux_sys
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/tls_darwin_sys
 - env: DC_AWS #cert
   license: SERVER_X1 #cert
   role: DEVELOPER #cert
