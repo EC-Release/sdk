@@ -11,7 +11,7 @@ bootstrap:
   arch: amd64
   instance: 3
   duration: 1
-  initPort: 27991
+  initPort: 47990
   revision: v1.1beta.fukuoka.1719
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_darwin_sys.tar.gz
   exec: "ls -al;"
