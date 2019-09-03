@@ -2,6 +2,26 @@
 revision: v1.1beta.watcher
 location: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/v1.1beta.watcher/watcher.yml
 bootstrap:
+- env: my-test
+  license: SERVER_X5 #cert
+  role: DEVELOPER #cert
+  scope: app.auth #cert
+  mode: gateway,server,client,gw:server,gw:client #cert
+  os: darwin
+  arch: amd64
+  instance: 3
+  duration: 1
+  initPort: 27991
+  revision: v1.1beta.fukuoka.1719
+  artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_darwin_sys.tar.gz
+  exec: "ls -al;"
+  plugins:
+  - name: kepware
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/kepware__sys
+  - name: vln
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/vln_linux_sys
+  - name: tls
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/tls_linux_sys
 - env: default
   license: SERVER_X5 #cert
   role: DEVELOPER #cert
