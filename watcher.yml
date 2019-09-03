@@ -11,7 +11,7 @@ bootstrap:
   arch: amd64
   instance: 3
   duration: 1
-  initPort: 47990
+  initPort: 47990 #watcher port
   revision: v1.1beta.fukuoka.1719
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_darwin_sys.tar.gz
   exec: "ls -al;"
@@ -31,7 +31,7 @@ bootstrap:
   arch: amd64
   instance: 3
   duration: 1
-  initPort: 27990
+  initPort: 27990 #watcher port
   revision: v1.1beta.fukuoka.1719
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
   exec: "ls -al;yam install docker;./agent -ver;"
@@ -51,7 +51,7 @@ bootstrap:
   arch: amd64
   instance: 5
   duration: 1
-  initPort: 17990
+  initPort: 17990 #watcher port
   revision: v1.1beta.fukuoka.1719
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
   exec: "ls -al;yam install docker;./agent -ver;"
@@ -71,7 +71,7 @@ bootstrap:
   arch: amd64
   instance: 5
   duration: 24
-  initPort: 17991
+  initPort: 17990 #watcher port
   revision: v1.hokkaido.209
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
   exec: "./agent -ver"
