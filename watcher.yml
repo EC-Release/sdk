@@ -12,7 +12,7 @@ bootstrap:
   instance: 3
   duration: 1
   initPort: 47990 #watcher port
-  revision: v1.1beta.fukuoka.1719
+  revision: v1.1beta.fukuoka.1720
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_darwin_sys.tar.gz
   exec: "ls -al;"
   plugins:
@@ -32,7 +32,7 @@ bootstrap:
   instance: 3
   duration: 1
   initPort: 27990 #watcher port
-  revision: v1.1beta.fukuoka.1719
+  revision: v1.1beta.fukuoka.1720
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
   exec: "ls -al;yam install docker;./agent -ver;"
   plugins:
@@ -52,7 +52,7 @@ bootstrap:
   instance: 5
   duration: 1
   initPort: 17990 #watcher port
-  revision: v1.1beta.fukuoka.1719
+  revision: v1.1beta.fukuoka.1720
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
   exec: "ls -al;yam install docker;./agent -ver;"
   plugins:
