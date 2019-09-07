@@ -29,9 +29,29 @@ bootstrap:
   mode: gateway,server,client,gw:server,gw:client #cert
   os: linux
   arch: amd64
-  instance: 1
+  instance: 2
   duration: 1
   initPort: 47990 #watcher port
+  revision: v1.1beta.fukuoka.1720
+  artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
+  exec: "ls -al;yam install docker;./agent -ver;"
+  plugins:
+  - name: kepware
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/kepware_linux_sys
+  - name: vln
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/vln_linux_sys
+  - name: tls
+    url: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/plugins/{{name}}/tls_linux_sys
+- env: DEFAULT_CLIENT_TEST
+  license: SERVER_X1 #cert
+  role: DEVELOPER #cert
+  scope: app.auth #cert
+  mode: gateway,server,client,gw:server,gw:client #cert
+  os: linux
+  arch: amd64
+  instance: 1
+  duration: 1
+  initPort: 57990 #watcher port
   revision: v1.1beta.fukuoka.1720
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
   exec: "ls -al;yam install docker;./agent -ver;"
