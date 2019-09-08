@@ -49,7 +49,7 @@ bootstrap:
   mode: gateway,server,client,gw:server,gw:client #cert
   os: linux
   arch: amd64
-  instance: 1
+  instance: 3
   duration: 1
   initPort: 57990 #watcher port
   revision: v1.1beta.fukuoka.1720
