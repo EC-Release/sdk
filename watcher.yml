@@ -6,7 +6,7 @@ bootstrap:
   license: SERVER_X5 #cert
   role: DEVELOPER #cert
   scope: app.auth #cert
-  mode: gateway,server,client,gw:server,gw:client #cert
+  mode: gateway #cert. available option: gateway,server,client,gw:server,gw:client
   os: darwin
   arch: amd64
   instance: 3
@@ -29,7 +29,7 @@ bootstrap:
   license: SERVER_X1 #cert
   role: DEVELOPER #cert
   scope: app.auth #cert
-  mode: gateway,server,client,gw:server,gw:client #cert
+  mode: server #cert
   os: linux
   arch: amd64
   instance: 2
@@ -52,7 +52,7 @@ bootstrap:
   license: SERVER_X1 #cert
   role: DEVELOPER #cert
   scope: app.auth #cert
-  mode: gateway,server,client,gw:server,gw:client #cert
+  mode: client #cert
   os: linux
   arch: amd64
   instance: 3
@@ -75,7 +75,7 @@ bootstrap:
   license: SERVER_X1 #cert
   role: DEVELOPER #cert
   scope: app.auth #cert
-  mode: gateway,server,client,gw:server,gw:client #cert
+  mode: gateway #cert
   os: linux
   arch: amd64
   instance: 3
@@ -98,7 +98,7 @@ bootstrap:
   license: SERVER_X1 #cert
   role: DEVELOPER #cert
   scope: app.auth #cert
-  mode: gateway,server,client,gw:server,gw:client #cert
+  mode: gateway #cert
   os: linux
   arch: amd64
   instance: 5
