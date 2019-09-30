@@ -13,7 +13,8 @@ bootstrap:
   duration: 1
   cpuPeriod: 100000 #microsec. e.g. 50000/100000 = .5 cpu
   cpuQuota: 50000
-  memory: 134217728 #in bytes. ~128mb
+  in-memory: 134217728 #in bytes. ~128mb
+  swap-memory: 67108864
   initPort: 47990 #watcher port
   revision: v1.1beta.fukuoka.1720
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_darwin_sys.tar.gz
@@ -36,7 +37,8 @@ bootstrap:
   duration: 1
   cpuPeriod: 100000 #microsec. e.g. 50000/100000 = .5 cpu
   cpuQuota: 50000
-  memory: 134217728 #in bytes. ~128mb
+  in-memory: 134217728 #in bytes. ~128mb
+  swap-memory: 67108864
   initPort: 47990 #watcher port
   revision: v1.1beta.fukuoka.1720
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
@@ -59,7 +61,8 @@ bootstrap:
   duration: 1
   cpuPeriod: 100000 #microsec. e.g. 50000/100000 = .5 cpu
   cpuQuota: 50000
-  memory: 134217728 #in bytes. ~128mb
+  in-memory: 134217728 #in bytes. ~128mb
+  swap-memory: 67108864
   initPort: 57990 #watcher port
   revision: v1.1beta.fukuoka.1720
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
@@ -82,7 +85,8 @@ bootstrap:
   duration: 1
   cpuPeriod: 100000 #microsec. e.g. 50000/100000 = .5 cpu
   cpuQuota: 50000
-  memory: 134217728 #in bytes. ~128mb
+  in-memory: 134217728 #in bytes. ~128mb
+  swap-memory: 67108864
   initPort: 27990 #watcher port
   revision: v1.1beta.fukuoka.1720
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
@@ -105,7 +109,8 @@ bootstrap:
   duration: 1
   cpuPeriod: 100000 #microsec. e.g. 50000/100000 = .5 cpu
   cpuQuota: 50000
-  memory: 134217728 #in bytes. ~128mb
+  in-memory: 134217728 #in bytes. ~128mb
+  swap-memory: 67108864
   initPort: 17990 #watcher port
   revision: v1.1beta.fukuoka.1720
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
@@ -128,7 +133,8 @@ bootstrap:
   duration: 24
   cpuPeriod: 100000 #microsec. e.g. 50000/100000 = .5 cpu
   cpuQuota: 50000
-  memory: 134217728 #in bytes. ~128mb
+  in-memory: 134217728 #in bytes. ~128mb
+  swap-memory: 67108864
   initPort: 17990 #watcher port
   revision: v1.hokkaido.209
   artifactURL: https://raw.githubusercontent.com/Enterprise-connect/ec-x-sdk/{{revision}}/dist/ecagent_linux_sys.tar.gz
