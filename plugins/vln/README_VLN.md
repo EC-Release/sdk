@@ -6,7 +6,7 @@ Current stable versions for VLAN -
  - beta: v1beta.fukuoka.1724
  - prod: v1.hokkaido.212
  
-###Sample use case for VLAN
+### Sample use case for VLAN
 
 ![VLAN](images/VLAN-usecase.png) 
  
@@ -49,7 +49,7 @@ Fields description -
 - <i>hca:</i> Port number to check agent health
 - <i>dbg:</i> Enable debug mode
 - <i>vln:</i> Flag to enable VLAN features - mandatory
-- <i>pxy:</i> Proxy flag - mandatory, when server agent running in on prem
+- <i>pxy:</i> Proxy flag - mandatory, when server agent running in 'on prem'
 
 ### EC Client setup
 
@@ -58,7 +58,7 @@ Fields description -
     {working dir}
     ├── ecagent                 # Get the latest stable binary
     ├── plugins.yml             # Refer example below
-    └── vln                     # Get sme version of vln binary
+    └── vln                     # Get same version of vln binary
     
 ##### Script
 
@@ -69,7 +69,7 @@ Fields description -
 -cid client-uaa-id -csc client-secret -dur 3000 \
 -oa2 https://uaaurl.predix-uaa.run.aws-usw02-dev.ice.predix.io/oauth/token \
 -hst wss://gateway-url/agent \
--lpt 7979 -rpt 1575  \
+-lpt 7979 -rpt 1575,1525  \
 -pxy http://PITC-Zscaler-Americas-Alpharetta3pr.proxy.corporate.ge.com:80 -dbg -plg -vln
 ```
 
@@ -101,7 +101,7 @@ Fields description -
 ec-plugin: 
   vlan: 
     command: ./vln_linux_sys
-    ips: 10.10.10.78/32
+    ips: 10.10.10.78/32,10.10.18.98/32
     status: active
 ```
 
