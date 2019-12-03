@@ -1,10 +1,14 @@
 # VLAN Plugin
 VLAN plugin for EC agent
 
+Virtual LAN will create a secure connection from source and multiple target systems by mirroring the target system details in source network settings. It means, one client can connect to multiple target systems with one EC connection. Client can decide to which target system it should make connection and will update network settings accordingly. 
+
+
+
 Current stable versions for VLAN - 
 
- - beta: v1beta.fukuoka.1724
- - prod: v1.hokkaido.212
+ - beta: [v1beta.fukuoka.1724](https://github.com/Enterprise-connect/ec-x-sdk/tree/v1beta.fukuoka.1724)
+ - prod: [v1.hokkaido.212](https://github.com/Enterprise-connect/ec-x-sdk/tree/v1.hokkaido.212)
  
 ### Sample use case for VLAN
 
@@ -49,7 +53,7 @@ Fields description -
 - <i>hca:</i> Port number to check agent health
 - <i>dbg:</i> Enable debug mode
 - <i>vln:</i> Flag to enable VLAN features - mandatory
-- <i>pxy:</i> Proxy flag - mandatory, when server agent running in 'on prem'
+- <i>pxy:</i> Proxy flag - mandatory, when server agent running behind corporate proxy
 
 ### EC Client setup
 
@@ -90,10 +94,10 @@ Fields description -
 - <i>dbg:</i> Enable debug mode
 - <i>vln:</i> Flag to enable VLAN features - mandatory
 - <i>plg:</i> Flag to read plugins.yml - mandatory
-- <i>pxy:</i> Proxy flag - mandatory, when client agent running in on prem
+- <i>pxy:</i> Proxy flag - mandatory, when client agent running behind corporate proxy
 
 
-##### plugins.yml - 
+##### plugins.yml 
 
 ```
 
@@ -105,4 +109,4 @@ ec-plugin:
     status: active
 ```
 
-<b>Note</b>: EC client must always run by sudo user
+<b>Note</b>: EC client must always run by sudo user and limited to run only in linux
