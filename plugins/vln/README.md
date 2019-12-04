@@ -1,7 +1,7 @@
 # VLAN Plugin
 VLAN plugin for EC agent
 
-Virtual LAN will create a secure connection from source and multiple target systems by mirroring the target system details in source network settings. It means, one client can connect to multiple target systems with one EC connection. Client can decide to which target system it should make connection and will update network settings accordingly. 
+Virtual LAN will create a secure connection between source and multiple target systems by mirroring the target system details in source network settings. It means, one client agent can connect to multiple server agents with one EC connection. Client agent can decide to which target system it should make connection and will update network settings accordingly. 
 
 
 
@@ -110,3 +110,17 @@ ec-plugin:
 ```
 
 <b>Note</b>: EC client must always run by sudo user and limited to run only in linux
+
+<br/>
+
+#### Helpful Tips
+
+- VLAN connection logs can be found in client machine at - 
+
+```
+~/.ec/connectivity.log
+~/.ec/vlnplugin.log
+```        
+- How to check client agent made successful connection with a server agent - 
+
+    Use `ip a` or `ip addr` command in client machine and check local network loop back connections. We should able to see target system ip address, if client agent made successful connection to server agent.
