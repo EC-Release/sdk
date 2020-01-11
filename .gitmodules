@@ -43,3 +43,9 @@
 [submodule "oci"]
 	path = oci
 	url = https://github.com/Enterprise-connect/oci.git
+[submodule "examples/go/agent"]
+	path = examples/go/agent
+	url = https://github.com/Enterprise-connect/agent
+[submodule "agent"]
+	path = agent
+	url = https://github.com/Enterprise-connect/agent
