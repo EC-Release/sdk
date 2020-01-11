@@ -1,9 +1,10 @@
+[![Build Status](https://travis-ci.com/Enterprise-connect/oci.svg?branch=v1)](https://travis-ci.com/Enterprise-connect/oci)
+
 # ec-x-sdk
 The Enterprise-Connect Ultimate SDK Repo. [Visit the wiki to get familiar with EC](https://github.com/Enterprise-connect/ec-sdk/wiki). We track down every issue possible and are passionate in solving problems. Please leave your feedbacks/concerns [here](https://github.com/Enterprise-connect/ec-sdk/issues). Developers are encouraged to submit PRs.
 
 [![GitHub version](https://badge.fury.io/gh/Enterprise-connect%2Fec-sdk.svg)](https://badge.fury.io/gh/Enterprise-connect%2Fec-sdk)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/Enterprise-connect/ec-sdk)
-[![Travis branch](https://img.shields.io/travis/rust-lang/rust/master.svg)](https://travis-ci.org/)
 ## Vision
 At EC Agent, as developers/contributors, we believe that-
  * Computer network should always be within our reach, and operated beyond political boundries.
