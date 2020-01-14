@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Enterprise-connect/oci.svg?branch=v1)](https://travis-ci.com/Enterprise-connect/oci)
+
 # ec-x-sdk
 The Enterprise-Connect Ultimate SDK Repo. [Visit the wiki to get familiar with EC](https://github.com/Enterprise-connect/ec-sdk/wiki). We track down every issue possible and are passionate in solving problems. Please leave your feedbacks/concerns [here](https://github.com/Enterprise-connect/ec-sdk/issues). Developers are encouraged to submit PRs.
 
