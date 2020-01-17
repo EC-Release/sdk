@@ -43,3 +43,6 @@
 [submodule "oci"]
 	path = oci
 	url = https://github.com/Enterprise-connect/oci.git
+[submodule "build"]
+	path = build
+	url = https://github.com/Enterprise-connect/build.git
