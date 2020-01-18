@@ -40,3 +40,15 @@
 [submodule "examples/dotnet/ec-dotnet-sample-I"]
 	path = examples/dotnet/ec-dotnet-sample-I
 	url = https://github.com/Enterprise-connect/ec-dotnet-sample-I.git
+[submodule "agent"]
+	path = agent
+	url = https://github.com/Enterprise-connect/agent.git
+[submodule "build"]
+	path = build
+	url = https://github.com/Enterprise-connect/build.git
+[submodule "oci"]
+	path = oci
+	url = https://github.com/Enterprise-connect/oci.git
+[submodule "qa.ec"]
+	path = qa.ec
+	url = https://github.com/Enterprise-connect/qa.ec.git
