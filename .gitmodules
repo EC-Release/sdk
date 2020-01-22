@@ -49,3 +49,9 @@
 [submodule "qa.ec"]
 	path = qa.ec
 	url = https://github.com/Enterprise-connect/qa.ec.git
+[submodule "plugins/tls/src"]
+	path = plugins/tls/src
+	url = https://github.com/Enterprise-connect/tls-plg.git
+[submodule "plugins/vln/src"]
+	path = plugins/vln/src
+	url = https://github.com/Enterprise-connect/vln-plg.git
