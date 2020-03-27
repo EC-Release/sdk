@@ -90,14 +90,24 @@ Official Doc @ https://www.protractortest.org/
 
 ### How To Do Automation Testing
 Step 1. Go to project folder in terminal.
-Step 2. Run npm install  (If you are doing for first time. That will create and install all the dependent packages used for automation testing)
-Step 3. Open project-folder/protractor/todo-spec.js. Find "place your login id" and replace with your login id and find "Place your login password" and replace with your password.
+Step 2. Run npm install -g protractor (If you are doing for first time. That will create and install all the dependent packages used for automation testing)
+Step 3. Open project-folder/protractor/todo-spec.js. Find "Place your login id" and replace with your login id and find "Place your login password" and replace with your password.
 Step 4. Open one terminal at project-folder/protractor and run webdriver-manager update after that run webdriver-manager start at the same terminal ( do not close this terminal).
 ![Demo webdriver-manager update and start](docs/Automationtesting/webdriver-manager.png?raw=true)
 Step 5. Open another terminal at project-folder/protractor and run protractor conf.js (it will start testing the application and opens the browser automatically)
 
 ### Example Result From Automation Testing
 ![Demo automation test result](docs/Automationtesting/protractor-result.png?raw=true)
+
+### JSHint Testing
+JSHint is a static code analysis tool used in software development for checking if JavaScript source code complies with coding rules.
+Official Doc @ https://jshint.com/docs/
+
+### How To Do JSHint Testing
+Step 1. Go to project folder in terminal.
+Step 2. Run "npm install -g jshint" (If you are doing for first time. After this, you can use the jshint command-line interface)
+Step 3. Run "npm install --save-dev jshint" (If you are doing for first time. That will create and install all the dependent packages)
+Step 4. To test run "npm run jshint"
 
 ### Topology Graph
 Package used: Vis.js
