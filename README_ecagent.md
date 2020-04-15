@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/Enterprise-connect/web-ui-admin.svg?branch=v1.1beta)](https://travis-ci.com/Enterprise-connect/web-ui-admin)
+[![Build Status](https://travis-ci.com/Enterprise-connect/web-ui.svg?branch=v1.1beta)](https://travis-ci.com/Enterprise-connect/web-ui)
 
 # web-ui
 - EC Web UI based on Bootstrap and REACT.
@@ -58,7 +58,7 @@ open http://localhost:17990/v1.1beta/ec
 
 ![OAuth2 flow](docs/oauth_scope.png?raw=true)
 
-**UI example (not the current development for xcalr UI)**
+**UI example** 
 
 ![UI example](docs/ecUIDashboard.png?raw=true)
 
