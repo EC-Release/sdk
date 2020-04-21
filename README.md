@@ -9,7 +9,7 @@ The Enterprise-Connect SDK Repo.
 - [Load-Balancer](https://github.com/Enterprise-connect/sdk/issues/89)
 - [OCI images usage](https://hub.docker.com/r/enterpriseconnect/agent)
 
-## Mode Matrix
+## Dependency Matrix
 Mode | Avaialble Releases | CF Service | Docker | OAuth | Watcher | Daemon
 --- | --- | --- | --- | --- | --- | ---
 Client | V1,v1beta,v1.1,v1.1beta | Not Required | Optional | UAA | supported | supported
