@@ -9,6 +9,20 @@ The Enterprise-Connect SDK Repo.
 - [Load-Balancer](https://github.com/Enterprise-connect/sdk/issues/89)
 - [OCI images usage](https://hub.docker.com/r/enterpriseconnect/agent)
 
+## Mode Matrix
+Mode | Avaialble Releases | CF Service | Docker | OAuth | Watcher | Daemon
+--- | --- | --- | --- | --- | --- | ---
+Client | V1,v1beta,v1.1,v1.1beta | Not Required | Optional | UAA | supported | supported
+Gateway | V1,v1beta,v1.1,v1.1beta | Required | Optional | Not Required | supported | supported
+Server | V1,v1beta,v1.1,v1.1beta | Required | Optional | UAA | supported | supported
+GW:Client | V1,v1beta,v1.1,v1.1beta | Required | Optional | Not Required | supported | supported
+GW:Server | V1,v1beta,v1.1,v1.1beta | Required | Optional | Not Required | supported | supported
+X:Client | v1.1,v1.1beta | Not Required | Optional | Agent OAuth2 Mode | supported | supported
+X:Server | v1.1,v1.1beta | Not Required | Optional | Agent OAuth2 Mode | supported | supported
+X:Gateway | v1.1,v1.1beta | Not Required | Optional | Agent OAuth2 Mode | supported | supported
+API | v1.1,v1.1beta | Not Required | Optional | Agent OAuth2 Mode | supported | supported
+OAuth2 | v1.1,v1.1beta | Not Required | Optional | Self-Provision | supported | supported
+
 ## Revision Matrix
 Rev. | Env | Download/Release | CF Service | CF Broker | SDK/Plugins | Tools | Build | QA
 --- | --- | --- | --- | --- | --- | --- | --- | ---
