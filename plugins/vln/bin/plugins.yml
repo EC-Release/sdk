@@ -1,0 +1,5 @@
+ec-plugin:
+  vlan:
+    status: active
+    ips: 10.10.15.10/32,10.10.15.11/32,10.10.15.12/32,10.10.15.13/32
+    command: ./vlan
