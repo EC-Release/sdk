@@ -12,11 +12,11 @@ The Enterprise-Connect SDK Repo.
 ## Dependency Matrix
 Mode | Avaialble Releases | CF Service | Docker | OAuth | Watcher | Daemon
 --- | --- | --- | --- | --- | --- | ---
-Client | V1,v1beta,v1.1,v1.1beta | Not Required | Optional | UAA | supported | supported
-Gateway | V1,v1beta,v1.1,v1.1beta | Required | Optional | Not Required | supported | supported
-Server | V1,v1beta,v1.1,v1.1beta | Required | Optional | UAA | supported | supported
-GW:Client | V1,v1beta,v1.1,v1.1beta | Required | Optional | Not Required | supported | supported
-GW:Server | V1,v1beta,v1.1,v1.1beta | Required | Optional | Not Required | supported | supported
+Client | v1,v1beta,v1.1,v1.1beta | Not Required | Optional | UAA | supported | supported
+Gateway | v1,v1beta,v1.1,v1.1beta | Required | Optional | Not Required | supported | supported
+Server | v1,v1beta,v1.1,v1.1beta | Required | Optional | UAA | supported | supported
+GW:Client | v1,v1beta,v1.1,v1.1beta | Required | Optional | Not Required | supported | supported
+GW:Server | v1,v1beta,v1.1,v1.1beta | Required | Optional | Not Required | supported | supported
 X:Client | v1.1,v1.1beta | Not Required | Optional | Agent OAuth2 Mode | supported | supported
 X:Server | v1.1,v1.1beta | Not Required | Optional | Agent OAuth2 Mode | supported | supported
 X:Gateway | v1.1,v1.1beta | Not Required | Optional | Agent OAuth2 Mode | supported | supported
