@@ -32,7 +32,7 @@ v1 | AWS/CF/GovCloud | [hokkaido.212](https://github.com/Enterprise-connect/ec-x
 v1beta | AWS/CF | [v1beta.fukuoka.1724](https://github.com/Enterprise-connect/ec-x-sdk/tree/v1beta.fukuoka.1724/dist)<br /><sup>[Release Note](https://github.com/Enterprise-connect/ec-x-sdk/releases/tag/v1beta.fukuoka.1724)</sup> | sendai.1079 [[project access]](https://github.build.ge.com/Enterprise-Connect/ec-service/tree/v1beta.sendai.1079) | okayama.49 [[project access]](https://github.build.ge.com/Enterprise-Connect/ec-predix-service-broker/tree/v1beta.okayama.49) | [v1beta.fukuoka.1724](https://github.com/Enterprise-connect/ec-x-sdk/tree/v1beta.fukuoka.1724/plugins) | xcalrii@[v2beta.detroit.80](http://xcalr.apps.ge.com/v2beta/swagger-ui.html) | [Gitlab-CI](https://gitlab.com/digital-fo/connectivity/enterprise-connect/platform-agnostic/agent/pipelines) | [Integration](http://localhost:8080/job/EC/job/QA/)
 
 ## x509 Certificates, RSA keypair, licensing, security
-Please contact ec-research@ge.com for the detail of the requirement.
+Please contact ec-research@ge.com for detais.
 
 ## Validation
 ```
