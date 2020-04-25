@@ -64,3 +64,6 @@ b3bf9cd9686e (find the checksum in the checksum.txt)
 
 ## Release History
 Please verify the [Release History](https://github.com/Enterprise-connect/sdk/releases) for previous releases.
+
+## Disclaimer
+Predix, Cloud Foundry are DT/RT copyrights all rights reserved by **GE Digital LLC**. EC Cloud Foundry Service (including the CF Broker) are the products of GE Corp, and are currently maintained by Enterprise-Connect Team. All components that do not associate with Predix, Cloud Foundry are the development products of the Enterprise Connect R&D team, currently sponsored by **GE Corp**, under the MIT license.
