@@ -22,10 +22,10 @@ GW:Client | v1,v1beta | Required | Optional | Not Required | Not Supported | Not
 GW:Client | v1.1,v1.1beta | Required | Optional | Not Required | Supported | Supported
 GW:Server | v1,v1beta | Required | Optional | Not Required | Not Supported | Not Supported
 GW:Server | v1.1,v1.1beta | Required | Optional | Not Required | Supported | Supported
-X:Client | v1.1,v1.1beta | Not Required | Optional | Agent OAuth2 | Supported | Supported
-X:Server | v1.1,v1.1beta | Not Required | Optional | Agent OAuth2 | Supported | Supported
-X:Gateway | v1.1,v1.1beta | Not Required | Optional | Agent OAuth2 | Supported | Supported
-API | v1.1,v1.1beta | Not Required | Optional | Agent OAuth2 Mode | Supported | Supported
+X:Client | v1.1,v1.1beta | Not Required | Optional | OAuth2 Mode | Supported | Supported
+X:Server | v1.1,v1.1beta | Not Required | Optional | OAuth2 Mode | Supported | Supported
+X:Gateway | v1.1,v1.1beta | Not Required | Optional | OAuth2 Mode | Supported | Supported
+API | v1.1,v1.1beta | Not Required | Optional | OAuth2 Mode | Supported | Supported
 OAuth2 | v1.1,v1.1beta | Not Required | Optional | Self-Provision | Supported | Supported
 
 ## Revision Matrix
