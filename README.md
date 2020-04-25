@@ -26,7 +26,7 @@ X:Client | v1.1,v1.1beta | Not Required | Optional | OAuth2 Mode | Supported | S
 X:Server | v1.1,v1.1beta | Not Required | Optional | OAuth2 Mode | Supported | Supported
 X:Gateway | v1.1,v1.1beta | Not Required | Optional | OAuth2 Mode | Supported | Supported
 API | v1.1,v1.1beta | Not Required | Optional | OAuth2 Mode | Supported | Supported
-OAuth2 | v1.1,v1.1beta | Not Required | Optional | Self-Provision | Supported | Supported
+OAuth2 | v1.1,v1.1beta | Not Required | Optional | OIDC | Supported | Supported
 
 ## Revision Matrix
 Rev. | Env | Download/Release | CF Service | CF Broker | SDK/Plugins | Tools | Build | QA
