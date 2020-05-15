@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/Enterprise-connect/build.svg?branch=v1.1)](https://travis-ci.com/Enterprise-connect/build)
 
-# The EC Agent SDK
+# The Agent SDK
 The Enterprise-Connect SDK Repo.
 - [Design](https://github.com/Enterprise-connect/sdk/wiki/EC-Agent)
 - [Issue trackers](https://github.com/Enterprise-connect/sdk/issues)
