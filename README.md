@@ -65,5 +65,9 @@ b3bf9cd9686e (find the checksum in the checksum.txt)
 ## Release History
 Please verify the [Release History](https://github.com/Enterprise-connect/sdk/releases) for previous releases.
 
+## Be Social with the team
+* [Slack Usergroup Channel](https://enterprisecon-j2w6229.slack.com)
+* [Weekly Google Meeting](https://meet.google.com/xum-iykj-agp)
+
 ## Disclaimer
-Predix, Cloud Foundry, and all subsidiary software products are the DT/RT copyrights all rights reserved by **GE Digital LLC**. EC Cloud Foundry Service (including the CF Broker) are the products owned by **GE Corp**, currently maintained by Enterprise-Connect R&D Team. Components that DO NOT associate with Predix, Cloud Foundry, are all under the **MIT license**, and actively developed and being authored by the **Enterprise Connect R&D team**. The team (Enterprise Connect R&D Team) is sponsored by **GE Corp**. Enterprise Connect R&D Team CA is the highest Certificate Authority of its security ECO system, under its own terms.
+<sup>Predix, Cloud Foundry, and all subsidiary software products are the DT/RT copyrights all rights reserved by **GE Digital LLC**. EC Cloud Foundry Service (including the CF Broker) are the products owned by **GE Corp**, currently maintained by Enterprise-Connect R&D Team. Components that DO NOT associate with Predix, Cloud Foundry, are all under the **MIT license**, and actively developed and being authored by the **Enterprise Connect R&D team**. The team (Enterprise Connect R&D Team) is sponsored by **GE Corp**. Enterprise Connect R&D Team CA is the highest Certificate Authority of its security ECO system, under its own terms.</sup>
