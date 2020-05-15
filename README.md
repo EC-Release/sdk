@@ -65,7 +65,7 @@ b3bf9cd9686e (find the checksum in the checksum.txt)
 ## Release History
 Please verify the [Release History](https://github.com/Enterprise-connect/sdk/releases) for previous releases.
 
-## Social with the team
+## Be Social with the team
 * [Slack Usergroup Channel](https://enterprisecon-j2w6229.slack.com)
 * [Weekly Google Meeting](https://meet.google.com/xum-iykj-agp)
 
