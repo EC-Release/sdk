@@ -1,15 +1,16 @@
-# VLAN Plugin
-VLAN plugin for EC agent
+# TLS Plugin
+TLS plugin for EC agent
 
-Virtual LAN will create a secure connection between source and multiple target systems by mirroring the target system details in source network settings. It means, one client agent can connect to multiple server agents with one EC connection. Client agent can decide to which target system it should make connection and will update network settings accordingly. 
+TLS Plugin will create a secure connection between source and SSL enabled target system. 
 
 
 
 Current stable versions for VLAN - 
 
- - beta: [v1beta.fukuoka.1725](https://github.com/Enterprise-connect/ec-x-sdk/tree/v1beta.fukuoka.1724)
- - beta with watcher: [v1.1beta.fukuoka.2728](https://github.com/Enterprise-connect/sdk/tree/v1.1beta.fukuoka.2728)
- - prod: [v1.hokkaido.212](https://github.com/Enterprise-connect/ec-x-sdk/tree/v1.hokkaido.212)
+ - beta: [v1beta](https://github.com/Enterprise-connect/sdk/tree/v1beta)
+ - beta with watcher: [v1.1beta](https://github.com/Enterprise-connect/sdk/tree/v1.1beta)
+ - prod: [v1](https://github.com/Enterprise-connect/sdk/tree/v1)
+ - prod with watcher: [v1.1](https://github.com/Enterprise-connect/sdk/tree/v1.1)
  
 ### How it works
 
