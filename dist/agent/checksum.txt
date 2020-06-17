@@ -1,0 +1,8 @@
+agent_arm_var: 5e01456d875bd3def5372f9c1c265739dbbda4f111d85b87d090322d25256d90 (sha256) 
+agent_windows_var.exe: d6e1aaac62030fcca43e674d68adcba3ae0c591c3105d68855c1870d5d1d05ab (sha256) 
+agent_linux_var: be490b1f204bcbc9f3886ae93356158b051670b0985f049c3be1349970ad4f6d (sha256) 
+agent_darwin_var: fb06af88f4255afe9d4ebd514ab01c320ac2835bae6b349bc7b4289cd2c3ba7c (sha256) 
+agent_darwin_sys: 6fb1b33d765202c1c2cea11488ce82ee6c810f1ea1b30dc8c66d8b25a396e267 (sha256) 
+agent_arm_sys: 5e01456d875bd3def5372f9c1c265739dbbda4f111d85b87d090322d25256d90 (sha256) 
+agent_windows_sys.exe: d6e1aaac62030fcca43e674d68adcba3ae0c591c3105d68855c1870d5d1d05ab (sha256) 
+agent_linux_sys: f2eb1e71ed306071ce1c2086992569b457f7b72b67c106cba2fe8278ad405c78 (sha256) 
