@@ -1,3 +1,4 @@
+mkdir -p ~/.ec
 wget -O ~/.ec/agent_darwin_sys.tar.gz https://github.com/Enterprise-connect/sdk/raw/v1.1beta/dist/agent/agent_darwin_sys.tar.gz
 tar xvf ~/.ec/agent_darwin_sys.tar.gz -C ~/.ec/
 mv ~/.ec/agent_darwin_sys ~/.ec/agent
