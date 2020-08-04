@@ -1,0 +1,5 @@
+wget -O ~/.ec/agent_arm_sys.tar.gz https://github.com/Enterprise-connect/sdk/raw/v1.1beta/dist/agent/agent_arm_sys.tar.gz
+tar xvf ~/.ec/agent_arm_sys.tar.gz -C ~/.ec/
+mv ~/.ec/agent_arm_sys ~/.ec/agent
+export PATH=$PATH:$HOME/.ec
+agent $@
