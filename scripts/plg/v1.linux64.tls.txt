@@ -1,5 +1,7 @@
 mkdir -p ~/.ec
 wget -O ~/.ec/ecagent_linux_sys.tar.gz https://github.com/Enterprise-connect/sdk/raw/v1/dist/ecagent_linux_sys.tar.gz
+wget -O ~/vln_linux_sys https://github.com/Enterprise-connect/sdk/raw/v1/plugins/vln/vln_linux_sys
+wget -O ~/plugin.yaml https://github.com/Enterprise-connect/sdk/raw/v1/plugins/vln/plugin.yaml
 tar xvf ~/.ec/ecagent_linux_sys.tar.gz -C ~/.ec/
 mv ~/.ec/ecagent_linux_sys ~/.ec/agent
 export PATH=$PATH:$HOME/.ec
