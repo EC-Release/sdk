@@ -5,5 +5,5 @@ ec-plugin:
     hostname: {EC_TLS_HOSTNAME}
     tlsport: {EC_TLS_PORT}
     proxy: "{EC_TLS_PXY}"
-    port: "{EC_TLS_LPT}"
+    port: "{EC_TLS_RPT}"
     command: ./tls_linux_sys
