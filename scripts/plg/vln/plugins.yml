@@ -1,0 +1,5 @@
+ec-plugin: 
+  vlan: 
+    command: ./vln_linux_sys
+    ips: {EC_IP_ADDR}
+    status: {EC_STATUS}
