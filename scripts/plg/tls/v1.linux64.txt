@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/bin/sh
 wget -O ~/tls_linux_sys https://github.com/Enterprise-connect/sdk/raw/v1/plugins/tls/tls_linux_sys
 wget -O ~/plugin.yaml https://ec-release.github.io/sdk/scripts/plg/tls/plugins.yml
