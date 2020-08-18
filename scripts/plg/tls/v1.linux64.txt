@@ -1,20 +1,2 @@
-function getProperty {
-    PROP_KEY=$1
-    PROP_VALUE=`printenv | grep "$PROP_KEY" | cut -d'=' -f2-`
-    echo $PROP_VALUE
-}
-
 wget -O ~/tls_linux_sys https://github.com/Enterprise-connect/sdk/raw/v1/plugins/tls/tls_linux_sys
 wget -O ~/plugin.yaml https://ec-release.github.io/sdk/scripts/plg/tls/plugin.yaml
-
-scm=$(getProperty "plg.tls.scm")
-hst=$(getProperty "plg.tls.hst")
-prt=$(getProperty "plg.tls.prt")
-pxy=$(getProperty "plg.tls.pxy")
-rpt=$(getProperty "plg.tls.rpt")
-
-sed -i "s|{EC_TLS_SCHEMA}|$scm|g" ~/plugin.yaml
-sed -i "s|{EC_TLS_HOSTNAME}|$hst|g" ~/plugin.yaml
-sed -i "s|{EC_TLS_PORT}|$prt|g" ~/plugin.yaml
-sed -i "s|{EC_TLS_PXY}|$pxy|g" ~/plugin.yaml
-sed -i "s|{EC_TLS_RPT}|$rpt|g" ~/plugin.yaml
