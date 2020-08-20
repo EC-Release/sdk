@@ -1,2 +1,3 @@
-wget -O ~/tls_linux_sys https://github.com/Enterprise-connect/sdk/raw/v1/plugins/vln/vln_linux_sys
-wget -O ~/plugin.yaml https://ec-release.github.io/sdk/scripts/plg/vln/plugins.yml
+mkdir -p ~/.ec/plg/vln
+wget -O ~/.ec/plg/vln/vln_linux_sys https://github.com/Enterprise-connect/sdk/raw/v1/plugins/vln/vln_linux_sys
+wget -O ~/.ec/plg/vln/plugins.yml https://ec-release.github.io/sdk/scripts/plg/vln/plugins.yml
