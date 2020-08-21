@@ -2,3 +2,4 @@ mkdir -p ~/.ec/plg/tls
 wget -O ~/.ec/plg/tls/tls_linux_sys https://github.com/Enterprise-connect/sdk/raw/v1/plugins/tls/tls_linux_sys
 wget -O ~/.ec/plg/tls/plugin.yml https://ec-release.github.io/sdk/scripts/plg/tls/plugins.yml
 wget -O ~/.ec/plg/tls/tls.sh https://ec-release.github.io/sdk/scripts/plg/tls/tls.sh
+chmod 755 ~/.ec/plg/tls/tls.sh ~/.ec/plg/tls/tls_linux_sys
