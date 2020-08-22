@@ -6,4 +6,4 @@ ec-plugin:
     tlsport: {EC_TLS_PORT}
     proxy: "{EC_TLS_PXY}"
     port: "{EC_TLS_RPT}"
-    command: {EC_TLS_CMD}
+    command: ~/.ec/plg/tls/tls_linux_sys
