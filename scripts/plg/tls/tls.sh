@@ -12,14 +12,14 @@ function setPluginConfig {
     pspt=$(getProperty "plg.tls.prt")
     ppxy=$(getProperty "plg.tls.pxy")
     plpt=$(getProperty "plg.tls.lpt")
-    pcmd=$(getProperty "plg.tls.cmd")
+    #pcmd=$(getProperty "plg.tls.cmd")
     
     sed -i "s|{EC_TLS_SCHEMA}|$pscm|g" ~/.ec/plg/tls/plugins.yml
     sed -i "s|{EC_TLS_HOSTNAME}|$phst|g" ~/.ec/plg/tls/plugins.yml
     sed -i "s|{EC_TLS_PORT}|$pspt|g" ~/.ec/plg/tls/plugins.yml
     sed -i "s|{EC_TLS_PXY}|$ppxy|g" ~/.ec/plg/tls/plugins.yml
     sed -i "s|{EC_TLS_RPT}|$plpt|g" ~/.ec/plg/tls/plugins.yml
-    sed -i "s|{EC_TLS_CMD}|$pcmd|g" ~/.ec/plg/tls/plugins.yml
+    #sed -i "s|{EC_TLS_CMD}|$pcmd|g" ~/.ec/plg/tls/plugins.yml
 }
 
 setPluginConfig
