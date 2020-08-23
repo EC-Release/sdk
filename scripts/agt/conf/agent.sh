@@ -76,26 +76,26 @@ if [[ $plg == *true* ] || [ $plg == true ]] && [[ $mod == "client" ] || [ $mod =
   esac
 fi
 
-sed -i "s|{EC_AID}|$aid|g" ~/${mod}.yml
-sed -i "s|{EC_TID}|$tid|g" ~/${mod}.yml
-sed -i "s|{EC_CID}|$cid|g" ~/${mod}.yml
-sed -i "s|{EC_CSC}|$csc|g" ~/${mod}.yml
-sed -i "s|{EC_OA2}|$oa2|g" ~/${mod}.yml
-sed -i "s|{EC_DUR}|$dur|g" ~/${mod}.yml
-sed -i "s|{EC_DBG}|$dbg|g" ~/${mod}.yml
-sed -i "s|{EC_ZON}|$zon|g" ~/${mod}.yml
-sed -i "s|{EC_GRP}|$grp|g" ~/${mod}.yml
-sed -i "s|{EC_CPS}|$cps|g" ~/${mod}.yml
-sed -i "s|{EC_LPT}|$lpt|g" ~/${mod}.yml
-sed -i "s|{EC_GPT}|$gpt|g" ~/${mod}.yml
-sed -i "s|{EC_RPT}|$rpt|g" ~/${mod}.yml
-sed -i "s|{EC_RHT}|$rht|g" ~/${mod}.yml
-sed -i "s|{EC_HST}|$hst|g" ~/${mod}.yml
-sed -i "s|{EC_SST}|$sst|g" ~/${mod}.yml
-sed -i "s|{EC_TKN}|$tkn|g" ~/${mod}.yml
-sed -i "s|{EC_PXY}|$pxy|g" ~/${mod}.yml
-sed -i "s|{EC_PLG}|$plg|g" ~/${mod}.yml
-sed -i "s|{EC_HCA}|$hca|g" ~/${mod}.yml
+sed -i "s|{EC_AID}|$aid|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_TID}|$tid|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_CID}|$cid|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_CSC}|$csc|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_OA2}|$oa2|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_DUR}|$dur|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_DBG}|$dbg|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_ZON}|$zon|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_GRP}|$grp|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_CPS}|$cps|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_LPT}|$lpt|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_GPT}|$gpt|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_RPT}|$rpt|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_RHT}|$rht|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_HST}|$hst|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_SST}|$sst|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_TKN}|$tkn|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_PXY}|$pxy|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_PLG}|$plg|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_HCA}|$hca|g" ~/.ec/conf/${mod}.yml
 
-cat ./${mod}.yml
-agent -cfg ./${mod}.yml
+cat ~/.ec/conf/${mod}.yml
+agent -cfg ~/.ec/conf/${mod}.yml
