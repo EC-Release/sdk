@@ -1,5 +1,5 @@
 ec-plugin: 
   vlan:
-    command: ~/.ec/plg/vln/vln_linux_sys
+    command: ./.ec/plg/vln/vln_linux_sys
     ips: {EC_IP_ADDR}
     status: active
