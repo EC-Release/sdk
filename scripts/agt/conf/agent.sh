@@ -43,14 +43,14 @@ hca=$(getProperty "conf.hca")
 #plugin type. e.g. tls, vln, etc.
 ptp=$(getProperty "plg.typ")
 
-if [[ $pxy == *false* ]] || [[ $pxy == false ]]; then
+if [[ $pxy == *false* || $pxy == false ]]; then
   pxy=""
 else
   pxy="pxy: ${pxy}"
 fi
 
 
-if [[ $plg == *true* ] || [ $plg == true ]] && [[ $mod == "server" ] || [ $mod == "gw:server" ]]; then
+if [[ $plg == *true* || $plg == true ]] && [[ $mod == "server" || $mod == "gw:server" ]]; then
   case $ptp in
     tls)
       echo "deploying tls plugin"
@@ -63,7 +63,7 @@ if [[ $plg == *true* ] || [ $plg == true ]] && [[ $mod == "server" ] || [ $mod =
   esac
 fi
 
-if [[ $plg == *true* ] || [ $plg == true ]] && [[ $mod == "client" ] || [ $mod == "gw:client" ]]; then
+if [[ $plg == *true* || $plg == true ]] && [[ $mod == "client" || $mod == "gw:client" ]]; then
   case $ptp in
     vln)
       echo "deploying vln plugin"
