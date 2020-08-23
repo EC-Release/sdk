@@ -1,11 +1,11 @@
 mkdir -p ~/.ec ~/.ec/conf
-wget --progress=bar -O ~/.ec/ecagent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/v1/dist/ecagent_linux_sys.tar.gz
-wget --progress=bar -O ~/.ec/conf/agent.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent.sh
-wget -q --progress=bar -O ~/.ec/conf/client.yml https://ec-release.github.io/sdk/scripts/agt/conf/client.yml
-wget -q --progress=bar -O ~/.ec/conf/gateway.yml https://ec-release.github.io/sdk/scripts/agt/conf/gateway.yml
-wget -q --progress=bar -O ~/.ec/conf/server.yml https://ec-release.github.io/sdk/scripts/agt/conf/server.yml
-wget -q --progress=bar -O ~/.ec/conf/gw:client.yml https://ec-release.github.io/sdk/scripts/agt/conf/gw:client.yml
-wget -q --progress=bar -O ~/.ec/conf/gw:server.yml https://ec-release.github.io/sdk/scripts/agt/conf/gw:server.yml
+wget -q --show-progress -O ~/.ec/ecagent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/v1/dist/ecagent_linux_sys.tar.gz
+wget -q --show-progress -O ~/.ec/conf/agent.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent.sh
+wget -q --show-progress -O ~/.ec/conf/client.yml https://ec-release.github.io/sdk/scripts/agt/conf/client.yml
+wget -q --show-progress -O ~/.ec/conf/gateway.yml https://ec-release.github.io/sdk/scripts/agt/conf/gateway.yml
+wget -q --show-progress -O ~/.ec/conf/server.yml https://ec-release.github.io/sdk/scripts/agt/conf/server.yml
+wget -q --show-progress -O ~/.ec/conf/gw:client.yml https://ec-release.github.io/sdk/scripts/agt/conf/gw:client.yml
+wget -q --show-progress -O ~/.ec/conf/gw:server.yml https://ec-release.github.io/sdk/scripts/agt/conf/gw:server.yml
 tar xvf ~/.ec/ecagent_linux_sys.tar.gz -C ~/.ec/ &>/dev/null
 rm ~/.ec/ecagent_linux_sys.tar.gz
 mv ~/.ec/ecagent_linux_sys ~/.ec/agent
