@@ -6,7 +6,7 @@ wget -O ~/.ec/conf/gateway.yml https://ec-release.github.io/sdk/scripts/agt/conf
 wget -O ~/.ec/conf/server.yml https://ec-release.github.io/sdk/scripts/agt/conf/server.yml
 wget -O ~/.ec/conf/gw:client.yml https://ec-release.github.io/sdk/scripts/agt/conf/gw:client.yml
 wget -O ~/.ec/conf/gw:server.yml https://ec-release.github.io/sdk/scripts/agt/conf/gw:server.yml
-tar xvf ~/.ec/ecagent_linux_sys.tar.gz -C ~/.ec/
+tar xf ~/.ec/ecagent_linux_sys.tar.gz -C ~/.ec/
 rm ~/.ec/ecagent_linux_sys.tar.gz
 mv ~/.ec/ecagent_linux_sys ~/.ec/agent
 export PATH=$PATH:~/.ec
