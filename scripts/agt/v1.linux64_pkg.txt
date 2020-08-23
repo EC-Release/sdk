@@ -1,6 +1,6 @@
 mkdir -p ~/.ec ~/.ec/conf
-wget -q --progress=bar -O ~/.ec/ecagent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/v1/dist/ecagent_linux_sys.tar.gz
-wget -q --progress=bar -O ~/.ec/conf/agent.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent.sh
+wget --progress=bar -O ~/.ec/ecagent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/v1/dist/ecagent_linux_sys.tar.gz
+wget --progress=bar -O ~/.ec/conf/agent.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent.sh
 wget -q --progress=bar -O ~/.ec/conf/client.yml https://ec-release.github.io/sdk/scripts/agt/conf/client.yml
 wget -q --progress=bar -O ~/.ec/conf/gateway.yml https://ec-release.github.io/sdk/scripts/agt/conf/gateway.yml
 wget -q --progress=bar -O ~/.ec/conf/server.yml https://ec-release.github.io/sdk/scripts/agt/conf/server.yml
