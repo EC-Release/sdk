@@ -98,4 +98,4 @@ sed -i "s|{EC_PLG}|$plg|g" ~/.ec/conf/${mod}.yml
 sed -i "s|{EC_HCA}|$hca|g" ~/.ec/conf/${mod}.yml
 
 cat ~/.ec/conf/${mod}.yml
-agent -cfg ~/.ec/conf/${mod}.yml
+agent -cfg .ec/conf/${mod}.yml
