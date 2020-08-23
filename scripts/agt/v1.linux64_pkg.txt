@@ -1,0 +1,15 @@
+mkdir -p ~/.ec ~/.ec/conf
+wget -O ~/.ec/ecagent_linux_sys.tar.gz https://github.com/Enterprise-connect/sdk/raw/v1/dist/ecagent_linux_sys.tar.gz
+wget -O ~/.ec/conf/agent.sh https://ec-release.github.io/sdk/scripts/plg/agt/agent.sh
+wget -O ~/.ec/conf/client.yml https://ec-release.github.io/sdk/scripts/plg/agt/client.yml
+wget -O ~/.ec/conf/gateway.yml https://ec-release.github.io/sdk/scripts/plg/agt/gateway.yml
+wget -O ~/.ec/conf/server.yml https://ec-release.github.io/sdk/scripts/plg/agt/server.yml
+wget -O ~/.ec/conf/gw:client.yml https://ec-release.github.io/sdk/scripts/plg/agt/gw:client.yml
+wget -O ~/.ec/conf/gw:server.yml https://ec-release.github.io/sdk/scripts/plg/agt/gw:server.yml
+tar xvf ~/.ec/ecagent_linux_sys.tar.gz -C ~/.ec/
+rm ~/.ec/ecagent_linux_sys.tar.gz
+mv ~/.ec/ecagent_linux_sys ~/.ec/agent
+export PATH=$PATH:~/.ec
+if [[ "$#" -gt 1 ]]; then
+  agent $@
+fi
