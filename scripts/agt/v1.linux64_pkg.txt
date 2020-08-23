@@ -10,6 +10,7 @@ tar xvf ~/.ec/ecagent_linux_sys.tar.gz -C ~/.ec/ &>/dev/null
 rm ~/.ec/ecagent_linux_sys.tar.gz
 mv ~/.ec/ecagent_linux_sys ~/.ec/agent
 export PATH=$PATH:~/.ec
+print $#
 if [[ "$#" -gt 1 ]]; then
   agent $@
 fi
