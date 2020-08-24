@@ -55,7 +55,6 @@ if [[ $plg == *true* || $plg == true ]] && [[ $mod == "server" || $mod == "gw:se
     tls)
       echo "deploying tls plugin"
       source ~/.ec/plg/tls/tls.sh
-      break;
       ;;
     *)
       echo "no plugin type specified"
@@ -68,7 +67,6 @@ if [[ $plg == *true* || $plg == true ]] && [[ $mod == "client" || $mod == "gw:cl
     vln)
       echo "deploying vln plugin"
       source ~/.ec/plg/vln/vln.sh
-      break
       ;;
     *)
       echo "no plugin type specified"
