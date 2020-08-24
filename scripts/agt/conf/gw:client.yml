@@ -13,3 +13,4 @@ ec-config:
     gpt: "{EC_GPT}"
     hca: "{EC_HCA}"
     plg: {EC_PLG}
+    {EC_PXY}
