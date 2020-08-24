@@ -13,3 +13,4 @@ ec-config:
     plg: {EC_PLG}
     hst: {EC_HST}
     hca: "{EC_HCA}"
+    {EC_PXY}
