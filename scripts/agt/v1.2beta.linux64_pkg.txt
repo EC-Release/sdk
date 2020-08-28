@@ -2,6 +2,7 @@ mkdir -p ~/.ec
 #will change v1.1beta to v1.2beta when its available
 wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/v1.1beta/dist/agent/agent_linux_sys.tar.gz
 wget -q --show-progress -O ~/.ec/conf/service.yml https://ec-release.github.io/sdk/scripts/agt/conf/service.yml
+wget -q --show-progress -O ~/.ec/conf/service.yml https://ec-release.github.io/sdk/scripts/agt/conf/agent1.2beta.sh
 tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/ &>/dev/null
 rm ~/.ec/agent_linux_sys.tar.gz
 mv ~/.ec/agent_linux_sys ~/.ec/agent
