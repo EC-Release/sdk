@@ -12,11 +12,11 @@ The Enterprise-Connect SDK Repo.
 ## Dependency Matrix
 Mode | Avaialble Releases | CF Service | Docker | OAuth
 --- | --- | --- | --- | ---
-Client | v1, v1beta | Required | Optional | UAA 
-Gateway | v1, v1beta | Required | Optional | UAA
-Server | v1, v1beta | Required | Optional | UAA
-GW:Client | v1, v1beta | Required | Optional | UAA
-GW:Server | v1,v1beta | Required | Optional | UAA
+Client | v1, v1beta | Service 1.x | Optional | UAA 
+Gateway | v1, v1beta | Service 1.x | Optional | UAA
+Server | v1, v1beta | Service 1.x | Optional | UAA
+GW:Client | v1, v1beta | Service 1.x | Optional | UAA
+GW:Server | v1,v1beta | Service 1.x | Optional | UAA
 
 ## Revision Matrix
 Rev. | Download/Release | CF Instance | CF Service | CF Broker | SDK/Plugins | Tools | Build | QA
