@@ -8,7 +8,7 @@ source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.1beta.linux64
 #install agen package script via wget
 source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.linux64_pkg.txt)
 
-#install agent bash script via cUrl
+#install agent script in MacOS
 bash <(curl -k https://ec-release.github.io/sdk/scripts/agt/v1.1beta.darwin.txt)
 
 ```
