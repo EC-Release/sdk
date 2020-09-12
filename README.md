@@ -10,13 +10,13 @@ The Enterprise-Connect SDK Repo.
 - [OCI images usage](https://hub.docker.com/r/enterpriseconnect/agent)
 
 ## Dependency Matrix
-Mode | Avaialble Releases | CF Service | Docker | OAuth | Watcher | Daemon
---- | --- | --- | --- | --- | --- | ---
-Client | v1, v1beta | Required | Optional | UAA | Not Supported | Not Supported
-Gateway | v1, v1beta | Required | Optional | Not Required | Not Supported | Not Supported
-Server | v1, v1beta | Required | Optional | UAA | Not Supported | Not Supported
-GW:Client | v1, v1beta | Required | Optional | Not Required | Not Supported | Not Supported
-GW:Server | v1,v1beta | Required | Optional | Not Required | Not Supported | Not Supported
+Mode | Avaialble Releases | CF Service | Docker | OAuth
+--- | --- | --- | --- | ---
+Client | v1, v1beta | Required | Optional | UAA 
+Gateway | v1, v1beta | Required | Optional | UAA
+Server | v1, v1beta | Required | Optional | UAA
+GW:Client | v1, v1beta | Required | Optional | UAA
+GW:Server | v1,v1beta | Required | Optional | UAA
 
 ## Revision Matrix
 Rev. | Download/Release | CF Instance | CF Service | CF Broker | SDK/Plugins | Tools | Build | QA
