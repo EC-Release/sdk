@@ -1,5 +1,5 @@
 mkdir -p ~/.ec
-wget -q --show-progress -O ~/.ec/agent_darwin_sys.tar.gz https://github.com/EC-Release/sdk/raw/v1.2beta/dist/agent/agent_darwin_sys.tar.gz
+curl -LOk ~/.ec/agent_darwin_sys.tar.gz https://github.com/EC-Release/sdk/raw/v1.2beta/dist/agent/agent_darwin_sys.tar.gz
 tar xvf ~/.ec/agent_darwin_sys.tar.gz -C ~/.ec/ &>/dev/null
 rm ~/.ec/agent_darwin_sys.tar.gz
 mv ~/.ec/agent_darwin_sys ~/.ec/agent
