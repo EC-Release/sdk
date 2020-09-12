@@ -7,6 +7,10 @@ source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.1beta.linux64
 
 #download the whole agent <v1> package
 source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.linux64_pkg.txt)
+
+#download agent package via darwin
+source <(curl -s https://ec-release.github.io/sdk/scripts/agt/v1.1beta.darwin.txt)
+
 ```
 ### Cipher Usage
 to be continue
