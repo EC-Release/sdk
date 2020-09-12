@@ -1,6 +1,5 @@
 mkdir -p ~/.ec
 curl -o ~/.ec/agent_darwin_sys.tar.gz -LOk https://github.com/EC-Release/sdk/raw/v1.2beta/dist/agent/agent_darwin_sys.tar.gz
-echo hello
 tar xvf ~/.ec/agent_darwin_sys.tar.gz -C ~/.ec/ &>/dev/null
 rm ~/.ec/agent_darwin_sys.tar.gz
 mv ~/.ec/agent_darwin_sys ~/.ec/agent
