@@ -101,6 +101,7 @@ if [[ $vln == *true* || $vln == true ]]; then
   sed -i "s|{EC_VLN}|true|g" ~/.ec/conf/${mod}.yml
   sed -i "s|{EC_RPT}|$rpt|g" ~/.ec/conf/${mod}.yml
 else 
+  sed -i "s|{EC_VLN}|false|g" ~/.ec/conf/${mod}.yml
   sed -i "s|{EC_RPT}|0|g" ~/.ec/conf/${mod}.yml
 fi
 
