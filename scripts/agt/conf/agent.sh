@@ -58,19 +58,26 @@ if [[ $plg == *true* || $plg == true ]] && [[ $mod == "server" || $mod == "gw:se
       echo "deploying tls plugin"
       source ~/.ec/plg/tls/tls.sh
       ;;
+    tls)
+      echo "deploying tls plugin"
+      source ~/.ec/plg/tls/tls.sh
+      ;;
     *)
       echo "no plugin type specified"
       ;;
   esac
-fi
-
-if [[ $plg == *true* || $plg == true ]] && [[ $mod == "client" || $mod == "gw:client" ]]; then
+elif [[ $plg == *true* || $plg == true ]] && [[ $mod == "client" || $mod == "gw:client" ]]; then
   case $ptp in
     vln)
+      sed -i "s|{EC_VLN}|true|g" ~/.ec/conf/${mod}.yml
+      sed -i "s|{EC_RPT}|$rpt|g" ~/.ec/conf/${mod}.yml
+
       echo "deploying vln plugin"
       source ~/.ec/plg/vln/vln.sh
       ;;
     *)
+      sed -i "s|{EC_VLN}|false|g" ~/.ec/conf/${mod}.yml
+      sed -i "s|{EC_RPT}|0|g" ~/.ec/conf/${mod}.yml
       echo "no plugin type specified"
       ;;
   esac
@@ -97,13 +104,6 @@ sed -i "s|{EC_PXY}|$pxy|g" ~/.ec/conf/${mod}.yml
 sed -i "s|{EC_PLG}|$plg|g" ~/.ec/conf/${mod}.yml
 sed -i "s|{EC_HCA}|$hca|g" ~/.ec/conf/${mod}.yml
 
-if [[ $vln == *true* || $vln == true ]]; then
-  sed -i "s|{EC_VLN}|true|g" ~/.ec/conf/${mod}.yml
-  sed -i "s|{EC_RPT}|$rpt|g" ~/.ec/conf/${mod}.yml
-else 
-  sed -i "s|{EC_VLN}|false|g" ~/.ec/conf/${mod}.yml
-  sed -i "s|{EC_RPT}|0|g" ~/.ec/conf/${mod}.yml
-fi
 
 cat ~/.ec/conf/${mod}.yml
 agent -cfg .ec/conf/${mod}.yml
