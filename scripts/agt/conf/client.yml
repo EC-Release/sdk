@@ -15,6 +15,9 @@ ec-config:
     hca: "{EC_HCA}"
     lpt: "{EC_LPT}"
     plg: {EC_PLG}
+    vln: {EC_VLN}
+    # rpt is either "0" or ""
+    rpt: {EC_RPT}
     {EC_PXY}
     #fup: agent_solaris_sparc64_sys:ayasuda_copy_example_2
     #fdw: ayasuda_copy_example_2:anotherfile_example
