@@ -39,6 +39,8 @@ tkn=$(getProperty "conf.tkn")
 pxy=$(getProperty "conf.pxy")
 plg=$(getProperty "conf.plg")
 hca=$(getProperty "conf.hca")
+vln=$(getProperty "conf.vln")
+rpt=$(getProperty "conf.rpt")
 
 #plugin type. e.g. tls, vln, etc.
 ptp=$(getProperty "plg.typ")
@@ -94,6 +96,13 @@ sed -i "s|{EC_TKN}|$tkn|g" ~/.ec/conf/${mod}.yml
 sed -i "s|{EC_PXY}|$pxy|g" ~/.ec/conf/${mod}.yml
 sed -i "s|{EC_PLG}|$plg|g" ~/.ec/conf/${mod}.yml
 sed -i "s|{EC_HCA}|$hca|g" ~/.ec/conf/${mod}.yml
+
+if [[ $vln == *true* || $vln == true ]]; then
+  sed -i "s|{EC_VLN}|true|g" ~/.ec/conf/${mod}.yml
+  sed -i "s|{EC_RPT}|$rpt|g" ~/.ec/conf/${mod}.yml
+else 
+  sed -i "s|{EC_RPT}|0|g" ~/.ec/conf/${mod}.yml
+fi
 
 cat ~/.ec/conf/${mod}.yml
 agent -cfg .ec/conf/${mod}.yml
