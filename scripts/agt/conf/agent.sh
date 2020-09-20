@@ -45,7 +45,7 @@ rpt=$(getProperty "conf.rpt")
 #plugin type. e.g. tls, vln, etc.
 ptp=$(getProperty "plg.typ")
 
-if [[ $pxy == *false* || $pxy == false ]]; then
+if [[ $pxy == *false* || $pxy == false || -z "$pxy" ]]; then
   pxy=""
 else
   pxy="pxy: ${pxy}"
