@@ -48,6 +48,7 @@ ptp=$(getProperty "plg.typ")
 if [[ $pxy == *false* || $pxy == false || -z "$pxy" ]]; then
   pxy=""
 else
+  pxy=$($pxy | tr -cd "[:alnum:]\:\/\.")
   pxy="pxy: \"${pxy}\""
 fi
 
