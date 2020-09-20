@@ -48,7 +48,7 @@ ptp=$(getProperty "plg.typ")
 if [[ $pxy == *false* || $pxy == false || -z "$pxy" ]]; then
   pxy=""
 else
-  pxy="pxy: ${pxy}"
+  pxy="pxy: \"${pxy}\""
 fi
 
 
