@@ -52,7 +52,6 @@ else
   pxy="pxy: \"${pxy}\""
 fi
 
-
 if [[ $plg == *true* || $plg == true ]] && [[ $mod == "server" || $mod == "gw:server" ]]; then
   case $ptp in
     tls)
@@ -82,6 +81,8 @@ elif [[ $plg == *true* || $plg == true ]] && [[ $mod == "client" || $mod == "gw:
       echo "no plugin type specified"
       ;;
   esac
+else
+  sed -i "s|{EC_VLN}|false|g" ~/.ec/conf/${mod}.yml
 fi
 
 sed -i "s|{EC_AID}|$aid|g" ~/.ec/conf/${mod}.yml
