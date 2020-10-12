@@ -55,10 +55,9 @@ fi
 if [[ $plg == *true* || $plg == true ]] && [[ $mod == "server" || $mod == "gw:server" ]]; then
   case $ptp in
     tls)
-      echo "deploying tls plugin"
-      source ~/.ec/plg/tls/tls.sh
-      ;;
-    tls)
+      #force plg setting
+      plg=true
+    
       echo "deploying tls plugin"
       source ~/.ec/plg/tls/tls.sh
       ;;
@@ -72,6 +71,7 @@ elif [[ $plg == *true* || $plg == true ]] && [[ $mod == "client" || $mod == "gw:
       sed -i "s|{EC_VLN}|true|g" ~/.ec/conf/${mod}.yml
       sed -i "s|{EC_RPT}|$rpt|g" ~/.ec/conf/${mod}.yml
 
+      plg=true
       echo "deploying vln plugin"
       source ~/.ec/plg/vln/vln.sh
       ;;
@@ -82,6 +82,7 @@ elif [[ $plg == *true* || $plg == true ]] && [[ $mod == "client" || $mod == "gw:
       ;;
   esac
 else
+  plg=false    
   sed -i "s|{EC_VLN}|false|g" ~/.ec/conf/${mod}.yml
 fi
 
