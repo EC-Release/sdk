@@ -13,7 +13,7 @@ ec-config:
     aid: {EC_AID}
     rpt: "{EC_RPT}"
     rht: {EC_RHT}
-    plg: {EC_PLG}
+    plg: "{EC_PLG}"
     cps: {EC_CPS}
     hca: "{EC_HCA}"
     {EC_PXY}
