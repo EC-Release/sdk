@@ -3,6 +3,7 @@
 function getProperty {
     PROP_KEY=$1
     PROP_VALUE=`printenv | grep "$PROP_KEY" | cut -d'=' -f2-`
+    PROP_VALUE=$(sed "s|$PROP_VALUE|\"|g")
     echo $PROP_VALUE
 }
 
