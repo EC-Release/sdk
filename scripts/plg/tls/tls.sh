@@ -27,3 +27,4 @@ setPluginConfig
 #cp ~/.ec/plg/tls/plugins.yml ~/
 #workaround
 cp ~/.ec/plg/tls/plugins.yml /root/
+ls -al /root/
