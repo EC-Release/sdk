@@ -22,9 +22,8 @@ function setPluginConfig {
     sed -i "s|{EC_TLS_RPT}|$plpt|g" ~/.ec/plg/tls/plugins.yml
     #sed -i "s|{EC_TLS_CMD}|$pcmd|g" ~/.ec/plg/tls/plugins.yml
 }
-
+echo configure vls plugin
 setPluginConfig
 #cp ~/.ec/plg/tls/plugins.yml ~/
 #workaround
 cp ~/.ec/plg/tls/plugins.yml /root/
-ls -al /root/
