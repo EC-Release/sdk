@@ -14,5 +14,7 @@ function setPluginConfig {
     #sed -i "s|{EC_VLN_CMD}|$pcmd|g" ~/.ec/plg/vln/plugins.yml
 }
 
+echo configure vln plugin
 setPluginConfig
-cp ~/.ec/plg/vln/plugins.yml ~/
+#workaround
+cp ~/.ec/plg/tls/plugins.yml /root/
