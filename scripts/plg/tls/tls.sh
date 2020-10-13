@@ -24,4 +24,6 @@ function setPluginConfig {
 }
 
 setPluginConfig
-cp ~/.ec/plg/tls/plugins.yml ~/
+#cp ~/.ec/plg/tls/plugins.yml ~/
+#workaround
+cp ~/.ec/plg/tls/plugins.yml /root/
