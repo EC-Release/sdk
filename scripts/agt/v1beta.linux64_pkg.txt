@@ -1,4 +1,3 @@
-
 mkdir -p ~/.ec ~/.ec/conf
 wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/v1beta/dist/agent_linux_sys.tar.gz
 wget -q --show-progress -O ~/.ec/conf/agent.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent.sh
