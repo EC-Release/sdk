@@ -1,0 +1,56 @@
+ec-config:
+    conf:
+      mod: oauth2
+      apt: $EC_PORT
+      dbg: true
+      tls: false
+    #group to define the authentication method of the connectivity.  
+    authGroup:
+    - validate: oidc
+      scope: ["admin.read","subs.read"]
+      #isOwner indicates if this oauth instance will use the auth keypair for the purpose of TLS 
+      isOwner: true
+      privateKey: <base64 private key>
+      publicCrt: <public cert base64 string>
+      description: "some decription for reference only"
+      oidc:
+        domain: https://helloOauthDomain.com
+        authPath: "/authorize"
+        tokenPath: "/oauth/token"
+        #used for userPath calls. <token> will be replaced by the oauth token
+        userPath: "/oauth/user"
+        #uathScopes used for the custom scopes admitted to oidc IdP
+        authScopes: ["openid","fbi","nypd"]        
+        userHttpMethod: "POST"
+        userHttpHeaders: ["Authorization:Bearer <token>","X-Custom-Header:Hello-World","Conten-Type:application/json"]
+        # available field-mapping for the local user. unmapped or fail-to-map fields will remain empty.
+        # the rest available-to-map fields can be found here https://enterprise-connect.github.io/web-ui/webui-assets/godoc/wzschema.html#UserDetail
+        userFieldIndex:
+          # required for validation
+          userId: "gessouid"
+          # when present, the oa2 will look for the scopeIndex in the setting
+          scope: "gevdsGroupIDmemberOf"
+          # mail used for cross-references
+          email: "mail"
+          # begin optional
+          fullName: ""
+          country: ""
+          dns: ""
+          locality: ""
+          organization: ""
+          organizationalUnit: ""
+          postalCode: ""
+          province: ""
+          streetAddress: ""
+          role: ""
+          env: ""
+          license: ""
+          # end optional
+        clientId: "openid client id"
+        clientSecret: "openid client secret"
+        #when not present, user will inherit the local scopes
+        scopeIndex:
+          "read:user": ["admin.read"]
+          "read:description": ["subs.read"]
+        #use scopeFieldType to indicate whether the scope field is in a array format, or a simply divider by character e.g. "read, write", "user:guest:admin", etc. For divider character, use ",", ":", " ", "$", "@" etc.
+        scopeFieldType: "array"
