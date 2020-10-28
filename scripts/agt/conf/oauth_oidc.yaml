@@ -10,15 +10,15 @@ ec-config:
       scope: ["admin.read","subs.read"]
       #isOwner indicates if this oauth instance will use the auth keypair for the purpose of TLS 
       isOwner: true
-      privateKey: <base64 private key>
-      publicCrt: <public cert base64 string>
+      privateKey: $EC_PVTKEY
+      publicCrt: $EC_PUBCRT
       description: "some decription for reference only"
       oidc:
-        domain: https://helloOauthDomain.com
-        authPath: "/authorize"
-        tokenPath: "/oauth/token"
+        domain: $EC_OIDC_DOMAIN #https://helloOauthDomain.com
+        authPath: $EC_OIDC_AUTH_PATH #"/authorize"
+        tokenPath: $EC_OIDC_TOKEN_PATH #"/oauth/token"
         #used for userPath calls. <token> will be replaced by the oauth token
-        userPath: "/oauth/user"
+        userPath: $EC_OIDC_USER_PATH #"/oauth/user"
         #uathScopes used for the custom scopes admitted to oidc IdP
         authScopes: ["openid","fbi","nypd"]        
         userHttpMethod: "POST"
@@ -46,8 +46,8 @@ ec-config:
           env: ""
           license: ""
           # end optional
-        clientId: "openid client id"
-        clientSecret: "openid client secret"
+        clientId: $EC_OIDC_CID
+        clientSecret: $EC_OIDC_CSC
         #when not present, user will inherit the local scopes
         scopeIndex:
           "read:user": ["admin.read"]
