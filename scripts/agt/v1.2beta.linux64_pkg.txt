@@ -8,6 +8,7 @@ tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/ &>/dev/null
 rm ~/.ec/agent_linux_sys.tar.gz
 mv ~/.ec/agent_linux_sys ~/.ec/agent
 export PATH=$PATH:~/.ec
-ls -al ~/.ec
+ls -al ~/.ec && echo @PATH
 ln -s ~/.ec/agent /bin/agent
+ls -al /bin
 agent $@
