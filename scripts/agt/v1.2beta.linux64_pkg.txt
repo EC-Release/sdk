@@ -9,5 +9,5 @@ rm ~/.ec/agent_linux_sys.tar.gz
 mv ~/.ec/agent_linux_sys ~/.ec/agent
 export PATH=$PATH:~/.ec
 ls -al ~/.ec
-ls -al /root/.ec
+ln -s ~/.ec/agent /bin/agent
 agent $@
