@@ -1,0 +1,3 @@
+mkdir -p ~/.ec/conf/agt
+wget -q --show-progress -O ~/.ec/conf/agt/agent1.2beta.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent1.2beta.sh
+ls -al  ~/.ec/conf/agt && chmod 755 ~/.ec/conf/agt/agent1.2beta.sh
