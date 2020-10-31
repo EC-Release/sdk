@@ -1,3 +1,12 @@
 mkdir -p ~/.ec/conf/agt
+wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/v1.2beta.reiwa.2/dist/agent/agent_linux_sys.tar.gz
+tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/ &>/dev/null
+rm ~/.ec/agent_linux_sys.tar.gz
+mv ~/.ec/agent_linux_sys ~/.ec/agent
+ls -al  ~/.ec
+ln -s ~/.ec/agent /bin/agent
+
+# tbc to add conf files
+
 wget -q --show-progress -O ~/.ec/conf/agt/agent1.2beta.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent1.2beta.sh
 ls -al  ~/.ec/conf/agt && chmod 755 ~/.ec/conf/agt/agent1.2beta.sh
