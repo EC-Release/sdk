@@ -1,11 +1,3 @@
-mkdir -p ~/.ec
-mkdir -p ~/.ec/conf
-wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/v1.2beta.reiwa.2/dist/agent/agent_linux_sys.tar.gz
-wget -q --show-progress -O ~/.ec/conf/oauth_oaep.yaml https://ec-release.github.io/sdk/scripts/agt/conf/oauth_oaep.yaml
-wget -q --show-progress -O ~/.ec/conf/oauth_oidc.yaml https://ec-release.github.io/sdk/scripts/agt/conf/oauth_oidc.yaml
-wget -q --show-progress -O ~/.ec/conf/agent1.2beta.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent1.2beta.sh
-tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/ &>/dev/null
-rm ~/.ec/agent_linux_sys.tar.gz
-mv ~/.ec/agent_linux_sys ~/.ec/agent
-export PATH=$PATH:~/.ec
+source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.2beta.linux64.txt)
+source <(wget -O - https://ec-release.github.io/sdk/scripts/oauth/v1.2beta.conf.txt)
 agent $@
