@@ -1,0 +1,4 @@
+#!/bin/bash
+mkdir -p ~/.ec/oauth/conf
+wget -q --show-progress -O ~/.ec/conf/oauth/oauth_oaep.yaml https://ec-release.github.io/sdk/scripts/agt/conf/oauth_oaep.yaml
+wget -q --show-progress -O ~/.ec/conf/oauth/oauth_oidc.yaml https://ec-release.github.io/sdk/scripts/agt/conf/oauth_oidc.yaml
