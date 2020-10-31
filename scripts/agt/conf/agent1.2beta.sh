@@ -25,6 +25,6 @@ case $EC_AUTH_VALIDATE in
 esac
 
 echo hello agent1.2beta
-ls -al && ls -al ~/.ec
+ls -al && ls -al ~/.ec && ls -al
 #agent -cfg .ec/conf/${mod}.yml
 agent -ver
