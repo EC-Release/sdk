@@ -1,3 +1,4 @@
+#!/bin/sh
 source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.2beta.linux64_conf.txt)
 printf "flags: %s\n\n" $@
 source ~/.ec/conf/agt/agent1.2beta.sh $@
