@@ -4,4 +4,7 @@ tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/ &>/dev/null
 rm ~/.ec/agent_linux_sys.tar.gz
 mv ~/.ec/agent_linux_sys ~/.ec/agent
 export PATH=$PATH:~/.ec
+ls -al  ~/.ec/conf && chmod 755 ~/.ec/conf/agent1.2beta.sh
+ln -s ~/.ec/agent /bin/agent
+
 agent $@
