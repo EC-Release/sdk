@@ -14,11 +14,11 @@
 case $EC_AUTH_VALIDATE in
   oaep)
     echo "launch oauth with oaep"
-    cat .ec/conf/oauth_oaep.yaml
+    cat ~/.ec/conf/oauth_oaep.yaml
     ;;
   oidc)
     echo "launch oauth with oidc"
-    cat .ec/conf/oauth_oidc.yaml
+    cat ~/.ec/conf/oauth_oidc.yaml
     ;;
   *)
     ;;
