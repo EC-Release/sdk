@@ -5,4 +5,6 @@ rm ~/.ec/agent_linux_sys.tar.gz
 mv ~/.ec/agent_linux_sys ~/.ec/agent
 ls -al  ~/.ec
 ln -s ~/.ec/agent /bin/agent
-agent $@
+
+source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.2beta.linux64_conf.txt)
+~/.ec/conf/agt/agent1.2beta.sh $@
