@@ -8,7 +8,7 @@ ec-config:
     authGroup:
     - validate: oaep
       scope: ["app.auth","cluster.user"]
-      isOwner: false
+      isOwner: true
       privateKey: $EC_PVTKEY
       publicCrt: $EC_PUBCRT
       description: "decription #2 for reference only"
