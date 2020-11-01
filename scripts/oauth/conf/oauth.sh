@@ -12,7 +12,7 @@
 #
 
 # PORT indicating a custom environment
-if [[ -z "${PORT}" ]]; then
+if [[ ! -z "${PORT}" ]]; then
   EC_PORT=$PORT
 fi
 
