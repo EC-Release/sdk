@@ -14,14 +14,16 @@
 case $EC_AUTH_VALIDATE in
   oaep)
     echo "launch oauth with oaep"
-    cat ~/.ec/oauth/conf/oauth_oaep.yaml
+    cat ./oauth_oaep.yaml
+    agent -cfg ./oauth_oaep.yaml
     ;;
   oidc)
     echo "launch oauth with oidc"
-    cat ~/.ec/oauth/conf/oauth_oidc.yaml
+    #cat ~/.ec/oauth/conf/oauth_oidc.yaml
+    cat ./oauth_oidc.yaml
+    agent -cfg ./oauth_oidc.yaml
     ;;
   *)
+    agent $@
     ;;
 esac
-printenv
-agent $@
