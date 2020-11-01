@@ -16,7 +16,6 @@ if [[ ! -z "${PORT}" ]]; then
   EC_PORT=:$PORT
 fi
 
-printenv
 cd ~/.ec/oauth/
 case $EC_AUTH_VALIDATE in
   oaep)
