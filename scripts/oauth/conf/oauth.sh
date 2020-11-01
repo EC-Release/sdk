@@ -23,5 +23,5 @@ case $EC_AUTH_VALIDATE in
   *)
     ;;
 esac
-
+printenv
 agent $@
