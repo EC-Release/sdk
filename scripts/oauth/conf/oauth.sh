@@ -24,7 +24,6 @@ case $EC_AUTH_VALIDATE in
     ;;
   oidc)
     echo "launch oauth with oidc"
-    #cat ~/.ec/oauth/conf/oauth_oidc.yaml
     cat ./.ec/oauth/conf/oauth_oidc.yaml
     agent -cfg ./.ec/oauth/conf/oauth_oidc.yaml
     ;;
