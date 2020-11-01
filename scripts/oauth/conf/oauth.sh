@@ -13,8 +13,7 @@
 
 # PORT indicating a custom environment
 if [[ ! -z "${PORT}" ]]; then
-  EC_PORT=$PORT
-  echo $EC_PORT
+  EC_PORT=:$PORT
 fi
 
 case $EC_AUTH_VALIDATE in
