@@ -11,6 +11,11 @@
 #  author: apolo.yasuda@ge.com
 #
 
+# PORT indicating a custom environment
+if [[ -z "${PORT}" ]]; then
+  EC_PORT=$PORT
+fi
+
 case $EC_AUTH_VALIDATE in
   oaep)
     echo "launch oauth with oaep"
