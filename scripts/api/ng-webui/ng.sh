@@ -5,4 +5,4 @@ fi
 
 source <(wget -O - https://ec-release.github.io/sdk/scripts/api/ng-webui/ng_conf.sh)
 
-agent -cfg ~/.ec/api/conf/api.yaml
+agent -cfg .ec/api/conf/api.yaml
