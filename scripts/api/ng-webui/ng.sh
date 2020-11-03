@@ -5,9 +5,4 @@ fi
 
 source <(wget -O - https://ec-release.github.io/sdk/scripts/api/ng-webui/ng_conf.sh)
 
-if [ "$#" -ne 1 ]; then
-    agent -cfg ~/.ec/api/conf/api.yaml
-    exit 0
-fi
-
-agent $@
+agent -cfg ~/.ec/api/conf/api.yaml
