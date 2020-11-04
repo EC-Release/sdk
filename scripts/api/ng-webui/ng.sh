@@ -5,10 +5,12 @@ fi
 
 source <(wget -O - https://ec-release.github.io/sdk/scripts/api/ng-webui/ng_conf.sh)
 
-printf "\n ****** CA_PPRS: %s\n\n", $CA_PPRS
 
 # refresh the hash
 export EC_PPS=$CA_PPRS
+
+printf "\n ****** EC_PPS: %s\n\n", $EC_PPS
+
 export EC_PPS=$(agent -hsh)
 
 
