@@ -4,7 +4,7 @@ ec-config:
     app: $EC_API_APP_NAME
     apt: $EC_PORT
     dbg: true
-    #tls: false
+    tls: false
     oa2: $EC_API_OA2
     cid: $EC_API_DEV_ID
   #available in oauth2, api, x:gateway, and watcher for TLS purpose. ceredential can be used in both cred, and authGroup segments  
