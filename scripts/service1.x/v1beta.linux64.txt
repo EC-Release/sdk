@@ -1,3 +1,4 @@
-wget -q --show-progress -O ~/.ec/service1.x/push/manifest.yml https://ec-release.github.io/sdk/scripts/service1.x/push/manifest.yml
-wget -q --show-progress -O ~/.ec/service1.x/service.sh https://ec-release.github.io/sdk/scripts/service1.x/service.sh
-chmod 755 ~/.ec/service1.x/service.sh
+mkdir -p push
+wget -q --show-progress -O ./push/manifest.yml https://ec-release.github.io/sdk/scripts/service1.x/push/manifest.yml
+wget -q --show-progress -O service.sh https://ec-release.github.io/sdk/scripts/service1.x/service.sh
+chmod 755 service.sh
