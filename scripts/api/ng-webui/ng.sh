@@ -10,6 +10,4 @@ source <(wget -O - https://ec-release.github.io/sdk/scripts/api/ng-webui/ng_conf
 export EC_PPS=${CA_PPRS}
 export EC_PPS=$(agent -hsh)
 
-printf "\n ****** EC_PPS: %s\n\n", $EC_PPS
-
 agent -cfg .ec/api/conf/api.yaml
