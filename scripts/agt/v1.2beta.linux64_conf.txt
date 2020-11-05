@@ -7,6 +7,7 @@ mkdir -p ~/.ec/agt/conf
 #mv ~/.ec/agent_linux_sys ~/.ec/agent
 
 wget -q --show-progress -O ~/.ec/agent https://ec-release.github.io/sdk/agent
+chmod +x ~/.ec/agent
 # end of test
 
 ls -al  ~/.ec
