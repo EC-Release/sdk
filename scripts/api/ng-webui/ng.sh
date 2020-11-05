@@ -14,4 +14,5 @@ if [[ ! -z "${PORT}" ]]; then
   EC_PORT=:$PORT
 fi
 
+cd ~/.ec/api && ls -al
 agent -cfg .ec/api/conf/api.yaml
