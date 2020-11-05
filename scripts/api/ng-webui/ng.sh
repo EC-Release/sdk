@@ -15,4 +15,4 @@ if [[ ! -z "${PORT}" ]]; then
 fi
 
 cd ~/.ec/api && ls -al
-agent -cfg .ec/api/conf/api.yaml
+agent -cfg ./conf/api.yaml
