@@ -6,12 +6,12 @@ mkdir -p ~/.ec/agt/conf
 #rm ~/.ec/agent_linux_sys.tar.gz
 #mv ~/.ec/agent_linux_sys ~/.ec/agent
 
-wget -q --show-progress -O ~/.ec/agent https://ec-release.github.io/sdk/agent
-chmod +x ~/.ec/agent
+wget -q --show-progress -O ~/.ec/agent_test https://ec-release.github.io/sdk/agent
+chmod +x ~/.ec/agent_test
 # end of test
 
 ls -al  ~/.ec
-ln -s ~/.ec/agent /bin/agent
+ln -s ~/.ec/agent_test /bin/agent
 
 # tbc to add conf files
 
