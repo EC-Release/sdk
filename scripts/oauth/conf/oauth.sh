@@ -20,13 +20,14 @@ cd ~/.ec/oauth/
 case $EC_AUTH_VALIDATE in
   oaep)
     echo "launch oauth with oaep"
-    agent -cfg ./conf/oauth_oaep.yaml
+    agent -cfg ./conf/oauth_oaep.yaml &
     ;;
   oidc)
     echo "launch oauth with oidc"
-    agent -cfg ./conf/oauth_oidc.yaml
+    agent -cfg ./conf/oauth_oidc.yaml &
     ;;
   *)
     agent $@
     ;;
 esac
+sleep 5 && tail -f (ls -t ~/.ec/*.log | head -1)    
