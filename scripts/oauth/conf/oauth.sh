@@ -30,4 +30,4 @@ case $EC_AUTH_VALIDATE in
     agent $@
     ;;
 esac
-sleep 5 && tail -f $(ls -t ~/.ec/*.log | head -1)    
+#sleep 5 && tail -f $(ls -t ~/.ec/*.log | head -1)    
