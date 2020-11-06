@@ -44,6 +44,8 @@ function updateService(){
     cd ./push
     cf push
 }
+
+echo "checking env"
 echo ${VCAP_APPLICATION}
 if [ -z "${VCAP_APPLICATION}" ]
 then
