@@ -52,5 +52,6 @@ ec-config:
         scopeIndex:
           "read:user": ["admin.read","subs.read"]
           "user:email": ["admin.read"]
+          "read:org": ["admin.read"]
         #use scopeFieldType to indicate whether the scope field is in a array format, or a simply divider by character e.g. "read, write", "user:guest:admin", etc. For divider character, use ",", ":", " ", "$", "@" etc.
         scopeFieldType: "array"
