@@ -1,3 +1,4 @@
+#!/bin/bash
 mkdir -p push
 wget -q --show-progress -O ./push/manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty_test_branch/scripts/service1.x/push/manifest.yml
 wget -q --show-progress -O service.sh https://raw.githubusercontent.com/EC-Release/sdk/disty_test_branch/scripts/service1.x/service.sh
