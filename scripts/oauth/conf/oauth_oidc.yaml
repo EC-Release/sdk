@@ -27,13 +27,13 @@ ec-config:
         # the rest available-to-map fields can be found here https://enterprise-connect.github.io/web-ui/webui-assets/godoc/wzschema.html#UserDetail
         userFieldIndex:
           # required for validation
-          userId: "gessouid"
+          userId: "login"
           # when present, the oa2 will look for the scopeIndex in the setting
-          scope: "gevdsGroupIDmemberOf"
+          scope: ""
           # mail used for cross-references
-          email: "login"
+          email: ""
           # begin optional
-          fullName: "login"
+          fullName: ""
           country: ""
           dns: ""
           locality: ""
