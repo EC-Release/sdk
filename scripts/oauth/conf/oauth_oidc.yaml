@@ -37,7 +37,7 @@ ec-config:
           country: ""
           dns: ""
           locality: ""
-          organization: ""
+          organization: "organizations_url:login"
           organizationalUnit: ""
           postalCode: ""
           province: ""
