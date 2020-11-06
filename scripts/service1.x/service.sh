@@ -44,8 +44,8 @@ function updateService(){
     cd ./push
     cf push
 }
-
-if [ -z "$VCAP_APPLICATION" ]
+echo ${VCAP_APPLICATION}
+if [ -z "${VCAP_APPLICATION}" ]
 then
     wget -O run.sh https://raw.githubusercontent.com/EC-Release/sdk/disty_test_branch/scripts/service1.x/run.sh
     chmod 755 run.sh
