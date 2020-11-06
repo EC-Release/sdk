@@ -49,7 +49,9 @@ login
 echo "Login successful"
 getEnvs
 echo "Fetched ENVs"
+cat ./push/manifest.yml
 setEnvs
+cat ./push/manifest.yml
 echo "Manifest file updated"
 updateService
 echo "Service updated"
