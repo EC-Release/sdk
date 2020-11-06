@@ -45,19 +45,20 @@ function updateService(){
     cf push
 }
 
-if [ -z "$VCAP_APPLICATION" ] {
+if [ -z "$VCAP_APPLICATION" ]
+then
     wget -O run.sh https://raw.githubusercontent.com/EC-Release/sdk/disty_test_branch/scripts/service1.x/run.sh
     chmod 755 run.sh
     ./run.sh
-}
-
-login
-echo "Login successful"
-getEnvs
-echo "Fetched ENVs"
-cat ./push/manifest.yml
-setEnvs
-cat ./push/manifest.yml
-echo "Manifest file updated"
-updateService
-echo "Service updated"
+else
+    login
+    echo "Login successful"
+    getEnvs
+    echo "Fetched ENVs"
+    cat ./push/manifest.yml
+    setEnvs
+    cat ./push/manifest.yml
+    echo "Manifest file updated"
+    updateService
+    echo "Service updated"
+fi
