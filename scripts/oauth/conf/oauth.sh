@@ -24,6 +24,9 @@ case $EC_AUTH_VALIDATE in
     ;;
   oidc)
     echo "launch oauth with oidc"
+    # refresh the hash
+    export EC_PPS=${CA_PPRS}
+    export EC_PPS=$(agent -hsh)
     agent -cfg ./conf/oauth_oidc.yaml
     ;;
   *)
