@@ -47,8 +47,7 @@ function updateService(){
 
 echo "checking env"
 echo ${VCAP_APPLICATION}
-if [ -z "${VCAP_APPLICATION}" ]
-then
+if [[ ! -z "${VCAP_APPLICATION}" ]]; then
     wget -O run.sh https://raw.githubusercontent.com/EC-Release/sdk/disty_test_branch/scripts/service1.x/run.sh
     chmod 755 run.sh
     ./run.sh
