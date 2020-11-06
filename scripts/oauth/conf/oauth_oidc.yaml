@@ -31,9 +31,9 @@ ec-config:
           # when present, the oa2 will look for the scopeIndex in the setting
           scope: "gevdsGroupIDmemberOf"
           # mail used for cross-references
-          email: "mail"
+          email: "login"
           # begin optional
-          fullName: ""
+          fullName: "login"
           country: ""
           dns: ""
           locality: ""
