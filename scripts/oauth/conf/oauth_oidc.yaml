@@ -20,7 +20,7 @@ ec-config:
         #used for userPath calls. <token> will be replaced by the oauth token
         userPath: $EC_OIDC_USER_PATH #"/oauth/user"
         #uathScopes used for the custom scopes admitted to oidc IdP
-        authScopes: ["openid","fbi","nypd"]        
+        authScopes: ["read:user","user:email","read:org"]        
         userHttpMethod: "GET"
         userHttpHeaders: ["Authorization: token <token>","X-Custom-Header:Hello-World","Conten-Type:application/json"]
         # available field-mapping for the local user. unmapped or fail-to-map fields will remain empty.
