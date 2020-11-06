@@ -3,7 +3,7 @@ applications:
  - name: {{ZONE}}
    host: {{ZONE}}
 docker:
-    image: docker.pkg.github.com/ec-release/oci/service:v1beta
+    image: enterpriseconnect/service:v1beta
 env:
   ADMIN_PWD: {{ADMIN_PWD}}
   ADMIN_TKN: {{ADMIN_TKN}}
