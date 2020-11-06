@@ -29,9 +29,9 @@ ec-config:
           # required for validation
           userId: "login"
           # when present, the oa2 will look for the scopeIndex in the setting
-          scope: ""
+          scope: "scope"
           # mail used for cross-references
-          email: ""
+          email: "email"
           # begin optional
           fullName: ""
           country: ""
