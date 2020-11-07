@@ -13,7 +13,7 @@ mv ~/.ec/agent_linux_sys ~/.ec/agt/bin/$AGENT_REV
 # end of test
 
 ls -al  ~/.ec
-ln -s ~/.ec/agt/bin/$AGENT_REV /bin/agent
+ln -s /bin/agent ~/.ec/agt/bin/$AGENT_REV
 ls -al /bin/agent
 agent -ver
 # tbc to add conf files
