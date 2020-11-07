@@ -5,8 +5,8 @@ wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Re
 tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/ &>/dev/null
 rm ~/.ec/agent_linux_sys.tar.gz
 ls -la  ~/.ec
-mv ~/.ec/agent_linux_sys ~/.ec/agt/bin/$AGENT_REV
-ls -la ~/.ec/agt/bin/
+mv ~/.ec/agent_linux_sys ~/.ec/agt/bin/$AGENT_REV/agent
+ls -la ~/.ec/agt/bin/$AGENT_REV
 
 # begin of test
 #wget -q --show-progress -O ~/.ec/agent_test https://ec-release.github.io/sdk/agent
