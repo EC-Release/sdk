@@ -1,13 +1,12 @@
 export AGENT_REV=v1.2beta.reiwa.2
-mkdir -p ~/.ec/agt/conf ~/.ec/agt/bin/$AGENT_REV
+mkdir -p ~/.ec/agt/conf ~/.ec/agt/bin
 
-wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/$AGENT_REV/dist/agent/agent_linux_sys.tar.gz
-tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/ &>/dev/null
+wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/${AGENT_REV}/dist/agent/agent_linux_sys.tar.gz
+tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/agt/bin/${AGENT_REV}
 rm ~/.ec/agent_linux_sys.tar.gz
-ls -la  ~/.ec
-~/.ec/agent_linux_sys -ver
-mv ~/.ec/agent_linux_sys ~/.ec/agt/bin/$AGENT_REV/agent
-ls -la ~/.ec/agt/bin/$AGENT_REV
+ls -la ~/.ec/agt/bin
+ln -s ~/.ec/agt/bin/${AGENT_REV} /bin/agent
+agent -ver
 
 # begin of test
 #wget -q --show-progress -O ~/.ec/agent_test https://ec-release.github.io/sdk/agent
@@ -15,10 +14,6 @@ ls -la ~/.ec/agt/bin/$AGENT_REV
 #ln -s ~/.ec/agent_test /bin/agent
 # end of test
 
-ls -al  ~/.ec
-ln -s /bin/agent ~/.ec/agt/bin/$AGENT_REV
-ls -al /bin/agent
-agent -ver
 # tbc to add conf files
 
 wget -q --show-progress -O ~/.ec/agt/conf/agent1.2beta.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent1.2beta.sh
