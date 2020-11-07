@@ -15,6 +15,7 @@ mv ~/.ec/agent_linux_sys ~/.ec/agt/bin/v1.2beta.reiwa.2
 ls -al  ~/.ec
 ln -s ~/.ec/agt/bin/v1.2beta.reiwa.2 /bin/agent
 chmod +x /bin/agent
+ls -al /bin/agent
 agent -ver
 # tbc to add conf files
 
