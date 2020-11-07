@@ -4,7 +4,7 @@ wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Re
 tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/ &>/dev/null
 rm ~/.ec/agent_linux_sys.tar.gz
 mv ~/.ec/agent_linux_sys ~/.ec/agt/bin/v1.2beta.reiwa.2
-chmod +x ~/.ec/agt/bin/v1.2beta.reiwa.2
+#chmod +x ~/.ec/agt/bin/v1.2beta.reiwa.2
 
 # begin of test
 #wget -q --show-progress -O ~/.ec/agent_test https://ec-release.github.io/sdk/agent
@@ -14,7 +14,8 @@ chmod +x ~/.ec/agt/bin/v1.2beta.reiwa.2
 
 ls -al  ~/.ec
 ln -s ~/.ec/agt/bin/v1.2beta.reiwa.2 /bin/agent
-
+chmod +x /bin/agent
+agent -ver
 # tbc to add conf files
 
 wget -q --show-progress -O ~/.ec/agt/conf/agent1.2beta.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent1.2beta.sh
