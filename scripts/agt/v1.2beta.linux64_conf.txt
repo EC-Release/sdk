@@ -18,4 +18,4 @@ ln -s ~/.ec/agt/bin/v1.2beta.reiwa.2 /bin/agent
 # tbc to add conf files
 
 wget -q --show-progress -O ~/.ec/agt/conf/agent1.2beta.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent1.2beta.sh
-ls -al  ~/.ec/agt/conf && chmod 755 ~/.ec/agt/conf/agent1.2beta.sh
+ls -al  ~/.ec/agt/bin ~/.ec/agt/conf && chmod 755 ~/.ec/agt/conf/agent1.2beta.sh
