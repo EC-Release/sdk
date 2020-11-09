@@ -45,6 +45,9 @@ function updateService(){
     cf push
 }
 
+#temp. pls remove this line in release
+sleep 10
+
 echo "checking env"
 echo ${VCAP_APPLICATION}
 if [[ ! -z "${VCAP_APPLICATION}" ]]; then
