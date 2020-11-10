@@ -5,13 +5,14 @@ rm temp.tar.gz
 cd temp
 
 #auth api read certs directly
-#export EC_PUB_KEY="$(cat service.cer)"
-#export EC_PRVT_KEY="$(cat service.key)"
+export EC_PUB_KEY="$(cat service.cer)"
+export EC_PRVT_KEY="$(cat service.key)"
 
 # begin test
-cat service.cer
-cat service.key
-echo $EC_PRVT_PWD
+source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.2beta.linux64.txt) 
+export EC_PPS=${EC_PRVT_ADM}
+export EC_PPS=$(agent -hsh)
+agent -pvd -pvk $(cat service.key|base64 -w0)
 # end test
 
 ls -la $(pwd)
