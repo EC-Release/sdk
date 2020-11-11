@@ -8,6 +8,8 @@ ec-config:
     authGroup:
     - validate: oaep
       scope: ["app.auth","cluster.user"]
+      #failURL redirects any failing authentications to.
+      failURL: $EC_OAUTH_FAIL_URL
       isOwner: true
       privateKey: $EC_PVTKEY
       publicCrt: $EC_PUBCRT
