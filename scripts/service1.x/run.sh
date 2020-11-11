@@ -13,7 +13,10 @@ printf "begin test keypair"
 source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.2beta.linux64.txt) 
 export EC_PPS=${EC_PRVT_ADM}
 export EC_PPS=$(agent -hsh)
+printf "decrypt the RSA pkey"
 agent -pvd -pvk $(cat service.key|base64 -w0)
+printf "validate the x509 cert"
+agent -vfy -pbk $(cat service.cer|base64 -w0)
 printf "end test keypair"
 
 printf "begin auth-api replacement"
