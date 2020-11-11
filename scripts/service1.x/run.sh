@@ -1,4 +1,6 @@
 #!/bin/bash
+
+npm install
 ls -al
 tar -zxf ./temp.tar.gz
 rm temp.tar.gz
