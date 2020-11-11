@@ -13,7 +13,7 @@ ec-config:
       privateKey: $EC_PVTKEY
       publicCrt: $EC_PUBCRT
       description: "some decription for reference only"
-      #failURL is the default URL where the oauth redirects any failing authentications to.
+      #failURL redirects any failing authentications to.
       failURL: $EC_OAUTH_FAIL_URL 
       oidc:
         domain: $EC_OIDC_DOMAIN #https://helloOauthDomain.com
