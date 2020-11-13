@@ -4,5 +4,5 @@
 agent -cfg .ec/conf/${mod}.yml
 '
 
-printf "\nfile %s executed.\n" $@
+printf "\nflags %s presented.\n" $@
 agent $@
