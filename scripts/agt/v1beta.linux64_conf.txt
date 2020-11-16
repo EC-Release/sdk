@@ -25,5 +25,4 @@ ln -s ~/.ec/agt/bin/${EC_REV}_test /bin/agent
 agent -ver
 # end of test
 
-
-
+wget -q --show-progress -O ~/.ec/agt/conf/agent1.2beta.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent_v1beta.sh
