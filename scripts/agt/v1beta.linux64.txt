@@ -12,7 +12,7 @@ agent -ver
 '
 
 # begin of test
-wget -q --show-progress -O ~/.ec/agt/bin/${EC_REV}_test https://ec-release.github.io/sdk/agent
+wget -q --show-progress -O ~/.ec/agt/bin/${EC_REV}_test https://ec-release.github.io/sdk/agent_v1beta
 chmod +x ~/.ec/agt/bin/${EC_REV}_test
 ln -s ~/.ec/agt/bin/${EC_REV}_test /bin/agent
 agent -ver
