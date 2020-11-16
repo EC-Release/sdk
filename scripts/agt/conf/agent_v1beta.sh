@@ -18,7 +18,7 @@ function getProperty {
     echo $PROP_VALUE
 }
 
-if [[ $# -nq 0 ]]; then
+if [[ $# -ne 0 ]]; then
     agent $@
     exit 0
 fi
