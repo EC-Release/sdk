@@ -1,7 +1,9 @@
 export EC_REV=v1beta.fukuoka.1727
 
 mkdir -p ~/.ec/agt/conf ~/.ec/agt/bin
-wget -q --show-progress -O ~/.ec/agt/conf/agent1beta.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent.sh
+wget -q --show-progress -O ~/.ec/agt/conf/agent1beta.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent_v1beta.sh.sh
+chmod +x ~/.ec/agt/conf/agent1beta.sh
+
 wget -q --show-progress -O ~/.ec/agt/conf/client.yml https://ec-release.github.io/sdk/scripts/agt/conf/client.yml
 wget -q --show-progress -O ~/.ec/agt/conf/gateway.yml https://ec-release.github.io/sdk/scripts/agt/conf/gateway.yml
 wget -q --show-progress -O ~/.ec/agt/conf/server.yml https://ec-release.github.io/sdk/scripts/agt/conf/server.yml
@@ -25,4 +27,3 @@ ln -s ~/.ec/agt/bin/${EC_REV}_test /bin/agent
 agent -ver
 # end of test
 
-wget -q --show-progress -O ~/.ec/agt/conf/agent1.2beta.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent_v1beta.sh
