@@ -1,4 +1,4 @@
-export EC_REV=v1beta.fukuoka.1727
+export AGENT_REV=v1beta.fukuoka.1727
 
 mkdir -p ~/.ec/agt/conf ~/.ec/agt/bin
 wget -q --show-progress -O ~/.ec/agt/conf/agent_v1beta.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent_v1beta.sh
@@ -21,8 +21,8 @@ agent -ver
 # begin of test
 : '
 wget -q --show-progress -O ~/.ec/agt/bin/${EC_REV}_test https://ec-release.github.io/sdk/agent_v1beta
-chmod +x ~/.ec/agt/bin/${EC_REV}_test
-ln -s ~/.ec/agt/bin/${EC_REV}_test /bin/agent
+chmod +x ~/.ec/agt/bin/${AGENT_REV}_test
+ln -s ~/.ec/agt/bin/${AGENT_REV}_test /bin/agent
 agent -ver
 '
 # end of test
