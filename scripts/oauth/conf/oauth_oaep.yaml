@@ -8,7 +8,17 @@ ec-config:
     authGroup:
     - validate: oaep
       scope: ["app.auth","cluster.user"]
+      #failURL redirects any failing authentications to.
+      failURL: $EC_OAUTH_FAIL_URL
       isOwner: true
       privateKey: $EC_PVTKEY
       publicCrt: $EC_PUBCRT
       description: "decription #2 for reference only"
+    - validate: oaep
+      scope: ["app.auth","cluster.user"]
+      #failURL redirects any failing authentications to.
+      failURL: $EC_OAUTH_FAIL_URL
+      isOwner: false
+      privateKey: $EC_PVTKEY_LIBRA
+      publicCrt: $EC_PUBCRT_LIBRA
+      description: "keypair for LIBRA developer"

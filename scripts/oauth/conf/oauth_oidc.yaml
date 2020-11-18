@@ -13,12 +13,15 @@ ec-config:
       privateKey: $EC_PVTKEY
       publicCrt: $EC_PUBCRT
       description: "some decription for reference only"
+      #failURL redirects any failing authentications to.
+      failURL: $EC_OAUTH_FAIL_URL 
       oidc:
         domain: $EC_OIDC_DOMAIN #https://helloOauthDomain.com
         authPath: $EC_OIDC_AUTH_PATH #"/authorize"
         tokenPath: $EC_OIDC_TOKEN_PATH #"/oauth/token"
         #used for userPath calls. <token> will be replaced by the oauth token
-        userPath: $EC_OIDC_USER_PATH #"/oauth/user"
+        #"http://url/to/oauth/user/api"
+        userURL: $EC_OIDC_USER_PATH
         #uathScopes used for the custom scopes admitted to oidc IdP
         authScopes: ["read:user","user:email","read:org"]        
         userHttpMethod: "GET"
