@@ -1,7 +1,3 @@
-mkdir -p ~/.ec
-wget -q --show-progress -O ~/.ec/ecagent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/v1/dist/ecagent_linux_sys.tar.gz
-tar xvf ~/.ec/ecagent_linux_sys.tar.gz -C ~/.ec/ &>/dev/null
-rm ~/.ec/ecagent_linux_sys.tar.gz
-mv ~/.ec/ecagent_linux_sys ~/.ec/agent
-export PATH=$PATH:~/.ec
-agent $@
+#!/bin/bash
+source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.linux64_conf.txt)
+source ~/.ec/agt/conf/agent_v1.sh $@
