@@ -1,12 +1,14 @@
 #!/bin/bash
 
 ls -al
-tar -zxf ./temp.tar.gz
-rm temp.tar.gz
-cd temp
+# tar -zxf ./temp.tar.gz
+# rm temp.tar.gz
+# cd temp
 
 export EC_PUB_KEY="$(cat service.cer)"
 export EC_PRVT_KEY="$(cat service.key)"
+export TOKEN_NAME="$(cat token_name.txt)"
+export ACCESS_TOKEN"$(cat access_token.txt)"
 
 
 printf "begin test keypair"
