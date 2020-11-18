@@ -13,10 +13,24 @@ wget -q --show-progress -O ~/.ec/agt/conf/server.yml https://ec-release.github.i
 wget -q --show-progress -O ~/.ec/agt/conf/gw:client.yml https://ec-release.github.io/sdk/scripts/agt/conf/gw:client.yml
 wget -q --show-progress -O ~/.ec/agt/conf/gw:server.yml https://ec-release.github.io/sdk/scripts/agt/conf/gw:server.yml
 
-wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/${AGENT_REV}/dist/agent_linux_sys.tar.gz
+{
+  wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/${AGENT_REV}/dist/agent_linux_sys.tar.gz
+} || {
+  printf "\ndownloading link appears broken. continue with the alternative\n"
+  rm ~/.ec/agent_linux_sys.tar.gz
+  wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/${AGENT_REV}/dist/ecagent_linux_sys.tar.gz
+}
+
 ls -la ~/.ec
 tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/agt/bin/ && rm ~/.ec/agent_linux_sys.tar.gz
-mv ~/.ec/agt/bin/agent_linux_sys ~/.ec/agt/bin/${AGENT_REV}
+
+{
+  mv ~/.ec/agt/bin/agent_linux_sys ~/.ec/agt/bin/${AGENT_REV}
+} || {
+  printf "\nfile not found. continue with the alternative\n"
+  mv ~/.ec/agt/bin/ecagent_linux_sys ~/.ec/agt/bin/${AGENT_REV}
+}
+
 chmod +x ~/.ec/agt/bin/${AGENT_REV}
 ls -la ~/.ec/agt/bin
 ln -s ~/.ec/agt/bin/${AGENT_REV} /bin/agent
