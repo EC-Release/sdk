@@ -19,6 +19,13 @@ printf "validate the x509 cert"
 agent -vfy -pbk $(cat service.cer|base64 -w0)
 printf "end test keypair"
 
+printf "Downloading service code"
+git clone https://${TOKEN_NAME}:${ACCESS_TOKEN}@gitlab.com/digital-fo/connectivity/enterprise-connect/predix/ec-px-service.git
+cd ec-px-service && git clone https://${TOKEN_NAME}:${ACCESS_TOKEN}@gitlab.com/digital-fo/connectivity/enterprise-connect/predix/ec-px-service-assets.git assets
+git clone https://${TOKEN_NAME}:${ACCESS_TOKEN}@gitlab.com/digital-fo/connectivity/enterprise-connect/predix/ec-px-service-webui.git ec-web-ui && cd ..
+rm -Rf ./ec-px-service/.git; rm ./ec-px-service/.gitmodules; rm -Rf ./ec-px-service/assets/.git; rm -Rf ./ec-px-service/ec-web-ui/.git 
+printf "Service code downloaded successfully"
+
 printf "begin auth-api replacement"
 wget -q --show-progress https://github.com/EC-Release/auth-api/raw/v1beta/dist/api/api_linux.tar.gz
 tar -xzf api_linux.tar.gz
