@@ -16,6 +16,7 @@ wget -q --show-progress -O ~/.ec/agt/conf/gw:server.yml https://ec-release.githu
 {
   wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/${AGENT_REV}/dist/agent_linux_sys.tar.gz
 } || {
+  rm ~/.ec/agent_linux_sys.tar.gz
   wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/${AGENT_REV}/dist/ecagent_linux_sys.tar.gz
 }
 
