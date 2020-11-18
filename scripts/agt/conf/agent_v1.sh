@@ -18,6 +18,11 @@ function getProperty {
     echo $PROP_VALUE
 }
 
+if [[ $# -ne 0 ]]; then
+    agent $@
+    exit 0
+fi
+
 #converting the env vars to simple params
 mod=$(getProperty "conf.mod")
 aid=$(getProperty "conf.aid")
