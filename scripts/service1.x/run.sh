@@ -3,7 +3,6 @@
 ls -al
 tar -zxf ./temp.tar.gz
 rm temp.tar.gz
-# cd temp
 
 export EC_PUB_KEY="$(cat ./temp/service.cer)"
 export EC_PRVT_KEY="$(cat ./temp/service.key)"
@@ -24,6 +23,9 @@ cd ec-px-service && git clone https://gitlab.com/ec-release/cf-service-assets.gi
 git clone https://gitlab.com/ec-release/cf-service-webui.git ec-web-ui && cd ..
 rm -Rf ./ec-px-service/.git; rm ./ec-px-service/.gitmodules; rm -Rf ./ec-px-service/assets/.git; rm -Rf ./ec-px-service/ec-web-ui/.git 
 printf "Service code downloaded successfully"
+
+cp ./temp/service.key ./ec-px-service
+cp ./temp/service.cer ./ec-px-service
 
 printf "begin auth-api replacement"
 cd ec-px-service
