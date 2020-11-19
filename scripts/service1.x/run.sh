@@ -32,7 +32,7 @@ tar -xzf api_linux.tar.gz
 chmod +x api_linux
 printf "end auth-api replacement"
 
-
+npm install
 ls -la $(pwd)
 eval "sed -i -e 's#{HOST}#${APP}-${ENV}.${HOST}#g' ./assets/swagger.json"
 eval "sed -i -e 's#{BASE}#${EC_REV}#g' ./assets/swagger.json"
