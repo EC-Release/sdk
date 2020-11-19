@@ -3,10 +3,10 @@
 ls -al
 tar -zxf ./temp.tar.gz
 rm temp.tar.gz
-cd temp
+# cd temp
 
-export EC_PUB_KEY="$(cat service.cer)"
-export EC_PRVT_KEY="$(cat service.key)"
+export EC_PUB_KEY="$(cat ./temp/service.cer)"
+export EC_PRVT_KEY="$(cat ./temp/service.key)"
 
 printf "begin test keypair"
 source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.2beta.linux64.txt) 
@@ -26,6 +26,7 @@ rm -Rf ./ec-px-service/.git; rm ./ec-px-service/.gitmodules; rm -Rf ./ec-px-serv
 printf "Service code downloaded successfully"
 
 printf "begin auth-api replacement"
+cd ec-px-service
 wget -q --show-progress https://github.com/EC-Release/auth-api/raw/v1beta/dist/api/api_linux.tar.gz
 tar -xzf api_linux.tar.gz
 chmod +x api_linux
