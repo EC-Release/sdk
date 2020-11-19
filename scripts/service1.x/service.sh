@@ -43,7 +43,6 @@ function updateService(){
     cf delete ${ZONE} -f 
     cd ./push
     cf push
-    rm values.txt
 }
 
 #temp. pls remove this line in release
