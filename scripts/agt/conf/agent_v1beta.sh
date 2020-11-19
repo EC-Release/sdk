@@ -74,45 +74,45 @@ if [[ $plg == *true* || $plg == true ]] && [[ $mod == "server" || $mod == "gw:se
 elif [[ $plg == *true* || $plg == true ]] && [[ $mod == "client" || $mod == "gw:client" ]]; then
   case $ptp in
     vln)
-      sed -i "s|{EC_VLN}|true|g" ~/.ec/conf/${mod}.yml
-      sed -i "s|{EC_RPT}|$rpt|g" ~/.ec/conf/${mod}.yml
+      sed -i "s|{EC_VLN}|true|g" ~/.ec/agt/conf/${mod}.yml
+      sed -i "s|{EC_RPT}|$rpt|g" ~/.ec/agt/conf/${mod}.yml
 
       plg=true
       echo "deploying vln plugin"
       source ~/.ec/plg/vln/vln.sh
       ;;
     *)
-      sed -i "s|{EC_VLN}|false|g" ~/.ec/conf/${mod}.yml
-      sed -i "s|{EC_RPT}|0|g" ~/.ec/conf/${mod}.yml
+      sed -i "s|{EC_VLN}|false|g" ~/.ec/agt/conf/${mod}.yml
+      sed -i "s|{EC_RPT}|0|g" ~/.ec/agt/conf/${mod}.yml
       echo "no plugin type specified"
       ;;
   esac
 else
   plg=false    
-  sed -i "s|{EC_VLN}|false|g" ~/.ec/conf/${mod}.yml
+  sed -i "s|{EC_VLN}|false|g" ~/.ec/agt/conf/${mod}.yml
 fi
 
-sed -i "s|{EC_AID}|$aid|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_TID}|$tid|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_CID}|$cid|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_CSC}|$csc|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_OA2}|$oa2|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_DUR}|$dur|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_DBG}|$dbg|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_ZON}|$zon|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_GRP}|$grp|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_CPS}|$cps|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_LPT}|$lpt|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_GPT}|$gpt|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_RPT}|$rpt|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_RHT}|$rht|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_HST}|$hst|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_SST}|$sst|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_TKN}|$tkn|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_PXY}|$pxy|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_PLG}|$plg|g" ~/.ec/conf/${mod}.yml
-sed -i "s|{EC_HCA}|$hca|g" ~/.ec/conf/${mod}.yml
+sed -i "s|{EC_AID}|$aid|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_TID}|$tid|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_CID}|$cid|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_CSC}|$csc|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_OA2}|$oa2|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_DUR}|$dur|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_DBG}|$dbg|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_ZON}|$zon|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_GRP}|$grp|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_CPS}|$cps|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_LPT}|$lpt|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_GPT}|$gpt|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_RPT}|$rpt|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_RHT}|$rht|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_HST}|$hst|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_SST}|$sst|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_TKN}|$tkn|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_PXY}|$pxy|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_PLG}|$plg|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_HCA}|$hca|g" ~/.ec/agt/conf/${mod}.yml
 
 
-cat ~/.ec/conf/${mod}.yml
-agent -cfg .ec/conf/${mod}.yml
+cat ~/.ec/agt/conf/${mod}.yml
+agent -cfg .ec/agt/conf/${mod}.yml
