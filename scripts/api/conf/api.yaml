@@ -2,7 +2,7 @@ ec-config:
   conf:
     mod: api
     app: $EC_API_APP_NAME
-    apt: $EC_PORT
+    apt: $PORT
     dbg: true
     tls: false
     oa2: $EC_API_OA2
