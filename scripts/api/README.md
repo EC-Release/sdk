@@ -4,7 +4,7 @@
 docker run -it enterpriseconnect/agent:v1.2beta -hsh
 
 # step 2 post the data
-docker run -e EC_PPS=<the hash> \
+docker run -e EC_PPS=<hash generated in step 1> \
 -it enterpriseconnect/api:v1.2beta \
 -oa2 https://ec-oauth-oaep.herokuapp.com/oauth/token \
 -cid <cert-id> \
@@ -12,6 +12,6 @@ docker run -e EC_PPS=<the hash> \
 -url https://ec-ng-webui.herokuapp.com/v1.2beta/ec/api/<key>
 
 # get the data
-curl -H 'Authorization:Bearer <token output from the step 2>' \
+curl -H 'Authorization:Bearer <token output from step 2>' \
 -X GET https://ec-ng-webui.herokuapp.com/v1.2beta/ec/api/<key post from step 2>
 ```
