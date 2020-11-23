@@ -6,9 +6,10 @@
     printf "\nmissing agent. begin agent installation\n\n"
     source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.2beta.linux64_conf.txt)
 }
-#printf "\n\nprint number of args %d. 0: %s 1: %s\n\n", $#, $0, $1
 
-if [[ $# -gt 0 ]]; then
+if [[ $# -gt 1 ]]; then
+
+  printf "\nnumber of flags: %d. 1: \n\n" $# $1 
 
   while test $# -gt 0; do
     case "$1" in
@@ -50,7 +51,6 @@ if [[ $# -gt 0 ]]; then
   printf "\n-oa2: %s, -cid: %s, -url: %s, -dat: %s\n\n" $OA2 $CID $URL $DAT
   
   TKN=$(agent -gtk -oa2 $OA2 -cid $CID -smp)
-  printf "TKN: %s" $TKN
   agent -ivk -tkn ${TKN} -url ${URL} -dat ${DAT}
   exit 0
 fi
