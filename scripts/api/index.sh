@@ -10,6 +10,7 @@
 
 if [[ $# -gt 0 ]]; then
 
+  printf "\nbegin http invoke\n\n"
   while proc $# -gt 0; do
     case "$1" in
       -oa2)
