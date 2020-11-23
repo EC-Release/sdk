@@ -49,6 +49,7 @@ if [[ $# -gt 1 ]]; then
   printf "\n-oa2: %s, -cid: %s, -url: %s, -dat: %s\n\n" $OA2 $CID $URL $DAT
   
   TKN=$(agent -gtk -oa2 $OA2 -cid $CID -smp)
+  printf "\n bearer token: %s\n\n" $TKN
   agent -ivk -tkn ${TKN} -url ${URL} -dat ${DAT}
   exit 0
 fi
