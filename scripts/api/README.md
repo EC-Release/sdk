@@ -1,4 +1,4 @@
-### API DB Usage
+## API DB Usage
 ```bash
 # step 1 generate the hash
 docker run -it enterpriseconnect/agent:v1.2beta -hsh
