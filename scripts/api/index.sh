@@ -49,7 +49,7 @@ if [[ $# -gt 0 ]]; then
   
   printf "\noa2: %s, cid: %s, url: %s, dat: %s\n\n",$OA2,$CID,$URL,$DAT
   
-  agent -gtk -oa2 $OA2 -cid $CID -smp | { read TKN; echo TKN=$TKN; }
+  TKN=$(agent -gtk -oa2 $OA2 -cid $CID -smp)
   agent -ivk -tkn ${TKN} -url ${URL} -dat ${DAT}
   exit 0
 fi
