@@ -5,7 +5,7 @@
 } || {
     source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.2beta.linux64_conf.txt)
 }
-printf "number of args %d", $#
+printf "\n\nprint args %d. 0: %s 1: %s\n\n", $#, $0, $1
 if [[ $# -ge 0 ]]; then
     agent $@
     exit 0
