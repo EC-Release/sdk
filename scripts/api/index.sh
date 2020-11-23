@@ -41,6 +41,7 @@ if [[ $# -gt 0 ]]; then
         shift
         ;;
       *)
+        printf "\nflag: %s", $1
         break
         ;;
     esac
