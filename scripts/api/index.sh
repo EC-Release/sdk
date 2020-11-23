@@ -11,32 +11,32 @@
 if [[ $# -gt 0 ]]; then
 
   printf "\nbegin http invoke\n\n"
-  while proc $# -gt 0; do
+  while test $# -gt 0; do
     case "$1" in
       -oa2)
         shift
-        if proc $# -gt 0; then
+        if test $# -gt 0; then
           export OA2=$1
         fi
         shift
         ;;
       -cid)
         shift
-        if proc $# -gt 0; then
+        if test $# -gt 0; then
           export CID=$1
         fi
         shift
         ;;
       -url)
         shift
-        if proc $# -gt 0; then
+        if test $# -gt 0; then
           export URL=$1
         fi
         shift
         ;;
       -dat)
         shift
-        if proc $# -gt 0; then
+        if test $# -gt 0; then
           export DAT=$1
         fi
         shift
