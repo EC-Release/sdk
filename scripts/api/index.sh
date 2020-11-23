@@ -46,8 +46,8 @@ if [[ $# -gt 0 ]]; then
     esac
   done  
   
-  TKN=$(agent -gtk -oa2 ${OA2} -cid {CID} -smp)
-  agent -ivk -tkn ${TKN} -url ${URL} -dat {DAT}
+  TKN=$(agent -gtk -oa2 ${OA2} -cid ${CID} -smp)
+  agent -ivk -tkn ${TKN} -url ${URL} -dat ${DAT}
   exit 0
 fi
 
