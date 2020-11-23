@@ -9,8 +9,6 @@
 
 if [[ $# -gt 1 ]]; then
 
-  printf "\nnumber of flags: %d. 1: \n\n" $# $1 
-
   while test $# -gt 1; do
     case "$1" in
       -oa2)
