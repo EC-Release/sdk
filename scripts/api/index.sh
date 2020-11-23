@@ -7,7 +7,7 @@
 }
 #printf "\n\nprint args %d. 0: %s 1: %s\n\n", $#, $0, $1
 
-if [[ $# -ge 1 ]]; then
+if [[ $# -gt 1 ]]; then
     agent $@
     exit 0
 fi
