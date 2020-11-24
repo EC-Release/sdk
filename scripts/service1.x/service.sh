@@ -57,7 +57,6 @@ if [[ ! -z "${VCAP_APPLICATION}" ]]; then
     ./run.sh
 else
     echo "downloading manifest file"
-    mkdir push
     wget -O ./push/manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
     login
     echo "Login successful"
