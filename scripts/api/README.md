@@ -11,6 +11,11 @@ docker run -e EC_PPS=<hash generated in step 1> \
 -dat '{"hello":"world"}' \
 -url https://ec-ng-webui.herokuapp.com/v1.2beta/ec/api/<key>
 
+# post the data
+curl -H 'Authorization:Bearer <token output from step 2>' \
+-d '{"your":"json","object":"hello"}' \
+-X POST https://ec-ng-webui.herokuapp.com/v1.2beta/ec/api/<key post from step 2>
+
 # get the data
 curl -H 'Authorization:Bearer <token output from step 2>' \
 -X GET https://ec-ng-webui.herokuapp.com/v1.2beta/ec/api/<key post from step 2>
