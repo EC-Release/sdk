@@ -56,8 +56,6 @@ if [[ ! -z "${VCAP_APPLICATION}" ]]; then
     chmod 755 run.sh
     ./run.sh
 else
-    echo "downloading manifest file"
-    wget -O ./push/manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
     login
     echo "Login successful"
     getEnvs
