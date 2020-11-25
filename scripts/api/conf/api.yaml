@@ -9,7 +9,7 @@ ec-config:
     cid: $EC_API_DEV_ID
     sed: $EC_SEED_NODE
     #local url accessisble to other seeds
-    url: $EC_SEED_URL
+    hst: $EC_SEED_HOST
   #available in oauth2, api, x:gateway, and watcher for TLS purpose. ceredential can be used in both cred, and authGroup segments  
   #cred:
   #  privateKey: $EC_PVTKEY
