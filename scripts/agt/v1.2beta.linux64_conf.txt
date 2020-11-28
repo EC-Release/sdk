@@ -6,7 +6,8 @@ wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Re
 tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/agt/bin/ && rm ~/.ec/agent_linux_sys.tar.gz
 mv ~/.ec/agt/bin/agent_linux_sys ~/.ec/agt/bin/${AGENT_REV}
 ls -la ~/.ec/agt/bin
-ln -s ~/.ec/agt/bin/${AGENT_REV} /bin/agent
+ln -s ~/.ec/agt/bin/${AGENT_REV} ~/.ec/agent
+export PATH=$PATH:$HOME/.ec
 agent -ver
 '
 
