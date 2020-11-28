@@ -3,6 +3,6 @@
 : '
 agent -cfg .ec/conf/${mod}.yml
 '
-printf "flags %s presented.\n" "$@"
+printf "flag %s presented.\n" "$@"
 
 agent "$@"
