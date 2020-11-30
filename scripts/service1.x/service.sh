@@ -52,12 +52,12 @@ sleep 10
 echo "checking env"
 echo ${VCAP_APPLICATION}
 if [[ ! -z "${VCAP_APPLICATION}" ]]; then
-    wget -O run.sh https://raw.githubusercontent.com/EC-Release/sdk/disty_test_branch/scripts/service1.x/run.sh
+    wget -O run.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/run.sh
     chmod 755 run.sh
     ./run.sh
 else
     mkdir -p push
-    wget -q --show-progress -O ./push/manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty_test_branch/scripts/service1.x/push/manifest.yml
+    wget -q --show-progress -O ./push/manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
     login
     echo "Login successful"
     getEnvs
