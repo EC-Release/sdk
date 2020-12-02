@@ -9,14 +9,14 @@ ec-config:
     cid: $EC_API_DEV_ID
     sed: $EC_SEED_NODE
     #local url accessisble to other seeds
-    hst: $EC_SEED_HOST
-    agt: $EC_AGT_MODE
-    dbg: true
-    cps: 5
+    #hst: $EC_SEED_HOST
+    #agt: $EC_AGT_MODE
+    #dbg: true
+    #cps: 5
   # group to permit the access of connectivity
-  subGroup:
-    - name: $EC_AGT_GRP
-      ids: ["$EC_API_DEV_ID"]
+  #subGroup:
+  #- name: $EC_AGT_GRP
+  #  ids: ["$EC_API_DEV_ID"]
       
   #available in oauth2, api, x:gateway, and watcher for TLS purpose. ceredential can be used in both cred, and authGroup segments  
   #cred:
