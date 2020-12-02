@@ -5,9 +5,10 @@ source <(wget -O - https://ec-release.github.io/sdk/scripts/api/ng-webui/ng_conf
 if [[ -z "${EC_PPS}" ]]; then
     export EC_PPS=$CA_PPRS    
 fi
-  
+
+printf "\n\nEC_PPS1: %s\n\n" $EC_PPS
 export EC_PPS=$(agent -hsh)
-printf "\n\nEC_PPS: %s\n\n" $EC_PPS
+printf "\n\nEC_PPS2: %s\n\n" $EC_PPS
 # PORT indicating a custom environment
 if [[ ! -z "${PORT}" ]]; then
   EC_PORT=:$PORT
