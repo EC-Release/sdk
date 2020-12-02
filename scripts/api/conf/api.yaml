@@ -10,6 +10,16 @@ ec-config:
     sed: $EC_SEED_NODE
     #local url accessisble to other seeds
     hst: $EC_SEED_HOST
+  agent:
+    mod: $EC_AGT_MODE
+    zon: $EC_AGT_ZONE
+    dbg: true
+    cps: 5
+    # group to permit the access of connectivity
+    grp:
+    - name: $EC_AGT_GRP
+      ids: [$EC_AGT_CID_1, $ECAGT_CID_2]
+      
   #available in oauth2, api, x:gateway, and watcher for TLS purpose. ceredential can be used in both cred, and authGroup segments  
   #cred:
   #  privateKey: $EC_PVTKEY
