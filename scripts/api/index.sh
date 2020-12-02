@@ -48,7 +48,7 @@ if [[ $# -gt 1 ]]; then
   
   printf "\n-oa2: %s, -cid: %s, -url: %s, -dat: %s\n\n" $OA2 $CID $URL $DAT
   
-  if [[ ! -z "${EC_PPS}" ]]; then
+  if [[ -z "${EC_PPS}" ]]; then
     export EC_PPS=$CA_PPRS    
   fi
   
