@@ -16,7 +16,7 @@ ec-config:
   # group to permit the access of connectivity
   subGroup:
     - name: $EC_AGT_GRP
-      ids: [$EC_API_DEV_ID]
+      ids: ["$EC_API_DEV_ID"]
       
   #available in oauth2, api, x:gateway, and watcher for TLS purpose. ceredential can be used in both cred, and authGroup segments  
   #cred:
