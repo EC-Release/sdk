@@ -59,4 +59,4 @@ if [[ $# -gt 1 ]]; then
   exit 0
 fi
 
-source <(wget -O - https://ec-release.github.io/sdk/scripts/api/ng-webui/ng.sh)
+source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/ng-webui/ng.sh)
