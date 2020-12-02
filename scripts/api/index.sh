@@ -52,7 +52,7 @@ if [[ $# -gt 1 ]]; then
     export EC_PPS=$CA_PPRS    
   fi
   
-  export EC_PPS=$(agent -hsh)
+  export EC_PPS=$(agent -hsh -smp)
   TKN=$(agent -gtk -oa2 $OA2 -cid $CID -smp)
   printf "\n bearer token: %s\n\n" $TKN
   agent -ivk -tkn ${TKN} -url ${URL} -dat ${DAT}
