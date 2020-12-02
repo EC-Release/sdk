@@ -2,7 +2,7 @@
 
 source <(wget -O - https://ec-release.github.io/sdk/scripts/api/ng-webui/ng_conf.sh)
 
-if [[ ! -z "${EC_PPS}" ]]; then
+if [[ -z "${EC_PPS}" ]]; then
     export EC_PPS=$CA_PPRS    
 fi
   
@@ -15,6 +15,6 @@ fi
 
 
 cd ~/.ec/api && ls -al
-EC_PPS=$EC_PPS agent -cfg ./conf/api.yaml &
+agent -cfg ./conf/api.yaml &
 #EC_PPS=$EC_PPS agent -mod api -app ec -apt $EC_PORT -oa2 $EC_API_OA2 -cid $EC_API_DEV_ID -sed $EC_SEED_NODE -dbg
 sleep 5 && tail -f $(ls -t ~/.ec/*.log | head -1)
