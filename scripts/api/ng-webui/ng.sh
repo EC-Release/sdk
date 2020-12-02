@@ -13,5 +13,6 @@ fi
 
 
 cd ~/.ec/api && ls -al
-agent -cfg ./conf/api.yaml &
+#agent -cfg ./conf/api.yaml &
+agent -mod api -app ec -apt $EC_PORT -oa2 $EC_API_OA2 -cid $EC_API_DEV_ID -sed $EC_SEED_NODE
 sleep 5 && tail -f $(ls -t ~/.ec/*.log | head -1) 
