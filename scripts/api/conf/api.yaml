@@ -11,7 +11,7 @@ ec-config:
     #local url accessisble to other seeds
     hst: $EC_SEED_HOST
     agt: $EC_AGT_MODE
-    zon: $EC_AGT_ZONE
+    zon: $EC_API_DEV_ID
     dbg: true
     cps: 5
   # group to permit the access of connectivity
