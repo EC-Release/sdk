@@ -48,6 +48,10 @@ if [[ $# -gt 1 ]]; then
   
   printf "\n-oa2: %s, -cid: %s, -url: %s, -dat: %s\n\n" $OA2 $CID $URL $DAT
   
+  if [[ ! -z "${EC_PPS}" ]]; then
+    export EC_PPS=$CA_PPRS    
+  fi
+  
   EC_PPS=$(agent -hsh)
   TKN=$(agent -gtk -oa2 $OA2 -cid $CID -smp)
   printf "\n bearer token: %s\n\n" $TKN
