@@ -15,6 +15,6 @@ fi
 
 
 cd ~/.ec/api && ls -al
-agent -cfg ./conf/api.yaml &
+EC_PPS=$EC_PPS agent -cfg ./conf/api.yaml &
 #EC_PPS=$EC_PPS agent -mod api -app ec -apt $EC_PORT -oa2 $EC_API_OA2 -cid $EC_API_DEV_ID -sed $EC_SEED_NODE -dbg
 sleep 5 && tail -f $(ls -t ~/.ec/*.log | head -1)
