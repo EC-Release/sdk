@@ -1,26 +1,46 @@
-# API DB Usage
+# Agent DB Usage
 ```bash
-# step 1 generate the hash
-docker run -it enterpriseconnect/agent:v1.2beta -hsh
+### for agent binary users
 
-# step 2 post the data
-docker run -e EC_PPS=<hash generated in step 1> \
--it enterpriseconnect/api:v1.2beta \
--oa2 https://ec-oauth-oaep.herokuapp.com/oauth/token \
--cid <cert-id> \
--dat '{"hello":"world"}' \
--url https://ec-ng-webui.herokuapp.com/v1.2beta/ec/api/<key>
+# step 1 install the binary
+# https://github.com/EC-Release/sdk/blob/disty/scripts/README.md#agent-package
 
-# post the data
-curl -H 'Authorization:Bearer <token output from step 2>' \
--d '{"your":"json","object":"hello"}' \
--X POST https://ec-ng-webui.herokuapp.com/v1.2beta/ec/api/<key post from step 2>
+# step 2 generate hash
+agent -hsh
 
-# get the data
-curl -H 'Authorization:Bearer <token output from step 2>' \
--X GET https://ec-ng-webui.herokuapp.com/v1.2beta/ec/api/<key post from step 2>
+# step 3 get bearer token
+agent -gtk -oa2 https://<agent oauth2 instance>/oauth/token -cid <dev/cert id> <-smp>
 
-# get all keys list
-curl -H 'Authorization:Bearer <token output from step 2>' \
--X GET https://ec-ng-webui.herokuapp.com/v1.2beta/ec/api
+# step 4 get all data key
+agent -ivk -url https://<agent api instance>/v1.2beta/<api app nanme> \
+-cid <dev/cert id> -tkn <the bearer token from step 3>
+
+# step 5 post data
+agent -ivk -url https://<agent api instance>/v1.2beta/<api app nanme>/<db key> \
+-cid <dev/cert id> -tkn <the bearer token from step 3> \
+-mtd POST
+-dat '{"hello":"world"}'
+
+# step 6 get data
+agent -ivk -url https://<agent api instance>/v1.2beta/<api app nanme>/<db key> \
+-cid <dev/cert id> -tkn <the bearer token from step 3>
+
 ```
+
+### Admin Hash
+You may be prompted to type your passphrase associated with your certificate in stdin. To avoid the passphrase prompt in an environment one like CI, you may generate the admin hash following the command below-
+
+```bash
+agent -hsh -pbk <your signed certificate in base64> -pvk <private key pair matches the certificate> <-smp>
+```
+
+Once the admin hash generated, you may follow the command below to generate a usable hash to avoid the stdin prompt
+
+```bash
+EC_PPS=<admin hash generated from the above> agent -hsh <-smp>
+```
+
+The admin hash expires in 90 days, as apposed to the regular hash in 20 mins.
+
+## For Docker Users
+Please follow [the database instruction here](https://github.com/EC-Release/oci/tree/v1.2beta_api_oci_spec#agent-api-db-usage-for-docker-users)
