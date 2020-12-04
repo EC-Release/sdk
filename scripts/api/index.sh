@@ -39,6 +39,13 @@ if [[ $# -gt 1 ]]; then
         fi
         shift
         ;;
+      -mtd)
+        shift
+        if test $# -gt 0; then
+          export MTD=$1
+        fi
+        shift
+        ;;
       *)
         printf "\nflag: %s", $1
         break
@@ -55,7 +62,7 @@ if [[ $# -gt 1 ]]; then
   export EC_PPS=$(agent -hsh -smp)
   TKN=$(agent -gtk -oa2 $OA2 -cid $CID -smp)
   printf "\n bearer token: %s\n\n" $TKN
-  agent -ivk -tkn ${TKN} -url ${URL} -dat ${DAT}
+  agent -ivk -tkn ${TKN} -url ${URL} -dat ${DAT} -mtd ${MTD}
   exit 0
 fi
 
