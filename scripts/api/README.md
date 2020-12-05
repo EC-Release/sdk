@@ -1,23 +1,24 @@
 # Agent DB Usage
+
+## for agent experts
+
+### agent binary installation
+Some [installation reference here](https://github.com/EC-Release/sdk/blob/disty/scripts/README.md#agent-package)
+
 ```bash
-### for agent binary users
-
-# step 1 install the binary
-# https://github.com/EC-Release/sdk/blob/disty/scripts/README.md#agent-package
-
-# step 2 generate hash
+# step 1 generate hash
 agent -hsh
 
-# step 3 get bearer token
+# step 2 get bearer token
 agent -gtk -oa2 https://<agent oauth2 instance>/oauth/token -cid <dev/cert id> <-smp>
 
-# step 4 get all data key
+# step 3 get all data key
 agent -ivk -url https://<agent api instance>/v1.2beta/<api app nanme> \
--cid <dev/cert id> -tkn <the bearer token from step 3>
+-cid <dev/cert id> -tkn <the bearer token from step 2>
 
-# step 5 post data
+# step 4 post data
 agent -ivk -url https://<agent api instance>/v1.2beta/<api app nanme>/<db key> \
--cid <dev/cert id> -tkn <the bearer token from step 3> \
+-cid <dev/cert id> -tkn <the bearer token from step 2> \
 -mtd POST
 -dat '{"hello":"world"}'
 
@@ -42,5 +43,5 @@ EC_PPS=<admin hash generated from the above> agent -hsh <-smp>
 
 The admin hash expires in 90 days, as apposed to the regular hash in 20 mins.
 
-## For Docker Users
+### For Docker Users
 Please follow [the database instruction here](https://github.com/EC-Release/oci/tree/v1.2beta_api_oci_spec#agent-api-db-usage-for-docker-users)
