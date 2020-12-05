@@ -19,7 +19,7 @@ function getProperty {
 }
 
 if [[ $# -ne 0 ]]; then
-    agent $@
+    agent "$@"
     exit 0
 fi
 
