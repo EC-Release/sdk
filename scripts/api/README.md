@@ -3,7 +3,7 @@
 ## made for experts with agent CLI
 
 ### agent binary installation
-Some [installation reference here](https://github.com/EC-Release/sdk/blob/disty/scripts/README.md#agent-package)
+some [installation reference here](https://github.com/EC-Release/sdk/blob/disty/scripts/README.md#agent-package)
 
 ```bash
 # step 1 generate hash
