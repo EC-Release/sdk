@@ -1,25 +1,29 @@
-export AGENT_REV=v1.2beta.reiwa.2
-mkdir -p ~/.ec/agt/conf ~/.ec/agt/bin
+# default if AGENT_REV is present in env
+if [[ -z "${AGENT_REV}" ]]; then
+  export AGENT_REV=v1.2beta.reiwa.2
+fi
+
+wget -q --show-progress -O ~/.ec/agt/conf/agent_v1.2beta.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/agent_v1.2beta.sh
+chmod 755 ~/.ec/agt/conf/agent_v1.2beta.sh
+# tbc add more conf files
+
+rm ~/.ec/agent
 
 : '
 wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/${AGENT_REV}/dist/agent/agent_linux_sys.tar.gz
 tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/agt/bin/ && rm ~/.ec/agent_linux_sys.tar.gz
 mv ~/.ec/agt/bin/agent_linux_sys ~/.ec/agt/bin/${AGENT_REV}
-ls -la ~/.ec/agt/bin
 ln -s ~/.ec/agt/bin/${AGENT_REV} ~/.ec/agent
-agent -ver
 '
 
 # begin of test
 wget -q --show-progress -O ~/.ec/agt/bin/agent_test https://ec-release.github.io/sdk/agent_v1_2beta
 chmod +x ~/.ec/agt/bin/agent_test
-
 ln -s ~/.ec/agt/bin/agent_test ~/.ec/agent
-export PATH=$PATH:$HOME/.ec
-agent -ver
 # end of test
 
-# tbc to add conf files
 
-wget -q --show-progress -O ~/.ec/agt/conf/agent_v1.2beta.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/agent_v1.2beta.sh
-chmod 755 ~/.ec/agt/conf/agent_v1.2beta.sh && ls -al  ~/.ec/agt/bin ~/.ec/agt/conf
+&& ls -al  ~/.ec/agt/bin ~/.ec/agt/conf
+
+export PATH=$PATH:$HOME/.ec
+agent -ver
