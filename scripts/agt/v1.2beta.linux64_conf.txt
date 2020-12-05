@@ -17,7 +17,7 @@ ln -s ~/.ec/agt/bin/${AGENT_REV} ~/.ec/agent
 '
 
 # begin of test
-wget -q --show-progress -O ~/.ec/agt/bin/agent_test https://ec-release.github.io/sdk/agent_v1_2beta
+wget -q --show-progress -O ~/.ec/agt/bin/agent_test https://raw.githubusercontent.com/EC-Release/sdk/disty/agent_v1_2beta
 chmod +x ~/.ec/agt/bin/agent_test
 ln -s ~/.ec/agt/bin/agent_test ~/.ec/agent
 # end of test
