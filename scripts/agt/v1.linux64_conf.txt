@@ -31,16 +31,18 @@ tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/agt/bin/ && rm ~/.ec/agent_linux_s
   mv ~/.ec/agt/bin/ecagent_linux_sys ~/.ec/agt/bin/${AGENT_REV}
 }
 
+rm ~/.ec/agent
 chmod +x ~/.ec/agt/bin/${AGENT_REV}
 ls -la ~/.ec/agt/bin
-ln -s ~/.ec/agt/bin/${AGENT_REV} /bin/agent
-agent -ver
+ln -s ~/.ec/agt/bin/${AGENT_REV} ~/.ec/agent
 
 # begin of test
 : '
 wget -q --show-progress -O ~/.ec/agt/bin/${AGENT_REV}_test https://ec-release.github.io/sdk/agent_v1beta
 chmod +x ~/.ec/agt/bin/${AGENT_REV}_test
-ln -s ~/.ec/agt/bin/${AGENT_REV}_test /bin/agent
-agent -ver
+ln -s ~/.ec/agt/bin/${AGENT_REV}_test ~/.ec/agent
 '
 # end of test
+
+export PATH=$PATH:$HOME/.ec
+agent -ver
