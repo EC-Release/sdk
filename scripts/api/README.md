@@ -1,6 +1,6 @@
 # Agent DB Usage
 
-## for agent experts
+## for experts with agent CLI
 
 ### agent binary installation
 Some [installation reference here](https://github.com/EC-Release/sdk/blob/disty/scripts/README.md#agent-package)
