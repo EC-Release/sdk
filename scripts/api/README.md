@@ -44,4 +44,4 @@ EC_PPS=<admin hash generated from the above> agent -hsh <-smp>
 The admin hash expires in 90 days, as apposed to the regular hash in 20 mins.
 
 ### For Docker Users
-Please follow [the database instruction here](https://github.com/EC-Release/oci/tree/v1.2beta_api_oci_spec#agent-api-db-usage-for-docker-users)
+follow [the database instruction here](https://github.com/EC-Release/oci/tree/v1.2beta_api_oci_spec#agent-api-db-usage-for-docker-users)
