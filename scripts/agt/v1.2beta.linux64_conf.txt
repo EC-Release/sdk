@@ -23,7 +23,7 @@ ln -s ~/.ec/agt/bin/agent_test ~/.ec/agent
 # end of test
 
 
-&& ls -al  ~/.ec/agt/bin ~/.ec/agt/conf
+ls -al  ~/.ec/agt/bin ~/.ec/agt/conf
 
 export PATH=$PATH:$HOME/.ec
 agent -ver
