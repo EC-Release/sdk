@@ -1,7 +1,10 @@
-# Agent DB Usage
+# Agent API Usage
+made for experts with agent CLI
 
-## made for experts with agent CLI
+## API Configuration
+See detail in [the config file for API mode](https://github.com/EC-Release/sdk/blob/disty/scripts/api/conf/api.yaml#L1)
 
+## DB Ops Usage
 ### agent binary installation
 some [installation reference here](https://github.com/EC-Release/sdk/blob/disty/scripts/README.md#agent-package)
 
