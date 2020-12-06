@@ -1,5 +1,5 @@
 #!/bin/bash
-unset AGENT_REV
+export AGENT_REV=
 : '
 agent -cfg .ec/conf/${mod}.yml
 printf "flag %s presented.\n" "$@"
