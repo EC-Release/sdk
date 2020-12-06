@@ -11,6 +11,8 @@
 #  author: apolo.yasuda@ge.com
 #
 
+unset AGENT_REV
+
 function getProperty {
     PROP_KEY=$1
     PROP_VALUE=`printenv | grep "$PROP_KEY" | cut -d'=' -f2-`
