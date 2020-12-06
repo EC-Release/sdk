@@ -30,8 +30,10 @@ wget -q --show-progress -O ~/.ec/agt/conf/gw:server.yml https://ec-release.githu
 
 ls -la ~/.ec
 {
-  agent -dec -fil ~/.ec/agent_linux_sys.ec && rm ~/.ec/agent_linux_sys.ec
+  cd ~/.ec/
+  agent -dec -fil ./agent_linux_sys.ec && rm ./agent_linux_sys.ec
   mv ~/.ec/agent_linux_sys.bak ~/.ec/agt/bin/agent_linux_sys
+  cd -
 } || {
   tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/agt/bin/ && rm ~/.ec/agent_linux_sys.tar.gz
 }
