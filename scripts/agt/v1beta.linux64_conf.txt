@@ -1,5 +1,5 @@
 # default if AGENT_REV is present in env
-if [[ -z "${AGENT_REV}" ]]; then
+if [[ $AGENT_REV != "v1beta.fukuoka"* ]]; then
   export AGENT_REV=v1beta.fukuoka.1727
 fi
 
