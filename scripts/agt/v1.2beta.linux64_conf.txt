@@ -1,5 +1,5 @@
 # default if AGENT_REV is present in env
-if [[ -z "${AGENT_REV}" ]]; then
+if [[ $AGENT_REV != "v1.2beta.reiwa"* ]]; then
   export AGENT_REV=v1.2beta.reiwa.2
 fi
 
