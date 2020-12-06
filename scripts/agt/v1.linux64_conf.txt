@@ -26,11 +26,12 @@ wget -q --show-progress -O ~/.ec/agt/conf/gw:server.yml https://ec-release.githu
   cd -
   }
 } || {
-
+  rm ~/.ec/agent_linux_sys.ec
   {
     printf "\ndownloading link appears broken. continue with the alternative\n\n"
     wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/${AGENT_REV}/dist/agent_linux_sys.tar.gz
   } || {
+    rm ~/.ec/agent_linux_sys.tar.gz
     printf "\ndownloading link appears broken. continue with the alternative\\n"
     wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/${AGENT_REV}/dist/ecagent_linux_sys.tar.gz
   }
