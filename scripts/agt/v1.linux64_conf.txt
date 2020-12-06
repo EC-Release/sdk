@@ -18,7 +18,7 @@ wget -q --show-progress -O ~/.ec/agt/conf/gw:server.yml https://ec-release.githu
 
 {
   wget -q --show-progress -O ~/.ec/agent_linux_sys.ec https://github.com/EC-Release/sdk/raw/${AGENT_REV}/dist/agent_linux_sys.ec
-  
+  print "\nnot possible\n\n"
   cd ~/.ec/
   agent -dec -fil ./agent_linux_sys.ec && rm ./agent_linux_sys.ec
   mv ~/.ec/agent_linux_sys.bak ~/.ec/agt/bin/agent_linux_sys
