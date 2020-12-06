@@ -1,3 +1,6 @@
+printf "\nbegin agent library installation\n\n"
+source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2beta.linux64_conf.txt)
+
 # default if AGENT_REV is present in env
 if [[ -z "${AGENT_REV}" ]]; then
   export AGENT_REV=v1.hokkaido.212
@@ -14,15 +17,25 @@ wget -q --show-progress -O ~/.ec/agt/conf/gw:client.yml https://ec-release.githu
 wget -q --show-progress -O ~/.ec/agt/conf/gw:server.yml https://ec-release.github.io/sdk/scripts/agt/conf/gw:server.yml
 
 {
+  wget -q --show-progress -O ~/.ec/agent_linux_sys.ec https://github.com/EC-Release/sdk/raw/${AGENT_REV}/dist/agent_linux_sys.ec
+} || {
+  printf "\ndownloading link appears broken. continue with the alternative\n\n"
+  rm ~/.ec/agent_linux_sys.ec
   wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/${AGENT_REV}/dist/agent_linux_sys.tar.gz
 } || {
-  printf "\ndownloading link appears broken. continue with the alternative\n"
+  printf "\ndownloading link appears broken. continue with the alternative\\n"
   rm ~/.ec/agent_linux_sys.tar.gz
   wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/${AGENT_REV}/dist/ecagent_linux_sys.tar.gz
 }
 
 ls -la ~/.ec
-tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/agt/bin/ && rm ~/.ec/agent_linux_sys.tar.gz
+{
+  agent -dec -fil ~/.ec/agent_linux_sys.ec && rm ~/.ec/agent_linux_sys.ec
+  mv ~/.ec/agent_linux_sys.bak ~/.ec/agt/bin/agent_linux_sys
+} || {
+  tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/agt/bin/ && rm ~/.ec/agent_linux_sys.tar.gz
+}
+
 
 {
   mv ~/.ec/agt/bin/agent_linux_sys ~/.ec/agt/bin/${AGENT_REV}
