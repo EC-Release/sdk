@@ -2,7 +2,7 @@ printf "\nbegin agent library installation\n\n"
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2beta.linux64.txt)
 
 # default if AGENT_REV is present in env
-if [[ -z "$AGENT_REV" ]]; then
+if [[ $AGENT_REV != "v1.hokkaido"* ]]; then
   export AGENT_REV=v1.hokkaido.212
 fi
 
