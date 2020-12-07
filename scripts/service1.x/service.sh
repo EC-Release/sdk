@@ -13,7 +13,6 @@ function setEnvs(){
     eval "sed -i -e 's|{{ADMIN_PWD}}|$(cat values.txt | grep ADMIN_PWD | cut -d ' ' -f2)|g' ./push/manifest.yml"
     eval "sed -i -e 's|{{ADMIN_TKN}}|$(cat values.txt | grep ADMIN_TKN | cut -d ' ' -f2)|g' ./push/manifest.yml"
     eval "sed -i -e 's|{{ADMIN_USR}}|$(cat values.txt | grep ADMIN_USR | cut -d ' ' -f2)|g' ./push/manifest.yml"
-    eval "sed -i -e 's|{{EC_PRVT_ADM}}|$(cat values.txt | grep EC_PRVT_ADM | cut -d ' ' -f2)|g' ./push/manifest.yml"
     eval "sed -i -e 's|{{BASE}}|$(cat values.txt | grep BASE | cut -d ' ' -f2)|g' ./push/manifest.yml"
     eval "sed -i -e 's|{{CF_API}}|$(cat values.txt | grep CF_API | cut -d ' ' -f2)|g' ./push/manifest.yml"
     eval "sed -i -e 's|{{CF_LOGIN}}|$(cat values.txt | grep CF_LOGIN | cut -d ' ' -f2)|g' ./push/manifest.yml"
@@ -38,6 +37,11 @@ function setEnvs(){
     eval "sed -i -e 's|{{ZAC_SERVICE_ID}}|$(cat values.txt | grep ZAC_SERVICE_ID | cut -d ' ' -f2)|g' ./push/manifest.yml"
     eval "sed -i -e 's|{{ZAC_UAA}}|$(cat values.txt | grep ZAC_UAA | cut -d ' ' -f2)|g' ./push/manifest.yml"
     eval "sed -i -e 's|{{ZAC_URL}}|$(cat values.txt | grep ZAC_URL | cut -d ' ' -f2)|g' ./push/manifest.yml"
+    if [[ ! -z "$(cat values.txt | grep EC_PRVT_ADM | cut -d ' ' -f2)" ]]; then
+        eval "sed -i -e 's|{{EC_PRVT_ADM}}|$(cat values.txt | grep EC_PRVT_ADM | cut -d ' ' -f2)|g' ./push/manifest.yml"
+    else
+        eval "sed -i -e 's|{{EC_PRVT_ADM}}|${EC_PRVT_ADM}|g' ./push/manifest.yml"
+    fi
 }
 
 function updateService(){
