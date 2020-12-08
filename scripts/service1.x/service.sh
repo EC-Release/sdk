@@ -42,6 +42,7 @@ function setEnvs(){
     else
         eval "sed -i -e 's|{{EC_PRVT_ADM}}|${EC_PRVT_ADM}|g' ./push/manifest.yml"
     fi
+    eval "sed -i -e 's|{{IMAGE_TAG}}|${IMAGE_TAG}|g' ./push/manifest.yml"
 }
 
 function updateService(){
