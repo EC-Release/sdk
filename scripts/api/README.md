@@ -41,9 +41,6 @@ Once the admin hash generated, you may follow the command below to generate a us
 
 ```bash
 EC_PPS=<admin hash generated from the above> agent -hsh <-smp>
-
-# you may interact with the db instance directly with the hash
-docker run -it -e EC_PPS=<admin hash generated from the above> enterpriseconnect/api:v1.2beta -oa2 https://<agent oauth2 instance>/oauth/token -url https://<agent api instance>/v1.2beta/<api app nanme>/api -cid <dev/cert id>
 ```
 
 The admin hash expires in 90 days, as apposed to the regular hash in 20 mins.
