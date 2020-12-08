@@ -62,7 +62,7 @@ if [[ ! -z "${VCAP_APPLICATION}" ]]; then
     ./run.sh
 else
     mkdir -p push
-    wget -q --show-progress -O ./push/manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
+    wget -q --show-progress -O ./push/manifest.yml https://raw.githubusercontent.com/Gayatri212/sdk/disty/scripts/service1.x/push/manifest.yml
     login
     echo "Login successful"
     getEnvs
