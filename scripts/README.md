@@ -1,4 +1,4 @@
-# Distributing Scripts Usage
+# Distributed Scripts Usage
 ### Agent Package
 ```bash
 #install agent script via wget
