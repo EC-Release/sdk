@@ -29,21 +29,26 @@ agent -ivk -url https://<agent api instance>/v1.2beta/<api app nanme>/<db key> \
 agent -ivk -url https://<agent api instance>/v1.2beta/<api app nanme>/<db key> \
 -cid <dev/cert id> -tkn <the bearer token from step 3>
 ```
-
-### Admin Hash
-You may be prompted to type your passphrase associated with your certificate in stdin. To avoid the passphrase prompt in an environment one like CI, you may generate the admin hash following the command below-
+## Hash Types
+### Owner's Hash
+Owner's hashes are designed to bypass an agent runtime security checker. An owner's hash expires in 90 days and may only be purposed for generating admin hashes.
 
 ```bash
 agent -hsh -pbk <your signed certificate in base64> -pvk <private key pair matches the certificate> <-smp>
 ```
 
-Once the admin hash generated, you may follow the command below to generate a usable hash to avoid the stdin prompt
+### Admin Hash
+From time to time, users may be prompted to input a passphrase associated with the licensed certificate in stdin. To avoid a passphrase input prompt in an environment one like CI, user may also generate the admin hash by following the command below-
 
 ```bash
-EC_PPS=<admin hash generated from the above> agent -hsh <-smp>
+EC_PPS=<owner's hash> agent -hsh <-smp>
 ```
 
-The admin hash expires in 90 days, as apposed to the regular hash in 20 mins.
+The admin hash generally expires in 20 mins and is used for bypassing an passphrase input prompt by an agent revision.
 
-### For Docker Users
+### Passphrase Hash
+Agents use Passphrase Hashes for intra-communication purposes. For security measure, the life-cycle of this type of hash is In-Process only. 
+
+
+## For Docker Users
 follow [the database instruction here](https://github.com/EC-Release/oci/tree/v1.2beta_api_oci_spec#agent-api-db-usage-for-docker-users)
