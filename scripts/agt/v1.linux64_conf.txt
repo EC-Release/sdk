@@ -1,8 +1,12 @@
-printf "\nbegin agent library installation\n\n"
-source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2beta.linux64.txt)
+AGENT_REV_LOCAL=$AGENT_REV
+
+printf "\nbegin agent binary installation\n\n"
+
+if [[ $AGENT_REV_LOCAL != "v1.hokkaido.213" ]]; then
+  AGENT_REV=1.2-rc.0.reiwa source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2.linux64.txt)
+fi
 
 # default if AGENT_REV is present in env
-AGENT_REV_LOCAL=$AGENT_REV
 if [[ $AGENT_REV_LOCAL != "v1.hokkaido"* ]]; then
   export AGENT_REV_LOCAL=v1.hokkaido.212
 fi
@@ -53,14 +57,6 @@ rm ~/.ec/agent
 chmod +x ~/.ec/agt/bin/${AGENT_REV_LOCAL}
 ls -la ~/.ec/agt/bin
 ln -s ~/.ec/agt/bin/${AGENT_REV_LOCAL} ~/.ec/agent
-
-# begin of test
-: '
-wget -q --show-progress -O ~/.ec/agt/bin/${AGENT_REV_LOCAL}_test https://ec-release.github.io/sdk/agent_v1beta
-chmod +x ~/.ec/agt/bin/${AGENT_REV_LOCAL}_test
-ln -s ~/.ec/agt/bin/${AGENT_REV_LOCAL}_test ~/.ec/agent
-'
-# end of test
 
 export PATH=$PATH:$HOME/.ec
 agent -ver
