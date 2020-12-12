@@ -8,7 +8,7 @@ rm ~/.ec/agent
 
 # default if AGENT_REV is present in env
 AGENT_REV_LOCAL=$AGENT_REV
-if [[ $AGENT_REV_LOCAL != "v1.2-b."* ]]; then
+if [[ $AGENT_REV_LOCAL != "1.2-b."* ]]; then
   export AGENT_REV_LOCAL=agent_v1_2beta  
   wget -q --show-progress -O ~/.ec/agt/bin/${AGENT_REV_LOCAL} https://raw.githubusercontent.com/EC-Release/sdk/disty/${AGENT_REV_LOCAL}
   chmod +x ~/.ec/agt/bin/${AGENT_REV_LOCAL}
