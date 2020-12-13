@@ -3,8 +3,7 @@ AGENT_REV_LOCAL=$AGENT_REV
 printf "\nbegin agent binary (%s) installation\n\n" $AGENT_REV_LOCAL
 
 if [[ $AGENT_REV_LOCAL == "v1.hokkaido.213" ]]; then
-  AGENT_REV=1.2-rc.0.reiwa source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2.linux64.txt)
-  
+  AGENT_REV=1.2-rc.0.reiwa source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2.linux64.txt) -ver
 fi
 
 printf "\n\nagent release: %s\n\n" $AGENT_REV_LOCAL
