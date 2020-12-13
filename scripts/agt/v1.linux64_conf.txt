@@ -7,14 +7,11 @@ if [[ $AGENT_REV_LOCAL == "v1.hokkaido.213" ]]; then
   AGENT_REV_LOCAL=$AGENT_REV
 fi
 
-printf "\n\nagent release: %s\n\n" $AGENT_REV_LOCAL
-
 # default if AGENT_REV is present in env
 if [[ $AGENT_REV_LOCAL != "v1.hokkaido"* ]]; then
   export AGENT_REV_LOCAL=v1.hokkaido.212
 fi
 
-printf "\nagent rev: %s\n\n" $AGENT_REV_LOCAL
 mkdir -p ~/.ec/agt/conf ~/.ec/agt/bin
 wget -q --show-progress -O ~/.ec/agt/conf/agent_v1.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent_v1.sh
 chmod +x ~/.ec/agt/conf/agent_v1.sh
