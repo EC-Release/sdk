@@ -9,7 +9,7 @@ rm ~/.ec/agent
 # default if AGENT_REV is present in env
 AGENT_REV_LOCAL=$AGENT_REV
 if [[ $AGENT_REV_LOCAL != "1.2-rc."* ]]; then
-  export AGENT_REV_LOCAL=1.2-rc.0.reiwa
+  AGENT_REV_LOCAL=1.2-rc.0.reiwa
 fi
 
 wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/${AGENT_REV_LOCAL}/dist/agent/agent_linux_sys.tar.gz
