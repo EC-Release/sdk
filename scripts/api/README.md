@@ -44,7 +44,7 @@ From time to time, users may be prompted to input a passphrase associated with t
 EC_PPS=<owner's hash> agent -hsh <-smp>
 ```
 
-The admin hash generally expires in 20 mins and is used for bypassing an passphrase input prompt by an agent revision.
+The admin hash generally expires in 20 mins and is used for bypassing a passphrase prompt for encrypted agent binary.
 
 ### Passphrase Hash
 Agents use Passphrase Hashes for intra-communication purposes. For security measure, the life-cycle of this type of hash is In-Process only. 
