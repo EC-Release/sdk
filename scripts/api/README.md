@@ -44,6 +44,7 @@ A cert owner may use the keypair to generate an owner's hash when a given secret
 From time to time, users may be prompted to input a passphrase associated with the licensed certificate in stdin. To avoid a passphrase input prompt in an environment one like CI, user may also generate the admin hash by following the command below-
 
 ```bash
+# "EC_PPS" variable is optional if bypassing the stdin prompt is not required.
 EC_PPS=<owner's hash> agent -hsh <-smp>
 ```
 
