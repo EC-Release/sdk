@@ -33,7 +33,7 @@ cp ./temp/service.cer ./ec-px-service
 
 printf "begin auth-api replacement"
 cd ./ec-px-service
-wget -q --show-progress https://github.com/EC-Release/auth-api/raw/v1beta/dist/api/api_linux.tar.gz
+wget -q --show-progress https://github.com/EC-Release/auth-api/raw/v1/dist/api/api_linux.tar.gz
 tar -xzf api_linux.tar.gz
 chmod +x api_linux
 printf "end auth-api replacement"
