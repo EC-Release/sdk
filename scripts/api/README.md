@@ -34,8 +34,11 @@ agent -ivk -url https://<agent api instance>/v1.2beta/<api app nanme>/<db key> \
 Owner's hashes are designed to bypass an agent runtime security checker. An owner's hash expires in 90 days and may only be purposed for generating admin hashes.
 
 ```bash
-agent -hsh -pbk <your signed certificate in base64> -pvk <private key pair matches the certificate> <-smp>
+agent -hsh -pbk <your signed certificate in base64> \
+-pvk <private key pair matches the certificate> <-smp> \
+<-dat: optional the secret in plaintext>
 ```
+A cert owner may use the keypair to generate an owner's hash with a given secret ```-dat``` this is particularily useful to decrypt a release binary in a ci environment.
 
 ### Admin Hash
 From time to time, users may be prompted to input a passphrase associated with the licensed certificate in stdin. To avoid a passphrase input prompt in an environment one like CI, user may also generate the admin hash by following the command below-
