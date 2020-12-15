@@ -1,2 +1,2 @@
 #!/bin/bash
-source <(wget -O - https://ec-release.github.io/sdk/scripts/api/index.sh) "$@"
+source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/index.sh) "$@"
