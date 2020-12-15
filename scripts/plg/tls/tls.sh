@@ -24,6 +24,6 @@ function setPluginConfig {
 }
 echo configure vls plugin
 setPluginConfig
-#cp ~/.ec/plg/tls/plugins.yml ~/
+cat ~/.ec/plg/tls/plugins.yml
 #workaround
 cp ~/.ec/plg/tls/plugins.yml /root/
