@@ -4,6 +4,8 @@
     agent -ver
 } || {
     printf "\nmissing agent. begin agent installation\n\n"
+    printf "\nHTTP_PROXY: %s, http_proxy: %s, https_proxy: %s, HTTPS_PROXY: %s\n\n" $HTTP_PROXY $http_proxy $https_proxy $HTTPS_PROXY
+    printf "\nNO_PROXY: %s, no_proxy: %s\n\n" $NO_PROXY $no_proxy
     source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2beta.linux64_conf.txt)
 }
 
