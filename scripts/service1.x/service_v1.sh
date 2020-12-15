@@ -57,7 +57,7 @@ sleep 10
 echo "checking env"
 echo ${VCAP_APPLICATION}
 if [[ ! -z "${VCAP_APPLICATION}" ]]; then
-    wget -O run.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/run_v1.sh
+    wget -O run.sh https://raw.githubusercontent.com/Gayatri212/sdk/disty/scripts/service1.x/run_v1.sh
     chmod 755 run.sh
     ./run.sh
 else
