@@ -8,8 +8,8 @@ function getProperty {
 }
 
 function setPluginConfig {
-    pscm=$(getProperty "plg.tlc.scm")
-    phst=$(getProperty "plg.tlc.hst")
+    pscm=$(getProperty "plg.tls.scm")
+    phst=$(getProperty "plg.tls.hst")
     pspt=$(getProperty "plg.tls.prt")
     ppxy=$(getProperty "plg.tls.pxy")
     plpt=$(getProperty "plg.tls.lpt")
