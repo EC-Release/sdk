@@ -23,8 +23,10 @@ printf "end test keypair"
 
 printf "Downloading service code"
 git clone https://gitlab.com/ec-release/cf-service.git ec-px-service
-cd ec-px-service && git clone https://gitlab.com/ec-release/cf-service-assets.git assets
-git clone https://gitlab.com/ec-release/cf-service-webui.git ec-web-ui && cd ..
+cd ec-px-service && git checkout v1 && git clone https://gitlab.com/ec-release/cf-service-assets.git assets
+cd assets && git checkout v1 && cd ..
+git clone https://gitlab.com/ec-release/cf-service-webui.git ec-web-ui && cd ec-web-ui && git checkout v1 && cd ../..
+git branch
 rm -Rf ./ec-px-service/.git; rm ./ec-px-service/.gitmodules; rm -Rf ./ec-px-service/assets/.git; rm -Rf ./ec-px-service/ec-web-ui/.git 
 printf "Service code downloaded successfully"
 
