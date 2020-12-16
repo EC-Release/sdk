@@ -22,17 +22,17 @@ agent -vfy -pbk $(cat ./temp/service.cer|base64 -w0)
 printf "end test keypair"
 
 printf "Downloading service code"
-wget https://gitlab.com/ec-release/cf-service/-/archive/v1/cf-service-v1.zip
-unzip cf-service-v1.zip
+wget https://gitlab.com/ec-release/cf-service/-/archive/v1/cf-service-v1.tar.gz
+tar –xvzf cf-service-v1.tar.gz
 mv cf-service-v1 ec-px-service
-cd ec-px-service && wget https://gitlab.com/ec-release/cf-service-assets/-/archive/v1/cf-service-assets-v1.zip
-rm -rf assets/ && unzip cf-service-assets-v1.zip 
-mv cf-service-assets-v1 assets && rm -rf cf-service-assets-v1.zip 
+cd ec-px-service && wget https://gitlab.com/ec-release/cf-service-assets/-/archive/v1/cf-service-assets-v1.tar.gz
+rm -rf assets/ && tar –xvzf cf-service-assets-v1.tar.gz
+mv cf-service-assets-v1 assets && rm -rf cf-service-assets-v1.tar.gz 
 rm -rf ec-web-ui/
-wget https://gitlab.com/ec-release/cf-service-webui/-/archive/v1/cf-service-webui-v1.zip
-unzip cf-service-webui-v1.zip 
+wget https://gitlab.com/ec-release/cf-service-webui/-/archive/v1/cf-service-webui-v1.tar.gz
+tar –xvzf cf-service-webui-v1.tar.gz
 mv cf-service-webui-v1 ec-web-ui
-rm -rf cf-service-webui-v1.zip 
+rm -rf cf-service-webui-v1.tar.gz
 ls -la
 ls -la assets/
 ls -la ec-web-ui/ 
