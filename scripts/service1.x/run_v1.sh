@@ -24,14 +24,14 @@ printf "end test keypair"
 printf "Downloading service code"
 rm -rf ec-px-service
 wget https://gitlab.com/ec-release/cf-service/-/archive/v1/cf-service-v1.tar.gz
-tar -xvzf cf-service-v1.tar.gz
+tar -xzf cf-service-v1.tar.gz
 mv cf-service-v1 ec-px-service
 cd ec-px-service && wget https://gitlab.com/ec-release/cf-service-assets/-/archive/v1/cf-service-assets-v1.tar.gz
-rm -rf assets/ && tar -xvzf cf-service-assets-v1.tar.gz
+rm -rf assets/ && tar -xzf cf-service-assets-v1.tar.gz
 mv cf-service-assets-v1 assets && rm -rf cf-service-assets-v1.tar.gz 
 rm -rf ec-web-ui/
 wget https://gitlab.com/ec-release/cf-service-webui/-/archive/v1/cf-service-webui-v1.tar.gz
-tar -xvzf cf-service-webui-v1.tar.gz
+tar -xzf cf-service-webui-v1.tar.gz
 mv cf-service-webui-v1 ec-web-ui
 rm -rf cf-service-webui-v1.tar.gz
 ls -la
