@@ -22,12 +22,20 @@ agent -vfy -pbk $(cat ./temp/service.cer|base64 -w0)
 printf "end test keypair"
 
 printf "Downloading service code"
-git clone https://gitlab.com/ec-release/cf-service.git ec-px-service
-cd ec-px-service && git checkout v1 && git clone https://gitlab.com/ec-release/cf-service-assets.git assets
-cd assets && git checkout v1 && cd ..
-git clone https://gitlab.com/ec-release/cf-service-webui.git ec-web-ui && cd ec-web-ui && git checkout v1 && cd ../..
-git branch
-rm -Rf ./ec-px-service/.git; rm ./ec-px-service/.gitmodules; rm -Rf ./ec-px-service/assets/.git; rm -Rf ./ec-px-service/ec-web-ui/.git 
+wget https://gitlab.com/ec-release/cf-service/-/archive/v1/cf-service-v1.zip
+unzip cf-service-v1.zip
+mv cf-service-v1 ec-px-service
+cd ec-px-service && wget https://gitlab.com/ec-release/cf-service-assets/-/archive/v1/cf-service-assets-v1.zip
+rm -rf assets/ && unzip cf-service-assets-v1.zip 
+mv cf-service-assets-v1 assets && rm -rf cf-service-assets-v1.zip 
+rm -rf ec-web-ui/
+wget https://gitlab.com/ec-release/cf-service-webui/-/archive/v1/cf-service-webui-v1.zip
+unzip cf-service-webui-v1.zip 
+mv cf-service-webui-v1 ec-web-ui
+rm -rf cf-service-webui-v1.zip 
+ls -la
+ls -la assets/
+ls -la ec-web-ui/ 
 printf "Service code downloaded successfully"
 
 cp ./temp/service.key ./ec-px-service
