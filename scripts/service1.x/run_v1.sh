@@ -22,6 +22,7 @@ agent -vfy -pbk $(cat ./temp/service.cer|base64 -w0)
 printf "end test keypair"
 
 printf "Downloading service code"
+rm -rf ec-px-service
 wget https://gitlab.com/ec-release/cf-service/-/archive/v1/cf-service-v1.tar.gz
 tar –xvzf cf-service-v1.tar.gz
 mv cf-service-v1 ec-px-service
