@@ -37,6 +37,7 @@ rm -rf cf-service-webui-v1.tar.gz
 ls -la
 ls -la assets/
 ls -la ec-web-ui/ 
+cd ..
 printf "Service code downloaded successfully"
 
 cp ./temp/service.key ./ec-px-service
