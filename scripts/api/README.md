@@ -41,14 +41,14 @@ agent -hsh -pbk <your signed certificate in base64> \
 A cert owner may use the keypair to generate an owner's hash when a given secret ```-dat``` is present. This is particularily useful to decrypt a release binary in a ci environment.
 
 ### Admin Hash
-From time to time, users may be prompted to input a passphrase associated with the licensed certificate in stdin. To avoid a passphrase input prompt in an environment one like CI, user may also generate the admin hash by following the command below-
+From time to time, users may experience a passphrase prompt associated for licensing. To avoid a passphrase input prompt in an environment one like CI, user may also generate the admin hash by following the command below-
 
 ```bash
 # "EC_PPS" variable is optional if bypassing the stdin prompt is not required.
 EC_PPS=<owner's hash> agent -hsh <-smp>
 ```
 
-The admin hash generally expires in 20 mins and is used for bypassing a passphrase prompt for encrypted agent binary.
+The admin hash generally expires in 20 mins and is used for bypassing a passphrase prompt by the EC crytography system.
 
 ### Passphrase Hash
 Agents use Passphrase Hashes for intra-communication purposes. For security measure, the life-cycle of this type of hash is In-Process only. 
