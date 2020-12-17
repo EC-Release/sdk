@@ -20,7 +20,7 @@ function getProperty {
 
 if [[ $# -ne 0 ]]; then
     agent "$@"
-    exit 0
+    return 0
 fi
 
 #converting the env vars to simple params
