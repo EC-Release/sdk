@@ -48,7 +48,7 @@ From time to time, users may experience a passphrase prompt associated for licen
 EC_PPS=<owner's hash> agent -hsh <-smp>
 ```
 
-The admin hash generally expires in 20 mins and is used for bypassing a passphrase prompt by the EC crytography system.
+The admin hash generally expires in 20 mins and is used for bypassing a passphrase prompt by the EC cryptography system.
 
 ### Passphrase Hash
 Agents use Passphrase Hashes for intra-communication purposes. For security measure, the life-cycle of this type of hash is In-Process only. 
