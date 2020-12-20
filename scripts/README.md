@@ -6,10 +6,10 @@
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1beta.linux64.txt)
 
 #install a latest agent release script via wget
-source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2.linux64.txt)
+source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.linux64.txt)
 
 #install agent script in MacOS
-bash <(curl -k https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2.darwin.txt)
+bash <(curl -k https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.darwin.txt)
 
 ```
 ### Cipher Usage
