@@ -42,6 +42,7 @@ function setEnvs(){
     else
         eval "sed -i -e 's|{{EC_PRVT_ADM}}|${EC_PRVT_ADM}|g' ./push/manifest.yml"
     fi
+    eval "sed -i -e 's|{{IMAGE_TAG}}|${IMAGE_TAG}|g' ./push/manifest.yml"
 }
 
 function updateService(){
@@ -56,7 +57,7 @@ sleep 10
 echo "checking env"
 echo ${VCAP_APPLICATION}
 if [[ ! -z "${VCAP_APPLICATION}" ]]; then
-    wget -O run.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/run.sh
+    wget -O run.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/run_v1.sh
     chmod 755 run.sh
     ./run.sh
 else

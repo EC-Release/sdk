@@ -3,7 +3,7 @@ applications:
  - name: {{ZONE}}
    host: {{ZONE}}
 docker:
-    image: enterpriseconnect/service:v1beta
+    image: enterpriseconnect/service:{{IMAGE_TAG}}
 env:
   ADMIN_PWD: {{ADMIN_PWD}}
   ADMIN_TKN: {{ADMIN_TKN}}
