@@ -1,0 +1,11 @@
+mkdir -p ~/.ec/oauth/conf/ ~/.ec/oauth/oa2-assets
+wget -q --show-progress -O ~/.ec/oauth/conf/oauth_oaep.yaml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/oauth/conf/oauth_oaep.yaml
+wget -q --show-progress -O ~/.ec/oauth/conf/oauth_oidc.yaml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/oauth/conf/oauth_oidc.yaml
+wget -q --show-progress -O ~/.ec/oauth/conf/oauth_sso.yaml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/oauth/conf/oauth_sso.yaml
+wget -q --show-progress -O ~/.ec/oauth/conf/oauth.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/oauth/conf/oauth.sh
+
+chmod +x ~/.ec/oauth/conf/oauth_oaep.yaml ~/.ec/oauth/conf/oauth_oidc.yaml ~/.ec/oauth/conf/oauth.sh
+
+wget -q --show-progress -O ~/.ec/oauth/v1.1beta.tar.gz https://github.com/EC-Release/web-ui-oa2/archive/v1.1beta.tar.gz
+tar -xzf ~/.ec/oauth/v1.1beta.tar.gz --strip 1 -C ~/.ec/oauth/oa2-assets
+ls -al ~/.ec/oauth/oa2-assets

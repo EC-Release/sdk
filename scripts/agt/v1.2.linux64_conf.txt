@@ -1,0 +1,24 @@
+mkdir -p ~/.ec/agt/conf ~/.ec/agt/bin
+wget -q --show-progress -O ~/.ec/agt/conf/agent_v1.2.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/agent_v1.2.sh
+chmod 755 ~/.ec/agt/conf/agent_v1.2.sh
+
+# tbc add more conf files
+
+rm ~/.ec/agent
+
+# default if AGENT_REV is present in env
+AGENT_REV_LOCAL=$AGENT_REV
+if [[ $AGENT_REV_LOCAL != "1.2-rc."* ]]; then
+  AGENT_REV_LOCAL=1.2-rc.0.reiwa
+fi
+
+wget -q --show-progress -O ~/.ec/tengu_linux_sys.tar.gz https://raw.githubusercontent.com/EC-Release/tengu/${AGENT_REV_LOCAL}/dist/tengu/tengu_linux_sys.tar.gz
+tar xvf ~/.ec/tengu_linux_sys.tar.gz -C ~/.ec/agt/bin/ && rm ~/.ec/tengu_linux_sys.tar.gz
+mv ~/.ec/agt/bin/tengu_linux_sys ~/.ec/agt/bin/${AGENT_REV_LOCAL}
+
+ln -s ~/.ec/agt/bin/${AGENT_REV_LOCAL} ~/.ec/agent
+
+ls -al  ~/.ec/agt/bin ~/.ec/agt/conf
+
+export PATH=$PATH:$HOME/.ec
+agent -ver

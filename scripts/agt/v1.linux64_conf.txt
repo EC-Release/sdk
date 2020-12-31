@@ -1,26 +1,32 @@
-printf "\nbegin agent library installation\n\n"
-source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2beta.linux64.txt)
+AGENT_REV_LOCAL=$AGENT_REV
+
+printf "\nbegin agent binary (%s) installation\n\n" $AGENT_REV_LOCAL
+
+if [[ $AGENT_REV_LOCAL == "v1.hokkaido.213" ]]; then
+  AGENT_REV=1.2-rc.0.reiwa source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2.linux64.txt) -ver
+  AGENT_REV_LOCAL=$AGENT_REV
+fi
 
 # default if AGENT_REV is present in env
-AGENT_REV_LOCAL=$AGENT_REV
 if [[ $AGENT_REV_LOCAL != "v1.hokkaido"* ]]; then
   export AGENT_REV_LOCAL=v1.hokkaido.212
 fi
 
-printf "\nagent rev: %s\n\n" $AGENT_REV_LOCAL
 mkdir -p ~/.ec/agt/conf ~/.ec/agt/bin
-wget -q --show-progress -O ~/.ec/agt/conf/agent_v1.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent_v1.sh
+wget -q --show-progress -O ~/.ec/agt/conf/agent_v1.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/agent_v1.sh
 chmod +x ~/.ec/agt/conf/agent_v1.sh
 
-wget -q --show-progress -O ~/.ec/agt/conf/client.yml https://ec-release.github.io/sdk/scripts/agt/conf/client.yml
-wget -q --show-progress -O ~/.ec/agt/conf/gateway.yml https://ec-release.github.io/sdk/scripts/agt/conf/gateway.yml
-wget -q --show-progress -O ~/.ec/agt/conf/server.yml https://ec-release.github.io/sdk/scripts/agt/conf/server.yml
-wget -q --show-progress -O ~/.ec/agt/conf/gw:client.yml https://ec-release.github.io/sdk/scripts/agt/conf/gw:client.yml
-wget -q --show-progress -O ~/.ec/agt/conf/gw:server.yml https://ec-release.github.io/sdk/scripts/agt/conf/gw:server.yml
+wget -q --show-progress -O ~/.ec/agt/conf/client.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/client.yml
+wget -q --show-progress -O ~/.ec/agt/conf/gateway.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/gateway.yml
+wget -q --show-progress -O ~/.ec/agt/conf/server.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/server.yml
+wget -q --show-progress -O ~/.ec/agt/conf/gw:client.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/gw:client.yml
+wget -q --show-progress -O ~/.ec/agt/conf/gw:server.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/gw:server.yml
 
 {
   {
     wget -q --show-progress -O ~/.ec/agent_linux_sys.ec https://github.com/EC-Release/sdk/raw/$AGENT_REV_LOCAL/dist/agent_linux_sys.ec
+  } && {
+    export EC_PPS=$(agent -hsh -smp)
   } && {
     cd ~/.ec/
     agent -dec -fil ./agent_linux_sys.ec && rm ./agent_linux_sys.ec
@@ -53,14 +59,6 @@ rm ~/.ec/agent
 chmod +x ~/.ec/agt/bin/${AGENT_REV_LOCAL}
 ls -la ~/.ec/agt/bin
 ln -s ~/.ec/agt/bin/${AGENT_REV_LOCAL} ~/.ec/agent
-
-# begin of test
-: '
-wget -q --show-progress -O ~/.ec/agt/bin/${AGENT_REV_LOCAL}_test https://ec-release.github.io/sdk/agent_v1beta
-chmod +x ~/.ec/agt/bin/${AGENT_REV_LOCAL}_test
-ln -s ~/.ec/agt/bin/${AGENT_REV_LOCAL}_test ~/.ec/agent
-'
-# end of test
 
 export PATH=$PATH:$HOME/.ec
 agent -ver
