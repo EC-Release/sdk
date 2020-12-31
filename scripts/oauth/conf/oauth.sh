@@ -32,7 +32,7 @@ case $EC_AUTH_VALIDATE in
     agent -cfg ./conf/oauth_oidc.yaml &
     ;;
   sso)
-    cho "launch oauth with ge-sso"
+    echo "launch oauth with ge-sso"
     # refresh the hash
     if [[ -z "${EC_PPS}" ]]; then
       export EC_PPS=$CA_PPRS    
