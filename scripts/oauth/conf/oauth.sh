@@ -17,27 +17,27 @@ if [[ ! -z "${PORT}" ]]; then
 fi
 
 cd ~/.ec/oauth/
+
+# refresh the hash
+if [[ -z "${EC_PPS}" ]]; then
+  export EC_PPS=$CA_PPRS    
+fi
+export EC_PPS=$(agent -hsh -smp)
 case $EC_AUTH_VALIDATE in
   oaep)
     echo "launch oauth with oaep"
     agent -cfg ./conf/oauth_oaep.yaml &
     ;;
+  aha)
+    echo "launch oauth with aha"
+    agent -cfg ./conf/oauth_aha.yaml &
+    ;;
   oidc)
     echo "launch oauth with oidc"
-    # refresh the hash
-    if [[ -z "${EC_PPS}" ]]; then
-      export EC_PPS=$CA_PPRS    
-    fi
-    export EC_PPS=$(agent -hsh -smp)
     agent -cfg ./conf/oauth_oidc.yaml &
     ;;
   sso)
     echo "launch oauth with ge-sso"
-    # refresh the hash
-    if [[ -z "${EC_PPS}" ]]; then
-      export EC_PPS=$CA_PPRS    
-    fi
-    export EC_PPS=$(agent -hsh -smp)
     agent -cfg ./conf/oauth_sso.yaml &
     ;;
   *)
