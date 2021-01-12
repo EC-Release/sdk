@@ -26,10 +26,6 @@ if [[ -z "${EC_PPS}" ]]; then
 fi
 export EC_PPS=$(agent -hsh -smp)
 
-if [[ ! -z "${EC_REFRESHED_PPS}" ]]; then
-  export EC_PPS=$EC_REFRESHED_PPS    
-fi
-
 case $EC_AUTH_VALIDATE in
   oaep)
     echo "launch oauth with oaep"
