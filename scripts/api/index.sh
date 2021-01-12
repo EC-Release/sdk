@@ -55,6 +55,9 @@ if [[ $# -gt 1 ]]; then
   
   printf "\n-oa2: %s, -cid: %s, -url: %s, -dat: %s\n\n" "$OA2" "$CID" "$URL" "$DAT"
   
+  TIME=$(date)
+  printf "\n\n local time: %s\n\n" $TIME
+  
   if [[ -z "${EC_PPS}" ]]; then
     export EC_PPS=$CA_PPRS    
   fi
