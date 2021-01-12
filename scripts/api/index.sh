@@ -59,6 +59,10 @@ if [[ $# -gt 1 ]]; then
     export EC_PPS=$CA_PPRS    
   fi
   
+  print "\n EC_PPS: %s \n", "$EC_PPS"
+  print "\n\n refresh hash..\n"
+  agent -hsh -smp
+  
   export EC_PPS=$(agent -hsh -smp)
   TKN=$(agent -gtk -oa2 "$OA2" -cid "$CID" -smp)
   printf "\n bearer token: %s\n\n" $TKN
