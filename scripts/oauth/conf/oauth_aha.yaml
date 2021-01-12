@@ -73,7 +73,7 @@ ec-config:
           # required for validation
           userId: "id"
           # when present, the oa2 will look for the scopeIndex in the setting
-          # scope: "scope" #temporary commented for aha
+          scope: "scope"
           # mail used for cross-references
           email: "email"
           # begin optional
