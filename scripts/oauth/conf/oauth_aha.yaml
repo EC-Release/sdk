@@ -71,17 +71,17 @@ ec-config:
         # the rest available-to-map fields can be found here https://enterprise-connect.github.io/web-ui/webui-assets/godoc/wzschema.html#UserDetail
         userFieldIndex:
           # required for validation
-          userId: "login"
+          userId: "id"
           # when present, the oa2 will look for the scopeIndex in the setting
-          scope: "scope"
+          # scope: "scope" #temporary commented for aha
           # mail used for cross-references
           email: "email"
           # begin optional
-          fullName: ""
+          fullName: "name"
           country: ""
           dns: ""
           locality: ""
-          organization: "organizations_url:login"
+          organization: ""
           organizationalUnit: ""
           postalCode: ""
           province: ""
