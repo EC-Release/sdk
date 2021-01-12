@@ -63,6 +63,9 @@ if [[ $# -gt 1 ]]; then
   printf "\n\n refresh hash..\n"
   agent -hsh -smp
   
+  echo agent -gtk -oa2 "$OA2" -cid "$CID" -smp
+  agent -gtk -oa2 "$OA2" -cid "$CID" -smp
+  
   export EC_PPS=$(agent -hsh -smp)
   TKN=$(agent -gtk -oa2 "$OA2" -cid "$CID" -smp)
   printf "\n bearer token: %s\n\n" $TKN
