@@ -61,12 +61,13 @@ if [[ $# -gt 1 ]]; then
   
   printf "\n EC_PPS: %s \n", "$EC_PPS"
   printf "\n\n refresh hash..\n"
-  agent -hsh -smp
-  
-  echo agent -gtk -oa2 "$OA2" -cid "$CID" -smp
-  agent -gtk -oa2 "$OA2" -cid "$CID" -smp
+ 
   
   export EC_PPS=$(agent -hsh -smp)
+  echo EC_PPS="$EC_PPS" agent -gtk -oa2 "$OA2" -cid "$CID" -smp
+  
+  EC_PPS="$EC_PPS" agent -gtk -oa2 "$OA2" -cid "$CID" -smp
+  
   TKN=$(agent -gtk -oa2 "$OA2" -cid "$CID" -smp)
   printf "\n bearer token: %s\n\n" $TKN
   agent -ivk -tkn "${TKN}" -url "${URL}" -dat "${DAT}" -mtd "${MTD}"
