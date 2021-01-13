@@ -56,7 +56,7 @@ if [[ $# -gt 1 ]]; then
   printf "\n-oa2: %s, -cid: %s, -url: %s, -dat: %s\n\n" "$OA2" "$CID" "$URL" "$DAT"
   
   TIME=$(date)
-  printf "\n\n local time: %s\n\n" $TIME
+  printf "\n\n local time: %s\n\n" "$TIME"
   
   if [[ -z "${EC_PPS}" ]]; then
     export EC_PPS=$CA_PPRS    
@@ -64,7 +64,7 @@ if [[ $# -gt 1 ]]; then
   
   export EC_PPS=$(agent -hsh -smp)
   TKN=$(agent -gtk -oa2 "$OA2" -cid "$CID" -smp)
-  printf "\n bearer token: %s\n\n" $TKN
+  printf "\n bearer token: %s\n\n" "$TKN"
   agent -ivk -tkn "${TKN}" -url "${URL}" -dat "${DAT}" -mtd "${MTD}"
   exit 0
 fi
