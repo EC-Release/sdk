@@ -4,6 +4,7 @@ ec-config:
       apt: $EC_PORT
       dbg: true
       tls: false
+      tim: $TimeController
     #group to define the authentication method of the connectivity.  
     authGroup:
     - validate: oaep
