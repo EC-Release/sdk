@@ -64,9 +64,9 @@ if [[ $# -gt 1 ]]; then
   
   export EC_PPS=$(agent -hsh -smp)
   
-  agent -gtk -oa2 "$OA2" -cid "$CID" -smp | tail -n 1
+  #agent -gtk -oa2 "$OA2" -cid "$CID" -smp | tail -1
   
-  TKN=$(agent -gtk -oa2 "$OA2" -cid "$CID" -smp | tail -n 1)
+  TKN=$(agent -gtk -oa2 "$OA2" -cid "$CID" -smp | tail -1)
   printf "\n bearer token: %s\n\n" "$TKN"
   agent -ivk -tkn "${TKN}" -url "${URL}" -dat "${DAT}" -mtd "${MTD}"
   exit 0
