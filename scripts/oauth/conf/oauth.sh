@@ -18,8 +18,6 @@ fi
 
 cd ~/.ec/oauth/
 
-date
-
 # refresh the hash
 if [[ -z "${EC_PPS}" ]]; then
   export EC_PPS=$CA_PPRS    
