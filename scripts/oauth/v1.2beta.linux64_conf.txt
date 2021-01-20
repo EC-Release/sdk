@@ -1,3 +1,10 @@
+{
+    agent -ver
+} || {
+    printf "\nmissing agent. begin agent installation\n\n"
+    source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2beta.linux64_conf.txt)
+}
+
 mkdir -p ~/.ec/oauth/conf/ ~/.ec/oauth/oa2-assets
 wget -q --show-progress -O ~/.ec/oauth/conf/oauth_oaep.yaml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/oauth/conf/oauth_oaep.yaml
 wget -q --show-progress -O ~/.ec/oauth/conf/oauth_oidc.yaml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/oauth/conf/oauth_oidc.yaml
