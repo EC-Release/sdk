@@ -1,4 +1,4 @@
-# To be continue
+#!/bin/bash
 
 mkdir -p ~/.ec/conf/lb/
 wget -q --show-progress -O ~/.ec/conf/lb/ec-nginx-server-block.conf https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/loadbalancer/conf/ec-nginx-server-block.conf
