@@ -24,8 +24,6 @@ if [[ -z "${EC_PPS}" ]]; then
 fi
 export EC_PPS=$(agent -hsh -smp)
 
-printf "\n\nhello oauth.sh\n\n"
-
 case $EC_AUTH_VALIDATE in
   oaep)
     echo "launch oauth with oaep"
