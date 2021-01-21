@@ -9,4 +9,6 @@
 
 sed -i "s/{server-block}/$serverblock/g" ~/.ec/conf/lb/ec-nginx-server-block.conf
 
+cat ~/.ec/conf/lb/ec-nginx-server-block.conf
+
 nginx -t -c ~/.ec/conf/lb/ec-nginx-server-block.conf
