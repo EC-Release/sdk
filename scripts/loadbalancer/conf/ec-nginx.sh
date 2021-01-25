@@ -15,7 +15,7 @@ application_id=$(uuidgen)
 VCAP_APPLICATION="
 {
     application_id=$application_id
-    application_uris=[$application_uri]
+    application_uris=[$APPLICATION_URI]
 }"
 export VCAP_APPLICATION=$VCAP_APPLICATION
 
