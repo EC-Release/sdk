@@ -12,4 +12,4 @@ cat /etc/nginx/conf.d/ec-nginx-server-block-updated.conf
 
 ls -l /etc/nginx/conf.d
 
-while sleep 3600; do :; done
+nginx -g 'daemon off;'
