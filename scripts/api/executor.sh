@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo hello wolrd!
+/bin/bash -l
