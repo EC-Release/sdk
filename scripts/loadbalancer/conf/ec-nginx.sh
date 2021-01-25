@@ -11,3 +11,5 @@ printf "\nnginx-server-block-updated.conf file after sed.........\n"
 cat /etc/nginx/conf.d/ec-nginx-server-block-updated.conf
 
 ls -l /etc/nginx/conf.d
+
+nginx -s reload
