@@ -10,11 +10,10 @@ do
     fi
 done
 
-application_id=$(uuidgen)
 # generate the json string for vcap and export to env
 VCAP_APPLICATION="
 {
-    application_id=$application_id
+    application_id=$APPLICATION_ID
     application_uris=[$APPLICATION_URI]
 }"
 export VCAP_APPLICATION=$VCAP_APPLICATION
