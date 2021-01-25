@@ -10,4 +10,4 @@ cat ~/.ec/conf/lb/ec-nginx-server-block-updated.conf
 
 cp ~/.ec/conf/lb/ec-nginx-server-block-updated.conf /etc/nginx/conf.d/ec-nginx-server-block-updated.conf
 
-nginx -s reload
+
