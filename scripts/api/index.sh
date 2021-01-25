@@ -10,6 +10,7 @@
 mkdir -p ~/.ec/scripts
 wget -q --show-progress -O ~/.ec/scripts/executor.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/executor.sh
 chmod +x ~/.ec/scripts/executor.sh
+ls -la ~/.ec/scripts
 
 if [[ $# -gt 1 ]]; then
 
