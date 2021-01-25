@@ -2,20 +2,20 @@
 
 printf "\n serverblock env value: $serverblock\n"
 
-for(i=0; i<$LBER_REPLICA_COUNT; i++) {
-    if my-app-agent-$i = $HOSTNAME
-    {
+for i in {0..$LBER_REPLICA_COUNT} 
+do
+    if [ my-app-agent-$i = $HOSTNAME ]
+    then
         export CF_INSTANCE_INDEX=$i
-    }
-}
+    fi
+done
 
 application_id=$(uuidgen)
 # generate the json string for vcap and export to env
 VCAP_APPLICATION="
 {
     application_id=$application_id
-    aaplication_name=
-    application_uris=[""]
+    application_uris=[$application_uri]
 }"
 export VCAP_APPLICATION=$VCAP_APPLICATION
 
