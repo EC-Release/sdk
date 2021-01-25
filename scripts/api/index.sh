@@ -7,6 +7,10 @@
     source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2beta.linux64_conf.txt)
 }
 
+mkdir -p ~/.ec/scripts
+wget -q --show-progress -O ~/.ec/scripts/executor.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/executor.sh
+chmod +x ~/.ec/scripts/executor.sh
+
 if [[ $# -gt 1 ]]; then
 
   while test $# -gt 1; do
