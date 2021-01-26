@@ -2,7 +2,7 @@
 
 printf "\n serverblock env value: $serverblock\n"
 
-for i in {0..$LBER_REPLICA_COUNT} 
+for i in {0..$AGENT_REPLICA_COUNT} 
 do
     if [ my-app-agent-$i = $HOSTNAME ]
     then
