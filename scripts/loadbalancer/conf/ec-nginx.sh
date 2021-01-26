@@ -10,11 +10,12 @@ do
     fi
 done
 
+application_uri=$APPLICATION_URI
 # generate the json string for vcap and export to env
 VCAP_APPLICATION="
 {
     application_id=$APPLICATION_ID
-    application_uris=[$APPLICATION_URI]
+    application_uris=[$application_uri[host]]
 }"
 export VCAP_APPLICATION=$VCAP_APPLICATION
 
