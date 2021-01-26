@@ -12,12 +12,12 @@ done
 
 application_uri=$APPLICATION_URI
 # generate the json string for vcap and export to env
-VCAP_APPLICATION="
+vcap_application="
 {
     application_id=$APPLICATION_ID
     application_uris=[$application_uri[host]]
 }"
-export VCAP_APPLICATION=$VCAP_APPLICATION
+export VCAP_APPLICATION=$vcap_application
 
 ESCAPED=$(echo "${serverblock}" | sed '$!s@$@\\@g')
 sed "s/UPSTREAMBLOCK/${ESCAPED}/g" ~/.ec/conf/lb/ec-nginx-server-block.conf > ~/.ec/conf/lb/ec-nginx-server-block-updated.conf
@@ -28,5 +28,7 @@ printf "\nnginx-server-block-updated.conf file after sed.........\n"
 cat /etc/nginx/conf.d/ec-nginx-server-block-updated.conf
 
 ls -l /etc/nginx/conf.d
+echo "VCAP_APPLICATION: " $VCAP_APPLICATION
+echo "CF_INSTANCE_INDEX: " $CF_INSTANCE_INDEX
 
 nginx -g 'daemon off;'
