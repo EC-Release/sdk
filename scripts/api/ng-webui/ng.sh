@@ -13,5 +13,6 @@ if [[ ! -z "${PORT}" ]]; then
 fi
 
 cd ~/.ec/api && ls -al
-agent -cfg ./conf/api.yaml &
-sleep 5 && tail -f $(ls -t ~/.ec/*.log | head -1)
+agent -cfg ./conf/api.yaml
+#agent -cfg ./conf/api.yaml &
+#sleep 5 && tail -f $(ls -t ~/.ec/*.log | head -1)
