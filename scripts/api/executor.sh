@@ -1,4 +1,4 @@
 #!/bin/bash
 
-stty rows 50 cols 132
+stty rows 40 cols 100
 /bin/bash -l
