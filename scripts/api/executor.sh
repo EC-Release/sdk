@@ -1,4 +1,5 @@
 #!/bin/bash
 
-stty rows 40 cols 100
+#base64 | tr -d \\n
+stty rows 40 cols 120
 /bin/bash -l
