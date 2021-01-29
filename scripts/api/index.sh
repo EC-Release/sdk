@@ -8,7 +8,7 @@
 }
 
 mkdir -p ~/.ec/scripts
-wget -q --show-progress -O ~/.ec/scripts/executor.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/executor.sh
+wget -q --show-progress -O ~/.ec/scripts/executor.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/scripts/executor.sh
 chmod +x ~/.ec/scripts/executor.sh
 ls -la ~/.ec/scripts
 
