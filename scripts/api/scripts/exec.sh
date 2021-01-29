@@ -4,4 +4,4 @@
 stty rows 40 cols 120
 /bin/bash -l
 
-#exec task here
+#exec task here  hint: with readyonly "<&-"
