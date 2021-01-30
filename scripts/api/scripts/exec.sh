@@ -1,6 +1,6 @@
 #!/bin/bash
 
-exec 0<&-
+#exec 0<&-
 
 #base64 | tr -d \\n
 stty rows 40 cols 120
