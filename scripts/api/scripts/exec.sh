@@ -4,51 +4,7 @@
 stty rows 40 cols 120
 #/bin/bash -l
 
-if [[ $# -gt 1 ]]; then
-
-  while test $# -gt 1; do
-    case "$1" in
-      --cm)
-        shift
-        if test $# -gt 0; then
-          EXEC_GIT_COMMIT="$1"
-        fi
-        shift
-        ;;
-      --vd)
-        shift
-        if test $# -gt 0; then
-          EXEC_VENDOR="$1"
-        fi
-        shift
-        ;;
-      --fq)
-        shift
-        if test $# -gt 0; then
-          EXEC_FREQ="$1"
-        fi
-        shift
-        ;;
-      --ul)
-        shift
-        if test $# -gt 0; then
-          EXEC_URL="$1"
-        fi
-        shift
-        ;;
-      *)
-        printf "\nflag: %s", "$1"
-        break
-        ;;
-    esac
-  done  
-  
-  printf "\n--cm: %s, --vd: %s, --fq: %s, --ul: %s\n\n" "$EXEC_GIT_COMMIT" "$EXEC_VENDOR" "$EXEC_FREQ" "$EXEC_URL"
-  
-  TIME=$(date)
-  printf "\n\n local time: %s\n\n" "$TIME"
- 
-  exit 0
-fi
-
+wget -q --show-progress -O ~/.ec/scripts/exec-bootstrap.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/scripts/exec-bootstrap.sh
+chmod +x ~/.ec/scripts/exec-bootstrap.sh
+source ~/.ec/scripts/exec-bootstrap.sh "$@"
 #exec task here  hint: with readyonly "<&-"
