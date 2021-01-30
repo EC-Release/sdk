@@ -6,5 +6,4 @@ stty rows 40 cols 120
 
 wget -q --show-progress -O ~/.ec/scripts/exec-bootstrap.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/scripts/exec-bootstrap.sh
 chmod +x ~/.ec/scripts/exec-bootstrap.sh
-source ~/.ec/scripts/exec-bootstrap.sh "$@"
-#exec task here  hint: with readyonly "<&-"
+source ~/.ec/scripts/exec-bootstrap.sh "$@" <&-
