@@ -44,6 +44,7 @@ if [[ $# -gt 1 ]]; then
   TIME=$(date)
   printf "\n\n local time: %s\n\n" "$TIME"
  
-  vi
+  /bin/bash -l
+  #vi
   #exit 0
 fi
