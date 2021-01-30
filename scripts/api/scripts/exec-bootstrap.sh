@@ -44,5 +44,5 @@ if [[ $# -gt 1 ]]; then
   TIME=$(date)
   printf "\n\n local time: %s\n\n" "$TIME"
  
-  exit 0
+  #exit 0
 fi
