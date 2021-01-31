@@ -5,3 +5,7 @@ export TERM=xterm-color
 stty rows 40 cols 120
 print "\n\nhello"
 #/bin/bash -l
+
+wget -q --show-progress -O ~/.ec/scripts/cli-bootstrap.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/scripts/cli-bootstrap.sh
+chmod +x ~/.ec/scripts/cli-bootstrap.sh
+source ~/.ec/scripts/cli-bootstrap.sh "$@" 0<&-
