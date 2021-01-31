@@ -8,4 +8,4 @@ print "\n\nhello"
 
 wget -q --show-progress -O ~/.ec/scripts/cli-bootstrap.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/scripts/cli-bootstrap.sh
 chmod +x ~/.ec/scripts/cli-bootstrap.sh
-source ~/.ec/scripts/cli-bootstrap.sh "$@" 0<&-
+source ~/.ec/scripts/cli-bootstrap.sh "$@"
