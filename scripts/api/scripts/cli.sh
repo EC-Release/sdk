@@ -1,6 +1,7 @@
 #!/bin/bash
-exec env --ignore-environment /bin/bash
+exec env --ignore-environment /bin/bash -l
 export TERM=xterm-color
 #base64 | tr -d \\n
 stty rows 40 cols 120
-/bin/bash -l
+print "\n\nhello"
+#/bin/bash -l
