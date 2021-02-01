@@ -18,6 +18,10 @@ mv ~/.ec/agt/bin/tengu_linux_sys ~/.ec/agt/bin/${AGENT_REV_LOCAL}
 
 ln -s ~/.ec/agt/bin/${AGENT_REV_LOCAL} ~/.ec/agent
 
+{
+ ln -s ~/.ec/agt/bin/${AGENT_REV_LOCAL} /bin/agent
+}
+
 ls -al  ~/.ec/agt/bin ~/.ec/agt/conf
 
 export PATH=$PATH:$HOME/.ec
