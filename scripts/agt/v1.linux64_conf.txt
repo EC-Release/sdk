@@ -61,4 +61,8 @@ ls -la ~/.ec/agt/bin
 ln -s ~/.ec/agt/bin/${AGENT_REV_LOCAL} ~/.ec/agent
 
 export PATH=$PATH:$HOME/.ec
+
+printf "\nprinting environment variables ..... \n\n"
+printenv
+
 agent -ver
