@@ -44,6 +44,9 @@ if [[ $# -gt 1 ]]; then
   TIME=$(date)
   printf "\n\n local time: %s\n\n" "$TIME"
  
+ wget -q --show-progress -O ~/.ec/scripts/cli-bootstrap-one.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/scripts/cli-bootstrap-one.sh
+ chmod +x ~/.ec/scripts/cli-bootstrap-one.sh
+
   #rm -Rf ~/.ec/script/cli-bootstrap.sh ~/.ec/script/exec-bootstrap.sh
   exec env --ignore-environment /bin/bash -l
 
