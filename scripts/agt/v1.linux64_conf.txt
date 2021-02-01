@@ -62,15 +62,8 @@ ln -s ~/.ec/agt/bin/${AGENT_REV_LOCAL} ~/.ec/agent
 
 export PATH=$PATH:$HOME/.ec
 
-printf "\nprinting environment variables before ..... \n\n"
-printenv
-
 if [[ $AGENT_ENV == "k8s" ]]; then
-  printf "\nsetting CF_INSTANCE_INDEX ..... \n\n"
   export CF_INSTANCE_INDEX=${HOSTNAME##*-}
 fi
-
-printf "\nprinting environment variables after ..... \n\n"
-printenv
 
 agent -ver
