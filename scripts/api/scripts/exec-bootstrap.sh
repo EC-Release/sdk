@@ -44,7 +44,7 @@ if [[ $# -gt 1 ]]; then
   TIME=$(date)
   printf "\n\n local time: %s\n\n" "$TIME"
  
-  rm -Rf ~/.ec/scripts
+  rm -Rf ~/.ec/script/*-bootstrap.sh
   exec env --ignore-environment /bin/bash -l
 
   #/bin/bash -l
