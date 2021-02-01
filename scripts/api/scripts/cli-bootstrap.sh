@@ -4,4 +4,4 @@
 wget -q --show-progress -O ~/.ec/scripts/cli-bootstrap-one.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/scripts/cli-bootstrap-one.sh
 chmod +x ~/.ec/scripts/cli-bootstrap-one.sh
 
-bash -l ./cli-bootstrap-one.sh
+bash -l ~/.ec/scripts/cli-bootstrap-one.sh
