@@ -65,7 +65,7 @@ export PATH=$PATH:$HOME/.ec
 printf "\nprinting environment variables before ..... \n\n"
 printenv
 
-if [ $IS_K8s ]; then
+if [[ $AGENT_ENV == "k8s" ]]; then
   printf "\nsetting CF_INSTANCE_INDEX ..... \n\n"
   export CF_INSTANCE_INDEX=${HOSTNAME##*-}
 fi
