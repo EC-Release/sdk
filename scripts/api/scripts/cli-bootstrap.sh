@@ -1,2 +1,2 @@
 #!/bin/bash
-bash -l
+exec env --ignore-environment /bin/bash -l
