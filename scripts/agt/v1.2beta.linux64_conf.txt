@@ -24,5 +24,5 @@ ln -s ~/.ec/agt/bin/${AGENT_REV_LOCAL} ~/.ec/agent
 
 ls -al  ~/.ec/agt/bin ~/.ec/agt/conf
 
-export PATH=$PATH:$HOME/.ec
+export PATH=$PATH:/root/.ec
 agent -ver
