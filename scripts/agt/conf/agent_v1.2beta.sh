@@ -35,6 +35,7 @@ if [[ $* == *-cvt* ]]; then
     esac
   done
   exit 0
+  return
 fi
   
 agent "$@"
