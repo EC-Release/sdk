@@ -24,12 +24,12 @@ if [[ $* == *-cvt* ]]; then
       -mod)
         shift
         if test $# -gt 0; then
-          print "mod=%s" "$1" > /tmp/cvt.yaml
+          printf "mod=%s\n" "$1" > /tmp/cvt.yaml
         fi
         shift
         ;;
       *)
-        printf "\nflag: %s", "$1"
+        printf "\nflag: %s\n", "$1"
         #break
         ;;
     esac
