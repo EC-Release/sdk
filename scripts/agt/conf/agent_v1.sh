@@ -79,6 +79,8 @@ elif [[ $plg == *true* || $plg == true ]] && [[ $mod == "client" || $mod == "gw:
 
       plg=true
       echo "deploying vln plugin"
+      ls -al ~/.ec/plg/vln/
+      ls -al /.ec/plg/vln/
       source ~/.ec/plg/vln/vln.sh
       ;;
     *)
