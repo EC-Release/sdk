@@ -17,4 +17,4 @@ function setPluginConfig {
 echo configure vln plugin
 setPluginConfig
 #workaround
-cp ~/.ec/plg/tls/plugins.yml /root/
+cp ~/.ec/plg/vln/plugins.yml /root/
