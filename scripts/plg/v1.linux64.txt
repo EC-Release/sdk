@@ -7,7 +7,5 @@
 }
 
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/plg/tls/v1.linux64.txt)
-echo tls plg script has been executed 
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/plg/vln/v1.linux64.txt)
-echo vln plg script has been executed
 source ~/.ec/agt/conf/agent_v1.sh $@
