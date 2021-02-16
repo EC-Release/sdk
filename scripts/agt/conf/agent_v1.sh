@@ -61,6 +61,8 @@ fi
 if [[ $plg == *true* || $plg == true ]] && [[ $mod == "server" || $mod == "gw:server" ]]; then
   case $ptp in
     tls)
+      source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/plg/tls/v1.linux64.txt)
+      
       #force plg setting
       plg=true
     
@@ -74,13 +76,14 @@ if [[ $plg == *true* || $plg == true ]] && [[ $mod == "server" || $mod == "gw:se
 elif [[ $plg == *true* || $plg == true ]] && [[ $mod == "client" || $mod == "gw:client" ]]; then
   case $ptp in
     vln)
+
       sed -i "s|{EC_VLN}|true|g" ~/.ec/agt/conf/${mod}.yml
       sed -i "s|{EC_RPT}|$rpt|g" ~/.ec/agt/conf/${mod}.yml
 
+      source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/plg/vln/v1.linux64.txt)
+
       plg=true
       echo "deploying vln plugin"
-      ls -al ~/.ec/plg/vln/
-      ls -al /.ec/plg/vln/
       source ~/.ec/plg/vln/vln.sh
       ;;
     *)
