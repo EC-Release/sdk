@@ -21,6 +21,7 @@ if [[ $* == *-cvt* ]]; then
     case "$1" in
       -cvt)
         printf "\nflag cvt detected"
+        shift
         ;;
       -mod)
         shift
