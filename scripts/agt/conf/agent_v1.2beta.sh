@@ -12,8 +12,6 @@ export EC_PPS=$CA_PPRS
 #    echo $PROP_VALUE
 #}
 
-apk add --upgrade jq && jq --version
-
 if [[ ! -z "${EC_PPS}" ]]; then
   export EC_PPS=$(agent -hsh -smp)
 fi
@@ -28,7 +26,7 @@ if [[ $* == *-cvt* ]]; then
       -mod)
         shift
         if test $# -gt 0; then
-          yq w -i /tmp/out.yaml ec-config.conf.mod "$1"
+          jq w -i /tmp/out.yaml ec-config.conf.mod "$1"
         fi
         shift
         ;;
