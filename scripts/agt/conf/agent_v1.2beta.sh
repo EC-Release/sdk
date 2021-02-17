@@ -19,8 +19,8 @@ fi
 if [[ $* == *-cvt* ]]; then
   while test $# -gt 1; do
     case "$1" in
-      -cvt)
-        ;;
+      #-cvt)
+      #  ;;
       -mod)
         shift
         if test $# -gt 0; then
@@ -28,10 +28,10 @@ if [[ $* == *-cvt* ]]; then
         fi
         shift
         ;;
-      *)
-        printf "\nflag: %s\n", "$1"
-        break
-        ;;
+      #*)
+      #  printf "\nflag: %s\n", "$1"
+      #  break
+      #  ;;
     esac
   done
   exit 0
