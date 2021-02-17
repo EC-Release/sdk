@@ -16,6 +16,8 @@ if [[ ! -z "${EC_PPS}" ]]; then
   export EC_PPS=$(agent -hsh -smp)
 fi
 
+which yq
+
 if [[ $* == *-cvt* ]]; then
   while test $# -gt 1; do
     case "$1" in
@@ -26,7 +28,7 @@ if [[ $* == *-cvt* ]]; then
       -mod)
         shift
         if test $# -gt 0; then
-          yq  w -i /tmp/out.yaml ec-config.conf.mod "$1"
+          yq w -i /tmp/out.yaml ec-config.conf.mod "$1"
         fi
         shift
         ;;
