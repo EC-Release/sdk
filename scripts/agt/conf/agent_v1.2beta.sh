@@ -20,13 +20,12 @@ if [[ $* == *-cvt* ]]; then
   while test $# -gt 1; do
     case "$1" in
       -cvt)
-        printf "-cvt detected" 
-        shift
+        printf "\nflag cvt detected"
         ;;
       -mod)
         shift
         if test $# -gt 0; then
-          printf "mod=%s\n" "$1"
+          printf "mod=%s\n" "$1" >> /tmp/out.yaml
         fi
         shift
         ;;
