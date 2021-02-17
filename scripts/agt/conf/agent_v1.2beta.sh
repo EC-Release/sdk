@@ -16,7 +16,7 @@ if [[ ! -z "${EC_PPS}" ]]; then
   export EC_PPS=$(agent -hsh -smp)
 fi
 
-which yq
+/bin/yq
 
 if [[ $* == *-cvt* ]]; then
   while test $# -gt 1; do
