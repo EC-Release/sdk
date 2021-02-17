@@ -19,8 +19,10 @@ fi
 if [[ $* == *-cvt* ]]; then
   while test $# -gt 1; do
     case "$1" in
-      #-cvt)
-      #  ;;
+      -cvt)
+        printf "-cvt detected" 
+        shift
+        ;;
       -mod)
         shift
         if test $# -gt 0; then
