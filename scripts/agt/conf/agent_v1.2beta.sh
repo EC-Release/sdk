@@ -28,14 +28,13 @@ if [[ $* == *-cvt* ]]; then
         fi
         shift
         ;;
-      #*)
-      #  printf "\nflag: %s\n", "$1"
-      #  break
-      #  ;;
+      *)
+        printf "\nflag: %s\n", "$1"
+        break
+        ;;
     esac
   done
   exit 0
-  return
 fi
   
 agent "$@"
