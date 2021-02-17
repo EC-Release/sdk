@@ -26,6 +26,7 @@ if [[ $* == *-cvt* ]]; then
       -mod)
         shift
         if test $# -gt 0; then
+          touch /tmp/out.yaml
           yq w -i /tmp/out.yaml ec-config.conf.mod "$1"
         fi
         shift
