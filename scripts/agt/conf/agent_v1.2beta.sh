@@ -12,6 +12,8 @@ export EC_PPS=$CA_PPRS
 #    echo $PROP_VALUE
 #}
 
+apk add --upgrade jq && jq --version
+
 if [[ ! -z "${EC_PPS}" ]]; then
   export EC_PPS=$(agent -hsh -smp)
 fi
