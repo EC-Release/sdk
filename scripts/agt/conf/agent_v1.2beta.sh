@@ -17,17 +17,24 @@ if [[ ! -z "${EC_PPS}" ]]; then
 fi
 
 if [[ $* == *-cvt* ]]; then
+  touch /tmp/out.yaml          
   while test $# -gt 1; do
     case "$1" in
       -cvt)
-        printf "\nflag cvt detected"
+        printf "\nflag cvt detected\n"
         shift
         ;;
       -mod)
         shift
         if test $# -gt 0; then
-          touch /tmp/out.yaml
           yq w -i /tmp/out.yaml 'ec-config.conf.mod' "$1"
+        fi
+        shift
+        ;;
+      -aid)
+        shift
+        if test $# -gt 0; then
+          yq w -i /tmp/out.yaml 'ec-config.conf.aid' "$1"
         fi
         shift
         ;;
