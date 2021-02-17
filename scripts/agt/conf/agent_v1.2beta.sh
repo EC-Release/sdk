@@ -38,12 +38,70 @@ if [[ $* == *-cvt* ]]; then
         fi
         shift
         ;;
+      -oa2)      
+        shift
+        if test $# -gt 0; then
+          yq w -i /tmp/out.yaml 'ec-config.conf.oa2' "$1"
+        fi
+        shift
+        ;;
+      -cid)      
+        shift
+        if test $# -gt 0; then
+          yq w -i /tmp/out.yaml 'ec-config.conf.cid' "$1"
+        fi
+        shift
+        ;;
+      -csc)      
+        shift
+        if test $# -gt 0; then
+          yq w -i /tmp/out.yaml 'ec-config.conf.csc' "$1"
+        fi
+        shift
+        ;;
+      -hst)      
+        shift
+        if test $# -gt 0; then
+          yq w -i /tmp/out.yaml 'ec-config.conf.hst' "$1"
+        fi
+        shift
+        ;;
+      -rpt)      
+        shift
+        if test $# -gt 0; then
+          yq w -i /tmp/out.yaml 'ec-config.conf.rpt' "$1"
+        fi
+        shift
+        ;;
+      -rht)      
+        shift
+        if test $# -gt 0; then
+          yq w -i /tmp/out.yaml 'ec-config.conf.rht' "$1"
+        fi
+        shift
+        ;;
+      -grp)      
+        shift
+        if test $# -gt 0; then
+          yq w -i /tmp/out.yaml 'ec-config.conf.grp' "$1"
+        fi
+        shift
+        ;;
+      -zon)      
+        shift
+        if test $# -gt 0; then
+          yq w -i /tmp/out.yaml 'ec-config.conf.zon' "$1"
+        fi
+        shift
+        ;;
       *)
         printf "\nflag: %s\n", "$1"
         break
         ;;
     esac
   done
+  
+  agent -enc -fil /tmp/out.yaml 
   exit 0
 fi
   
