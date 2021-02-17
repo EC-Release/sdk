@@ -24,7 +24,7 @@ if [[ $* == *-cvt* ]]; then
       -mod)
         shift
         if test $# -gt 0; then
-          printf "mod=%s\n" "$1" > /tmp/cvt.yaml
+          printf "mod=%s\n" "$1"
         fi
         shift
         ;;
