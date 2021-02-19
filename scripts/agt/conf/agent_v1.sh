@@ -92,9 +92,9 @@ else
   sed -i "s|{EC_VLN}|false|g" ~/.ec/agt/conf/${mod}.yml
 fi
 
-if [[ -v IS_EKS_ENV && $IS_EKS_ENV == "true" ]]; then
+: 'if [[ -v IS_EKS_ENV && $IS_EKS_ENV == "true" ]]; then
   export CF_INSTANCE_INDEX=${HOSTNAME##*-}
-fi
+fi'
 
 echo "************ Refernce id: " $CF_INSTANCE_INDEX
 
