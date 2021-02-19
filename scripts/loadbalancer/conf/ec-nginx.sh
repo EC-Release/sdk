@@ -8,11 +8,37 @@
 }
 
 # refer serverblock to https://github.com/EC-Release/oci/blob/fd2ad16359a79f0436654d3e9a56fc327ed709db/k8s/agent%2Bhelper/templates/_loadbalancer.tpl
-### begin of ngix config
+# env var params: @@stsName @@Namespace @@replicaCount
+# output: @@upstreamApp @@upstreamMaster @@nginxMap
+### begin of nginx config
+set @@upstreamApp=''
+for int i;i++;i<@@replicaCount {
+    @@upstreamApp=@@upstreamApp +
+      `upstream app{{ @i }} {
+        server {{ @@stsName }}-{{ @i }}.{{ @@stsName }}.{{ @@Namespace }}.svc.cluster.local:7990;
+      }`
+}
 
+set @@upstreamMaster='upstream master {'
+for int i;i++;i<@@replicaCount {
+    @@_upstreamMaster=@@_upstreamMaster + 
+      `server @@stsName-@i.@@stsName.@Namespace.svc.cluster.local:7990;`
+}
+@@upstreamMaster=@@upstreamMaster+@@_upstreamMaster+'}'
+
+set @@nginxMap='map $http_X_CF_APP_INSTANCE $pool {
+  default "master";'
+for int i;i++;i<@@replicaCount {
+    @@_nginxMap=@@_nginxMap + `
+      
+    `
+}
+
+set ESCAPED=@@upstreamApp+'\n '+@@upstreamMaster+'\n'+@@nginxMap
 ### end of nginx config
 
-ESCAPED=$(echo "${serverblock}" | sed '$!s@$@\\@g')
+# depricated
+#ESCAPED=$(echo "${serverblock}" | sed '$!s@$@\\@g')
 
 sed "s/UPSTREAMBLOCK/${ESCAPED}/g" ~/.ec/conf/lb/ec-nginx-server-block.conf > ~/.ec/conf/lb/ec-nginx-server-block-updated.conf
 
