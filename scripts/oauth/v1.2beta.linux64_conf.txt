@@ -2,6 +2,7 @@ mkdir -p ~/.ec/oauth/conf/ ~/.ec/oauth/oa2-assets
 wget -q --show-progress -O ~/.ec/oauth/conf/oauth_oaep.yaml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/oauth/conf/oauth_oaep.yaml
 wget -q --show-progress -O ~/.ec/oauth/conf/oauth_oidc.yaml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/oauth/conf/oauth_oidc.yaml
 wget -q --show-progress -O ~/.ec/oauth/conf/oauth_sso.yaml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/oauth/conf/oauth_sso.yaml
+wget -q --show-progress -O ~/.ec/oauth/conf/oauth_aha.yaml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/oauth/conf/oauth_aha.yaml
 wget -q --show-progress -O ~/.ec/oauth/conf/oauth.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/oauth/conf/oauth.sh
 
 chmod +x ~/.ec/oauth/conf/oauth_oaep.yaml ~/.ec/oauth/conf/oauth_oidc.yaml ~/.ec/oauth/conf/oauth.sh

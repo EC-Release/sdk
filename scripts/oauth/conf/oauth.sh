@@ -11,33 +11,41 @@
 #  author: apolo.yasuda@ge.com
 #
 
+{
+    agent -ver
+} || {
+    printf "\nmissing agent. begin agent installation\n\n"
+    source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2beta.linux64_conf.txt)
+}
+
 # PORT indicating a custom environment
 if [[ ! -z "${PORT}" ]]; then
   EC_PORT=:$PORT
 fi
 
 cd ~/.ec/oauth/
+
+# refresh the hash
+if [[ -z "${EC_PPS}" ]]; then
+  export EC_PPS=$CA_PPRS    
+fi
+export EC_PPS=$(agent -hsh -smp)
+
 case $EC_AUTH_VALIDATE in
   oaep)
     echo "launch oauth with oaep"
     agent -cfg ./conf/oauth_oaep.yaml &
     ;;
+  aha)
+    echo "launch oauth with aha"
+    agent -cfg ./conf/oauth_aha.yaml &
+    ;;
   oidc)
     echo "launch oauth with oidc"
-    # refresh the hash
-    if [[ -z "${EC_PPS}" ]]; then
-      export EC_PPS=$CA_PPRS    
-    fi
-    export EC_PPS=$(agent -hsh -smp)
     agent -cfg ./conf/oauth_oidc.yaml &
     ;;
   sso)
     echo "launch oauth with ge-sso"
-    # refresh the hash
-    if [[ -z "${EC_PPS}" ]]; then
-      export EC_PPS=$CA_PPRS    
-    fi
-    export EC_PPS=$(agent -hsh -smp)
     agent -cfg ./conf/oauth_sso.yaml &
     ;;
   *)

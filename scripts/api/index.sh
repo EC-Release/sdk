@@ -7,6 +7,13 @@
     source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2beta.linux64_conf.txt)
 }
 
+mkdir -p ~/.ec/scripts
+#wget -q --show-progress -O ~/.ec/scripts/executor.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/scripts/executor.sh
+wget -q --show-progress -O ~/.ec/scripts/cli.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/scripts/cli.sh
+wget -q --show-progress -O ~/.ec/scripts/exec.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/scripts/exec.sh
+chmod +x ~/.ec/scripts/executor.sh ~/.ec/scripts/exec.sh ~/.ec/scripts/cli.sh
+ls -la ~/.ec/scripts
+
 if [[ $# -gt 1 ]]; then
 
   while test $# -gt 1; do
@@ -55,13 +62,20 @@ if [[ $# -gt 1 ]]; then
   
   printf "\n-oa2: %s, -cid: %s, -url: %s, -dat: %s\n\n" "$OA2" "$CID" "$URL" "$DAT"
   
+  TIME=$(date)
+  printf "\n\n local time: %s\n\n" "$TIME"
+  
   if [[ -z "${EC_PPS}" ]]; then
     export EC_PPS=$CA_PPRS    
   fi
   
   export EC_PPS=$(agent -hsh -smp)
-  TKN=$(agent -gtk -oa2 "$OA2" -cid "$CID" -smp)
-  printf "\n bearer token: %s\n\n" $TKN
+
+  op=$(agent -gtk -oa2 "$OA2" -cid "$CID" -smp)
+  TKN=$(echo "${op##*$'\n'}")
+  
+  #TKN=$(agent -gtk -oa2 "$OA2" -cid "$CID" -smp | tail -1)
+  printf "\n bearer token: %s\n\n" "$TKN"
   agent -ivk -tkn "${TKN}" -url "${URL}" -dat "${DAT}" -mtd "${MTD}"
   exit 0
 fi

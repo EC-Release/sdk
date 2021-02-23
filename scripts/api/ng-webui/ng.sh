@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source <(wget -O - https://ec-release.github.io/sdk/scripts/api/ng-webui/ng_conf.sh)
+source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/ng-webui/ng_conf.sh)
 
 if [[ -z "${EC_PPS}" ]]; then
     export EC_PPS=$CA_PPRS    
@@ -13,5 +13,6 @@ if [[ ! -z "${PORT}" ]]; then
 fi
 
 cd ~/.ec/api && ls -al
-agent -cfg ./conf/api.yaml &
-sleep 5 && tail -f $(ls -t ~/.ec/*.log | head -1)
+agent -cfg ./conf/api.yaml
+#agent -cfg ./conf/api.yaml &
+#sleep 5 && tail -f $(ls -t ~/.ec/*.log | head -1)
