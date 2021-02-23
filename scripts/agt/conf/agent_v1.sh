@@ -93,10 +93,17 @@ else
 fi
 
 if [[ -v IS_EKS_ENV && $IS_EKS_ENV == "true" ]]; then
-  export CF_INSTANCE_INDEX=${HOSTNAME##*-}
+  export CF_INSTANCE_INDEX=${EC_HOSTNAME##*-}
+  
+  VCAP_APPLICATION="{
+  \"application_id\": ${uuid},
+  \"application_uris\": [${EC_HOSTNAME}]
+}"
+  
 fi
 
 echo "************ Refernce id: " $CF_INSTANCE_INDEX
+echo "************ VCAP_APPLICATION: " $VCAP_APPLICATION
 
 sed -i "s|{EC_AID}|$aid|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_TID}|$tid|g" ~/.ec/agt/conf/${mod}.yml
