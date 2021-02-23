@@ -8,23 +8,24 @@
 }
 
 # refer serverblock to https://github.com/EC-Release/oci/blob/fd2ad16359a79f0436654d3e9a56fc327ed709db/k8s/agent%2Bhelper/templates/_loadbalancer.tpl
-# env var params: @@stsName @@Namespace @@replicaCount
+# env var params: @@stsName @@namespace @@replicaCount
 # output: @@upstreamApp @@upstreamMaster @@nginxMap
 ### begin of nginx config
-set @@upstreamApp=''
-for int i;i++;i<@@replicaCount {
-    @@upstreamApp=@@upstreamApp +
-      `upstream app{{ @i }} {
-        server {{ @@stsName }}-{{ @i }}.{{ @@stsName }}.{{ @@Namespace }}.svc.cluster.local:7990;
-      }`
+upstreamApp=""
+for ((i = 0; i < ${replicaCount}; i++)); do
+  upstreamApp+="upstream app-${i} {
+  server ${stsName}-${i}.${stsName}.${namespace}.svc.cluster.local:7990;
 }
+"
+done
 
-set @@upstreamMaster='upstream master {'
-for int i;i++;i<@@replicaCount {
-    @@_upstreamMaster=@@_upstreamMaster + 
-      `server @@stsName-@i.@@stsName.@Namespace.svc.cluster.local:7990;`
-}
-@@upstreamMaster=@@upstreamMaster+@@_upstreamMaster+'}'
+upstreamMaster="upstream master {"
+_upstreamMaster=""
+for ((i = 0; i < ${replicaCount}; i++)); do
+  _upstreamMaster+="server ${stsName}-${i}.${stsName}.${namespace}.svc.cluster.local:7990;
+"
+done
+upstreamMaster="${upstreamMaster}${_upstreamMaster}}"
 
 set @@nginxMap='map $http_X_CF_APP_INSTANCE $pool {
   default "master";'
