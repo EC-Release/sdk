@@ -49,6 +49,8 @@ function getNginxConf {
 
 ESCAPED=$(getNginxConf "${stsName}" "${namespace}" "${replicaCount}" "${uuid}")
 
+echo "ESCAPED: $ESCAPED"
+
 # depricated
 #ESCAPED=$(echo "${serverblock}" | sed '$!s@$@\\@g')
 
