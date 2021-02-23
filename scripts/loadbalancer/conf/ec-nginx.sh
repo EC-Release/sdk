@@ -8,35 +8,46 @@
 }
 
 # refer serverblock to https://github.com/EC-Release/oci/blob/fd2ad16359a79f0436654d3e9a56fc327ed709db/k8s/agent%2Bhelper/templates/_loadbalancer.tpl
-# env var params: @@stsName @@namespace @@replicaCount
-# output: @@upstreamApp @@upstreamMaster @@nginxMap
+# env var params: @@stsName @@namespace @@replicaCount @@uuid
+# output: @@TheNginxConf
 ### begin of nginx config
-upstreamApp=""
-for ((i = 0; i < ${replicaCount}; i++)); do
-  upstreamApp+="upstream app-${i} {
-  server ${stsName}-${i}.${stsName}.${namespace}.svc.cluster.local:7990;
+function getNginxConf {
+    stsName=$1
+    namespace=$2
+    replicaCount=$3
+    uuid=$4
+    
+    upstreamApp=""
+    for ((i = 0; i < ${replicaCount}; i++)); do
+      upstreamApp+="upstream app-${i} {
+      server ${stsName}-${i}.${stsName}.${namespace}.svc.cluster.local:7990;
+    }
+    "
+    done
+
+    upstreamMaster="upstream master {"
+    _upstreamMaster=""
+    for ((i = 0; i < ${replicaCount}; i++)); do
+      _upstreamMaster+="  server ${stsName}-${i}.${stsName}.${namespace}.svc.cluster.local:7990;
+    "
+    done
+    upstreamMaster="${upstreamMaster}${_upstreamMaster}}"
+
+    nginxMap='map $http_X_CF_APP_INSTANCE $pool {
+      default "master";
+    '
+    for ((i = 0; i < ${replicaCount}; i++)); do
+      _nginxMap+="  ${uuid}:${i} app-${i}
+    "  
+    done
+    nginxMap="${nginxMap}${_nginxMap}}"
+
+    printf "%s\n%s\n%s" "$upstreamApp" "$upstreamMaster" "$nginxMap"
 }
-"
-done
 
-upstreamMaster="upstream master {"
-_upstreamMaster=""
-for ((i = 0; i < ${replicaCount}; i++)); do
-  _upstreamMaster+="server ${stsName}-${i}.${stsName}.${namespace}.svc.cluster.local:7990;
-"
-done
-upstreamMaster="${upstreamMaster}${_upstreamMaster}}"
-
-set @@nginxMap='map $http_X_CF_APP_INSTANCE $pool {
-  default "master";'
-for int i;i++;i<@@replicaCount {
-    @@_nginxMap=@@_nginxMap + `
-      
-    `
-}
-
-set ESCAPED=@@upstreamApp+'\n '+@@upstreamMaster+'\n'+@@nginxMap
 ### end of nginx config
+
+ESCAPED=$(getNginxConf "${stsName}" "${namespace}" "${replicaCount}" "${uuid}")
 
 # depricated
 #ESCAPED=$(echo "${serverblock}" | sed '$!s@$@\\@g')
