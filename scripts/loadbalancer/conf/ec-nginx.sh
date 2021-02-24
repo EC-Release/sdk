@@ -37,7 +37,7 @@ function getNginxConf {
       default "master";
     '
     for ((i = 0; i < ${replicaCount}; i++)); do
-      _nginxMap+="  ${uuid}:${i} app-${i}
+      _nginxMap+="  ${uuid}:${i} app-${i};
     "  
     done
     nginxMap="${nginxMap}${_nginxMap}}"
