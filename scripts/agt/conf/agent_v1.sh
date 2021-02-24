@@ -108,8 +108,8 @@ if [[ -v IS_EKS_ENV && $IS_EKS_ENV == "true" ]]; then
 fi
 
 printf "\n\n************ Hostname: " ${HOSTNAME##*-}
-echo "\n\n************ Refernce id: " $CF_INSTANCE_INDEX
-echo "\n\n************ VCAP_APPLICATION: " $VCAP_APPLICATION
+printf "\n\n************ Refernce id: " $CF_INSTANCE_INDEX
+printf "\n\n************ VCAP_APPLICATION: " $VCAP_APPLICATION
 
 sed -i "s|{EC_AID}|$aid|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_TID}|$tid|g" ~/.ec/agt/conf/${mod}.yml
