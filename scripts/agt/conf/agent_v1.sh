@@ -105,9 +105,9 @@ if [[ -v IS_EKS_ENV && $IS_EKS_ENV == "true" ]]; then
   \"application_uris\": [\"${EC_HOSTNAME}\"]
 }"
 
-  printf "\n************ Hostname: ${HOSTNAME##*-} \n"
-  printf "\n************ Refernce id: $CF_INSTANCE_INDEX \n"
-  printf "\n************ VCAP_APPLICATION: $VCAP_APPLICATION \n"
+  printf "\n************ Hostname: %s\n" "${HOSTNAME##*-}"
+  printf "\n************ Refernce id: %s\n" "$CF_INSTANCE_INDEX"
+  printf "\n************ VCAP_APPLICATION: %s\n" "$VCAP_APPLICATION"
 fi
 
 
