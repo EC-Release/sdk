@@ -52,9 +52,9 @@ ESCAPED=$(getNginxConf "${stsName}" "${namespace}" "${replicaCount}" "${uuid}")
 echo "ESCAPED: $ESCAPED"
 
 # depricated
-#ESCAPED=$(echo "${serverblock}" | sed '$!s@$@\\@g')
+ESCAPED1=$(echo "${ESCAPED}" | sed '$!s@$@\\@g')
 
-sed "s/UPSTREAMBLOCK/${ESCAPED}/g" ~/.ec/conf/lb/ec-nginx-server-block.conf > ~/.ec/conf/lb/ec-nginx-server-block-updated.conf
+sed "s/UPSTREAMBLOCK/${ESCAPED1}/g" ~/.ec/conf/lb/ec-nginx-server-block.conf > ~/.ec/conf/lb/ec-nginx-server-block-updated.conf
 
 cp -f ~/.ec/conf/lb/nginx.conf /etc/nginx/nginx.conf
 cp ~/.ec/conf/lb/ec-nginx-server-block-updated.conf /etc/nginx/conf.d/ec-nginx-server-block-updated.conf
