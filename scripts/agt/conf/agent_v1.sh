@@ -104,12 +104,12 @@ if [[ -v IS_EKS_ENV && $IS_EKS_ENV == "true" ]]; then
   \"application_id\": \"${uuid}\",
   \"application_uris\": [\"${EC_HOSTNAME}\"]
 }"
-  
+
+  printf "\n************ Hostname: ${HOSTNAME##*-} \n"
+  printf "\n************ Refernce id: $CF_INSTANCE_INDEX \n"
+  printf "\n************ VCAP_APPLICATION: $VCAP_APPLICATION \n"
 fi
 
-printf "\n\n************ Hostname: " ${HOSTNAME##*-}
-printf "\n\n************ Refernce id: " $CF_INSTANCE_INDEX
-printf "\n\n************ VCAP_APPLICATION: " $VCAP_APPLICATION
 
 sed -i "s|{EC_AID}|$aid|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_TID}|$tid|g" ~/.ec/agt/conf/${mod}.yml
