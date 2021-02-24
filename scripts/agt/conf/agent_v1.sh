@@ -110,7 +110,6 @@ if [[ -v IS_EKS_ENV && $IS_EKS_ENV == "true" ]]; then
   printf "\n************ VCAP_APPLICATION: %s\n" "$VCAP_APPLICATION"
 fi
 
-
 sed -i "s|{EC_AID}|$aid|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_TID}|$tid|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_CID}|$cid|g" ~/.ec/agt/conf/${mod}.yml
