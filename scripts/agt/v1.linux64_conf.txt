@@ -1,4 +1,5 @@
 AGENT_REV_LOCAL=$AGENT_REV
+echo "Inside v1.linux64_conf.txt..."
 
 printf "\nbegin agent binary (%s) installation\n\n" $AGENT_REV_LOCAL
 
