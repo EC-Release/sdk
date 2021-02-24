@@ -97,8 +97,6 @@ else
   sed -i "s|{EC_VLN}|false|g" ~/.ec/agt/conf/${mod}.yml
 fi
 
-echo "Hostname: ${HOSTNAME##*-}"
-
 if [[ -v IS_EKS_ENV && $IS_EKS_ENV == "true" ]]; then
   export CF_INSTANCE_INDEX=${HOSTNAME##*-}
   
@@ -109,8 +107,9 @@ if [[ -v IS_EKS_ENV && $IS_EKS_ENV == "true" ]]; then
   
 fi
 
-echo "************ Refernce id: " $CF_INSTANCE_INDEX
-echo "************ VCAP_APPLICATION: " $VCAP_APPLICATION
+printf "\n\n************ Hostname: " ${HOSTNAME##*-}
+echo "\n\n************ Refernce id: " $CF_INSTANCE_INDEX
+echo "\n\n************ VCAP_APPLICATION: " $VCAP_APPLICATION
 
 sed -i "s|{EC_AID}|$aid|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_TID}|$tid|g" ~/.ec/agt/conf/${mod}.yml
