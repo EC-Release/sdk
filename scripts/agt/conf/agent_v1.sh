@@ -103,8 +103,8 @@ if [[ -v IS_EKS_ENV && $IS_EKS_ENV == "true" ]]; then
   export CF_INSTANCE_INDEX=${HOSTNAME##*-}
   
   export VCAP_APPLICATION="{
-  \"application_id\": ${uuid},
-  \"application_uris\": [${EC_HOSTNAME}]
+  \"application_id\": \"${uuid}\",
+  \"application_uris\": [\"${EC_HOSTNAME}\"]
 }"
   
 fi
