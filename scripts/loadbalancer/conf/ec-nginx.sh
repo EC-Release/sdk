@@ -7,6 +7,11 @@
     source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2beta.linux64_conf.txt)
 }
 
+if [[ -z $namespace ]]; then
+  printf "\n\n*************** not a k8s environment. exiting the process.\n"
+  exit 0
+fi
+
 # refer serverblock to https://github.com/EC-Release/oci/blob/fd2ad16359a79f0436654d3e9a56fc327ed709db/k8s/agent%2Bhelper/templates/_loadbalancer.tpl
 # env var params: @@stsName @@namespace @@replicaCount @@uuid
 # output: @@TheNginxConf
