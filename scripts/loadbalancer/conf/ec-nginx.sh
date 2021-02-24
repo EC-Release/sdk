@@ -37,7 +37,7 @@ function getNginxConf {
       default "master";
     '
     for ((i = 0; i < ${replicaCount}; i++)); do
-      _nginxMap+="  ${uuid}:${i} app-${i}
+      _nginxMap+="  ${uuid}:${i} app-${i};
     "  
     done
     nginxMap="${nginxMap}${_nginxMap}}"
@@ -49,10 +49,11 @@ function getNginxConf {
 
 ESCAPED=$(getNginxConf "${stsName}" "${namespace}" "${replicaCount}" "${uuid}")
 
-# depricated
-#ESCAPED=$(echo "${serverblock}" | sed '$!s@$@\\@g')
+echo "ESCAPED: $ESCAPED"
 
-sed "s/UPSTREAMBLOCK/${ESCAPED}/g" ~/.ec/conf/lb/ec-nginx-server-block.conf > ~/.ec/conf/lb/ec-nginx-server-block-updated.conf
+ESCAPED1=$(echo "${ESCAPED}" | sed '$!s@$@\\@g')
+
+sed "s/UPSTREAMBLOCK/${ESCAPED1}/g" ~/.ec/conf/lb/ec-nginx-server-block.conf > ~/.ec/conf/lb/ec-nginx-server-block-updated.conf
 
 cp -f ~/.ec/conf/lb/nginx.conf /etc/nginx/nginx.conf
 cp ~/.ec/conf/lb/ec-nginx-server-block-updated.conf /etc/nginx/conf.d/ec-nginx-server-block-updated.conf
