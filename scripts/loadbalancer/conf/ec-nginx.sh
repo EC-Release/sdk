@@ -54,13 +54,19 @@ function getNginxConf {
 
 ESCAPED=$(getNginxConf "${stsName}" "${namespace}" "${replicaCount}" "${uuid}")
 
-echo "ESCAPED: $ESCAPED"
-
 ESCAPED1=$(echo "${ESCAPED}" | sed '$!s@$@\\@g')
 
 sed "s/UPSTREAMBLOCK/${ESCAPED1}/g" ~/.ec/conf/lb/ec-nginx-server-block.conf > ~/.ec/conf/lb/ec-nginx-server-block-updated.conf
 
 cp -f ~/.ec/conf/lb/nginx.conf /etc/nginx/nginx.conf
 cp ~/.ec/conf/lb/ec-nginx-server-block-updated.conf /etc/nginx/conf.d/ec-nginx-server-block-updated.conf
+
+printf "\n\n*************** ec-nginx-server-block-updated.conf: \n\n"
+cat /etc/nginx/conf.d/ec-nginx-server-block-updated.conf
+
+if [[ -v namespace && $namespace == "test" ]]; then
+  printf "\n\n*************** CI environment to test the spec.\n"
+  exit 0
+fi
 
 nginx -g 'daemon off;'
