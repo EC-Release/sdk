@@ -31,4 +31,3 @@ ls -al  ~/.ec/agt/bin ~/.ec/agt/conf
 
 export PATH=$PATH:/root/.ec
 agent -ver
-}
