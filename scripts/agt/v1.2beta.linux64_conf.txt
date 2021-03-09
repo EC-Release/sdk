@@ -7,7 +7,7 @@ chmod 755 ~/.ec/agt/conf/agent_v1.2beta.sh
 {
   rm ~/.ec/agent
 } || {
-  printf "no agent binary found!"
+  printf "\n no agent binary found!\n\n"
 }
 
 
