@@ -16,6 +16,13 @@ if [[ ! -z "${EC_PPS}" ]]; then
   export EC_PPS=$(agent -hsh -smp)
 fi
 
+if [[ ! -z "${EC_OPPS}" ]]; then
+  agent "$@" <<PPS
+${EC_OPPS}
+PPS
+
+fi
+
 if [[ $* == *-cvt* ]]; then
   touch /tmp/out.yaml          
   while test $# -gt 1; do
