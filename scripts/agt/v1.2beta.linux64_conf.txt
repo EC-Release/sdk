@@ -4,7 +4,9 @@ chmod 755 ~/.ec/agt/conf/agent_v1.2beta.sh
 
 # tbc add more conf files
 
-rm ~/.ec/agent 2> /dev/null
+{
+  rm ~/.ec/agent
+}
 
 # default if AGENT_REV is present in env
 AGENT_REV_LOCAL=$AGENT_REV
