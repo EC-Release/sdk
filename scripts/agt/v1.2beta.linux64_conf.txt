@@ -4,8 +4,11 @@ chmod 755 ~/.ec/agt/conf/agent_v1.2beta.sh
 
 # tbc add more conf files
 
-#touch /.ec/agent
-#rm ~/.ec/agent
+{
+  rm ~/.ec/agent
+} || {
+  printf "no agent binary found!"
+}
 
 
 # default if AGENT_REV is present in env
