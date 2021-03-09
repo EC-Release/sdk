@@ -17,6 +17,7 @@ if [[ ! -z "${EC_PPS}" ]]; then
 fi
 
 if [[ ! -z "${EC_OPPS}" ]]; then
+printf "\n heredoc begins.\n\n"
   agent "$@" <<PPS
 ${EC_OPPS}
 PPS
