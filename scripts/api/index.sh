@@ -81,6 +81,7 @@ if [[ $# -gt 1 ]]; then
 fi
 
 if [[ $EC_API_APP_NAME == "ops" ]]; then
+  printf "\n launch webportal 1.x\n"
   source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/portal1.x/portal.sh)
   exit 0
 fi
