@@ -80,4 +80,9 @@ if [[ $# -gt 1 ]]; then
   exit 0
 fi
 
+if [[ $EC_PORTAL_ENV == "portal1.x" ]]; then
+  source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/portal1.x/portal.sh)
+  exit 0
+fi
+
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/ng-webui/ng.sh)
