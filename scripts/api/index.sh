@@ -80,7 +80,7 @@ if [[ $# -gt 1 ]]; then
   exit 0
 fi
 
-if [[ $EC_PORTAL_ENV == "portal1.x" ]]; then
+if [[ $EC_API_APP_NAME == "ops" ]]; then
   source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/portal1.x/portal.sh)
   exit 0
 fi
