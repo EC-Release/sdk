@@ -5,6 +5,8 @@ ec-config:
       dbg: true
       tls: false
       tim: $IsTimeController
+      sed: $EC_SEED_NODE
+      hst: $EC_SEED_HOST      
     #group to define the authentication method of the connectivity.  
     authGroup:
     - validate: oidc
