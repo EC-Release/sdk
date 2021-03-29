@@ -85,7 +85,7 @@ ec-config:
         #uathScopes used for the custom scopes admitted to oidc IdP
         authScopes: ["openid","profile"] 
         userHttpHeaders: ["Authorization:Bearer <token>","Conten-Type:application/json"]
-        userHttpMethod: "GET"
+        userHttpMethod: "POST"
         # available field-mapping for the local user. unmapped or fail-to-map fields will remain empty.
         # the rest available-to-map fields can be found here https://enterprise-connect.github.io/web-ui/webui-assets/godoc/wzschema.html#UserDetail
         userFieldIndex:
