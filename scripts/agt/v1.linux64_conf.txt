@@ -31,6 +31,7 @@ else
     {
       wget -q --show-progress -O ~/.ec/agent_linux_sys.ec https://github.com/EC-Release/sdk/raw/$AGENT_REV_LOCAL/dist/agent_linux_sys.ec
     } && {
+      echo EC_PPS: "$EC_PPS"
       export EC_PPS=$(agent -hsh -smp)
     } && {
       cd ~/.ec/
