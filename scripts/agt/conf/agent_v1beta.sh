@@ -115,4 +115,32 @@ sed -i "s|{EC_HCA}|$hca|g" ~/.ec/agt/conf/${mod}.yml
 
 
 cat ~/.ec/agt/conf/${mod}.yml
-agent -cfg .ec/agt/conf/${mod}.yml
+agent -cfg .ec/agt/conf/${mod}.yml &
+
+apk add curl
+
+# download the v1.2beta agent
+wget -q --show-progress -O ~/.ec/tengu_linux_sys.tar.gz https://raw.githubusercontent.com/EC-Release/tengu/${AGENT_REV_LOCAL}/dist/tengu/tengu_linux_sys.tar.gz
+tar xvf ~/.ec/tengu_linux_sys.tar.gz -C ~/.ec/agt/bin/ && rm ~/.ec/tengu_linux_sys.tar.gz
+
+~/.ec/agt/bin/tengu_linux_sys -ivk -tkn "${TKN}" -url "${URL}" -dat "${DAT}" -mtd "${MTD}"
+
+timer=0
+while true
+do
+  sleep 5
+  curl http://localhost:${hca}/status
+  echo ""
+
+  timer=$((timer+1))
+
+  if [ $timer -eq 5 ]
+  then
+    echo "memroy status: "
+    curl http://localhost:${hca}/health
+    free -m
+    # report health data to portal database
+    echo "------------------------------------------------------------"
+    timer=0
+  fi
+done
