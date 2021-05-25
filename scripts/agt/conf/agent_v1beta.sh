@@ -19,7 +19,37 @@ function getProperty {
 }
 
 if [[ $# -ne 0 ]]; then
-    agent "$@"
+    nohup agent "$@" &
+
+    timer=0
+    while true
+    do
+      sleep 5
+      curl -s -o /dev/null -w "%{http_code}" http://localhost:27991/status
+      echo ""
+
+      timer=$((timer+1))
+
+      if [ $timer -eq ${TIME_INTERVAL} ]
+      then
+        reporttime=`date '+%Y%m%d%H%M%S'`
+        PORTAL_URL_UPDATED="${PORTAL_URL}_${reporttime}"
+
+        searchstr="hca"
+        process=`ps -ef | grep agent | grep hca`
+        temp=${process#*$searchstr}
+        hca=`echo $temp | awk '{print $1}'`
+
+        healthresult=`curl localhost:${hca}/health`
+        healthresultupdated=`echo ${healthresult} | sed 's/"//g'`
+
+        data="{\"parent\":\"${PARENT_NODE}\",\"data\":\"${healthresultupdated}\"}"
+        ~/.ec/agt/bin/tengu_linux_sys -ivk -tkn "${TKN}" -url "${PORTAL_URL_UPDATED}" -dat $data -mtd POST
+        timer=0
+        echo "------------------------------------------------------------"
+      fi
+    done
+
     return 0
 fi
 
@@ -63,7 +93,7 @@ if [[ $plg == *true* || $plg == true ]] && [[ $mod == "server" || $mod == "gw:se
     tls)
       #force plg setting
       plg=true
-    
+
       echo "deploying tls plugin"
       source ~/.ec/plg/tls/tls.sh
       ;;
@@ -88,7 +118,7 @@ elif [[ $plg == *true* || $plg == true ]] && [[ $mod == "client" || $mod == "gw:
       ;;
   esac
 else
-  plg=false    
+  plg=false
   sed -i "s|{EC_VLN}|false|g" ~/.ec/agt/conf/${mod}.yml
 fi
 
@@ -115,32 +145,5 @@ sed -i "s|{EC_HCA}|$hca|g" ~/.ec/agt/conf/${mod}.yml
 
 
 cat ~/.ec/agt/conf/${mod}.yml
-agent -cfg .ec/agt/conf/${mod}.yml &
 
-apk add curl
-
-# download the v1.2beta agent
-wget -q --show-progress -O ~/.ec/tengu_linux_sys.tar.gz https://raw.githubusercontent.com/EC-Release/tengu/${AGENT_REV_LOCAL}/dist/tengu/tengu_linux_sys.tar.gz
-tar xvf ~/.ec/tengu_linux_sys.tar.gz -C ~/.ec/agt/bin/ && rm ~/.ec/tengu_linux_sys.tar.gz
-
-~/.ec/agt/bin/tengu_linux_sys -ivk -tkn "${TKN}" -url "${URL}" -dat "${DAT}" -mtd "${MTD}"
-
-timer=0
-while true
-do
-  sleep 5
-  curl http://localhost:${hca}/status
-  echo ""
-
-  timer=$((timer+1))
-
-  if [ $timer -eq 5 ]
-  then
-    echo "memroy status: "
-    curl http://localhost:${hca}/health
-    free -m
-    # report health data to portal database
-    echo "------------------------------------------------------------"
-    timer=0
-  fi
-done
+agent -cfg .ec/agt/conf/${mod}.yml
