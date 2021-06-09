@@ -80,10 +80,18 @@ if [[ $# -gt 1 ]]; then
   exit 0
 fi
 
-if [[ $EC_API_APP_NAME == "ops" ]]; then
-  printf "\n launch webportal 1.x\n"
-  source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/portal1.x/portal.sh)
-  exit 0
-fi
+case $EC_API_APP_NAME in
+  ops)
+    printf "\n launch webportal 1.x\n"
+    source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/portal1.x/portal.sh)
+    ;;
+  dcsc)
+    printf "\n launch DC Service Cloud Portal 1.x\n"
+    source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/dcsc1.x/portal.sh)
+    ;;
+  *)
+    printf "\n launch EC Engineer Portal 1.x\n"
+    source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/ng-webui/ng.sh)
+    ;;
+esac
 
-source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/ng-webui/ng.sh)
