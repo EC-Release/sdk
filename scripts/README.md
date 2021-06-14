@@ -23,3 +23,13 @@ source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/script
 #vln package
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/plg/vln/v1.linux64.txt)
 ```
+
+### Test Usage
+Enable a internal performance test with the flag ```-test``` the script will running stress-test against both ```/health``` and ```/status``` http endpoints and submit a set of test data.
+
+```bash
+# docker usage TBC
+docker enterpriseconnect/agent -e test=true...
+
+# binary usage TBC
+```
