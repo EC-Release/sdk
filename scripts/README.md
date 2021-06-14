@@ -25,7 +25,7 @@ source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/script
 ```
 
 ### Test Usage
-Enable a internal performance test with the flag ```-test``` the script will running stress-test against both ```/health``` and ```/status``` http endpoints and submit a set of test data.
+Enable a internal performance test with the flag ```-test``` the script will running stress-test against both ```/health``` and ```/status``` http endpoints and submit a set of test data. Refer to [this working PR](https://github.com/EC-Release/sdk/pull/162#issuecomment-848739958)
 
 ```bash
 # docker usage TBC
