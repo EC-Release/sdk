@@ -104,5 +104,6 @@ if [[ $* == *-cvt* ]]; then
   agent -enc -fil /tmp/out.yaml 
   exit 0
 fi
-  
+
+cat ~/.ec/agt/conf/x:gateway.yml
 agent "$@"
