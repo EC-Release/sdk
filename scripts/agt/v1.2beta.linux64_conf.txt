@@ -2,6 +2,8 @@ mkdir -p ~/.ec/agt/conf ~/.ec/agt/bin
 wget -q --show-progress -O ~/.ec/agt/conf/agent_v1.2beta.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/agent_v1.2beta.sh
 chmod 755 ~/.ec/agt/conf/agent_v1.2beta.sh
 
+wget -q --show-progress -O ~/.ec/agt/conf/x:gateway.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/x:gateway.yml
+
 # tbc add more conf files
 
 {
