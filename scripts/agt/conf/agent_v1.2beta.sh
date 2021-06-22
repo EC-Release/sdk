@@ -113,4 +113,10 @@ if [[ ! -z "${EC_SED}" ]]; then
   exit 0
 fi
 
+if [[ ! -z "${EC_RHT}" ]]; then
+  printenv
+  agent -cfg ./.ec/agt/conf/x:server.yml
+  exit 0
+fi
+
 agent "$@"
