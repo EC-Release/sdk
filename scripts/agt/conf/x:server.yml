@@ -12,4 +12,5 @@ ec-config:
     #oa2: https://xxxxxxx.run.aws-usw02-dev.ice.predix.io/oauth/token
     cps: 5
     #limited the resource access to the following remote hosts.
-    rht: localhost:5432,localhost:8080,localhost:22
+    rht: $EC_RHT
+    #rht: localhost:5432,localhost:8080,localhost:22 #no spaces; one string
