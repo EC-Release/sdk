@@ -109,7 +109,7 @@ cat ~/.ec/agt/conf/x:gateway.yml
 
 if [[ ! -z "${EC_SED}" ]]; then
   printenv
-  agent -cfg ~/.ec/agt/conf/x:gateway.yml
+  agent -cfg ./.ec/agt/conf/x:gateway.yml
   exit 0
 fi
 
