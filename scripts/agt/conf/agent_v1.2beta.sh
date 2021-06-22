@@ -105,16 +105,16 @@ if [[ $* == *-cvt* ]]; then
   exit 0
 fi
 
-cat ~/.ec/agt/conf/x:gateway.yml
-
 if [[ ! -z "${EC_SED}" ]]; then
   printenv
+  cat ~/.ec/agt/conf/x:gateway.yml
   agent -cfg ./.ec/agt/conf/x:gateway.yml
   exit 0
 fi
 
 if [[ ! -z "${EC_RHT}" ]]; then
   printenv
+  cat ~/.ec/agt/conf/x:server.yml
   agent -cfg ./.ec/agt/conf/x:server.yml
   exit 0
 fi
