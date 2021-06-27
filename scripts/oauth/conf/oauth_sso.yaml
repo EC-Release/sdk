@@ -13,8 +13,9 @@ ec-config:
       scope: ["app.auth","cluster.user"]
       #failURL redirects any failing authentications to.
       failURL: $EC_OAUTH_FAIL_URL
-      #when isActive set to false, the seeder may retain a local copy
+      #[1]when isActive set to false, the seeder may retain a local copy
       #but it shall not be replicated to other nodes
+      #[2]isActive is optional and default to true if not presented
       isActive: true
       isOwner: false
       privateKey: $EC_PVTKEY
