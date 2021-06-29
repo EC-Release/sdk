@@ -1,0 +1,19 @@
+ec-config:
+  conf:
+    mod: server
+    zon: {EC_ZON}
+    grp: {EC_GRP}
+    sst: {EC_SST}
+    hst: {EC_HST}
+    dbg: {EC_DBG}
+    cid: {EC_CID}
+    csc: {EC_CSC}
+    oa2: {EC_OA2}
+    dur: {EC_DUR}
+    aid: {EC_AID}
+    rpt: "{EC_RPT}"
+    rht: {EC_RHT}
+    plg: {EC_PLG}
+    cps: {EC_CPS}
+    hca: "{EC_HCA}"
+    {EC_PXY}
