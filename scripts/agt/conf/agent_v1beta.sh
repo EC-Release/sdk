@@ -63,7 +63,7 @@ if [[ $plg == *true* || $plg == true ]] && [[ $mod == "server" || $mod == "gw:se
     tls)
       #force plg setting
       plg=true
-
+    
       echo "deploying tls plugin"
       source ~/.ec/plg/tls/tls.sh
       ;;
@@ -88,7 +88,7 @@ elif [[ $plg == *true* || $plg == true ]] && [[ $mod == "client" || $mod == "gw:
       ;;
   esac
 else
-  plg=false
+  plg=false    
   sed -i "s|{EC_VLN}|false|g" ~/.ec/agt/conf/${mod}.yml
 fi
 
