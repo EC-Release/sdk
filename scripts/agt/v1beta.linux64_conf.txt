@@ -3,7 +3,7 @@ AGENT_REV_LOCAL=$AGENT_REV
 if [[ $AGENT_REV_LOCAL != "v1beta.fukuoka"* && $AGENT_REV_LOCAL != "1.0.0-b"* ]]; then
   export AGENT_REV_LOCAL=v1beta.fukuoka.1727
 fi
-echo "AGENT_REV_LOCAL: $AGENT_REV_LOCAL "
+printf "AGENT_REV_LOCAL: $AGENT_REV_LOCAL "
 
 mkdir -p ~/.ec/agt/conf ~/.ec/agt/bin
 wget -q --show-progress -O ~/.ec/agt/conf/agent_v1beta.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/agent_v1beta.sh
