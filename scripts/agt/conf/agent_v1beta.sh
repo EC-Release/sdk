@@ -19,37 +19,7 @@ function getProperty {
 }
 
 if [[ $# -ne 0 ]]; then
-    nohup agent "$@" &
-
-    timer=0
-    while true
-    do
-      sleep 5
-      curl -s -o /dev/null -w "%{http_code}" http://localhost:27991/status
-      echo ""
-
-      timer=$((timer+1))
-
-      if [ $timer -eq ${TIME_INTERVAL} ]
-      then
-        reporttime=`date '+%Y%m%d%H%M%S'`
-        PORTAL_URL_UPDATED="${PORTAL_URL}_${reporttime}"
-
-        searchstr="hca"
-        process=`ps -ef | grep agent | grep hca`
-        temp=${process#*$searchstr}
-        hca=`echo $temp | awk '{print $1}'`
-
-        healthresult=`curl localhost:${hca}/health`
-        healthresultupdated=`echo ${healthresult} | sed 's/"//g'`
-
-        data="{\"parent\":\"${PARENT_NODE}\",\"data\":\"${healthresultupdated}\"}"
-        ~/.ec/agt/bin/tengu_linux_sys -ivk -tkn "${TKN}" -url "${PORTAL_URL_UPDATED}" -dat $data -mtd POST
-        timer=0
-        echo "------------------------------------------------------------"
-      fi
-    done
-
+    agent "$@"
     return 0
 fi
 
@@ -145,5 +115,4 @@ sed -i "s|{EC_HCA}|$hca|g" ~/.ec/agt/conf/${mod}.yml
 
 
 cat ~/.ec/agt/conf/${mod}.yml
-
 agent -cfg .ec/agt/conf/${mod}.yml
