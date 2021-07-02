@@ -14,6 +14,7 @@ ec-config:
     cps: {EC_CPS}
     hca: "{EC_HCA}"
     lpt: "{EC_LPT}"
+    sts: "{EC_STS}"
     plg: {EC_PLG}
     vln: {EC_VLN}
     # rpt is either "0" or ""

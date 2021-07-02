@@ -36,6 +36,7 @@ zon=$(getProperty "conf.zon")
 grp=$(getProperty "conf.grp")
 cps=$(getProperty "conf.cps")
 lpt=$(getProperty "conf.lpt")
+sts=$(getProperty "conf.sts")
 gpt=$(getProperty "conf.gpt")
 rpt=$(getProperty "conf.rpt")
 rht=$(getProperty "conf.rht")
@@ -103,6 +104,7 @@ sed -i "s|{EC_ZON}|$zon|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_GRP}|$grp|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_CPS}|$cps|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_LPT}|$lpt|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_STS}|$sts|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_GPT}|$gpt|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_RPT}|$rpt|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_RHT}|$rht|g" ~/.ec/agt/conf/${mod}.yml
