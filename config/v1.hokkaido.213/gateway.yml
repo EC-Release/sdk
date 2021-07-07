@@ -1,0 +1,12 @@
+ec-config:
+  conf:
+    mod: gateway
+    gpt: "{EC_GPT}"
+    zon: {EC_ZON}
+    grp: {EC_GRP}
+    sst: {EC_SST}
+    dbg: {EC_DBG}
+    tkn: {EC_TKN}
+    hst: {EC_HST}
+    cps: {EC_CPS}
+    {EC_PXY}

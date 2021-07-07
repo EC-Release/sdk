@@ -1,0 +1,14 @@
+ec-config:
+    conf:
+      mod: oauth2
+      apt: $EC_PORT
+      dbg: true
+      tls: false
+    #group to define the authentication method of the connectivity.  
+    authGroup:
+    - validate: oaep
+      scope: ["app.auth","cluster.user"]
+      isOwner: false
+      privateKey: $EC_PVTKEY
+      publicCrt: $EC_PUBKEY
+      description: "decription #2 for reference only"

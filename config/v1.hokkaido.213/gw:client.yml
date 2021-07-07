@@ -1,0 +1,16 @@
+ec-config:
+  conf:
+    mod: gw:client
+    lpt: "{EC_LPT}"
+    zon: {EC_ZON}
+    grp: {EC_GRP}
+    sst: {EC_SST}
+    dbg: {EC_DBG}
+    tkn: {EC_TKN}
+    aid: {EC_AID}
+    tid: {EC_TID}
+    hst: {EC_HST}
+    gpt: "{EC_GPT}"
+    hca: "{EC_HCA}"
+    plg: {EC_PLG}
+    {EC_PXY}
