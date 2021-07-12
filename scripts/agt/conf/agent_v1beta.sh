@@ -62,7 +62,6 @@ fi
 if [ -z "$sts" ]; then
   sts=""
 else
-  sts=$(sts | tr -cd "[:digit:]\:\/\.")
   sts="sts: \"${sts}\""
 fi
 
