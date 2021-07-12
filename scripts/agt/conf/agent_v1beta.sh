@@ -59,7 +59,7 @@ else
   pxy="pxy: \"${pxy}\""
 fi
 
-if [ -z "sts" ]; then
+if [ -z "$sts" ]; then
   sts=""
 else
   sts=$(sts | tr -cd "[:digit:]\:\/\.")
