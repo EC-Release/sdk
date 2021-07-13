@@ -87,7 +87,7 @@ case $EC_API_APP_NAME in
     printf "\n launch webportal 1.x\n"
     source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/portal1.x/portal.sh)
     ;;
-  dcsc)
+  "dcsc" | "dc")
     printf "\n launch DC Service Cloud Portal 1.x\n"
     source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/dcsc1.x/portal.sh)
     ;;
