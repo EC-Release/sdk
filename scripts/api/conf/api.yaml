@@ -6,6 +6,10 @@ ec-config:
     dbg: true
     tls: false
     oa2: $EC_API_OA2
+    #oar indicates the OAUTH instance which is solely used for authentication-to-re-direction purpose
+    #both oa2 and oar should refer to the same process but defer in URL. The oar is particularily useful in a 
+    #restricted environment such as k8s.
+    oar: $EC_API_OA2_REDIRECT
     cid: $EC_API_DEV_ID
     sed: $EC_SEED_NODE
     #local url accessisble to other seeds
