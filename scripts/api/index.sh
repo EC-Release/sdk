@@ -73,6 +73,8 @@ if [[ $# -gt 1 ]]; then
   
   export EC_PPS=$(agent -hsh -smp)
 
+  echo agent -gtk -oa2 "$OA2" -cid "$CID" -smp
+  
   op=$(agent -gtk -oa2 "$OA2" -cid "$CID" -smp)
   TKN=$(echo "${op##*$'\n'}")
   
