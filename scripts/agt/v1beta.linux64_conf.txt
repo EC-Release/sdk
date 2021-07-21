@@ -1,6 +1,6 @@
 # default if AGENT_REV is present in env
 AGENT_REV_LOCAL=$AGENT_REV
-if [[ $AGENT_REV_LOCAL != "v1beta.fukuoka"* ]]; then
+if [[ $AGENT_REV_LOCAL != "v1beta.fukuoka"* && $AGENT_REV_LOCAL != "1.0.0-b"* ]]; then
   export AGENT_REV_LOCAL=v1beta.fukuoka.1727
 fi
 
