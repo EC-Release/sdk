@@ -8,7 +8,7 @@ if [[ $AGENT_REV_LOCAL == "v1.hokkaido.213" ]]; then
 fi
 
 # default if AGENT_REV is present in env
-if [[ $AGENT_REV_LOCAL != "v1.hokkaido"* ]]; then
+if [[ $AGENT_REV_LOCAL != "v1.hokkaido"* && $AGENT_REV_LOCAL != "1.0.0-r"* ]]; then
   export AGENT_REV_LOCAL=v1.hokkaido.212
 fi
 
@@ -51,6 +51,12 @@ else
 
     ls -la ~/.ec
     tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/agt/bin/ && rm ~/.ec/agent_linux_sys.tar.gz
+  } || {
+    rm ~/.ec/agent_linux_sys.ec
+    rm ~/.ec/agent_linux_sys.tar.gz
+    printf "\ndownloading agent (%s). continue with the alternative\n\n" $AGENT_REV_LOCAL
+    wget -q --show-progress -O ~/.ec/agt/bin/agent_linux_sys https://github.com/EC-Release/sdk/raw/$AGENT_REV_LOCAL/dist/agent_linux_sys
+    chmod +x ~/.ec/agt/bin/agent_linux_sys
   }
 fi
 

@@ -19,5 +19,6 @@ ec-config:
     # rpt is either "0" or ""
     rpt: "{EC_RPT}"
     {EC_PXY}
+    {EC_STS}
     #fup: agent_solaris_sparc64_sys:ayasuda_copy_example_2
     #fdw: ayasuda_copy_example_2:anotherfile_example

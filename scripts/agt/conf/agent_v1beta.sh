@@ -45,6 +45,7 @@ tkn=$(getProperty "conf.tkn")
 pxy=$(getProperty "conf.pxy")
 plg=$(getProperty "conf.plg")
 hca=$(getProperty "conf.hca")
+sts=$(getProperty "conf.sts")
 vln=$(getProperty "conf.vln")
 rpt=$(getProperty "conf.rpt")
 
@@ -56,6 +57,12 @@ if [[ $pxy == *false* || $pxy == false || -z "$pxy" ]]; then
 else
   pxy=$($pxy | tr -cd "[:alnum:]\:\/\.")
   pxy="pxy: \"${pxy}\""
+fi
+
+if [ -z "$sts" ]; then
+  sts=""
+else
+  sts="sts: \"${sts}\""
 fi
 
 if [[ $plg == *true* || $plg == true ]] && [[ $mod == "server" || $mod == "gw:server" ]]; then
@@ -112,6 +119,7 @@ sed -i "s|{EC_TKN}|$tkn|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_PXY}|$pxy|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_PLG}|$plg|g" ~/.ec/agt/conf/${mod}.yml
 sed -i "s|{EC_HCA}|$hca|g" ~/.ec/agt/conf/${mod}.yml
+sed -i "s|{EC_STS}|$sts|g" ~/.ec/agt/conf/${mod}.yml
 
 
 cat ~/.ec/agt/conf/${mod}.yml
