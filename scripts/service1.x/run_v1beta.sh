@@ -16,9 +16,10 @@ fi
 export EC_PPS=$(agent -hsh -smp)
 
 printf "decrypt the RSA pkey"
-agent -pvd -pvk $(cat ./temp/service.key|base64 -w0)
+#agent -pvd -pvk $(cat ./temp/service.key|base64 -w0)
+agent -pvd -pvk ./temp/service.key
 printf "validate the x509 cert"
-agent -vfy -pbk $(cat ./temp/service.cer|base64 -w0)
+agent -vfy -pbk ./temp/service.cer
 printf "end test keypair"
 
 printf "Downloading service code"
