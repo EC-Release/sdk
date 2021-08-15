@@ -16,7 +16,6 @@ ec-config:
     #local url accessisble to other seeds
     hst: $EC_SEED_HOST
     agt: $EC_AGT_MODE
-    dbg: true
     cps: 5
   # group to permit the access of connectivity
   subGroup:
