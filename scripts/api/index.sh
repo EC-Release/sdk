@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apk add tree
+
 {
     agent -ver
 } || {
