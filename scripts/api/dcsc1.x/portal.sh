@@ -10,7 +10,7 @@ if [[ ! -z "${PORT}" ]]; then
   EC_PORT=:$PORT
 fi
 
-cd ~/.ec/api/dcsc1.x && ls -al
-agent -cfg ./../conf/api.yaml
+cd ~/.ec/api
+agent -cfg ./conf/api.yaml
 #agent -cfg ./conf/api.yaml &
 #sleep 5 && tail -f $(ls -t ~/.ec/*.log | head -1)
