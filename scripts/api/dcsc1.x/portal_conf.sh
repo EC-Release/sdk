@@ -11,6 +11,7 @@ else
 fi
 
 tar -xzf ~/.ec/api/dcsc1.x/v1beta.tar.gz --strip 1 -C ~/.ec/api/dcsc1.x
-rm ~/.ec/api/dcsc1.x/v1beta.tar.gz
+mv ~/.ec/api/dcsc1.x/webui-assets ~/.ec/api/
+rm -Rf ~/.ec/api/dcsc1.x
 wget -q --show-progress -O ~/.ec/api/conf/api.yaml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/conf/api.yaml
-ls -al ~/.ec/api/dcsc1.x ~/.ec/api ~/.ec/api/conf/
+tree ~/.ec/api
