@@ -218,7 +218,7 @@ Gateway example
 
 Flag | Mandatory | Description
 --- | --- | ---
-`mod` | Yes | Agent mode
+`mod` | Yes | Agent mode - gateway
 `gpt` | Yes | Gateway port number
 `zon` | Yes | EC Subscription Id
 `sst` | Yes | EC Service URI
@@ -230,11 +230,68 @@ Flag | Mandatory | Description
 
 ```
 ./agent -mod gateway -gpt {gateway-port} \
- -zon {zone-id} \
+ -zon {ec-subscription-id} \
  -sst https://{service-uri} \
  -tkn {ec-admin-token} \
  -hst {gateway-uri} \
  -dbg
+```
+
+Server example
+
+Flag | Mandatory | Description
+--- | --- | ---
+`mod` | Yes | Agent mode - server
+`aid` | Yes | Server agent id
+`grp` | Yes | Agent group which combines server and client agent id's
+`zon` | Yes | EC Subscription Id
+`sst` | Yes | EC Service URI
+`hst` | Yes | Gateway URL - wss://{gateway-uri}/agent
+`oa2` | Yes | OAuth URL for agent authentication
+`cid` | Yes | OAuth client id
+`csc` | Yes | OAuth client secret
+`dur` | Yes | OAuth token expiry time in secs
+`rht` | Yes | Remote host DNS name or IP range
+`rpt` | Yes | Remore port for connectivity
+`dbg` | No | Debugger. Default 'false'
+`hca` | No | Agent health port number
+
+```
+./agent -mod server -aid {server-agent-id} \
+-grp {agent-group} \
+-cid {uaa-client-id} -csc {uaa-client-secret} -dur {oauth-token-dur} \
+-oa2 https://{oauth-uri}/oauth/token \
+-hst wss://{gateway-uri}/agent \
+-sst https://{service-uri} \
+-zon {ec-subscription-id} \
+-rht {remote-host} -rpt {remote-port} -hca {agent-health-port} -dbg
+```
+
+Client example
+
+Flag | Mandatory | Description
+--- | --- | ---
+`mod` | Yes | Agent mode - client
+`aid` | Yes | Client agent id
+`tid` | Yes | Server agent id
+`grp` | Yes | Agent group which combines server and client agent id's
+`hst` | Yes | Gateway URL - wss://{gateway-uri}/agent
+`oa2` | Yes | OAuth URL for agent authentication
+`cid` | Yes | OAuth client id
+`csc` | Yes | OAuth client secret
+`dur` | Yes | OAuth token expiry time in secs
+`lpt` | Yes | Client agent running host port for connectivity from applications
+`dbg` | No | Debugger. Default 'false'
+`hca` | No | Agent health port number
+`sts` | No | Status endpoint port. Only for agents later than 214
+```
+./agent -mod client -aid {client-agent-id} \
+-tid {server-agent-id} \
+-grp {agent-group} \
+-cid {uaa-client-id} -csc {uaa-client-secret} -dur {oauth-token-dur} \
+-oa2 https://{oauth-uri}/oauth/token \
+-hst wss://{gateway-uri}/agent \
+-lpt {local-port} -hca {agent-health-port} -dbg
 ```
 
 #### VLAN
