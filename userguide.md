@@ -296,6 +296,14 @@ Flag | Mandatory | Description
 
 #### VLAN
 
+Virtual LAN will create a secure connection between source and multiple target systems by mirroring the target system details in source network settings. It means, one client agent can connect to multiple server agents with one EC connection. Client agent can decide to which target system it should make connection and will update network settings accordingly.
+
+Please refer the below pages for EC connection with VLAN plugin based on EC Client agent host os - 
+
+[linux](https://github.com/EC-Release/sdk/tree/v1/plugins/vln#vlan-plugin)
+
+[windows](https://github.com/EC-Release/sdk/wiki/Windows-VLAN)
+
 
 #### TLS
 
