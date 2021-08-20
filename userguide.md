@@ -183,26 +183,6 @@ Usage of ./agent_darwin_sys_213:
   -zon string
     	Specify the Zone/Service Inst. Id. required in the "gateway" mode.
 ```
-**Example usage in Server mode**:
-```
-$\>./ecagent_darwin -aid 191001 -hst wss://ec-chia-app-7.run.aws-usw02-pr.ice.predix.io \
--rht localhost -rpt 5432 -cid <id> -csc <secret> -oa2 \
-https://helo-a69c-4cc5-83bd-459aa307a307.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token \
--dur 300 -mod server
-```
-**Example usage in Client mode**:
-```
-$\>./ecagent_darwin -mod client -aid 191000 -hst wss://ec-chia-app-7.run.aws-usw02-pr.ice.predix.io \
--lpt 7990 -tid 191001 \
--oa2 https://helo-a69c-4cc5-83bd-459aa307a307.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token \
--cid <id> -csc <secret> -dur 300
-```
-**Example usage in Gateway mode**:
-```
-$\>./ecagent_darwin -mod gateway -gpt 8989 -zon helo-1f98-4ea8-ad48-a96d38ba2931 \
--sst https://helo-1f98-4ea8-ad48-a96d38ba2931.run.aws-usw02-pr.ice.predix.io \
--tkn <base64(admin:<secret><your-zone-id>)>
-```
 
 ##### Validation
 ```
@@ -229,6 +209,39 @@ b3bf9cd9686e (find the checksum in the checksum.txt)
 
 
 ### How to Create Connection
+
+#### Traditional mode
+
+![image](https://github.com/ramaraosrikakulapu/sdk/blob/v1/images/EC_Tradtional.png)
+
+Gateway example
+
+Flag | Mandatory | Description
+--- | --- | ---
+`mod` | Yes | Agent mode
+`gpt` | Yes | Gateway port number
+`zon` | Yes | EC Subscription Id
+`sst` | Yes | EC Service URI
+`tkn` | Yes | EC Service admin token
+`hst` | Yes | Gateway URI
+`dbg` | No | Debugger. Default 'false'
+`wtl` | No | Whitelist IP's
+`bkl` | No | Blacklist IP's
+
+```
+./agent -mod gateway -gpt {gateway-port} \
+ -zon {zone-id} \
+ -sst https://{service-uri} \
+ -tkn {ec-admin-token} \
+ -hst {gateway-uri} \
+ -dbg
+```
+
+#### VLAN
+
+
+#### TLS
+
 
 ### How to perform the basic troubleshooting for my connection
 Please visit our [Issues-tracker](https://github.com/EC-Release/sdk/issues) for various commonly encountered issues and their resolution.
