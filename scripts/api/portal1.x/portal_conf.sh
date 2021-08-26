@@ -12,7 +12,12 @@ tar -xzf ~/.ec/api/portal1.x/v1.1beta.tar.gz --strip 1 -C ~/.ec/api/portal1.x
 
 tar -xzf ~/.ec/tmp/portal/v1.2beta.tar.gz --strip 1 -C ~/.ec/tmp/portal
 
+{
+ rm -Rf ~/.ec/api/portal1.x/webui-assets/swagger-ui
+}
+
 mv ~/.ec/api/portal1.x/webui-assets ~/.ec/api/
+
 mv ~/.ec/tmp/portal/swagger-ui ~/.ec/api/webui-assets/
 #rm ~/.ec/api/portal1.x/v1.1beta.tar.gz 
 rm -Rf ~/.ec/api/portal1.x ~/.ec/tmp/portal
