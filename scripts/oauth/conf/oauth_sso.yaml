@@ -119,10 +119,12 @@ ec-config:
           "admin": ["@CORP EC WebUI Admin","@CORP EC WebUI AppOps"]
           "readonly": ["@CORP EC WebUI User"]
           "write": ["@CORP EC WebUI Admin"]
-          "dc.tc.subscriber.write": ["@CORP EC WebUI Admin"]
-          "dc.tc.subscriber.read": ["@CORP EC WebUI Admin","@CORP EC WebUI AppOps","@CORP EC WebUI User"]
-          "dc.ops.subscriber.admin": ["@CORP EC WebUI Admin"]
+          "dc.tc.subscriber.write": ["@CORP TC WebUI Admin"]
+          "dc.tc.subscriber.read": ["@CORP TC WebUI Admin","@CORP TC WebUI AppOps","@CORP TC WebUI User"]
+          "dc.ops.subscriber.admin": ["@CORP Operations Admin"]
           "power.subscriber.read": ["@CORP Power WebUI Admin","@CORP Power AppOps","@CORP Power User"]
-          "healthcare.admin.read": ["@CORP Healthcare Admin"]          
+          "healthcare.admin.read": ["@CORP Healthcare Admin"]
+          "ec.licensed.admin": ["@CORP EC WebUI Admin"]
+          "ec.licensed.user": ["@CORP EC WebUI User"]
         #use scopeFieldType to indicate whether the scope field is in a array format, or a simply divider by character e.g. "read, write", "user:guest:admin", etc. For divider character, use ",", ":", " ", "$", "@" etc.
         scopeFieldType: "array"
