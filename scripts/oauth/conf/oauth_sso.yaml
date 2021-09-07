@@ -86,7 +86,7 @@ ec-config:
         #used for userPath calls. <token> will be replaced by the oauth token
         #"http://url/to/oauth/user/api"
         userURL: $EC_OIDC_USER_PATH
-        #uathScopes used for the custom scopes admitted to oidc IdP. required by sso vendor
+        #authScopes used for the custom scopes admitted to oidc IdP. required by sso vendor
         authScopes: ["openid","profile"] 
         userHttpHeaders: ["Authorization:Bearer <token>","Conten-Type:application/json"]
         userHttpMethod: "POST"
