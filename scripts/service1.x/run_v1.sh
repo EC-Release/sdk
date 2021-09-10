@@ -7,19 +7,26 @@ curl -s -o ./temp/service.hash https://${GITHUB_TOKEN}@raw.githubusercontent.com
 ls -al /root/temp
 exit 0
 
-ls -al
-tar -zxf ./temp.tar.gz
-rm temp.tar.gz
+#ls -al
+#tar -zxf ./temp.tar.gz
+#rm temp.tar.gz
 
 export EC_PUB_KEY="$(cat ./temp/service.cer)"
 export EC_PRVT_KEY="$(cat ./temp/service.key)"
 
-printf "begin test keypair"
-source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.2beta.linux64.txt) 
+{
+    agent -ver
+} || {
+    printf "\nmissing agent. begin agent installation\n\n"
+    source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2beta.linux64_conf.txt)
+}
 
-if [[ -z "${EC_PPS}" ]]; then
-  export EC_PPS=${EC_PRVT_ADM}  
-fi
+printf "begin test keypair"
+#source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.2beta.linux64.txt) 
+
+#if [[ -z "${EC_PPS}" ]]; then
+export EC_PPS=${cat ./temp/service.hash}  
+#fi
 export EC_PPS=$(agent -hsh -smp)
 
 printf "decrypt the RSA pkey"
