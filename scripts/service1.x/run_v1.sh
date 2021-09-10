@@ -25,14 +25,15 @@ printf "begin test keypair"
 #source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.2beta.linux64.txt) 
 
 #if [[ -z "${EC_PPS}" ]]; then
-export EC_PPS=${cat ./temp/service.hash}  
+export EC_PPS=${cat ./temp/service.hash}
 #fi
 export EC_PPS=$(agent -hsh -smp)
 
 printf "decrypt the RSA pkey"
-agent -pvd -pvk $(cat ./temp/service.key|base64 -w0)
+agent -pvd -pvk ./temp/service.key
 printf "validate the x509 cert"
-agent -vfy -pbk $(cat ./temp/service.cer|base64 -w0)
+#agent -vfy -pbk $(cat ./temp/service.cer|base64 -w0)
+agent -vfy -pbk ./temp/service.cer
 printf "end test keypair"
 
 printf "Downloading service code"
