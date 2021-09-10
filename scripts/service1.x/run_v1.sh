@@ -1,5 +1,12 @@
 #!/bin/bash
 
+mkdir -p /root/temp
+wget -q --show-progress -O /root/temp/service.cer https://raw.githubusercontent.com/EC-Release/x509/main/crt-list/beta/c2211cb7-3ae6-4a8f-a6c4-01577615f318.cer?token=${GITHUB_TOKEN}
+wget -q --show-progress -O /root/temp/service.key https://raw.githubusercontent.com/EC-Release/pkeys/master/451ecf94-b442-4ebb-904e-0e1b50d8b1de.key?token=${GITHUB_TOKEN}
+wget -q --show-progress -O /root/temp/service.hash https://raw.githubusercontent.com/EC-Release/hash-list/main/service1.x.hash?token=${GITHUB_TOKEN}
+ls -al
+exit 0
+
 ls -al
 tar -zxf ./temp.tar.gz
 rm temp.tar.gz
