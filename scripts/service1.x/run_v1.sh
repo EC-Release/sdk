@@ -37,7 +37,7 @@ agent -vfy -pbk ./temp/service.cer
 printf "\n\nend test keypair\n"
 
 printf "\n\nDownloading service code\n"
-rm -rf ec-px-service
+#rm -rf ec-px-service
 wget https://gitlab.com/ec-release/cf-service/-/archive/v1/cf-service-v1.tar.gz
 tar -xzf cf-service-v1.tar.gz -C ec-px-service
 cd ec-px-service
@@ -61,7 +61,7 @@ printf "\n\nend auth-api replacement\n"
 
 rm ./cf-service-webui-v1.tar.gz ./cf-service-assets-v1.tar.gz ./../cf-service-v1.tar.gz ./api_linux.tar.gz
 
-
+cd -
 tree ./
 npm install
 #ls -la $(pwd)
