@@ -1,9 +1,9 @@
 #!/bin/bash
 
 mkdir -p ./temp
-wget -q --show-progress -O /root/temp/service.cer https://raw.githubusercontent.com/EC-Release/x509/main/crt-list/beta/c2211cb7-3ae6-4a8f-a6c4-01577615f318.cer?token=${GITHUB_TOKEN}
-wget -q --show-progress -O /root/temp/service.key https://raw.githubusercontent.com/EC-Release/pkeys/master/451ecf94-b442-4ebb-904e-0e1b50d8b1de.key?token=${GITHUB_TOKEN}
-wget -q --show-progress -O /root/temp/service.hash https://raw.githubusercontent.com/EC-Release/hash-list/main/service1.x.hash?token=${GITHUB_TOKEN}
+curl -s -o ./temp/service.cer https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/x509/main/crt-list/beta/c2211cb7-3ae6-4a8f-a6c4-01577615f318.cer
+curl -s -o ./temp/service.key https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/pkeys/master/451ecf94-b442-4ebb-904e-0e1b50d8b1de.key
+curl -s -o ./temp/service.hash https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/hash-list/main/service1.x.hash
 ls -al /root/temp
 exit 0
 
