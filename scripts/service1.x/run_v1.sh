@@ -5,7 +5,7 @@ curl -s -o ./temp/service.cer https://${GITHUB_TOKEN}@raw.githubusercontent.com/
 curl -s -o ./temp/service.key https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/pkeys/master/451ecf94-b442-4ebb-904e-0e1b50d8b1de.key
 curl -s -o ./temp/service.hash https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/hash-list/main/service1.x.hash
 ls -al /root/temp
-exit 0
+#exit 0
 
 #ls -al
 #tar -zxf ./temp.tar.gz
