@@ -17,11 +17,11 @@ export EC_PRVT_KEY="$(cat ./temp/service.key)"
 {
     agent -ver
 } || {
-    printf "\nmissing agent. begin agent installation\n\n"
+    printf "\n\nmissing agent. begin agent installation\n"
     source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2beta.linux64_conf.txt)
 }
 
-printf "begin test keypair"
+printf "\n\nbegin test keypair\n"
 #source <(wget -O - https://ec-release.github.io/sdk/scripts/agt/v1.2beta.linux64.txt) 
 
 #if [[ -z "${EC_PPS}" ]]; then
@@ -29,40 +29,38 @@ export EC_PPS=$(cat ./temp/service.hash)
 #fi
 export EC_PPS=$(agent -hsh -smp)
 
-printf "decrypt the RSA pkey"
+printf "\n\ndecrypt the RSA pkey\n"
 agent -pvd -pvk ./temp/service.key
-printf "validate the x509 cert"
+printf "\n\nvalidate the x509 cert\n"
 #agent -vfy -pbk $(cat ./temp/service.cer|base64 -w0)
 agent -vfy -pbk ./temp/service.cer
-printf "end test keypair"
+printf "\n\nend test keypair\n"
 
-printf "Downloading service code"
+printf "\n\nDownloading service code\n"
 rm -rf ec-px-service
 wget https://gitlab.com/ec-release/cf-service/-/archive/v1/cf-service-v1.tar.gz
-tar -xzf cf-service-v1.tar.gz
-mv cf-service-v1 ec-px-service
+tar -xzf cf-service-v1.tar.gz -C ec-px-service
 cd ec-px-service
 
 wget https://gitlab.com/ec-release/cf-service-assets/-/archive/v1/cf-service-assets-v1.tar.gz
-tar -xzf cf-service-assets-v1.tar.gz
-mv cf-service-assets-v1 assets
+tar -xzf cf-service-assets-v1.tar.gz --strip 1 -C assets
 wget https://gitlab.com/ec-release/cf-service-webui/-/archive/v1/cf-service-webui-v1.tar.gz
-tar -xzf cf-service-webui-v1.tar.gz
-mv cf-service-webui-v1 ec-web-ui
+tar -xzf cf-service-webui-v1.tar.gz --strip 1 -C ec-web-ui
 
-rm cf-service-webui-v1.tar.gz cf-service-assets-v1.tar.gz ./../cf-service-v1.tar.gz
-
-printf "Service code downloaded successfully"
+printf "\n\nservice code downloaded successfully\n"
 
 cp ./../temp/service.key ./
 cp ./../temp/service.cer ./
 
-printf "begin auth-api replacement"
+printf "\n\nbegin auth-api replacement\n"
 #cd ./ec-px-service
 wget -q --show-progress https://github.com/EC-Release/auth-api/raw/v1/dist/api/api_linux.tar.gz
 tar -xzf api_linux.tar.gz
 chmod +x api_linux
-printf "end auth-api replacement"
+printf "\n\nend auth-api replacement\n"
+
+rm ./cf-service-webui-v1.tar.gz ./cf-service-assets-v1.tar.gz ./../cf-service-v1.tar.gz ./api_linux.tar.gz
+
 
 tree ./
 npm install
