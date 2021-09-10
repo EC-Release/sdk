@@ -49,9 +49,9 @@ wget https://gitlab.com/ec-release/cf-service-webui/-/archive/v1/cf-service-webu
 tar -xzf cf-service-webui-v1.tar.gz
 mv cf-service-webui-v1 ec-web-ui
 rm -rf cf-service-webui-v1.tar.gz
-ls -la
-ls -la assets/
-ls -la ec-web-ui/ 
+#ls -la
+#ls -la assets/
+#ls -la ec-web-ui/ 
 cd ..
 printf "Service code downloaded successfully"
 
@@ -65,6 +65,7 @@ tar -xzf api_linux.tar.gz
 chmod +x api_linux
 printf "end auth-api replacement"
 
+tree ./
 npm install
 ls -la $(pwd)
 eval "sed -i -e 's#{HOST}#${APP}-${ENV}.${HOST}#g' ./assets/swagger.json"
