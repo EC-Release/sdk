@@ -123,6 +123,7 @@ else
           echo "${ZONE}" > ./../err_ins.txt
           continue
         fi
+        cf set-env ${ZONE} UPDATED '2022'
         echo "Service updated"
       } || {
         echo "Service update unsuccessful. proceed to next instance"
