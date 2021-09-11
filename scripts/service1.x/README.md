@@ -19,6 +19,7 @@ docker run -e CF_USR=<cf-system-username> \
 -e DOCKER_USERNAME=<docker username> \
 -e CF_DOCKER_PASSWORD=<docker password> \
 -e GITHUB_TOKEN=<github token to access cred repos> \
+-e IMAGE_TAG=<oci image tag used for the instance> \
 -e ZONE=<existing service zone-id> -it enterpriseconnect/service:v1
 
 #deprecated
