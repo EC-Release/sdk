@@ -13,9 +13,9 @@ function getEnvs(){
     }
     
     echo "***** begin of cf env vars for ${ZONE}"
-    cf env ${ZONE}
-    echo "***** end of cf env vars for ${ZONE}"
-    cf env ${ZONE} > values.txt
+    #cf env ${ZONE}
+    cf env ${ZONE} | tee values.txt
+    echo "***** end of cf env vars for ${ZONE}"    
 }
 
 function setEnvs(){    
