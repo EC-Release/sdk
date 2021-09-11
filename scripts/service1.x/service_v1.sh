@@ -8,7 +8,7 @@ function getEnvs(){
     {
       rm values.txt
     } || {
-      echo "no value.txt found. continue updating ${ZONE}"
+      echo "no values.txt found. continue updating ${ZONE}"
     }
     
     cf env ${ZONE} > values.txt
