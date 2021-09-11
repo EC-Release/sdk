@@ -93,6 +93,8 @@ else
         echo "Fetched ENVs"      
       } || {
         echo "failed fetched envs for ${ZONE}. proceed to next instance"
+        echo "${ZONE}" > ./err_ins.txt
+        
         continue
       }
       
@@ -110,6 +112,7 @@ else
         echo "Manifest file updated"    
       } || {
         echo "failed update the manifest file. proceed to next instance"
+        echo "${ZONE}" > ./err_ins.txt
         continue
       }
       
