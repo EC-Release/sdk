@@ -74,7 +74,7 @@ else
     login
     echo "Login successful"
     # 9/11/2021
-    #getEnvs
+    getEnvs
     echo "Fetched ENVs"
     #cat ./push/manifest.yml
     setEnvs
