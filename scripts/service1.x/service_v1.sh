@@ -62,9 +62,9 @@ function setEnvs(){
 
 function updateService(){
     #cf delete ${ZONE} -f 
-    cd ./push
+    #cd ./push
     cf push
-    cd -
+    #cd -
 }
 
 #temp. pls remove this line in release
@@ -81,7 +81,7 @@ else
     wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
     login
     echo "Login successful"
-    cp ./manifest.yml ./push/manifest.yml
+    #cp ./manifest.yml ./push/manifest.yml
     # 9/11/2021
     #
     while read line; do
@@ -103,11 +103,13 @@ else
       setEnvs
       cat ./push/manifest.yml
       echo "Manifest file updated"
+      cd ./push
       {
         updateService
         echo "Service updated"
       } || {
-        
+        echo "Service update unsuccessful. proceed to next instance"
       }
+      cd -
     done < service_list.txt
 fi
