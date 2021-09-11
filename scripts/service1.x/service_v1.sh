@@ -66,9 +66,10 @@ else
     wget -q --show-progress -O ./push/manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
     login
     echo "Login successful"
+    # 9/11/2021
     getEnvs
     echo "Fetched ENVs"
-    cat ./push/manifest.yml
+    #cat ./push/manifest.yml
     setEnvs
     cat ./push/manifest.yml
     echo "Manifest file updated"
