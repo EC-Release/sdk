@@ -6,7 +6,7 @@ function login(){
 
 function getEnvs(){
     {
-      rm value.txt
+      rm values.txt
     } || {
       echo "no value.txt found. continue updating ${ZONE}"
     }
@@ -50,7 +50,7 @@ function setEnvs(){
     else
         eval "sed -i -e 's|{{EC_PRVT_ADM}}|${EC_PRVT_ADM}|g' ./push/manifest.yml"
     fi
-    eval "sed -i -e 's|{{IMAGE_TAG}}|${IMAGE_TAG}|g' ./push/manifest.yml"
+    eval "sed -i -e 's|{{IMAGE_TAG}}|$IMAGE_TAG|g' ./push/manifest.yml"
 }
 
 function updateService(){
