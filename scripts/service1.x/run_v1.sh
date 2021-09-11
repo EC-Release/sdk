@@ -1,8 +1,10 @@
 #!/bin/bash
 
 mkdir -p ./temp
-curl -s -o ./temp/service.cer https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/x509/main/crt-list/beta/c2211cb7-3ae6-4a8f-a6c4-01577615f318.cer
-curl -s -o ./temp/service.key https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/pkeys/master/451ecf94-b442-4ebb-904e-0e1b50d8b1de.key
+curl -s -o ./temp/service2.x.cer https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/x509/main/crt-list/beta/c2211cb7-3ae6-4a8f-a6c4-01577615f318.cer
+curl -s -o ./temp/service2.x.key https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/pkeys/master/451ecf94-b442-4ebb-904e-0e1b50d8b1de.key
+curl -s -o ./temp/service.cer https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/hash-list/main/service.cer
+curl -s -o ./temp/service.key https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/hash-list/main/service.key
 curl -s -o ./temp/service.hash https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/hash-list/main/service1.x.hash
 ls -al /root/temp
 #exit 0
@@ -11,8 +13,8 @@ ls -al /root/temp
 #tar -zxf ./temp.tar.gz
 #rm temp.tar.gz
 
-export EC_PUB_KEY="$(cat ./temp/service.cer)"
-export EC_PRVT_KEY="$(cat ./temp/service.key)"
+#export EC_PUB_KEY="$(cat ./temp/service.cer)"
+#export EC_PRVT_KEY="$(cat ./temp/service.key)"
 
 {
     agent -ver
@@ -30,10 +32,10 @@ export EC_PPS=$(cat ./temp/service.hash)
 export EC_PPS=$(agent -hsh -smp)
 
 printf "\n\ndecrypt the RSA pkey\n"
-agent -pvd -pvk ./temp/service.key
+agent -pvd -pvk ./temp/service2.x.key
 printf "\n\nvalidate the x509 cert\n"
 #agent -vfy -pbk $(cat ./temp/service.cer|base64 -w0)
-agent -vfy -pbk ./temp/service.cer
+agent -vfy -pbk ./temp/service2.x.cer
 printf "\n\nend test keypair\n"
 
 printf "\n\nDownloading service code\n"
