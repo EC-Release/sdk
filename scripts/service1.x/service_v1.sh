@@ -75,12 +75,18 @@ else
     login
     echo "Login successful"
     # 9/11/2021
-    getEnvs
-    echo "Fetched ENVs"
-    #cat ./push/manifest.yml
-    setEnvs
-    cat ./push/manifest.yml
-    echo "Manifest file updated"
-    updateService
-    echo "Service updated"
+    #
+    while read line; do
+      ZONE=$line
+      echo $zone
+      #
+      getEnvs
+      echo "Fetched ENVs"
+      #cat ./push/manifest.yml
+      setEnvs
+      cat ./push/manifest.yml
+      echo "Manifest file updated"
+      updateService
+      echo "Service updated"
+    done < service_list.txt
 fi
