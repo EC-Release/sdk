@@ -134,6 +134,9 @@ else
       cd -
     done < service_list.txt
     echo "update completed."    
-    echo "instance list failed during the update."          
-    cat err_ins.txt
+         
+    {
+      echo "instance list failed during the update.."
+      cat err_ins.txt      
+    }
 fi
