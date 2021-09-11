@@ -7,9 +7,11 @@ function login(){
 function getEnvs(){
     {
       rm value.txt
-    } && {    
-      cf env ${ZONE} > values.txt
-    }       
+    } || {
+      echo "no value.txt found. continue updating ${ZONE}"
+    }
+    
+    cf env c > values.txt       
 }
 
 function setEnvs(){    
