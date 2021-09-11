@@ -13,8 +13,8 @@ ls -al /root/temp
 #tar -zxf ./temp.tar.gz
 #rm temp.tar.gz
 
-#export EC_PUB_KEY="$(cat ./temp/service.cer)"
-#export EC_PRVT_KEY="$(cat ./temp/service.key)"
+export EC_PUB_KEY="$(cat ./temp/service.cer)"
+export EC_PRVT_KEY="$(cat ./temp/service.key)"
 
 {
     agent -ver
