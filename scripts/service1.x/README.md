@@ -18,7 +18,7 @@ docker run -e CF_USR=<cf-system-username> \
 -e CF_API=<cf-api> \
 -e DOCKER_USERNAME=<docker username> \
 -e DOCKER_PASSWORD=<docker password> \
--e ZONE=<existing service zone-id> -it enterpriseconnect/service:v1beta
+-e ZONE=<existing service zone-id> -it enterpriseconnect/service:v1
 
 #deprecated
 docker run -e CF_USR=<cf-system-username> \
