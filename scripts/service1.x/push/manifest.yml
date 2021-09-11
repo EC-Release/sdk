@@ -4,6 +4,7 @@ applications:
    host: {{ZONE}}
 docker:
     image: enterpriseconnect/service:{{IMAGE_TAG}}
+    username: {{DOCKER_USERNAME}}
 env:
   ADMIN_PWD: {{ADMIN_PWD}}
   ADMIN_TKN: {{ADMIN_TKN}}
@@ -34,3 +35,4 @@ env:
   ZAC_UAA: {{ZAC_UAA}}
   ZAC_URL: {{ZAC_URL}}
   ZONE: {{ZONE}}
+  CF_DOCKER_PASSWORD: {{DOCKER_PASSWORD}}
