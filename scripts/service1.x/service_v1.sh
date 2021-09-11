@@ -10,7 +10,9 @@ function getEnvs(){
     } || {
       echo "no values.txt found. continue updating ${ZONE}"
     }
-    
+    echo "***** begin of cf env vars for ${ZONE}"
+    cf env ${ZONE}
+    echo "***** end of cf env vars for ${ZONE}"
     cf env ${ZONE} > values.txt
 }
 
