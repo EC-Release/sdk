@@ -61,10 +61,9 @@ function setEnvs(){
 }
 
 function updateService(){
-    cf delete ${ZONE} -f 
+    #cf delete ${ZONE} -f 
     cd ./push
     cf push
-    
     cd -
 }
 
@@ -106,8 +105,9 @@ else
       echo "Manifest file updated"
       {
         updateService
-      } && {
         echo "Service updated"
+      } || {
+        
       }
     done < service_list.txt
 fi
