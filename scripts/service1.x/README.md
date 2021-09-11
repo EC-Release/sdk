@@ -8,7 +8,7 @@ Requirements -
 3. docker.io credential
 
 Command to run -
-```
+```shell
 #renewed script. Adding docker credential may remediate the pull-limit but
 # shall not completely lift the limit due to the docker account type.
 docker run -e CF_USR=<cf-system-username> \
