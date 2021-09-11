@@ -53,15 +53,16 @@ printf "\n\nservice code downloaded successfully\n"
 cp ./../temp/service.key ./
 cp ./../temp/service.cer ./
 
+:'deprecated
 printf "\n\nbegin auth-api replacement\n"
 #cd ./ec-px-service
 wget -q --show-progress https://github.com/EC-Release/auth-api/raw/v1/dist/api/api_linux.tar.gz
 tar -xzf api_linux.tar.gz
 chmod +x api_linux
-printf "\n\nend auth-api replacement\n"
+printf "\n\nend auth-api replacement\n"'
 
-rm ./cf-service-webui-v1.tar.gz ./cf-service-assets-v1.tar.gz ./../cf-service-v1.tar.gz ./api_linux.tar.gz
-
+#rm ./cf-service-webui-v1.tar.gz ./cf-service-assets-v1.tar.gz ./../cf-service-v1.tar.gz ./api_linux.tar.gz
+rm ./cf-service-webui-v1.tar.gz ./cf-service-assets-v1.tar.gz ./../cf-service-v1.tar.gz
 
 npm install
 #ls -la $(pwd)
