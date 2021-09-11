@@ -61,6 +61,8 @@ function updateService(){
     cd ./push
     
     cf push
+    
+    cd -
 }
 
 #temp. pls remove this line in release
@@ -74,9 +76,10 @@ if [[ ! -z "${VCAP_APPLICATION}" ]]; then
     ./run.sh
 else
     mkdir -p push
-    wget -q --show-progress -O ./push/manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
+    wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
     login
     echo "Login successful"
+    cp ./manifest.yml ./push/manifest.yml
     # 9/11/2021
     #
     while read line; do
@@ -91,6 +94,8 @@ else
         echo "Instance $ZONE has been marked as updated.　proceed to next instance"
         continue
       fi
+      
+      cp ./manifest.yml ./push/manifest.yml
       
       #cat ./push/manifest.yml
       setEnvs
