@@ -62,9 +62,10 @@ printf "\n\nend auth-api replacement\n"
 
 rm ./cf-service-webui-v1.tar.gz ./cf-service-assets-v1.tar.gz ./../cf-service-v1.tar.gz ./api_linux.tar.gz
 
-tree ./
+
 npm install
 #ls -la $(pwd)
+tree ./
 eval "sed -i -e 's#{HOST}#${APP}-${ENV}.${HOST}#g' ./assets/swagger.json"
 eval "sed -i -e 's#{BASE}#${EC_REV}#g' ./assets/swagger.json"
 eval "sed -i -e 's#{ENV}#${ENV}#g' ./assets/swagger.json"
