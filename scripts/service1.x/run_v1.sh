@@ -40,7 +40,7 @@ printf "\n\nDownloading service code\n"
 #rm -rf ec-px-service
 mkdir -p ec-px-service ec-px-service/assets ec-px-service/ec-web-ui
 wget https://gitlab.com/ec-release/cf-service/-/archive/v1/cf-service-v1.tar.gz
-tar -xzf cf-service-v1.tar.gz -C ec-px-service
+tar -xzf cf-service-v1.tar.gz --strip 1 -C ec-px-service
 cd ec-px-service
 
 wget https://gitlab.com/ec-release/cf-service-assets/-/archive/v1/cf-service-assets-v1.tar.gz
