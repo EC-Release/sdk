@@ -88,7 +88,7 @@ else
       
       op=$(cat values.txt | grep UPDATED | cut -d ' ' -f2)
       if [[ "$op" == *"$MISSION"* ]]; then
-        echo "Instance $ZONE had been previously updated.　continue to next instance"
+        echo "Instance $ZONE has been marked as updated.　continue to next instance"
         continue
       fi
       
