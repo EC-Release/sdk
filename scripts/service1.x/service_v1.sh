@@ -11,7 +11,7 @@ function getEnvs(){
       echo "no value.txt found. continue updating ${ZONE}"
     }
     
-    cf env c > values.txt       
+    cf env ${ZONE} > values.txt
 }
 
 function setEnvs(){    
