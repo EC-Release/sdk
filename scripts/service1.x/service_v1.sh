@@ -5,8 +5,12 @@ function login(){
 }
 
 function getEnvs(){
-    rm value.txt
+    {
+      rm value.txt
+    } 
+    
     cf env ${ZONE} > values.txt
+           
 }
 
 function setEnvs(){    
