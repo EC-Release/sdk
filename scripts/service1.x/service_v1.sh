@@ -43,6 +43,8 @@ function setEnvs(){
     eval "sed -i -e 's|{{ZAC_SERVICE_ID}}|$(cat values.txt | grep ZAC_SERVICE_ID | cut -d ' ' -f2)|g' ./push/manifest.yml"
     eval "sed -i -e 's|{{ZAC_UAA}}|$(cat values.txt | grep ZAC_UAA | cut -d ' ' -f2)|g' ./push/manifest.yml"
     eval "sed -i -e 's|{{ZAC_URL}}|$(cat values.txt | grep ZAC_URL | cut -d ' ' -f2)|g' ./push/manifest.yml"
+    eval "sed -i -e 's|{{DOCKER_USERNAME}}|$(cat values.txt | ${DOCKER_USERNAME} | cut -d ' ' -f2)|g' ./push/manifest.yml"
+    eval "sed -i -e 's|{{DOCKER_PASSWORD}}|$(cat values.txt | ${DOCKER_PASSWORD} | cut -d ' ' -f2)|g' ./push/manifest.yml"
     if [[ ! -z "$(cat values.txt | grep EC_PRVT_ADM | cut -d ' ' -f2)" ]]; then
         eval "sed -i -e 's|{{EC_PRVT_ADM}}|$(cat values.txt | grep EC_PRVT_ADM | cut -d ' ' -f2)|g' ./push/manifest.yml"
     else
