@@ -45,6 +45,8 @@ function setEnvs(){
     eval "sed -i -e 's|{{ZAC_URL}}|$(cat values.txt | grep ZAC_URL | cut -d ' ' -f2)|g' ./push/manifest.yml"
     eval "sed -i -e 's|{{DOCKER_USERNAME}}|$DOCKER_USERNAME|g' ./push/manifest.yml"
     eval "sed -i -e 's|{{GITHUB_TOKEN}}|$GITHUB_TOKEN|g' ./push/manifest.yml"    
+    
+    eval "sed -i -e 's|{{MISSION}}|$MISSION|g' ./push/manifest.yml"    
     #eval "sed -i -e 's|{{DOCKER_PASSWORD}}|$CF_DOCKER_PASSWORD|g' ./push/manifest.yml"
     #if [[ ! -z "$(cat values.txt | grep EC_PRVT_ADM | cut -d ' ' -f2)" ]]; then
     #    eval "sed -i -e 's|{{EC_PRVT_ADM}}|$(cat values.txt | grep EC_PRVT_ADM | cut -d ' ' -f2)|g' ./push/manifest.yml"
@@ -57,11 +59,8 @@ function setEnvs(){
 function updateService(){
     cf delete ${ZONE} -f 
     cd ./push
-    {
-      cf push
-    } && {
-      cf set-env ${ZONE} UPDATED '2022'
-    }
+    
+    cf push
 }
 
 #temp. pls remove this line in release
@@ -88,7 +87,7 @@ else
       echo "Fetched ENVs"
       
       op=$(cat values.txt | grep UPDATED | cut -d ' ' -f2)
-      if [[ "$op" == *2022* ]]; then
+      if [[ "$op" == *"$MISSION"* ]]; then
         echo "Instance $ZONE had been previously updated.　continue to next instance"
         continue
       fi
