@@ -78,8 +78,8 @@ else
     #
     while read line; do
       ZONE=$line
-      echo $zone
-      #
+      echo "Updating $zone.."
+      
       getEnvs
       echo "Fetched ENVs"
       #cat ./push/manifest.yml
