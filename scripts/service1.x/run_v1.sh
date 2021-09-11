@@ -62,7 +62,6 @@ printf "\n\nend auth-api replacement\n"
 
 rm ./cf-service-webui-v1.tar.gz ./cf-service-assets-v1.tar.gz ./../cf-service-v1.tar.gz ./api_linux.tar.gz
 
-cd -
 tree ./
 npm install
 #ls -la $(pwd)
