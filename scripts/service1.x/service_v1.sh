@@ -117,11 +117,20 @@ else
       
       cd ./push
       {
-        updateService
+        updateService | tee output.txt
+        if grep -q FAILED output.txt; then
+          echo "Service update unsuccessful. proceed to next instance"
+          echo "${ZONE}" > ./../err_ins.txt
+          continue
+        fi
         echo "Service updated"
       } || {
         echo "Service update unsuccessful. proceed to next instance"
       }
       cd -
     done < service_list.txt
+    echo "update completed."
+    
+    echo "instance list failed during the update."          
+    cat err_ins.txt
 fi
