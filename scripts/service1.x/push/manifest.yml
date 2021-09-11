@@ -35,4 +35,4 @@ env:
   ZAC_UAA: {{ZAC_UAA}}
   ZAC_URL: {{ZAC_URL}}
   ZONE: {{ZONE}}
-  UPDATED: {{YEAR}}
+  UPDATED: {{MISSION}}
