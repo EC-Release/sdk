@@ -63,7 +63,6 @@ function setEnvs(){
 function updateService(){
     cf delete ${ZONE} -f 
     cd ./push
-    
     cf push
     
     cd -
@@ -105,7 +104,10 @@ else
       setEnvs
       cat ./push/manifest.yml
       echo "Manifest file updated"
-      updateService
-      echo "Service updated"
+      {
+        updateService
+      } && {
+        echo "Service updated"
+      }
     done < service_list.txt
 fi
