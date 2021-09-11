@@ -88,21 +88,33 @@ else
       ZONE=$line
       echo "Updating $ZONE.."
       
-      getEnvs
-      echo "Fetched ENVs"
+      {
+        getEnvs
+        echo "Fetched ENVs"      
+      } || {
+        echo "failed fetched envs for ${ZONE}. proceed to next instance"
+        continue
+      }
       
       op=$(cat values.txt | grep UPDATED | cut -d ' ' -f2)
       if [[ "$op" == *"$MISSION"* ]]; then
-        echo "Instance $ZONE has been marked as updated.　proceed to next instance"
+        echo "instance $ZONE has been marked as updated.　proceed to next instance"
         continue
       fi
       
       cp ./manifest.yml ./push/manifest.yml
       
       #cat ./push/manifest.yml
-      setEnvs
+      {
+        setEnvs      
+        echo "Manifest file updated"    
+      } || {
+        echo "failed update the manifest file. proceed to next instance"
+        continue
+      }
+      
       cat ./push/manifest.yml
-      echo "Manifest file updated"
+      
       cd ./push
       {
         updateService
