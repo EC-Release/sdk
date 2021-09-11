@@ -1,7 +1,7 @@
 ---
 applications:
- - name: {{ZONE}}
-   host: {{ZONE}}
+ - name: {{ZONE}}-{{MISSION}}
+   host: {{ZONE}}-{{MISSION}}
 docker:
     image: enterpriseconnect/service:{{IMAGE_TAG}}
     username: {{DOCKER_USERNAME}}
