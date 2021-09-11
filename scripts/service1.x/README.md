@@ -17,7 +17,8 @@ docker run -e CF_USR=<cf-system-username> \
 -e SPACE=<cf-service-space> \
 -e CF_API=<cf-api> \
 -e DOCKER_USERNAME=<docker username> \
--e DOCKER_PASSWORD=<docker password> \
+-e CF_DOCKER_PASSWORD=<docker password> \
+-e GITHUB_TOKEN=<github token to access cred repos> \
 -e ZONE=<existing service zone-id> -it enterpriseconnect/service:v1
 
 #deprecated
