@@ -78,7 +78,7 @@ else
     #
     while read line; do
       ZONE=$line
-      echo "Updating $zone.."
+      echo "Updating $ZONE.."
       
       getEnvs
       echo "Fetched ENVs"
