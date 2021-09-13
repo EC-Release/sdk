@@ -3,7 +3,7 @@
 #temp. pls remove this line in release
 #sleep 10
 echo "import library & tools"
-source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/base.sh)
+:'source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/base.sh)
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/blue-green-step1.sh)
 
 echo "checking env"
@@ -27,19 +27,4 @@ else
     printf "\n no operations found\n\n"
     ;;
   esac
-fi
-    
-:'case $EC_API_APP_NAME in
-  ops)
-    printf "\n launch webportal 1.x\n"
-    source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/portal1.x/portal.sh)
-    ;;
-  "dcsc" | "dc")
-    printf "\n launch DC Service Cloud Portal 1.x\n"
-    source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/dcsc1.x/portal.sh)
-    ;;
-  *)
-    printf "\n launch EC Engineer Portal 1.x\n"
-    source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/ng-webui/ng.sh)
-    ;;
-esac'
+fi'
