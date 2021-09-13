@@ -23,7 +23,7 @@ function getProblemInstances () {
     #cf push
     #cd -
     login
-    echo "Login successful"
+    echo "login successful"
     printf "\ngetting the list..\n\n" 
     cf a | grep -E '0/|\?/'| awk '{print $1}'| while read -r line ; do
       printf "\nevaluating the app name: %s" "$line"
