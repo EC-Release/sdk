@@ -54,7 +54,7 @@ function bgStep1ClonePush(){
         updateService | tee output.txt
         if grep -q FAILED output.txt; then
           echo "Service update unsuccessful. proceed to next instance"
-          echo "${ZONE}" > ./../err_ins.txt
+          echo "${ZONE}" >> ./../err_ins.txt
         else
           cf set-env ${ZONE} UPDATED '2022'
           echo "Service updated successful"
