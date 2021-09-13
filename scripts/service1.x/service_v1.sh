@@ -77,6 +77,22 @@ if [[ ! -z "${VCAP_APPLICATION}" ]]; then
     chmod 755 run.sh
     ./run.sh
 else
+
+:'case $EC_API_APP_NAME in
+  ops)
+    printf "\n launch webportal 1.x\n"
+    source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/portal1.x/portal.sh)
+    ;;
+  "dcsc" | "dc")
+    printf "\n launch DC Service Cloud Portal 1.x\n"
+    source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/dcsc1.x/portal.sh)
+    ;;
+  *)
+    printf "\n launch EC Engineer Portal 1.x\n"
+    source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/ng-webui/ng.sh)
+    ;;
+esac'
+
     mkdir -p push
     wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
     login
