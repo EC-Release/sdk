@@ -1,12 +1,5 @@
 #!/bin/bash
 
-function updateService(){
-    #cf delete ${ZONE} -f 
-    #cd ./push
-    cf push
-    #cd -
-}
-
 #temp. pls remove this line in release
 #sleep 10
 echo "import library & tools"
