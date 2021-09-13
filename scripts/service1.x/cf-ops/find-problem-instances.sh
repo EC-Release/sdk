@@ -4,13 +4,14 @@ function hasEnvVar () {
     hasIssue = false
     while read line; do
        # do some finding blah
-       if 
+       ref1 = $(echo "$2" | awk -v ref="$line" '($1==ref":" && $2!="") {print}')
+       if [[ -n $ref1 ]]; then
          hasIssue = true
-         printf "\n instance (%s) has missing field: %s\n" "$1" "$line"
+         printf "\n instance (%s) has missing field/value: %s\n" "$1" "$line"
        fi
     done < field_list.txt
     
-    if [[ -eq "$hasIssue" true ]]; then
+    if [[ "$hasIssue" = true ]]; then
         echo $1 >> problemInsts.txt
     fi 
 }
