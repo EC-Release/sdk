@@ -5,6 +5,7 @@
 echo "import library & tools"
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/base.sh)
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/blue-green-step1.sh)
+source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/find-problem-instances.sh)
 
 echo "checking env"
 echo ${VCAP_APPLICATION}
@@ -19,8 +20,8 @@ else
     bgStep1ClonePush
     ;;
   1001)
-    printf "\n find instances\n\n"
-    
+    printf "\n find problem instances\n\n"
+    getProblemInstances
   #"1001" | "1002")
     ;;
   *)
