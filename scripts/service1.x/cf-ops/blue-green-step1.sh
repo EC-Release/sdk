@@ -1,7 +1,13 @@
-  
 #!/bin/bash
 
-function clone_push(){
+function updateService(){
+    #cf delete ${ZONE} -f 
+    #cd ./push
+    cf push
+    #cd -
+}
+
+function bgStep1ClonePush(){
     mkdir -p push
     wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
     login
