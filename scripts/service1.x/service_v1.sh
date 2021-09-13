@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 function updateService(){
     #cf delete ${ZONE} -f 
