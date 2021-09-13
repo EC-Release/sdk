@@ -12,7 +12,7 @@ function hasEnvVar () {
     done < field_list.txt
     
     if [[ "$hasIssue" = true ]]; then
-        echo $1 >> problemInsts.txt
+        echo $1 >> problem_insts.txt
     fi 
 }
 
