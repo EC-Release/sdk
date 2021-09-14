@@ -31,12 +31,12 @@ else
     bgStep1ClonePush
     ;;
   1001)
-    printf "\n find problem instances\n\n"
+    printf "\nfinding problematic instances\n\n"
     getProblemInstances
   #"1001" | "1002")
     ;;
   *)
-    printf "\n no operations found\n\n"
+    printf "\nno operations found\n\n"
     ;;
   esac
 fi
