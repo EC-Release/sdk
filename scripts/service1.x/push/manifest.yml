@@ -3,7 +3,7 @@ applications:
  - name: {{ZONE}}-{{MISSION}}
    host: {{ZONE}}-{{MISSION}}
 docker:
-    image: enterpriseconnect/service:{{IMAGE_TAG}}
+    image: {{IMAGE_TAG}}
     username: {{DOCKER_USERNAME}}
 env:
   ADMIN_PWD: {{ADMIN_PWD}}
