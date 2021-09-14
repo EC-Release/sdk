@@ -12,20 +12,21 @@
 #
 
 function hasEnvVar () {
-    hasIssue=false
+    #hasIssue=false
     while read line; do
        # do some finding blah
        ref1=$(echo "$2" | awk -v ref="$line" '($1==ref":" && $2!="") {print}')
        #echo ref1: "${ref1}"
        if [[ -z $ref1 ]]; then
-         hasIssue=true
-         printf "\ninstance (%s) has missing field/value: %s\n" "$1" "$line"
+         #hasIssue=true       
+         printf "\n\ninstance (%s) is missing field/value: %s\n" "$1" "$line"
+         printf "instance (%s) is missing field/value: %s\n" "$1" "$line" >> problem_insts.txt     
        fi
     done < field_list.txt
     
-    if [[ "$hasIssue" = true ]]; then
-        echo $1 >> problem_insts.txt
-    fi 
+    #f [[ "$hasIssue" = true ]]; then
+    #    echo $1 >> problem_insts.txt
+    #fi 
 }
 
 function getProblemInstances () {
@@ -34,14 +35,15 @@ function getProblemInstances () {
     #cf push
     #cd -
     login
-    echo "login successful"
-    printf "\ngetting the list..\n\n" 
-    cf a | grep -E '0/|\?/'| awk '{print $1}'| while read -r line ; do
-      printf "\nevaluating the app name: %s" "$line"
+    #echo "login successful"
+    printf "\n\ngetting the list..\n\n" 
+    #cf a | grep -E '0/|\?/'| awk '{print $1}'| while read -r line ; do
+    cf a | awk '{print $1}'| while read -r line ; do
+      printf "\nevaluating the ec service app name: %s" "$line"
       ev=$(cf env $line)
       hasEnvVar "$line" "$ev"
     done
     
-    echo "list the problem instances"
+    printf "\n\nlist the problem instances\n\n"
     cat problem_insts.txt
 }
