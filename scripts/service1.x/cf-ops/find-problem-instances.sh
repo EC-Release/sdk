@@ -36,9 +36,9 @@ function getProblemInstances () {
     #cd -
     login
     #echo "login successful"
-    printf "\n\ngetting the list..\n\n" 
+    printf "\n\ncalculating the list of problematic instance..\n\n" 
     #cf a | grep -E '0/|\?/'| awk '{print $1}'| while read -r line ; do
-    cf a | awk '{print $1}'| while read -r line ; do
+    cf a | grep -E 'started|stopped' | awk '{print $1}'| while read -r line ; do
       printf "\nevaluating the ec service app name: %s" "$line"
       ev=$(cf env $line)
       hasEnvVar "$line" "$ev"
