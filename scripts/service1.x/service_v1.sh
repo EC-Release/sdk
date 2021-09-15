@@ -31,6 +31,9 @@ else
   1000)
     bgStep1ClonePush
     ;;
+  1002)
+    printf "\nhello step2\n\n"
+    ;;
   1001)
     printf "\nfinding problematic instances\n\n"
     getProblemInstances
