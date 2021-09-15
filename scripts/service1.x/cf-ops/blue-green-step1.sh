@@ -23,6 +23,7 @@ function findInstsQualifiedForStep1 () {
   insts=$(cf a | grep -E 'started|stopped')
   
   echo $insts | while read -r line; do 
+    echo $insts | awk -v ref=${line}-${MISSION} '($1==ref) {print $1}'
     instStep1=$(echo $insts | awk -v ref=${line}-${MISSION} '($1==ref) {print $1}')
     if [[ -z $instStep1 ]]; then
       printf "$line\n" >> ~tmp.txt
