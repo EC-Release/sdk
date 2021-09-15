@@ -32,7 +32,7 @@ else
     bgStep1ClonePush
     ;;
   1003)
-    # find instances that have no subfix "-2022" and qualified for running bg step 1
+    # find instances that have no suffix "-2022" and qualified for running bg step 1
     findInstsQualifiedForStep1
     ;;
   1002)
