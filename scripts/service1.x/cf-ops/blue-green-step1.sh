@@ -27,8 +27,9 @@ function findInstsQualifiedForStep1 () {
     if [[ -z $instStep1 ]]; then
       printf "$line\n" >> ~tmp.txt
     fi
-    cat ~tmp.txt    
+    
   done 
+  cat ~tmp.txt
 }
 
 function bgStep1ClonePush(){
