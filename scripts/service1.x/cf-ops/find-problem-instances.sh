@@ -20,7 +20,7 @@ function hasEnvVar () {
        if [[ -z $ref1 ]]; then
          #hasIssue=true       
          printf "instance (%s) is missing field/value: %s\n" "$1" "$line"
-         printf "instance (%s) is missing field/value: %s\n" "$1" "$line" >> tee problem_insts.txt     
+         printf "instance (%s) is missing field/value: %s\n" "$1" "$line" >> ./logs/problem_insts.txt  
        fi
     done < field_list.txt
     
@@ -36,6 +36,7 @@ function getProblemInstances () {
     #cd -
     login
     #echo "login successful"
+    mkdir -p logs
     printf "\n\ncalculating the list of problematic instance..\n\n" 
     #cf a | grep -E '0/|\?/'| awk '{print $1}'| while read -r line ; do
     cf a | grep -E 'started|stopped' | awk '$1 !~ /-2022/ {print $1}'| while read -r line ; do
@@ -45,5 +46,5 @@ function getProblemInstances () {
     done
     
     printf "\n\nlist the problem instances\n\n"
-    cat problem_insts.txt
+    cat ./logs/problem_insts.txt
 }
