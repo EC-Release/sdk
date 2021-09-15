@@ -31,7 +31,12 @@ else
   1000)
     bgStep1ClonePush
     ;;
+  1003)
+    # find instances that have no subfix "-2022" and qualified for running bg step 1
+    findInstsQualifiedForStep1
+    ;;
   1002)
+    findInstsQualifiedForStep1
     printf "\nhello step2\n\n"
     ;;
   1001)
