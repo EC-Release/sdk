@@ -19,8 +19,8 @@ function hasEnvVar () {
        #echo ref1: "${ref1}"
        if [[ -z $ref1 ]]; then
          #hasIssue=true       
-         printf "\n\ninstance (%s) is missing field/value: %s\n" "$1" "$line"
-         printf "instance (%s) is missing field/value: %s\n" "$1" "$line" >> problem_insts.txt     
+         #printf "\ninstance (%s) is missing field/value: %s\n" "$1" "$line"
+         printf "instance (%s) is missing field/value: %s\n" "$1" "$line" | tee problem_insts.txt     
        fi
     done < field_list.txt
     
@@ -39,7 +39,7 @@ function getProblemInstances () {
     printf "\n\ncalculating the list of problematic instance..\n\n" 
     #cf a | grep -E '0/|\?/'| awk '{print $1}'| while read -r line ; do
     cf a | grep -E 'started|stopped' | awk '{print $1}'| while read -r line ; do
-      printf "\nevaluating the ec service app name: %s" "$line"
+      printf "\nevaluating the ec service app name: %s\n" "$line"
       ev=$(cf env $line)
       hasEnvVar "$line" "$ev"
     done
