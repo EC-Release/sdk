@@ -20,6 +20,7 @@ function updateService(){
 }
 
 function findInstsQualifiedForStep1 () {
+  touch ~tmp.txt
   insts=$(cf a | grep -E 'started|stopped')
   
   echo $insts | while read -r line; do 
