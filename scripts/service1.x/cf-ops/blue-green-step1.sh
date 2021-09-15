@@ -19,14 +19,30 @@ function updateService(){
     #cd -
 }
 
+function findInstsQualifiedForStep1 () {
+  insts=$(cf a | grep -E 'started|stopped')
+  
+  echo $insts | while -r read line; do 
+    instStep1=$(echo $insts | awk -v ref=${line} '($1==ref"-2022") {print $1}')
+    if [[ -z $instStep1 ]]; then
+      printf "$line\n" >> ~tmp.txt
+    fi
+    cat ~tmp.txt    
+  done 
+}
+
 function bgStep1ClonePush(){
     mkdir -p push
     wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
     login
     echo "Login successful"
-    #cp ./manifest.yml ./push/manifest.yml
-    # 9/11/2021
-    #
+    
+    if [[ "$PRIORITY_FILE" != "0" ]]; then
+      cat $PRIORITY_FILE > ./service_list.txt
+    else 
+      cf a | grep -E 'started|stopped' | awk '$1 !~ /-2022/ {print $1}' > ./service_list.txt
+    fi
+    
     while read line; do
       ZONE=$line
       echo "Updating $ZONE.."
@@ -76,6 +92,7 @@ function bgStep1ClonePush(){
       }
       cd -
     done < service_list.txt
+    
     echo "update completed."    
          
     {
