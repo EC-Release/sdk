@@ -23,10 +23,11 @@ function findInstsQualifiedForStep1 () {
   touch ~tmp.txt
   insts=$(cf a | grep -E 'started|stopped')
   
-  echo "$insts" | while read -r line; do 
+  echo "$insts" | while read line; do 
     #echo $insts | awk -v ref=${line}-${MISSION} '($1==ref) {print $1}'
-    instStep1=$(echo "$insts" | awk -v ref=${line}-${MISSION} '($1==ref) {print $1}')
-    if [[ -z $instStep1 ]]; then
+    
+    instStep1=$(echo "$insts" | awk -v ref=${line}-${MISSION} '$1==ref {print $1}')
+    if [[ -z "$instStep1" ]]; then
       printf "$line\n" >> ~tmp.txt
     fi
     
@@ -43,7 +44,7 @@ function bgStep1ClonePush(){
     if [[ "$PRIORITY_FILE" != "0" ]]; then
       cat $PRIORITY_FILE > ./service_list.txt
     else 
-      cf a | grep -E 'started|stopped' | awk '$1 !~ /-2022/ {print $1}' > ./service_list.txt
+      cf a | grep -E 'started|stopped' | awk '$1 == /-2022/ {print $1}' > ./service_list.txt
     fi
     
     while read line; do
