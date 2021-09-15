@@ -19,8 +19,8 @@ function hasEnvVar () {
        #echo ref1: "${ref1}"
        if [[ -z $ref1 ]]; then
          #hasIssue=true       
-         #printf "\ninstance (%s) is missing field/value: %s\n" "$1" "$line"
-         printf "instance (%s) is missing field/value: %s\n" "$1" "$line" | tee problem_insts.txt     
+         printf "instance (%s) is missing field/value: %s\n" "$1" "$line"
+         printf "instance (%s) is missing field/value: %s\n" "$1" "$line" >> tee problem_insts.txt     
        fi
     done < field_list.txt
     
