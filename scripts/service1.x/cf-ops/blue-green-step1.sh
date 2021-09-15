@@ -72,7 +72,7 @@ function bgStep1ClonePush(){
           echo "Service updated successful"
         fi        
       } || {
-        echo "Service update unsuccessful. proceed to next instance"
+        echo "service update unsuccessful. proceed to next instance"
       }
       cd -
     done < service_list.txt
