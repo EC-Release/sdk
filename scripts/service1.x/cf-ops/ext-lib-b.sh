@@ -37,7 +37,6 @@ function mapInstURL () {
 # update the url routing from the give app name $1 to the new app name $2
 # $1: <original app name>
 # $2: <new app name>
-$origInstName $line $origInstURL
 function updateInstURL () {
   theRouting=$(findCurrentRouting $1)
   unmapInstURL $1 $theRouting
