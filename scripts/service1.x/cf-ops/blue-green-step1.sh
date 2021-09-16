@@ -37,7 +37,8 @@ function findInstsQualifiedForStep1 () {
       continue
     fi
     
-    instStep2=$(cf e $line | grep -e 'UPDATED: '$MISSION)
+    instStep2=$(hasEnvVar "$line" 'UPDATED: '$MISSION)
+       
     if [[ -z "$instStep2" ]]; then
       printf "inst %s has not been updated. added to the list\n" "$line"
       printf "$line\n" >> ~tmp.txt
