@@ -28,6 +28,7 @@ function findInstsQualifiedForStep1 () {
     instStep1=$(echo "$insts" | awk -v ref=$line-$MISSION '$1==ref {print $1}')
     echo '$inst[Step1:' $instStep1
     if [[ -z "${instStep1}" ]]; then
+      printf "instStep1 %s is empty\n" "$instStep1"
       printf "$line\n" >> ~tmp.txt
     fi
     
