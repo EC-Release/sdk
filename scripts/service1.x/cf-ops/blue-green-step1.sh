@@ -48,10 +48,7 @@ function findInstsQualifiedForStep1 () {
 
 function bgStep1ClonePush(){
 
-    wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
-    
-    login
-    echo "Login successful"
+    wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml    
     
     if [[ "$PRIORITY_FILE" != "0" ]]; then
       cat $PRIORITY_FILE > ./service_list.txt
