@@ -11,14 +11,22 @@
 #  author: apolo.yasuda@ge.com
 #
 
+# $1: Env Key keyword $2: cf env <app> output  
 function hasEnvVar () {
+    ref1=$(echo "$2" | awk -v ref="$1" '($1==ref":" && $2!="") {print}')
+       #echo ref1: "${ref1}"
+    if [[ ! -z $ref1 ]]; then
+      printf "1"       
+    fi 
+}
+
+function hasEnvVarInFieldList () {
     #hasIssue=false
     while read line; do
-       # do some finding blah
-       ref1=$(echo "$2" | awk -v ref="$line" '($1==ref":" && $2!="") {print}')
-       #echo ref1: "${ref1}"
-       if [[ -z $ref1 ]]; then
-         #hasIssue=true       
+       ref1=$(hasEnvVar "$line" "$2")
+       
+       if [[ $ref1 != "1" ]]; then
+       
          printf "instance (%s) is missing field/value: %s\n" "$1" "$line"
          printf "instance (%s) is missing field/value: %s\n" "$1" "$line" >> ./logs/problem_insts.txt  
        fi
@@ -42,7 +50,7 @@ function getProblemInstances () {
     cf a | grep -E 'started|stopped' | awk '$1 !~ /-2022/ {print $1}'| while read -r line ; do
       printf "\nevaluating the ec service app name: %s\n" "$line"
       ev=$(cf env $line)
-      hasEnvVar "$line" "$ev"
+      hasEnvVarInFieldList "$line" "$ev"
     done
     
     printf "\n\nlist the problem instances\n\n"
