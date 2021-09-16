@@ -14,13 +14,11 @@
 # find the routing based on $1
 # $1: <app name>
 function findCurrentRouting () {
-  {
     current_routes=$(cf app $1 | grep routes | awk -F':' '{print $2}' | xargs)
     
     if [[ ! -z "$current_routes" ]]; then
       printf "$current_routes"
     fi
-  }
 }
 
 # set the env var in the app $1 as the completion of step2
