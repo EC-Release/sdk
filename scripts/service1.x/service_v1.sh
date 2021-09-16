@@ -41,8 +41,15 @@ else
     ;;
   1002)
     login
-    findInstsQualifiedForStep1
-    cat ~findInstsQualifiedForStep1.txt
+    findInstsQualifiedForStep2
+    ~findInstsQualifiedForStep2.txt
+    cat ~findInstsQualifiedForStep2.txt
+    
+    procStep2
+    cat ~procStep2.txt
+    mkdir -p logs
+    cp ~procStep2.txt ./logs/insts-completed-step2.txt
+    cp ~failedProcStep2Insts.txt ./logs/insts-failed-step2.txt    
     ;;
   1001)
     printf "\nfinding problematic instances\n\n"
