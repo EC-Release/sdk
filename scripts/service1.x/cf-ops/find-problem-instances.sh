@@ -26,7 +26,7 @@ function hasEnvVarInFieldList () {
     while read line; do
        ref1=$(hasEnvVar "$line" "$2")
        
-       if [[ $ref1 != "1" ]]; then
+       if [[ -z "$ref1" ]]; then
        
          printf "instance (%s) is missing field/value: %s\n" "$1" "$line"
          printf "instance (%s) is missing field/value: %s\n" "$1" "$line" >> ./logs/problem_insts.txt  
