@@ -21,10 +21,10 @@ function updateService(){
 
 function findInstsQualifiedForStep1 () {
   touch ~tmp.txt
-  insts=$(cf a | grep -E 'started|stopped')
+  insts=$(cf a | grep -E 'started|stopped' | awk '{print $1}')
   
-  echo "$insts" | while read line; do 
-    echo '$line-$MISSION:' $line-$MISSION
+  echo "$insts" | while read line; do
+    
     instStep1=$(echo "$insts" | awk -v ref=$line-$MISSION '$1==ref {print $1}')
     if [[ -z "$instStep1" ]]; then
       printf "$line\n" >> ~tmp.txt
