@@ -32,32 +32,49 @@ else
 
   case $OPS_NAME in
   1000)
+    login
+    printf "\nexecute blue-green step 1\n\n"
     bgStep1ClonePush
     ;;
   1003)
+    
     login
+    printf "\nidentify problematic instances\n\n"
     # find instances that have no suffix "E.g. -2022" and are qualified for running bg step 1
     findInstsQualifiedForStep1
     mkdir -p logs
     cp ~findInstsQualifiedForStep1.txt ./logs/insts-qualified-4-step1.txt
     ;;
+  1006)
+    login
+    printf "\identify instances qualified for the step 2\n\n"
+    findInstsQualifiedForStep2
+    cat ~findInstsQualifiedForStep2.txt
+    mkdir -p logs
+    cp ~findInstsQualifiedForStep2.txt ./logs/insts-qualified-4-step2.txt
+    ;;
   1002)
     login
+    printf "\identify instances qualified for the step 2\n\n"
     findInstsQualifiedForStep2
-    ~findInstsQualifiedForStep2.txt
-    cat ~findInstsQualifiedForStep2.txt
+    #~findInstsQualifiedForStep2.txt
+    #cat ~findInstsQualifiedForStep2.txt
     
+    printf "\nexecute blue-green step 2\n\n"
     procStep2
-    cat ~procStep2.txt
+    #cat ~procStep2.txt
     mkdir -p logs
+    cp ~findInstsQualifiedForStep2.txt ./logs/insts-qualified-4-step2.txt
     cp ~procStep2.txt ./logs/insts-completed-step2.txt
     cp ~failedProcStep2Insts.txt ./logs/insts-failed-step2.txt 
     cp ~unknownProcStep2Insts.txt ./logs/insts-unknown-step2.txt
     ;;
   1004)
     printf "\nclean up and remove the original instances\n\n"
+    ;;
   1005)
     printf "\nrestort instance to the original state.\n\n"
+    ;;
   1001)
     printf "\nfinding problematic instances\n\n"
     getProblemInstances
