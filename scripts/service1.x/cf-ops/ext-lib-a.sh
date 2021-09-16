@@ -9,12 +9,17 @@
 #  under which the software has been supplied.
 #
 
+# find the routing based on $1
+# $1: <app name>
 function findCurrentRouting () {
   # if have some doubts
   printf "$1 (unknown instance)\n" >> ~unknownProcStep2Insts.txt  
 
+  printf "$theRouting"
 }
 
+# set the env var in the app $1 as the completion of step2
+# $1: <app name>
 function setStep2CompletedEnv () {
 
 
