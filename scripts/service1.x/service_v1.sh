@@ -32,13 +32,15 @@ else
     bgStep1ClonePush
     ;;
   1003)
-    # find instances that have no suffix "E.g. -2022" and qualified for running bg step 1
+    login
+    # find instances that have no suffix "E.g. -2022" and are qualified for running bg step 1
     findInstsQualifiedForStep1
+    cat ~findInstsQualifiedForStep1.txt
     ;;
   1002)
     login
     findInstsQualifiedForStep1
-    printf "\nhello step2\n\n"
+    cat ~findInstsQualifiedForStep1.txt
     ;;
   1001)
     printf "\nfinding problematic instances\n\n"
