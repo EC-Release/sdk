@@ -23,15 +23,10 @@ function findInstsQualifiedForStep1 () {
   touch ~tmp.txt
   cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll.txt
   cat ~instsAll.txt | awk '$1 !~ /-'$MISSION'/ {print $1}' > ~insts.txt
-  #cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll.txt
-  cat ~instsAll.txt ~insts.txt
   
   while read -r line; do
     
     instStep1=$(cat ~instsAll.txt | grep -e $line'-'$MISSION)
-    #instStep1=$(cf e $line | grep -e 'UPDATED: '$MISSION)
-    #instStep1=$(echo "$insts" | awk -v ref=$line-$MISSION -v ref1=$line '$1==ref && ref1 !~ /-2022/ {print $1}')
-    #echo '$inst[Step1:' $instStep1
     if [[ ! -z "$instStep1" ]]; then
       printf "%s has a cloned instance %s. resume searching\n" "$instStep1"      
       continue
@@ -41,12 +36,15 @@ function findInstsQualifiedForStep1 () {
        
     if [[ -z "$instStep2" ]]; then
       printf "inst %s has not been updated. added to the list\n" "$line"
-      printf "$line\n" >> ~tmp.txt
+      printf "$line\n" >> ~findInstsQualifiedForStep1.txt
     fi
     
   done < ~insts.txt
   
-  cat ~tmp.txt
+  {
+    rm ~instsAll.txt ~insts.txt
+  }
+  
 }
 
 function bgStep1ClonePush(){
@@ -61,7 +59,16 @@ function bgStep1ClonePush(){
       cf a | grep -E 'started|stopped' | awk '$1 == /-2022/ {print $1}' > ./service_list.txt
     fi
     
+    findInstsQualifiedForStep1
+    
     while read line; do
+    
+      qualifiedInst=$(cat ~findInstsQualifiedForStep1.txt | grep -e $line)
+      if [[ -z "$qualifiedInst"]]; then
+        printf "\ninstance %s is not qualified for blue-green step 1. continue to next instance\n" "$line"
+        continue
+      fi
+      
       ZONE=$line
       echo "Updating $ZONE.."
       
