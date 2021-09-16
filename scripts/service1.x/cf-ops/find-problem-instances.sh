@@ -15,14 +15,13 @@
 function hasEnvVar () {
     ref1=$(cf e $2 | grep -e $1 | awk '$2!="" {print $1}')
     #ref1=$(echo "$2" | awk -v ref="$1" '($1==ref":" && $2!="") {print}')
-       #echo ref1: "${ref1}"
     if [[ ! -z $ref1 ]]; then
       printf "1"       
     fi 
 }
 
 function hasEnvVarInFieldList () {
-    #hasIssue=false
+
     while read line; do
        ref1=$(hasEnvVar "$line" "$2")
        
@@ -33,9 +32,6 @@ function hasEnvVarInFieldList () {
        fi
     done < field_list.txt
     
-    #f [[ "$hasIssue" = true ]]; then
-    #    echo $1 >> problem_insts.txt
-    #fi 
 }
 
 function getProblemInstances () {
