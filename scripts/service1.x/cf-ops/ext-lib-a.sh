@@ -33,6 +33,8 @@ function setStep2CompletedEnv () {
   printf "1"
 }
 
+# set the env var in the app $1 as the completion of step2
+# $1: <app name>
 function setStep1CompletedEnv () {
   result=$(cf set-env "$1" UPDATED $MISSION)
 
