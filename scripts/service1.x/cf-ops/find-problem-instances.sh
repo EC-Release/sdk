@@ -11,7 +11,9 @@
 #  author: apolo.yasuda@ge.com
 #
 
-# $1: Env Key keyword $2: <app-name>
+#hasEnvVar is to verify of the env var $1 exists in the app name $1
+# $1: Env Key keyword
+# $2: <app-name>
 function hasEnvVar () {
     ref1=$(cf e $2 | grep -e $1 | awk '$2!="" {print $1}')
     #ref1=$(echo "$2" | awk -v ref="$1" '($1==ref":" && $2!="") {print}')
