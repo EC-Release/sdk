@@ -21,18 +21,29 @@ function updateService(){
 
 function findInstsQualifiedForStep1 () {
   touch ~tmp.txt
-  insts=$(cf a | grep -E 'started|stopped' | awk '{print $1}')
+  cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll.txt
+  cat ~instsAll.txt | awk '$1 !~ /-2022/ {print $1}' > ~insts.txt
+  #cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll.txt
   
-  echo "$insts" | while read line; do
+  while read -r line; do
     
-    instStep1=$(echo "$insts" | awk -v ref=$line-$MISSION -v ref1=$line '$1==ref && ref1 !~ /-2022/ {print $1}')
+    instStep1=$(cat ~instsAll.txt | grep -e $line'-'$MISSION)
+    #instStep1=$(cf e $line | grep -e 'UPDATED: '$MISSION)
+    #instStep1=$(echo "$insts" | awk -v ref=$line-$MISSION -v ref1=$line '$1==ref && ref1 !~ /-2022/ {print $1}')
     #echo '$inst[Step1:' $instStep1
-    if [[ -z "${instStep1}" ]]; then
-      printf "%s-%s is not found\n" "$line" "$MISSION"
+    if [[ ! -z "$instStep1" ]]; then
+      printf "%s has a cloned instance %s. resume searching\n" "$instStep1"      
+      continue
+    fi
+    
+    instStep2=$(cf e $line | grep -e 'UPDATED: '$MISSION)
+    if [[ -z "$instStep2" ]]; then
+      printf "inst %s has not been updated. added to the list\n" "$line"
       printf "$line\n" >> ~tmp.txt
     fi
     
-  done 
+  done < ~insts.txt
+  
   cat ~tmp.txt
 }
 
