@@ -13,11 +13,11 @@
 
 # $1: Env Key keyword $2: <app-name>
 function hasEnvVar () {
-    ref1=$(cf e $2 | grep -e $1 | awk '$2!="" {print $1}')
-    #ref1=$(echo "$2" | awk -v ref="$1" '($1==ref":" && $2!="") {print}')
+    cf e $1 > ~tmp
+    ref1=$(cat ~tmp | grep -e "$2" | awk '$2!="" {print $1}')
     if [[ ! -z $ref1 ]]; then
-      printf "1"       
-    fi 
+      printf "1"
+    fi
 }
 
 function hasEnvVarInFieldList () {
