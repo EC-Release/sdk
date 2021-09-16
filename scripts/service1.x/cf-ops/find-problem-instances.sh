@@ -11,9 +11,10 @@
 #  author: apolo.yasuda@ge.com
 #
 
-# $1: Env Key keyword $2: cf env <app> output  
+# $1: Env Key keyword $2: <app-name>
 function hasEnvVar () {
-    ref1=$(echo "$2" | awk -v ref="$1" '($1==ref":" && $2!="") {print}')
+    ref1=$(cf e $2 | grep -e $1 | awk '$2!="" {print $1}')
+    #ref1=$(echo "$2" | awk -v ref="$1" '($1==ref":" && $2!="") {print}')
        #echo ref1: "${ref1}"
     if [[ ! -z $ref1 ]]; then
       printf "1"       
