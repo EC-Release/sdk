@@ -37,7 +37,7 @@ else
     ;;
   1002)
     login
-    findInstsQualifiedForStep1
+    #findInstsQualifiedForStep1
     printf "\nhello step2\n\n"
     ;;
   1001)
