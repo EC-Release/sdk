@@ -54,6 +54,10 @@ else
     cp ~failedProcStep2Insts.txt ./logs/insts-failed-step2.txt 
     cp ~unknownProcStep2Insts.txt ./logs/insts-unknown-step2.txt
     ;;
+  1004)
+    printf "\nclean up and remove the original instances\n\n"
+  1005)
+    printf "\nrestort instance to the original state.\n\n"
   1001)
     printf "\nfinding problematic instances\n\n"
     getProblemInstances
