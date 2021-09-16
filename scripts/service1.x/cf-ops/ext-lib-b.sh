@@ -20,9 +20,26 @@ function findInstOfOrigin () {
   printf "$theOrigInst"
 }
 
-# update the give app name $1 to the new URL $2
+# unmap the url route $2 from the app name $1
 # $1: <app name>
-# $2: <new URL route>
-function updateInstURL () {
+# $2: <URL route>
+function unmapInstURL () {
+  
+}
 
+# mapping the url route $2 to the app name $1
+# $1: <app name>
+# $2: <URL route>
+function mapInstURL () {
+  
+}
+
+# update the url routing from the give app name $1 to the new app name $2
+# $1: <original app name>
+# $2: <new app name>
+$origInstName $line $origInstURL
+function updateInstURL () {
+  theRouting=$(findCurrentRouting $1)
+  unmapInstURL $1 $theRouting
+  mapInstURL $2 $theRouting
 }
