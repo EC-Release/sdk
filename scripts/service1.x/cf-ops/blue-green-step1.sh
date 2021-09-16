@@ -12,11 +12,11 @@
 #
 
 
-function updateService(){
-    #cf delete ${ZONE} -f 
-    #cd ./push
+function pushService(){
+    cat ./push/manifest.yml        
+    cd ./push
     cf push
-    #cd -
+    cd -
 }
 
 function findInstsQualifiedForStep1 () {
@@ -48,8 +48,9 @@ function findInstsQualifiedForStep1 () {
 }
 
 function bgStep1ClonePush(){
-    mkdir -p push
+
     wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
+    
     login
     echo "Login successful"
     
@@ -88,6 +89,7 @@ function bgStep1ClonePush(){
         continue
       fi
       
+      mkdir -p push
       cp ./manifest.yml ./push/manifest.yml
       
       #cat ./push/manifest.yml
@@ -100,11 +102,8 @@ function bgStep1ClonePush(){
         continue
       }
       
-      cat ./push/manifest.yml
-      
-      cd ./push
       {
-        updateService | tee output.txt
+        pushService | tee output.txt
         if grep -q FAILED output.txt; then
           echo "Service update unsuccessful. proceed to next instance"
           echo "${ZONE}" >> ./../err_ins.txt
@@ -115,7 +114,7 @@ function bgStep1ClonePush(){
       } || {
         echo "service update unsuccessful. proceed to next instance"
       }
-      cd -
+      
     done < service_list.txt
     
     echo "update completed."    
