@@ -12,23 +12,24 @@
 #
 
 function findInstsQualifiedForStep2 () {
+
   
   cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll.txt
-  cat ~instsAll.txt | awk '$1 !~ /-'$MISSION'/ {print $1}' > ~insts.txt
+  cat ~instsAll.txt | awk '$1 ~ /-'$MISSION'/ {print $1}' > ~insts.txt
   
   while read -r line; do
     
-    instStep1=$(cat ~instsAll.txt | grep -e $line'-'$MISSION)
-    if [[ ! -z "$instStep1" ]]; then
-      printf "%s has a cloned instance %s. resume searching\n" "$instStep1"      
-      continue
-    fi
+    #instStep1=$(cat ~instsAll.txt | grep -e $line'-'$MISSION)
+    #if [[ ! -z "$instStep1" ]]; then
+    #  printf "%s has a cloned instance %s. resume searching\n" "$instStep1"      
+    #  continue
+    #fi
     
-    instStep2=$(hasEnvVar "$line" 'UPDATED: '$MISSION)
+    instStep1=$(hasEnvVar "$line" 'UPDATED: '$MISSION'-DONE')
        
-    if [[ -z "$instStep2" ]]; then
-      printf "inst %s has not been updated. added to the list\n" "$line"
-      printf "$line\n" >> ~findInstsQualifiedForStep1.txt
+    if [[ -z "$instStep1" ]]; then
+      printf "inst %s has not been migrated in step2. added to the list\n" "$line"
+      printf "$line\n" >> ~findInstsQualifiedForStep2.txt
     fi
     
   done < ~insts.txt
