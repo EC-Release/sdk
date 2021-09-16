@@ -64,10 +64,10 @@ else
     procStep2
     #cat ~procStep2.txt
     mkdir -p logs
-    cp ~findInstsQualifiedForStep2.txt ./logs/insts-qualified-4-step2.txt
-    cp ~procStep2.txt ./logs/insts-completed-step2.txt
-    cp ~failedProcStep2Insts.txt ./logs/insts-failed-step2.txt 
-    cp ~unknownProcStep2Insts.txt ./logs/insts-unknown-step2.txt
+    cp ~findInstsQualifiedForStep2.txt ./logs/insts-qualified-4-step2.log
+    cp ~procStep2.txt ./logs/insts-completed-step2.log
+    cp ~failedProcStep2Insts.txt ./logs/insts-failed-step2.log
+    cp ~unknownProcStep2Insts.txt ./logs/insts-unknown-step2.log
     ;;
   1004)
     printf "\nclean up and remove the original instances\n\n"
