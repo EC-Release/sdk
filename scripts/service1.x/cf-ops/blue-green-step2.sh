@@ -28,9 +28,14 @@ function findInstsQualifiedForStep2 () {
     instStep1=$(hasEnvVar "$line" 'UPDATED: '$MISSION'-DONE')
        
     if [[ -z "$instStep1" ]]; then
-      printf "inst %s has not been migrated in step2. added to the list\n" "$line"
-      printf "$line\n" >> ~findInstsQualifiedForStep2.txt
+      printf "inst %s is ready to be migrated in step2. added to the list\n" "$line"
+      
+    else
+      setStep1CompletedEnv ${line}
+      printf "inst %s was updated to be migrated in step2. added to the list\n" "$line"     
     fi
+    
+    printf "$line\n" >> ~findInstsQualifiedForStep2.txt
     
   done < ~insts.txt
   
