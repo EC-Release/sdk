@@ -104,8 +104,9 @@ function bgStep1ClonePush(){
           echo "Service update unsuccessful. proceed to next instance"
           echo "${ZONE}" >> ./../err_ins.txt
         else
-          cf set-env ${ZONE} UPDATED '2022'
-          echo "Service updated successful"
+          setStep1CompletedEnv ${ZONE}
+          #cf set-env ${ZONE} UPDATED '2022'
+          echo "Service ${ZONE} updated successful"
         fi        
       } || {
         echo "service update unsuccessful. proceed to next instance"
