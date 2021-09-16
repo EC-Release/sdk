@@ -9,16 +9,44 @@
 #  under which the software has been supplied.
 #
 
+# Temp code and have to be deleted
+function hasEnvVar () {
+    cf e $1 > ~tmp
+    
+    ref1=$(cat ~tmp | grep -e "$2" | awk '$2!="" {print $1}')
+
+    #ref1=$(echo "$2" | awk -v ref="$1" '($1==ref":" && $2!="") {print}')
+    if [[ ! -z $ref1 ]]; then
+      printf "1"       
+    fi 
+}
+
 # find and output the original app belong to the given app $1
 # $1: <app name>
 function findInstOfOrigin () {
 
+  #theOrigInst=$(echo $1 | awk -F'-2022' '{print $1}')
+  theOrigInst=${1%-"$MISSION"}
+
+  getApp=$(cf app $theOrigInst | grep -e 'FAILED')
+
+  if [[ ! -z $getApp ]]; then
+    printf "$1 (unknown instance)\n" >> ~unknownProcStep2Insts.txt
+    return
+  fi
+
+  #getEnv=$(cf e $theOrigInst | grep -e 'UPDATED: '$MISSION)
+  instStep1=$(hasEnvVar "$theOrigInst" 'UPDATED: '$MISSION)
+  echo $instStep1
+  if [[ $instStep1 == "1" ]]; then
+    printf "$theOrigInst"
+    return
+  fi
+
   # if have some doubts
   printf "$1 (unknown instance)\n" >> ~unknownProcStep2Insts.txt
-  
-  # output the origin inst
-  printf "$theOrigInst"
 }
+
 
 # unmap the url route $2 from the app name $1
 # $1: <app name>
