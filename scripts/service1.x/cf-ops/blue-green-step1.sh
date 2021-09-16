@@ -24,6 +24,7 @@ function findInstsQualifiedForStep1 () {
   cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll.txt
   cat ~instsAll.txt | awk '$1 !~ /-'$MISSION'/ {print $1}' > ~insts.txt
   #cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll.txt
+  cat ~instsAll.txt ~insts.txt
   
   while read -r line; do
     
