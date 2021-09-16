@@ -40,6 +40,28 @@ function findInstsQualifiedForStep2 () {
   
 }
 
-function bgStep2URLReMapping(){
-    
+function procStep2 () {
+   while read -r line; do
+     origInstName=$(findInstOfOrigin $line)
+     origInstURL=$(findCurrentRouting $origInstName)
+     {
+       stdout=$(updateInstURL $line $origInstURL)
+       if [[ $stdout = *"FAILED"* ]]; then
+         printf "\ninstance %s failed in URL route re-mapping. continue to next instance.\n" "$line"
+         printf "$line (failed updateInstURL)\n" >> ~failedProcStep2Insts.txt
+         continue
+       fi
+       
+       stdout=$(setStep2CompletedEnv $line)
+       if [[ $stdout = *"FAILED"* ]]; then 
+         printf "\ninstance %s failed in setting step 2 Env. continue to next instance.\n" "$line"
+         printf "$line (failed setStep2CompletedEnv)\n" >> ~failedProcStep2Insts.txt
+         continue       
+       fi
+      
+       printf "\ninstance %s has completed blue-green step 2 and added to the list\n" "$line"
+       printf "$line\n" >> ~procStep2.txt                
+     }
+   done < ~findInstsQualifiedForStep2.txt
+
 }
