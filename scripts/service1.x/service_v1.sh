@@ -15,6 +15,8 @@
 #sleep 10
 echo "import library & tools"
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/base.sh)
+source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/ext-lib-a.sh)
+source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/ext-lib-b.sh)
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/blue-green-step1.sh)
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/blue-green-step2.sh)
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/find-problem-instances.sh)
@@ -49,7 +51,8 @@ else
     cat ~procStep2.txt
     mkdir -p logs
     cp ~procStep2.txt ./logs/insts-completed-step2.txt
-    cp ~failedProcStep2Insts.txt ./logs/insts-failed-step2.txt    
+    cp ~failedProcStep2Insts.txt ./logs/insts-failed-step2.txt 
+    cp ~unknownProcStep2Insts.txt ./logs/insts-unknown-step2.txt
     ;;
   1001)
     printf "\nfinding problematic instances\n\n"
