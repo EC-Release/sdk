@@ -43,7 +43,7 @@ function findInstOfOrigin () {
 # $2: <URL route>
 function unmapInstURL () {
   hostname=$(echo $2 | cut -d'.' -f 1)
-  cf unmap-route $1 run.aws-usw02-pr.ice.predix.io --hostname $hostname  
+  cf unmap-route $1 $CF_DOMAIN --hostname $hostname  
 }
 
 # mapping the url route $2 to the app name $1
@@ -51,7 +51,7 @@ function unmapInstURL () {
 # $2: <URL route>
 function mapInstURL () {
   hostname=$(echo $2 | cut -d'.' -f 1)
-  cf map-route $1 run.aws-usw02-pr.ice.predix.io --hostname $hostname
+  cf map-route $1 $CF_DOMAIN --hostname $hostname
 }
 
 # update the url routing from the give app name $1 to the new app name $2
