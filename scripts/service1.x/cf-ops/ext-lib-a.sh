@@ -32,3 +32,13 @@ function setStep2CompletedEnv () {
   fi
   printf "1"
 }
+
+function setStep1CompletedEnv () {
+  result=$(cf set-env "$1" UPDATED $MISSION)
+
+  if [[ $result != *"FAILED"* ]]; then
+    printf "0"
+    return
+  fi
+  printf "1"
+}
