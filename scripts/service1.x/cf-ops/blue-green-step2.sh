@@ -52,6 +52,11 @@ function findInstsQualifiedForStep2 () {
 function procStep2 () {
    while read -r line; do
      origInstName=$(findInstOfOrigin $line)
+     if [[ -z "$origInstName" ]]; then
+       printf "\napp %s is not qualified for the step2. continue to next instance.\n" "$line"
+       continue
+     fi
+     
      {
        stdout=$(updateInstURL $origInstName $line)
        if [[ $stdout = *"FAILED"* ]]; then
@@ -61,7 +66,7 @@ function procStep2 () {
        fi
        
        stdout=$(setStep2CompletedEnv $line)
-       if [[ $stdout = *"FAILED"* ]]; then 
+       if [[ $stdout = "1" ]]; then 
          printf "\ninstance %s failed in setting step 2 Env. continue to next instance.\n" "$line"
          printf "$line (failed setStep2CompletedEnv)\n" >> ~failedProcStep2Insts.txt
          continue       
