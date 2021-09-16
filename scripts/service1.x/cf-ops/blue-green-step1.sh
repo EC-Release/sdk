@@ -26,6 +26,7 @@ function findInstsQualifiedForStep1 () {
   echo "$insts" | while read line; do
     
     instStep1=$(echo "$insts" | awk -v ref=$line-$MISSION '$1==ref {print $1}')
+    echo '$instStep1:' $instStep1
     if [[ -z "$instStep1" ]]; then
       printf "$line\n" >> ~tmp.txt
     fi
