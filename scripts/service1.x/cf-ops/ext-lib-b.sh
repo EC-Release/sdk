@@ -11,6 +11,8 @@
 
 function findInstOfOrigin () {
 
+  # if have some doubts
+  printf "$1 (unknown instance)\n" >> ~unknownProcStep2Insts.txt  
 }
 
 function updateInstURL () {
