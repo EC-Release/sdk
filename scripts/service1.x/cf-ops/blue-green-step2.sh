@@ -43,9 +43,8 @@ function findInstsQualifiedForStep2 () {
 function procStep2 () {
    while read -r line; do
      origInstName=$(findInstOfOrigin $line)
-     origInstURL=$(findCurrentRouting $origInstName)
      {
-       stdout=$(updateInstURL $line $origInstURL)
+       stdout=$(updateInstURL $origInstName $line)
        if [[ $stdout = *"FAILED"* ]]; then
          printf "\ninstance %s failed in URL route re-mapping. continue to next instance.\n" "$line"
          printf "$line (failed updateInstURL)\n" >> ~failedProcStep2Insts.txt
