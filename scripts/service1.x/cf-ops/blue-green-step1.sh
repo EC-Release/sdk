@@ -23,10 +23,10 @@ function pushService () {
 
 function findInstsQualifiedForStep1 () {
   
-  getAppointedInsts | awk 'NR!=1' > instsAll.txt
+  getAppointedInsts | awk 'NR!=1' > ~appointedInsts
   
   printf "\nget instances without step1 suffix..\n"
-  cat ~instsAll.txt | awk '$1 !~ /-'$MISSION'/ {print $1}' > ~insts.txt
+  cat ~appointedInsts | awk '$1 !~ /-'$MISSION'/ {print $1}' > ~insts
   
   printf "\nloop into instances without step1 suffix..\n"  
   while read -r line; do
@@ -44,7 +44,7 @@ function findInstsQualifiedForStep1 () {
       continue
     fi    
     
-    instStep1=$(cat ~instsAll.txt | grep -e $line'-'$MISSION)
+    instStep1=$(cat ~instsAll | grep -e $line'-'$MISSION)
     if [[ ! -z "$instStep1" ]]; then
       printf "\ninstance %s has had a cloned instance. continue identify next instance" "$line" | tee -a ~failedFindInstsQualifiedForStep1
       continue
@@ -57,10 +57,10 @@ function findInstsQualifiedForStep1 () {
       printf "$line\n" >> ~findInstsQualifiedForStep1
     fi
     
-  done < ~insts.txt
+  done < ~insts
   
   {
-    rm ~instsAll.txt ~insts.txt
+    rm ~insts
   }
   
 }
