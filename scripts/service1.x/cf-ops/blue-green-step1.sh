@@ -58,7 +58,7 @@ function findInstsQualifiedForStep1 () {
   done < ~insts
   
   {
-    rm ~insts ~appointedInsts
+    rm ~insts
   }
   
 }
