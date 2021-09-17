@@ -58,7 +58,6 @@ function findInstsQualifiedForStep2 () {
 #1: origInstName
 #2: trgtInstName
 #3: current instance index
-#4: total num. inst
 function procDone () {
 
     ref=$(restageTheNewApp "$2")
@@ -67,7 +66,7 @@ function procDone () {
       continue    
     fi
     
-    ref=$(updateDockerCred "$2" "$3" "$4")
+    ref=$(updateDockerCred "$2" "$3")
     if [[ $ref != "0" ]]; then
       printf "instance %s failed in updateDockerCred. continue to next instance.\n" "$1" | tee ~failedProcStep2Insts
       continue    
@@ -85,9 +84,7 @@ function procStep2 () {
   
   printf "\nloop into instances in the appointed instance list..\n"
   
-  totalNum=$(cat ~insts | wc -l)
-  
-  count=0
+  count=-1
   while read -r line; do
     (( count++ ))
     
@@ -102,7 +99,7 @@ function procStep2 () {
     instStep2=$(hasEnvVar "$trgtInstName" 'UPDATED: '$MISSION'-DONE')    
     if [[ $instStep2 == "0" ]]; then
       printf "instance %s had completed step2. continue to next instance.\n" "$origInstName"
-      procDone "$origInstName" "$trgtInstName" "$count" "$totalNum"
+      procDone "$origInstName" "$trgtInstName" "$count"
       continue
     fi
     
@@ -118,7 +115,7 @@ function procStep2 () {
       continue       
     fi
       
-    procDone "$origInstName" "$trgtInstName" "$count" "$totalNum" 
+    procDone "$origInstName" "$trgtInstName" "$count"
     
     #temp
     #return

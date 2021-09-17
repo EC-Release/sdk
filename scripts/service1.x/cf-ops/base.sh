@@ -76,3 +76,20 @@ function setEnvs(){
     
     eval "sed -i -e 's|{{MISSION}}|$MISSION|g' ./push/manifest.yml" 
 }
+
+#$1: trgtInstName
+#$2: current instance index
+function updateDockerCred () {
+  eval $(parse_yaml docker-creds.yml)
+  ref=$(expr $2 % 4)
+  op=$(printf "CF_DOCKER_PASSWORD=%s cf push %s --docker-image %s --docker-username %s" "$ec_$ref_token" "$1" "$ec_$img" "$ec_$ref_username")
+  eval $op > ~tmp 2>&1
+  ref1=$(cat ~tmp | grep -e 'FAILED')
+  if [[ -z $ref1 ]]; then
+    printf "0"
+    return
+  fi
+  
+  printf "1"
+}
+
