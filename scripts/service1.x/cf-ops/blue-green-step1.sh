@@ -28,14 +28,14 @@ function findInstsQualifiedForStep1 () {
   printf "loop into instances without step1 suffix.."  
   while read -r line; do
     
-    url=$(findCurrentRouting $line)
+    url=$(findCurrentRouting "$line")
     if [[ -z $url ]]; then
       printf "instance %s does not have a routing. continue identify next instance" "$line"
       continue
     fi
     
     zon=$(echo $url | cut -d'.' -f 1)
-    uid:=$(isUUID $zon)
+    uid:=$(isUUID "$zon")
     if [[ uid != "0" ]]; then
       printf "instance url %s does not appear to be a service instance. continue identify next instance" "$url"
       continue
