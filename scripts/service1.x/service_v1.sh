@@ -37,8 +37,7 @@ else
     printf "\nexecute blue-green step 1\n\n"
     bgStep1ClonePush
     ;;
-  1003)
-    
+  1003)    
     login
     printf "\nidentify instances qualified for step1\n\n"
     # find instances that have no suffix "E.g. -2022" and are qualified for running bg step 1
