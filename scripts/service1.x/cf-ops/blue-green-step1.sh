@@ -15,7 +15,9 @@
 function pushService () {
     cat ./push/manifest.yml        
     cd ./push
-    cf push
+    {
+      cf push
+    }
     cd -
 }
 
