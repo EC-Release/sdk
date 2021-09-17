@@ -19,7 +19,10 @@ function hasEnvVar () {
     ref1=$(cat ~tmp | grep -e "$2" | awk '$2!="" {print $1}')
     if [[ ! -z $ref1 ]]; then
       printf "0"
+      return
     fi
+    
+    printf "1"
 }
 
 function login () {
