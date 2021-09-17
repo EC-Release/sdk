@@ -11,9 +11,30 @@
 #  author: apolo.yasuda@ge.com
 #
 
-function login(){
+function login () {
     #echo  cf login -a ${CF_API} -u ${CF_USR} -p ${CF_PWD} -o ${ORG} -s ${SPACE}
     cf login -a ${CF_API} -u ${CF_USR} -p ${CF_PWD} -o ${ORG} -s ${SPACE}
+    getAllInsts
+}
+
+#getAppointedInsts return appointed instances for the workflow
+function getAllInsts () {
+  #sleep 1
+  printf "\ncaching all cf instances..\n"
+  cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~allInsts
+  #cat ~instsAll
+}
+
+#getAppointedInsts return appointed instances for the workflow
+function getAppointedInsts () {
+  if [[ $PRIORITY_FILE == "0" ]]; then
+     printf "getting all cf instances..\n"
+     cat ~allInsts > ~tmp
+  else 
+    printf "getting appointed cf instances..\n"
+    cat $PRIORITY_FILE > ~tmp
+  fi
+  cat ~tmp
 }
 
 function getEnvs(){

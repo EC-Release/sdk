@@ -12,41 +12,58 @@
 #
 
 
-function pushService(){
+function pushService () {
     cat ./push/manifest.yml        
     cd ./push
-    cf push
+    {
+      cf push
+    }
     cd -
 }
 
 function findInstsQualifiedForStep1 () {
-  cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll.txt
-  cat ~instsAll.txt | awk '$1 !~ /-'$MISSION'/ {print $1}' > ~insts.txt
+    
+  printf "\nget instances without step1 suffix..\n"
+  getAppointedInsts | awk 'NR!=1 && $1 !~ /-'$MISSION'/ {print $1}' > ~insts
   
+  printf "\nloop into instances without step1 suffix..\n"  
   while read -r line; do
     
-    instStep1=$(cat ~instsAll.txt | grep -e $line'-'$MISSION)
-    if [[ ! -z "$instStep1" ]]; then
-      printf "%s has a cloned instance %s. resume searching\n" "$instStep1"      
+    url=$(findCurrentRouting $line)
+    if [[ -z $url ]]; then
+      printf "\ninstance %s does not have a routing. continue identify next instance" "$line" | tee -a ~failedFindInstsQualifiedForStep1
       continue
     fi
     
-    instStep2=$(hasEnvVar "$line" 'UPDATED: '$MISSION)
-       
-    if [[ -z "$instStep2" ]]; then
-      printf "inst %s has not been updated. added to the list\n" "$line"
-      printf "$line\n" >> ~findInstsQualifiedForStep1.txt
+    zon=$(echo $url | cut -d'.' -f 1)
+    uid=$(isUUID $zon)
+    if [[ $uid != "0" ]]; then
+      printf "\ninstance url %s does not appear to be a service instance. continue identify next instance" "$url" | tee -a ~failedFindInstsQualifiedForStep1
+      continue
+    fi    
+    
+    instStep1=$(cat ~allInsts | grep -e $line'-'$MISSION)
+    if [[ ! -z "$instStep1" ]]; then
+      printf "\ninstance %s has had a cloned instance. continue identify next instance" "$line" | tee -a ~failedFindInstsQualifiedForStep1
+      continue
     fi
     
-  done < ~insts.txt
+    instStep2=$(hasEnvVar $line 'UPDATED: '$MISSION)
+       
+    if [[ -z "$instStep2" ]]; then
+      printf "\ninstance %s has not been updated. added to the list" "$line"
+      printf "$line\n" >> ~findInstsQualifiedForStep1
+    fi
+    
+  done < ~insts
   
   {
-    rm ~instsAll.txt ~insts.txt
+    rm ~insts
   }
   
 }
 
-function bgStep1ClonePush(){
+function bgStep1ClonePush () {
 
     wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml    
     

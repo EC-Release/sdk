@@ -14,6 +14,7 @@
 #temp. pls remove this line in release
 #sleep 10
 echo "import library & tools"
+source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/helper.sh)
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/base.sh)
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/ext-lib-a.sh)
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/ext-lib-b.sh)
@@ -35,15 +36,16 @@ else
     login
     printf "\nexecute blue-green step 1\n\n"
     bgStep1ClonePush
+    mkdir -p logs
     ;;
-  1003)
-    
+  1003)    
     login
-    printf "\nidentify problematic instances\n\n"
+    printf "\nidentify instances qualified for step1\n\n"
     # find instances that have no suffix "E.g. -2022" and are qualified for running bg step 1
     findInstsQualifiedForStep1
     mkdir -p logs
-    cp ~findInstsQualifiedForStep1.txt ./logs/insts-qualified-4-step1.txt
+    cp ~findInstsQualifiedForStep1 ./logs/insts-qualified-step1.log
+    cp ~failedFindInstsQualifiedForStep1 ./logs/insts-failed-qualified-step1.log
     ;;
   1006)
     login
@@ -64,10 +66,10 @@ else
     procStep2
     #cat ~procStep2.txt
     mkdir -p logs
-    cp ~findInstsQualifiedForStep2.txt ./logs/insts-qualified-4-step2.txt
-    cp ~procStep2.txt ./logs/insts-completed-step2.txt
-    cp ~failedProcStep2Insts.txt ./logs/insts-failed-step2.txt 
-    cp ~unknownProcStep2Insts.txt ./logs/insts-unknown-step2.txt
+    cp ~findInstsQualifiedForStep2.txt ./logs/insts-qualified-4-step2.log
+    cp ~procStep2.txt ./logs/insts-completed-step2.log
+    cp ~failedProcStep2Insts.txt ./logs/insts-failed-step2.log
+    cp ~unknownProcStep2Insts.txt ./logs/insts-unknown-step2.log
     ;;
   1004)
     printf "\nclean up and remove the original instances\n\n"
