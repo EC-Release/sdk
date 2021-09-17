@@ -86,6 +86,12 @@ function procStep2 () {
       printf "\ninstance %s failed in setStep2CompletedEnv. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts.log
       continue       
     fi
+      
+    ref=$(restageTheNewApp $2)
+    if [[ $ref != "0" ]]; then
+      printf "\ninstance %s failed in restageTheNewApp. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts.log
+      continue    
+    fi
 
     printf "\ninstance %s has completed blue-green step 2 and added to the list\n" "$line"
     printf "$origInstName\n" >> ~procStep2               
