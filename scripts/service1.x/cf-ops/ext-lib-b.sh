@@ -58,7 +58,24 @@ function mapInstURL () {
 # $1: <original app name>
 # $2: <new app name>
 function updateInstURL () {
+
   theRouting=$(findCurrentRouting $1)
-  unmapInstURL $1 $theRouting
-  mapInstURL $2 $theRouting
+  if [[ -z $theRouting ]]; then
+    printf "empty routing."
+    return
+  fi
+  
+  ref=$(unmapInstURL $1 $theRouting | grep -e 'FAILED')
+  if [[ ! -z $ref ]]; then
+    printf "error in unmapping."
+    return
+  fi
+  
+  ref1=$(mapInstURL $2 $theRouting | grep -e 'FAILED')
+  if [[ ! -z $ref1 ]]; then
+    printf "error in re-mapping."
+    return
+  fi
+  
+  printf "0"
 }
