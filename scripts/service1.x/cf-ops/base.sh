@@ -16,6 +16,18 @@ function login(){
     cf login -a ${CF_API} -u ${CF_USR} -p ${CF_PWD} -o ${ORG} -s ${SPACE}
 }
 
+#getAllInsts return appointed instances for the workflow
+function getAllInsts () {
+  if [[ $PRIORITY_FILE == "0" ]]; then
+    printf "get all cf instances..\n"
+    cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll.txt
+  else 
+    printf "get appointed cf instances..\n"
+    cat $PRIORITY_FILE > ~instsAll.txt
+  fi
+  cat ~instsAll.txt
+}
+
 function getEnvs(){
     {
       rm values.txt
