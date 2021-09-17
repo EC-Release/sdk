@@ -60,11 +60,11 @@ function findInstsQualifiedForStep2 () {
 #3: current instance index
 function procDone () {
 
-    ref=$(restageTheNewApp "$2")
+    : 'ref=$(restageTheNewApp "$2")
     if [[ $ref != "0" ]]; then
       printf "instance %s failed in restageTheNewApp. continue to next instance.\n" "$1" | tee ~failedProcStep2Insts
       continue    
-    fi
+    fi'
     
     ref=$(updateDockerCred "$2" "$3")
     if [[ $ref != "0" ]]; then
@@ -98,7 +98,7 @@ function procStep2 () {
     
     instStep2=$(hasEnvVar "$trgtInstName" 'UPDATED: '$MISSION'-DONE')    
     if [[ $instStep2 == "0" ]]; then
-      printf "instance %s had completed step2. continue to next instance.\n" "$origInstName"
+      printf "instance %s had been completed step2. continue to app restage/update\n" "$origInstName"
       procDone "$origInstName" "$trgtInstName" "$count"
       continue
     fi
