@@ -72,23 +72,28 @@ function procStep2 () {
       printf "app %s is not qualified for the step2. continue to next instance.\n" "$line" | tee ~failedProcStep2Insts.log
       continue     
     fi
+    
+    ref=$(updateInstURL $origInstName $trgtInstName)
+    if [[ $ref != "0" ]]; then
+      printf "\ninstance %s failed in updateInstURL. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts.log
+      continue
+    fi
 
-    {
-      ref=$(updateInstURL $origInstName $trgtInstName)
-      if [[ $ref != "0" ]]; then
-        printf "\ninstance %s failed in updateInstURL. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts.log
-        continue
-      fi
+    ref=$(setStep2CompletedEnv $trgtInstName)
+    if [[ $ref != "0" ]]; then 
+      printf "\ninstance %s failed in setStep2CompletedEnv. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts.log
+      continue       
+    fi
 
-      ref=$(setStep2CompletedEnv $trgtInstName)
-      if [[ $ref != "0" ]]; then 
-        printf "\ninstance %s failed in setStep2CompletedEnv. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts.log
-        continue       
-      fi
-
-      printf "\ninstance %s has completed blue-green step 2 and added to the list\n" "$line"
-      printf "$origInstName\n" >> ~procStep2               
-    }
+    printf "\ninstance %s has completed blue-green step 2 and added to the list\n" "$line"
+    printf "$origInstName\n" >> ~procStep2               
+    
+    #temp
+    return
   done < ~insts
+  
+  {
+    rm ~insts ~tmp
+  }
 
 }
