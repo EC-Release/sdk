@@ -22,8 +22,9 @@ function pushService () {
 }
 
 function findInstsQualifiedForStep1 () {
-  printf "\nget all cf instances..\n"
-  cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll.txt
+  
+  getAppointedInsts | awk 'NR!=1' > instsAll.txt
+  
   printf "\nget instances without step1 suffix..\n"
   cat ~instsAll.txt | awk '$1 !~ /-'$MISSION'/ {print $1}' > ~insts.txt
   
@@ -32,20 +33,20 @@ function findInstsQualifiedForStep1 () {
     
     url=$(findCurrentRouting $line)
     if [[ -z $url ]]; then
-      printf "\ninstance %s does not have a routing. continue identify next instance" "$line"
+      printf "\ninstance %s does not have a routing. continue identify next instance" "$line" | tee -a ~failedFindInstsQualifiedForStep1
       continue
     fi
     
     zon=$(echo $url | cut -d'.' -f 1)
     uid=$(isUUID $zon)
     if [[ $uid != "0" ]]; then
-      printf "\ninstance url %s does not appear to be a service instance. continue identify next instance" "$url"
+      printf "\ninstance url %s does not appear to be a service instance. continue identify next instance" "$url" | tee -a ~failedFindInstsQualifiedForStep1
       continue
     fi    
     
     instStep1=$(cat ~instsAll.txt | grep -e $line'-'$MISSION)
     if [[ ! -z "$instStep1" ]]; then
-      printf "\ninstance %s has had a cloned instance. continue identify next instance" "$line"
+      printf "\ninstance %s has had a cloned instance. continue identify next instance" "$line" | tee -a ~failedFindInstsQualifiedForStep1
       continue
     fi
     
@@ -53,7 +54,7 @@ function findInstsQualifiedForStep1 () {
        
     if [[ -z "$instStep2" ]]; then
       printf "\ninstance %s has not been updated. added to the list" "$line"
-      printf "$line\n" >> ~findInstsQualifiedForStep1.txt
+      printf "$line\n" >> ~findInstsQualifiedForStep1
     fi
     
   done < ~insts.txt
