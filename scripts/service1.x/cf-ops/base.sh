@@ -14,21 +14,23 @@
 function login(){
     #echo  cf login -a ${CF_API} -u ${CF_USR} -p ${CF_PWD} -o ${ORG} -s ${SPACE}
     cf login -a ${CF_API} -u ${CF_USR} -p ${CF_PWD} -o ${ORG} -s ${SPACE}
+    getAllInsts()
 }
 
 #getAppointedInsts return appointed instances for the workflow
 function getAllInsts () {
-  printf "get all cf instances..\n"
-  cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~tmp
-  cat ~tmp
+  printf "caching all cf instances..\n"
+  cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll
+  #cat ~instsAll
 }
 
 #getAppointedInsts return appointed instances for the workflow
 function getAppointedInsts () {
   if [[ $PRIORITY_FILE == "0" ]]; then
-    getAllInsts | awk 'NR!=1' > ~tmp
+     printf "getting all cf instances..\n"
+     cat ~instsAll > ~tmp
   else 
-    printf "get appointed cf instances..\n"
+    printf "getting appointed cf instances..\n"
     cat $PRIORITY_FILE > ~tmp
   fi
   cat ~tmp
