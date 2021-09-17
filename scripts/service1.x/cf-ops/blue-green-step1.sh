@@ -36,7 +36,7 @@ function findInstsQualifiedForStep1 () {
       continue
     fi
     
-    zon=$(echo $url | cut -d'.' -f 1)
+    : 'zon=$(echo $url | cut -d'.' -f 1)
     uid=$(isUUID $zon)
     if [[ uid != "0" ]]; then
       printf "instance url %s does not appear to be a service instance. continue identify next instance" "$url"
@@ -54,7 +54,7 @@ function findInstsQualifiedForStep1 () {
     if [[ -z "$instStep2" ]]; then
       printf "inst %s has not been updated. added to the list\n" "$line"
       printf "$line\n" >> ~findInstsQualifiedForStep1.txt
-    fi
+    fi'
     
   done < ~insts.txt
   
