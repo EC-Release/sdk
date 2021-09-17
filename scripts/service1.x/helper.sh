@@ -17,7 +17,7 @@ function isUUID () {
   if [[ $1 =~ ^\{?[A-F0-9a-f]{8}-[A-F0-9a-f]{4}-[A-F0-9a-f]{4}-[A-F0-9a-f]{4}-[A-F0-9a-f]{12}\}?$ ]]; then
       printf "0"
   else
-      print "1"
+      printf "1"
   fi
 
 }
