@@ -51,9 +51,10 @@ else
     login
     printf "\identify instances qualified for the step 2\n\n"
     findInstsQualifiedForStep2
-    cat ~findInstsQualifiedForStep2.txt
+    cat ~findInstsQualifiedForStep2
     mkdir -p logs
-    cp ~findInstsQualifiedForStep2.txt ./logs/insts-qualified-4-step2.txt
+    cp ~findInstsQualifiedForStep2 ./logs/insts-qualified-step2.log
+    cp ~failedFindInstsQualifiedForStep2 ./logs/insts-failed-qualified-step2.log
     ;;
   1002)
     login
