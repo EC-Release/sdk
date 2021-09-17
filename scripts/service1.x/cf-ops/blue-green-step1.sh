@@ -28,7 +28,7 @@ function findInstsQualifiedForStep1 () {
   printf "loop into instances without step1 suffix.."  
   while read -r line; do
     
-    url=$(findCurrentRouting "$line")
+    url=$(findCurrentRouting $line)
     if [[ -z $url ]]; then
       printf "instance %s does not have a routing. continue identify next instance" "$line"
       continue
@@ -47,7 +47,7 @@ function findInstsQualifiedForStep1 () {
       continue
     fi
     
-    instStep2=$(hasEnvVar "$line" 'UPDATED: '$MISSION)
+    instStep2=$(hasEnvVar $line 'UPDATED: '$MISSION)
        
     if [[ -z "$instStep2" ]]; then
       printf "inst %s has not been updated. added to the list\n" "$line"
