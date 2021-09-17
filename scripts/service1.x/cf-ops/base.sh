@@ -11,15 +11,15 @@
 #  author: apolo.yasuda@ge.com
 #
 
-function login(){
+function login () {
     #echo  cf login -a ${CF_API} -u ${CF_USR} -p ${CF_PWD} -o ${ORG} -s ${SPACE}
     cf login -a ${CF_API} -u ${CF_USR} -p ${CF_PWD} -o ${ORG} -s ${SPACE}
-    getAllInsts()
+    getAllInsts
 }
 
 #getAppointedInsts return appointed instances for the workflow
 function getAllInsts () {
-  sleep 1
+  #sleep 1
   printf "caching all cf instances..\n"
   cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll
   #cat ~instsAll
