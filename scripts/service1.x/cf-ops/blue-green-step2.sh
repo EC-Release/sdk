@@ -75,29 +75,36 @@ function procStep2 () {
       continue     
     fi
     
+    instStep2=$(hasEnvVar "$trgtInstName" 'UPDATED: '$MISSION'-DONE')    
+    if [[ $instStep2 == "0" ]]; then
+      printf "instance %s has completed step2. continue to next instance.\n" "$origInstName"
+      printf "$origInstName\n" >> ~procStep2
+      continue
+    fi
+    
     ref=$(updateInstURL $origInstName $trgtInstName)
     if [[ $ref != "0" ]]; then
-      printf "\ninstance %s failed in updateInstURL. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts.log
+      printf "instance %s failed in updateInstURL. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts.log
       continue
     fi
 
     ref=$(setStep2CompletedEnv $trgtInstName)
     if [[ $ref != "0" ]]; then 
-      printf "\ninstance %s failed in setStep2CompletedEnv. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts.log
+      printf "instance %s failed in setStep2CompletedEnv. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts.log
       continue       
     fi
       
     ref=$(restageTheNewApp $2)
     if [[ $ref != "0" ]]; then
-      printf "\ninstance %s failed in restageTheNewApp. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts.log
+      printf "instance %s failed in restageTheNewApp. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts.log
       continue    
     fi
 
-    printf "\ninstance %s has completed blue-green step 2 and added to the list\n" "$line"
+    printf "instance %s has completed blue-green step 2 and added to the list\n" "$line"
     printf "$origInstName\n" >> ~procStep2               
     
     #temp
-    return
+    #return
   done < ~insts
   
   {
