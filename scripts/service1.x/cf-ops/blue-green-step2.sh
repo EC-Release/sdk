@@ -84,7 +84,7 @@ function procStep2 () {
   
   printf "\nloop into instances in the appointed instance list..\n"
   
-  count=0
+  count=-1
   while read -r line; do
     (( count++ ))
     
