@@ -15,6 +15,7 @@ function findInstsQualifiedForStep2 () {
   
   printf "\nget instances with MISSION suffix..\n"
   getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
+  cat ~insts
   
   printf "\nloop into instances in the appointed instance list..\n"
   while read -r line; do
@@ -49,7 +50,7 @@ function findInstsQualifiedForStep2 () {
   done < ~insts
   
   {
-    rm ~insts.txt
+    rm ~insts
   }
   
 }
