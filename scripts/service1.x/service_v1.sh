@@ -39,7 +39,7 @@ else
   1003)
     
     login
-    printf "\nidentify problematic instances\n\n"
+    printf "\nidentify instances qualified for step1\n\n"
     # find instances that have no suffix "E.g. -2022" and are qualified for running bg step 1
     findInstsQualifiedForStep1
     mkdir -p logs
