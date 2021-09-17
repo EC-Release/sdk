@@ -23,11 +23,11 @@ function pushService () {
 
 function findInstsQualifiedForStep1 () {
   printf "get all cf instances.."
-  : 'cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll.txt
+  cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll.txt
   printf "get instances without step1 suffix.."
   cat ~instsAll.txt | awk '$1 !~ /-'$MISSION'/ {print $1}' > ~insts.txt
   
-  printf "loop into instances without step1 suffix.."  
+  : 'printf "loop into instances without step1 suffix.."  
   while read -r line; do
     
     url=$(findCurrentRouting $line)
