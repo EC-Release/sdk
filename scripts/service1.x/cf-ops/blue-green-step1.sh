@@ -22,12 +22,9 @@ function pushService () {
 }
 
 function findInstsQualifiedForStep1 () {
-  
-  #getAppointedInsts > ~tmp
-  #echo ~tmp | awk 'NR!=1' > ~appointedInsts
-  
+    
   printf "\nget instances without step1 suffix..\n"
-  cat ~allInsts | awk '$1 !~ /-'$MISSION'/ {print $1}' > ~insts
+  getAppointedInsts | awk 'NR!=1 && $1 !~ /-'$MISSION'/ {print $1}' > ~insts
   
   printf "\nloop into instances without step1 suffix..\n"  
   while read -r line; do
