@@ -55,6 +55,28 @@ function findInstsQualifiedForStep2 () {
   
 }
 
+#1: origInstName
+#2: trgtInstName
+#3: current instance index
+#4: total num. inst
+function procDone () {
+
+    ref=$(restageTheNewApp "$2")
+    if [[ $ref != "0" ]]; then
+      printf "instance %s failed in restageTheNewApp. continue to next instance.\n" "$1" | tee ~failedProcStep2Insts
+      continue    
+    fi
+    
+    ref=$(updateDockerCred "$2" "$3" "$4")
+    if [[ $ref != "0" ]]; then
+      printf "instance %s failed in updateDockerCred. continue to next instance.\n" "$1" | tee ~failedProcStep2Insts
+      continue    
+    fi
+
+    printf "instance %s has completed blue-green step 2 and added to the list\n" "$1"
+    printf "%s\n" "$1" >> ~procStep2
+}
+
 function procStep2 () {
 
   printf "\nget appointed instances..\n"
@@ -63,12 +85,14 @@ function procStep2 () {
   
   printf "\nloop into instances in the appointed instance list..\n"
   
-  while read -r line; do
+  totalNum=$(cat ~insts | wc -l)
   
+  count=0
+  while read -r line; do
+    (( count++ ))
+    
     trgtInstName=${line%-$MISSION}-$MISSION
-    echo '$trgtInstName:' $trgtInstName
     origInstName=$(findInstOfOrigin $trgtInstName)
-    echo '$origInstName:' $origInstName
     
     if [[ -z "$origInstName" ]]; then    
       printf "app %s is not qualified for the step2. continue to next instance.\n" "$line" | tee ~failedProcStep2Insts
@@ -77,8 +101,8 @@ function procStep2 () {
     
     instStep2=$(hasEnvVar "$trgtInstName" 'UPDATED: '$MISSION'-DONE')    
     if [[ $instStep2 == "0" ]]; then
-      printf "instance %s has completed step2. continue to next instance.\n" "$origInstName"
-      printf "$origInstName\n" >> ~procStep2
+      printf "instance %s had completed step2. continue to next instance.\n" "$origInstName"
+      procDone "$origInstName" "$trgtInstName" "$count" "$totalNum"
       continue
     fi
     
@@ -94,14 +118,7 @@ function procStep2 () {
       continue       
     fi
       
-    ref=$(restageTheNewApp $2)
-    if [[ $ref != "0" ]]; then
-      printf "instance %s failed in restageTheNewApp. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts
-      continue    
-    fi
-
-    printf "instance %s has completed blue-green step 2 and added to the list\n" "$line"
-    printf "$origInstName\n" >> ~procStep2               
+    procDone "$origInstName" "$trgtInstName" "$count" "$totalNum" 
     
     #temp
     #return
