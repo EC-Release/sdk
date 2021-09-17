@@ -49,7 +49,7 @@ else
     ;;
   1006)
     login
-    printf "\identify instances qualified for the step 2\n\n"
+    printf "\nidentify instances qualified for the step 2\n\n"
     findInstsQualifiedForStep2
     cat ~findInstsQualifiedForStep2
     mkdir -p logs
