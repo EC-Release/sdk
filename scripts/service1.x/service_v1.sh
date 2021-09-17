@@ -74,9 +74,9 @@ else
     mkdir -p logs
     #cp ~findInstsQualifiedForStep2 ./logs/insts-qualified-4-step2.log
     {
-    cp ~procStep2 ./logs/insts-completed-step2.log
-    cp ~failedProcStep2Insts ./logs/insts-failed-step2.log
-    cp ~unknownProcStep2Insts ./logs/insts-unknown-step2.log
+      cp ~procStep2 ./logs/insts-completed-step2.log
+      cp ~failedProcStep2Insts ./logs/insts-failed-step2.log
+      cp ~unknownProcStep2Insts ./logs/insts-unknown-step2.log
     }
     ;;
   1004)
