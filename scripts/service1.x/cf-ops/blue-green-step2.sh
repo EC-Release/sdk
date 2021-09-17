@@ -27,29 +27,25 @@ function findInstsQualifiedForStep2 () {
       printf "\ninstance %s does not have a cloned instance from step1. continue identify next instance\n" "$theInst" | tee -a ~failedFindInstsQualifiedForStep2
       continue
     fi
-    printf "\ncont 1\n"
     
     url=$(findCurrentRouting $theInst)
     if [[ -z $url ]]; then
       printf "instance %s does not have a routing. continue identify next instance\n" "$line" | tee -a ~failedFindInstsQualifiedForStep2
       continue
     fi
-    printf "\ncont 2\n"
     
     zon=$(echo $url | cut -d'.' -f 1)
     uid=$(isUUID $zon)
     if [[ $uid != "0" ]]; then
       printf "\nthe routing url %s does not appear to be a regulated URL for the instance %s. continue identify next instance\n" "$url" "$theInst" | tee -a ~failedFindInstsQualifiedForStep2
       continue
-    fi    
-    printf "\ncont 3\n"
+    fi
     
     instStep2=$(hasEnvVar "$theInst-$MISSION" 'UPDATED: '$MISSION)    
-    if [[ -z "$instStep2" ]]; then
+    if [[ $instStep2 == "0" ]]; then
       printf "\ninstance %s is valid for step2. added to the list" "$theInst"
       printf "$theInst\n" >> ~findInstsQualifiedForStep2
     fi
-    printf "\ncont 4\n"
     
   done < ~insts
   
