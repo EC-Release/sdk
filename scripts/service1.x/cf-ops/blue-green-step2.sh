@@ -24,7 +24,7 @@ function findInstsQualifiedForStep2 () {
     
     instStep1=$(cat ~allInsts | grep -e "$theInst-$MISSION")
     if [[ -z "$instStep1" ]]; then
-      printf "\ninstance %s does not have a cloned instance from step1. continue identify next instance\n" "$theInst" | tee -a ~failedFindInstsQualifiedForStep2
+      printf "instance %s does not have a cloned instance from step1. continue identify next instance\n" "$theInst" | tee -a ~failedFindInstsQualifiedForStep2
       continue
     fi
     
@@ -37,7 +37,7 @@ function findInstsQualifiedForStep2 () {
     zon=$(echo $url | cut -d'.' -f 1)
     uid=$(isUUID $zon)
     if [[ $uid != "0" ]]; then
-      printf "\nthe routing url %s does not appear to be a regulated URL for the instance %s. continue identify next instance\n" "$url" "$theInst" | tee -a ~failedFindInstsQualifiedForStep2
+      printf "the routing url %s does not appear to be a regulated URL for the instance %s. continue identify next instance\n" "$url" "$theInst" | tee -a ~failedFindInstsQualifiedForStep2
       continue
     fi
     
