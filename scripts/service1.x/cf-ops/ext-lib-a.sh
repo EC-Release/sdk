@@ -26,19 +26,35 @@ function findCurrentRouting () {
 # set the env var in the app $1 as the completion of step2
 # $1: <app name>
 function setStep2CompletedEnv () {
-  result=$(cf set-env "$1" UPDATED $MISSION'-DONE')
-
-  if [[ $result != *"FAILED"* ]]; then
+  cf set-env "$1" UPDATED $MISSION'-DONE' > ~tmp 2>&1
+  ref=$(cat ~tmp | grep -e 'FAILED')
+  if [[ $ref != *"FAILED"* ]]; then
     printf "0"
     return
   fi
+  
   printf "1"
 }
 
 # set the env var in the app $1 as the completion of step1
 # $1: <app name>
 function setStep1CompletedEnv () {
-  result=$(cf set-env "$1" UPDATED $MISSION)
+  cf set-env "$1" UPDATED $MISSION > ~tmp 2>&1
+  ref=$(cat ~tmp | grep -e 'FAILED')
+  if [[ $ref != *"FAILED"* ]]; then
+    printf "0"
+    return
+  fi
+  
+  printf "1"
+}
+
+# restage the new app (ending with -2022)
+# $1: <app name>
+function restageTheNewApp () {
+  
+  cf restage "$1" > ~tmp 2>&1
+  result=$(cat ~tmp)
 
   if [[ $result != *"FAILED"* ]]; then
     printf "0"
@@ -46,3 +62,4 @@ function setStep1CompletedEnv () {
   fi
   printf "1"
 }
+

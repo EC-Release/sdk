@@ -13,7 +13,7 @@
 
 function findInstsQualifiedForStep2 () {
   
-  printf "\nget instances with MISSION suffix..\n"
+  printf "\nget appointed instances..\n"
   getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
   cat ~insts
   
@@ -56,31 +56,59 @@ function findInstsQualifiedForStep2 () {
 }
 
 function procStep2 () {
-   while read -r line; do
-     origInstName=$(findInstOfOrigin $line)
-     if [[ -z "$origInstName" ]]; then
-       printf "\napp %s is not qualified for the step2. continue to next instance.\n" "$line"
-       continue
-     fi
-     
-     {
-       stdout=$(updateInstURL $origInstName $line)
-       if [[ $stdout = *"FAILED"* ]]; then
-         printf "\ninstance %s failed in URL route re-mapping. continue to next instance.\n" "$line"
-         printf "$line (failed updateInstURL)\n" >> ~failedProcStep2Insts.txt
-         continue
-       fi
-       
-       stdout=$(setStep2CompletedEnv $line)
-       if [[ $stdout = "1" ]]; then 
-         printf "\ninstance %s failed in setting step 2 Env. continue to next instance.\n" "$line"
-         printf "$line (failed setStep2CompletedEnv)\n" >> ~failedProcStep2Insts.txt
-         continue       
-       fi
+
+  printf "\nget appointed instances..\n"
+  getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
+  cat ~insts
+  
+  printf "\nloop into instances in the appointed instance list..\n"
+  
+  while read -r line; do
+  
+    trgtInstName=${line%-$MISSION}-$MISSION
+    echo '$trgtInstName:' $trgtInstName
+    origInstName=$(findInstOfOrigin $trgtInstName)
+    echo '$origInstName:' $origInstName
+    
+    if [[ -z "$origInstName" ]]; then    
+      printf "app %s is not qualified for the step2. continue to next instance.\n" "$line" | tee ~failedProcStep2Insts
+      continue     
+    fi
+    
+    instStep2=$(hasEnvVar "$trgtInstName" 'UPDATED: '$MISSION'-DONE')    
+    if [[ $instStep2 == "0" ]]; then
+      printf "instance %s has completed step2. continue to next instance.\n" "$origInstName"
+      printf "$origInstName\n" >> ~procStep2
+      continue
+    fi
+    
+    ref=$(updateInstURL $origInstName $trgtInstName)
+    if [[ $ref != "0" ]]; then
+      printf "instance %s failed in updateInstURL. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts
+      continue
+    fi
+
+    ref=$(setStep2CompletedEnv $trgtInstName)
+    if [[ $ref != "0" ]]; then 
+      printf "instance %s failed in setStep2CompletedEnv. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts
+      continue       
+    fi
       
-       printf "\ninstance %s has completed blue-green step 2 and added to the list\n" "$line"
-       printf "$line\n" >> ~procStep2.txt                
-     }
-   done < ~findInstsQualifiedForStep2.txt
+    ref=$(restageTheNewApp $2)
+    if [[ $ref != "0" ]]; then
+      printf "instance %s failed in restageTheNewApp. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts
+      continue    
+    fi
+
+    printf "instance %s has completed blue-green step 2 and added to the list\n" "$line"
+    printf "$origInstName\n" >> ~procStep2               
+    
+    #temp
+    #return
+  done < ~insts
+  
+  {
+    rm ~insts ~tmp
+  }
 
 }
