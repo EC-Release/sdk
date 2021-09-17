@@ -77,10 +77,12 @@ else
     #cat ~procStep2.txt
     mkdir -p logs
     #cp ~findInstsQualifiedForStep2 ./logs/insts-qualified-4-step2.log
+    printf "\nadd debugger\n\n"
     [[ -e ~debugger ]] && cp ~debugger ./logs/debug.log
     [[ -e ~procStep2 ]] && cp ~procStep2 ./logs/insts-completed-step2.log
     [[ -e ~failedProcStep2Insts ]] && cp ~failedProcStep2Insts ./logs/insts-failed-step2.log
     [[ -e ~unknownProcStep2Insts ]] && cp ~unknownProcStep2Insts ./logs/insts-unknown-step2.log
+    printf "\ncompleted step 2\n\n"
     
     ;;
   1004)
