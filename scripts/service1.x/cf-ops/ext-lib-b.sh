@@ -20,18 +20,18 @@ function findInstOfOrigin () {
   cf app $theOrigInst > ~tmp 2>&1
   getApp=$(cat ~tmp | grep -e 'FAILED')
 
-  if [[ ! -z $getApp ]]; then
-    printf "$1 (unknown instance)\n" >> ~unknownProcStep2Insts
+  if [[ -z $getApp ]]; then
+    printf "$theOrigInst"
     return
   fi
 
   #getEnv=$(cf e $theOrigInst | grep -e 'UPDATED: '$MISSION)
-  instStep1=$(hasEnvVar "$theOrigInst" 'UPDATED: '$MISSION)
+  : 'instStep1=$(hasEnvVar "$theOrigInst" 'UPDATED: '$MISSION)
   #echo $instStep1
   if [[ $instStep1 == "0" ]]; then
     printf "$theOrigInst"
     return
-  fi
+  fi'
 
   # if have some doubts
   printf "$1 (unknown instance)\n" >> ~unknownProcStep2Insts
