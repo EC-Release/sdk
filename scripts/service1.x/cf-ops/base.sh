@@ -18,7 +18,7 @@ function hasEnvVar () {
     cf e $1 > ~tmp
     ref1=$(cat ~tmp | grep -e "$2" | awk '$2!="" {print $1}')
     if [[ ! -z $ref1 ]]; then
-      printf "1"
+      printf "0"
     fi
 }
 
