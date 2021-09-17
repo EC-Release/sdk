@@ -28,6 +28,19 @@ function findInstsQualifiedForStep1 () {
   printf "loop into instances without step1 suffix.."  
   while read -r line; do
     
+    url=$(findCurrentRouting $line)
+    if [[ -z $url ]]; then
+      printf "instance %s does not have a routing. continue identify next instance" "$line"
+      continue
+    fi
+    
+    zon=$(echo $url | cut -d'.' -f 1)
+    uid:=$(isUUID $zon)
+    if [[ uid != "0" ]]; then
+      printf "instance url %s does not appear to be a service instance. continue identify next instance" "$url"
+      continue
+    fi    
+    
     instStep1=$(cat ~instsAll.txt | grep -e $line'-'$MISSION)
     if [[ ! -z "$instStep1" ]]; then
       printf "instance %s has had a cloned instance. continue identify next instance\n" "$line"
