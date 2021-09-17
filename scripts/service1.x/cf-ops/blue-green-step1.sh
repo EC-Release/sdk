@@ -27,34 +27,34 @@ function findInstsQualifiedForStep1 () {
   printf "\nget instances without step1 suffix..\n"
   cat ~instsAll.txt | awk '$1 !~ /-'$MISSION'/ {print $1}' > ~insts.txt
   
-  printf "loop into instances without step1 suffix.."  
+  printf "\nloop into instances without step1 suffix..\n"  
   while read -r line; do
     
     url=$(findCurrentRouting $line)
     if [[ -z $url ]]; then
-      printf "instance %s does not have a routing. continue identify next instance" "$line"
+      printf "\ninstance %s does not have a routing. continue identify next instance" "$line"
       continue
     fi
     
-    : 'zon=$(echo $url | cut -d'.' -f 1)
+    : zon=$(echo $url | cut -d'.' -f 1)
     uid=$(isUUID $zon)
     if [[ uid != "0" ]]; then
-      printf "instance url %s does not appear to be a service instance. continue identify next instance" "$url"
+      printf "\ninstance url %s does not appear to be a service instance. continue identify next instance" "$url"
       continue
     fi    
     
     instStep1=$(cat ~instsAll.txt | grep -e $line'-'$MISSION)
     if [[ ! -z "$instStep1" ]]; then
-      printf "instance %s has had a cloned instance. continue identify next instance\n" "$line"
+      printf "\ninstance %s has had a cloned instance. continue identify next instance" "$line"
       continue
     fi
     
     instStep2=$(hasEnvVar $line 'UPDATED: '$MISSION)
        
     if [[ -z "$instStep2" ]]; then
-      printf "inst %s has not been updated. added to the list\n" "$line"
+      printf "\ninstance %s has not been updated. added to the list" "$line"
       printf "$line\n" >> ~findInstsQualifiedForStep1.txt
-    fi'
+    fi
     
   done < ~insts.txt
   
