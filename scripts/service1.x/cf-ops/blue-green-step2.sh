@@ -94,7 +94,7 @@ function procStep2 () {
       continue       
     fi
       
-    ref=$(restageTheNewApp $2)
+    ref=$(restageTheNewApp $trgtInstName)
     if [[ $ref != "0" ]]; then
       printf "instance %s failed in restageTheNewApp. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts
       continue    
