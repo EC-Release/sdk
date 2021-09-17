@@ -12,39 +12,45 @@
 #
 
 function findInstsQualifiedForStep2 () {
-
   
-  cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll.txt
-  cat ~instsAll.txt | awk '$1 ~ /-'$MISSION'/ {print $1}' > ~insts.txt
+  printf "\nget instances with MISSION suffix..\n"
+  getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
+  cat ~insts
   
+  printf "\nloop into instances in the appointed instance list..\n"
   while read -r line; do
     
-    #instStep1=$(cat ~instsAll.txt | grep -e $line'-'$MISSION)
-    #if [[ ! -z "$instStep1" ]]; then
-    #  printf "%s has a cloned instance %s. resume searching\n" "$instStep1"      
-    #  continue
-    #fi
+    theInst=${line%-$MISSION}
     
-    instStep1=$(hasEnvVar "$line" 'UPDATED: '$MISSION)
-       
+    instStep1=$(cat ~allInsts | grep -e "$theInst-$MISSION")
     if [[ -z "$instStep1" ]]; then
-      printf "inst %s is not ready to be migrated in step2. continue to next instance\n" "$line"
-      continue    
-    fi    
-    
-    origInstStep1=$(hasEnvVar "$line" 'UPDATED: '$MISSION)
-    if [[ -z "$origInstStep1" ]]; then    
-      #printf "inst %s has its origin,  was updated to be migrated in step2. added to the list\n" "$line"     
-      #setStep1CompletedEnv ${line}
-      printf "inst %s has its origin was updated to be migrated in step2. added to the list\n" "$line"     
+      printf "instance %s does not have a cloned instance from step1. continue identify next instance\n" "$theInst" | tee -a ~failedFindInstsQualifiedForStep2
+      continue
     fi
     
-    printf "$line\n" >> ~findInstsQualifiedForStep2.txt
+    url=$(findCurrentRouting $theInst)
+    if [[ -z $url ]]; then
+      printf "instance %s does not have a routing. continue identify next instance\n" "$line" | tee -a ~failedFindInstsQualifiedForStep2
+      continue
+    fi
     
-  done < ~insts.txt
+    zon=$(echo $url | cut -d'.' -f 1)
+    uid=$(isUUID $zon)
+    if [[ $uid != "0" ]]; then
+      printf "the routing url %s does not appear to be a regulated URL for the instance %s. continue identify next instance\n" "$url" "$theInst" | tee -a ~failedFindInstsQualifiedForStep2
+      continue
+    fi
+    
+    instStep2=$(hasEnvVar "$theInst-$MISSION" 'UPDATED: '$MISSION)    
+    if [[ $instStep2 == "0" ]]; then
+      printf "\ninstance %s is valid for step2. added to the list" "$theInst"
+      printf "$theInst\n" >> ~findInstsQualifiedForStep2
+    fi
+    
+  done < ~insts
   
   {
-    rm ~instsAll.txt ~insts.txt
+    rm ~insts
   }
   
 }

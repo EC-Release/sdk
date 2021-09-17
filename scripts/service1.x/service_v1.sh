@@ -49,16 +49,17 @@ else
     ;;
   1006)
     login
-    printf "\identify instances qualified for the step 2\n\n"
+    printf "\nidentify instances qualified for the step 2\n\n"
     findInstsQualifiedForStep2
-    cat ~findInstsQualifiedForStep2.txt
+    cat ~findInstsQualifiedForStep2
     mkdir -p logs
-    cp ~findInstsQualifiedForStep2.txt ./logs/insts-qualified-4-step2.txt
+    cp ~findInstsQualifiedForStep2 ./logs/insts-qualified-step2.log
+    cp ~failedFindInstsQualifiedForStep2 ./logs/insts-failed-qualified-step2.log
     ;;
   1002)
     login
-    printf "\identify instances qualified for the step 2\n\n"
-    findInstsQualifiedForStep2
+    #printf "\identify instances qualified for the step 2\n\n"
+    #findInstsQualifiedForStep2
     #~findInstsQualifiedForStep2.txt
     #cat ~findInstsQualifiedForStep2.txt
     
@@ -66,10 +67,10 @@ else
     procStep2
     #cat ~procStep2.txt
     mkdir -p logs
-    cp ~findInstsQualifiedForStep2.txt ./logs/insts-qualified-4-step2.log
-    cp ~procStep2.txt ./logs/insts-completed-step2.log
-    cp ~failedProcStep2Insts.txt ./logs/insts-failed-step2.log
-    cp ~unknownProcStep2Insts.txt ./logs/insts-unknown-step2.log
+    #cp ~findInstsQualifiedForStep2 ./logs/insts-qualified-4-step2.log
+    cp ~procStep2 ./logs/insts-completed-step2.log
+    cp ~failedProcStep2Insts ./logs/insts-failed-step2.log
+    cp ~unknownProcStep2Insts ./logs/insts-unknown-step2.log
     ;;
   1004)
     printf "\nclean up and remove the original instances\n\n"

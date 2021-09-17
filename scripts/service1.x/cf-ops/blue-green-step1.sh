@@ -31,20 +31,20 @@ function findInstsQualifiedForStep1 () {
     
     url=$(findCurrentRouting $line)
     if [[ -z $url ]]; then
-      printf "\ninstance %s does not have a routing. continue identify next instance" "$line" | tee -a ~failedFindInstsQualifiedForStep1
+      printf "instance %s does not have a routing. continue identify next instance\n" "$line" | tee -a ~failedFindInstsQualifiedForStep1
       continue
     fi
     
     zon=$(echo $url | cut -d'.' -f 1)
     uid=$(isUUID $zon)
     if [[ $uid != "0" ]]; then
-      printf "\ninstance url %s does not appear to be a service instance. continue identify next instance" "$url" | tee -a ~failedFindInstsQualifiedForStep1
+      printf "\ninstance url %s does not appear to be a service instance. continue identify next instance\n" "$url" | tee -a ~failedFindInstsQualifiedForStep1
       continue
     fi    
     
     instStep1=$(cat ~allInsts | grep -e $line'-'$MISSION)
     if [[ ! -z "$instStep1" ]]; then
-      printf "\ninstance %s has had a cloned instance. continue identify next instance" "$line" | tee -a ~failedFindInstsQualifiedForStep1
+      printf "\ninstance %s has had a cloned instance. continue identify next instance\n" "$line" | tee -a ~failedFindInstsQualifiedForStep1
       continue
     fi
     
