@@ -76,12 +76,6 @@ function updateInstURL () {
     printf "error in re-mapping."
     return
   fi
-  
-  ref=$(restageTheNewApp $2)
-  if [[ $ref != "0" ]]; then
-    printf "error in restaging."
-    return
-  fi
-  
+
   printf "0"
 }
