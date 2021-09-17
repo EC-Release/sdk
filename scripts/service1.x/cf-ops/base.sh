@@ -17,7 +17,7 @@ function login(){
 }
 
 #getAllInsts return appointed instances for the workflow
-function getAllInsts () {
+function getAppointedInsts () {
   if [[ $PRIORITY_FILE == "0" ]]; then
     printf "get all cf instances..\n"
     cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~tmp
