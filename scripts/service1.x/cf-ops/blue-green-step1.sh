@@ -12,7 +12,7 @@
 #
 
 
-function pushService(){
+function pushService () {
     cat ./push/manifest.yml        
     cd ./push
     cf push
@@ -62,7 +62,7 @@ function findInstsQualifiedForStep1 () {
   
 }
 
-function bgStep1ClonePush(){
+function bgStep1ClonePush () {
 
     wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml    
     
