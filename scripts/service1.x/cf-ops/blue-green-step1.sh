@@ -35,7 +35,7 @@ function findInstsQualifiedForStep1 () {
     fi
     
     zon=$(echo $url | cut -d'.' -f 1)
-    uid=$(isUUID "$zon")
+    uid=$(isUUID $zon)
     if [[ uid != "0" ]]; then
       printf "instance url %s does not appear to be a service instance. continue identify next instance" "$url"
       continue
