@@ -44,7 +44,8 @@ else
     # find instances that have no suffix "E.g. -2022" and are qualified for running bg step 1
     findInstsQualifiedForStep1
     mkdir -p logs
-    cp ~findInstsQualifiedForStep1.txt ./logs/insts-qualified-4-step1.txt
+    cp ~findInstsQualifiedForStep1 ./logs/insts-qualified-step1.log
+    cp ~failedFindInstsQualifiedForStep1 ./logs/insts-failed-qualified-step1.log
     ;;
   1006)
     login
