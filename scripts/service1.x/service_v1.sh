@@ -38,6 +38,8 @@ else
     printf "\nexecute blue-green step 1\n\n"
     bgStep1ClonePush
     mkdir -p logs
+    [[ -e ~debugger ]] && cp ~debugger ./logs/debug.log
+
     ;;
   1003)    
     login
@@ -45,10 +47,11 @@ else
     # find instances that have no suffix "E.g. -2022" and are qualified for running bg step 1
     findInstsQualifiedForStep1
     mkdir -p logs
-    {
+    
+    [[ -e ~debugger ]] && cp ~debugger ./logs/debug.log
     cp ~findInstsQualifiedForStep1 ./logs/insts-qualified-step1.log
     cp ~failedFindInstsQualifiedForStep1 ./logs/insts-failed-qualified-step1.log
-    }
+    
     ;;
   1006)
     login
@@ -56,10 +59,11 @@ else
     findInstsQualifiedForStep2
     cat ~findInstsQualifiedForStep2
     mkdir -p logs
-    {
+    
+    [[ -e ~debugger ]] && cp ~debugger ./logs/debug.log
     cp ~findInstsQualifiedForStep2 ./logs/insts-qualified-step2.log
     cp ~failedFindInstsQualifiedForStep2 ./logs/insts-failed-qualified-step2.log
-    }
+    
     ;;
   1002)
     login
@@ -73,6 +77,7 @@ else
     #cat ~procStep2.txt
     mkdir -p logs
     #cp ~findInstsQualifiedForStep2 ./logs/insts-qualified-4-step2.log
+    [[ -e ~debugger ]] && cp ~debugger ./logs/debug.log
     [[ -e ~procStep2 ]] && cp ~procStep2 ./logs/insts-completed-step2.log
     [[ -e ~failedProcStep2Insts ]] && cp ~failedProcStep2Insts ./logs/insts-failed-step2.log
     [[ -e ~unknownProcStep2Insts ]] && cp ~unknownProcStep2Insts ./logs/insts-unknown-step2.log
@@ -88,6 +93,7 @@ else
     printf "\nfinding problematic instances\n\n"
     getProblemInstances
   #"1001" | "1002")
+    [[ -e ~debugger ]] && cp ~debugger ./logs/debug.log
     ;;
   *)
     printf "\nno operations found\n\n"
