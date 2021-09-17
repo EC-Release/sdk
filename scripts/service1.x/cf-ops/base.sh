@@ -85,7 +85,8 @@ function updateDockerCred () {
   op=$(printf "CF_DOCKER_PASSWORD=%s cf push %s --docker-image %s --docker-username %s" "$ec_$ref_token" "$1" "$ec_$img" "$ec_$ref_username")
   eval $op > ~tmp 2>&1
   
-  cat ~tmp >> ~debugger
+  echo $op >> ~debugger
+  #cat ~tmp >> ~debugger
   
   ref1=$(cat ~tmp | grep -e 'FAILED')
   if [[ -z $ref1 ]]; then
