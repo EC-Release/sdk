@@ -21,7 +21,7 @@ function login () {
 function getAllInsts () {
   #sleep 1
   printf "caching all cf instances..\n"
-  cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll
+  cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~allInsts
   #cat ~instsAll
 }
 
