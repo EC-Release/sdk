@@ -82,8 +82,8 @@ function setEnvs(){
 function updateDockerCred () {
   eval $(parse_yaml docker-creds.yml)
   ref=$(expr $2 % 4)
-  a=$(eval '$ec_'$ref'_token')
-  b=$(eval '$ec_'$ref'_username')
+  a=$(eval echo '$ec_'$ref'_token')
+  b=$(eval echo '$ec_'$ref'_username')
   op=$(printf "CF_DOCKER_PASSWORD=%s cf push %s --docker-image %s --docker-username %s" "$a" "$1" "$ec_img" "$b")
   eval $op > ~tmp 2>&1
   
