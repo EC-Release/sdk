@@ -66,8 +66,10 @@ function procStep2 () {
   while read -r line; do
   
     trgtInstName=${line%-$MISSION}-$MISSION
+    echo '$trgtInstName:' $trgtInstName
     origInstName=$(findInstOfOrigin $trgtInstName)
- 
+    echo '$origInstName:' $origInstName
+    
     if [[ -z "$origInstName" ]]; then    
       printf "app %s is not qualified for the step2. continue to next instance.\n" "$line" | tee ~failedProcStep2Insts.log
       continue     
