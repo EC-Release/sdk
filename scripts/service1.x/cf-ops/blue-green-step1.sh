@@ -42,7 +42,7 @@ function findInstsQualifiedForStep1 () {
       continue
     fi    
     
-    instStep1=$(cat ~instsAll | grep -e $line'-'$MISSION)
+    instStep1=$(cat ~allInsts | grep -e $line'-'$MISSION)
     if [[ ! -z "$instStep1" ]]; then
       printf "\ninstance %s has had a cloned instance. continue identify next instance" "$line" | tee -a ~failedFindInstsQualifiedForStep1
       continue
