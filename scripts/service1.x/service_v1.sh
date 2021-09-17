@@ -36,6 +36,7 @@ else
     login
     printf "\nexecute blue-green step 1\n\n"
     bgStep1ClonePush
+    mkdir -p logs
     ;;
   1003)    
     login
