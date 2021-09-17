@@ -48,3 +48,18 @@ function setStep1CompletedEnv () {
   
   printf "1"
 }
+
+# restage the new app (ending with -2022)
+# $1: <app name>
+function restageTheNewApp () {
+  
+  cf restage "$1" > ~tmp 2>&1
+  result=$(cat ~tmp)
+
+  if [[ $result != *"FAILED"* ]]; then
+    printf "0"
+    return
+  fi
+  printf "1"
+}
+
