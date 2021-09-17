@@ -44,8 +44,10 @@ else
     # find instances that have no suffix "E.g. -2022" and are qualified for running bg step 1
     findInstsQualifiedForStep1
     mkdir -p logs
+    {
     cp ~findInstsQualifiedForStep1 ./logs/insts-qualified-step1.log
     cp ~failedFindInstsQualifiedForStep1 ./logs/insts-failed-qualified-step1.log
+    }
     ;;
   1006)
     login
@@ -53,8 +55,10 @@ else
     findInstsQualifiedForStep2
     cat ~findInstsQualifiedForStep2
     mkdir -p logs
+    {
     cp ~findInstsQualifiedForStep2 ./logs/insts-qualified-step2.log
     cp ~failedFindInstsQualifiedForStep2 ./logs/insts-failed-qualified-step2.log
+    }
     ;;
   1002)
     login
@@ -68,9 +72,11 @@ else
     #cat ~procStep2.txt
     mkdir -p logs
     #cp ~findInstsQualifiedForStep2 ./logs/insts-qualified-4-step2.log
+    {
     cp ~procStep2 ./logs/insts-completed-step2.log
     cp ~failedProcStep2Insts ./logs/insts-failed-step2.log
     cp ~unknownProcStep2Insts ./logs/insts-unknown-step2.log
+    }
     ;;
   1004)
     printf "\nclean up and remove the original instances\n\n"
