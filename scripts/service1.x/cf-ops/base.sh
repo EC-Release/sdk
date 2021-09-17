@@ -20,12 +20,12 @@ function login(){
 function getAllInsts () {
   if [[ $PRIORITY_FILE == "0" ]]; then
     printf "get all cf instances..\n"
-    cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~instsAll.txt
+    cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~tmp
   else 
     printf "get appointed cf instances..\n"
-    cat $PRIORITY_FILE > ~instsAll.txt
+    cat $PRIORITY_FILE > ~tmp
   fi
-  cat ~instsAll.txt
+  cat ~tmp
 }
 
 function getEnvs(){
