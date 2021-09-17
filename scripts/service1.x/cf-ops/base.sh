@@ -20,7 +20,7 @@ function login () {
 #getAppointedInsts return appointed instances for the workflow
 function getAllInsts () {
   #sleep 1
-  printf "caching all cf instances..\n"
+  printf "\ncaching all cf instances..\n"
   cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~allInsts
   #cat ~instsAll
 }
