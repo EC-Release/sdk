@@ -126,16 +126,16 @@ function bgStep1ClonePush () {
         pushService | tee output.txt
         if grep -q FAILED output.txt; then
           echo "Service update unsuccessful. proceed to next instance"
-          echo "${ZONE}" > ~failedBgStep1ClonePush
+          echo "${ZONE}" >> ~failedBgStep1ClonePush
         else
           setStep1CompletedEnv ${ZONE}
           #cf set-env ${ZONE} UPDATED '2022'
-          echo "service ${ZONE} updated successful" > ~bgStep1ClonePush
+          echo "service ${ZONE} updated successful" >> ~bgStep1ClonePush
           
         fi        
       } || {
         echo "service update unsuccessful. proceed to next instance"
-        echo "${ZONE}" > ~failedBgStep1ClonePush
+        echo "${ZONE}" >> ~failedBgStep1ClonePush
       }
       
     done < ~allInsts
