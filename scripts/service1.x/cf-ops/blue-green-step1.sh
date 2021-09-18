@@ -86,23 +86,13 @@ function bgStep1ClonePush () {
         continue
       fi'
       
-      #ZONE=${line%-$MISSION}-$MISSION
+      ZONE=${line%-$MISSION}
     
-      ZONE=${line}
-      echo "Updating $ZONE.."
+      echo "Updating $ZONE.."      
       
-      getEnvs > ~tmp
-      ref=$(cat ~tmp | grep -e 'FAILED')
-      if [[ ! -z $ref ]]; then
-        printf "\nfailed fetched envs for %s. proceed to next instance\n" "$ZONE"
-        printf "%s\n" "$ZONE" >> ~failedBgStep1ClonePush
-        continue
-      fi
-      
-      op=$(cat ~tmp | grep UPDATED | cut -d ' ' -f2)
-      if [[ "$op" == *"$MISSION"* ]]; then
-        echo "instance $ZONE has been marked as updated.　proceed to next instance"
-        echo "${ZONE}" >> ~failedBgStep1ClonePush
+      ref=$(hasEnvVar "$ZONE" 'UPDATED: '$MISSION)    
+      if [[ $ref == "0" ]]; then
+        printf "instance %s had been completed step1. continue to next instance\n" "$ZONE"
         continue
       fi
       
@@ -120,7 +110,7 @@ function bgStep1ClonePush () {
       }
       
       {
-        pushService | tee output.txt
+        pushService | tee -a ~output
         if grep -q FAILED output.txt; then
           echo "Service update unsuccessful. proceed to next instance"
           echo "${ZONE}" >> ~failedBgStep1ClonePush
