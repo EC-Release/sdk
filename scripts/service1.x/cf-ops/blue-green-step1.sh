@@ -87,7 +87,7 @@ function bgStep1ClonePush () {
         continue
       fi'
       
-      #ZONE=${line%-$MISSION}-$MISSION
+      : '#ZONE=${line%-$MISSION}-$MISSION
     
       ZONE=${line}
       echo "Updating $ZONE.."
@@ -136,7 +136,7 @@ function bgStep1ClonePush () {
       } || {
         echo "service update unsuccessful. proceed to next instance"
         echo "${ZONE}" >> ~failedBgStep1ClonePush
-      }
+      }'
       
     done < ~allInsts
     
