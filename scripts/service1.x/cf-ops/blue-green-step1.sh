@@ -26,7 +26,7 @@ function findInstsQualifiedForStep1 () {
   printf "\nget instances without step1 suffix..\n"
   getAppointedInsts | awk 'NR!=1 && $1 !~ /-'$MISSION'/ {print $1}' > ~insts
   
-  printf "\nloop into instances without step1 suffix..\n"  
+  printf "\nloop into instances without step1 suffix..\n"
   while read -r line; do
     
     url=$(findCurrentRouting $line)
@@ -65,8 +65,7 @@ function findInstsQualifiedForStep1 () {
 
 function bgStep1ClonePush () {
 
-  wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml    
-    
+  wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
   printf "\nget appointed instances..\n"
   getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
   cat ~insts
