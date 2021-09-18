@@ -15,10 +15,10 @@
 function pushService () {
     cat ./push/manifest.yml        
     cd ./push
-    {
-      cf push
-    }
+    cf push --no-start > ~tmp 2>&1
+    cat ~tmp
     cd -
+    
 }
 
 function findInstsQualifiedForStep1 () {
@@ -85,51 +85,50 @@ function bgStep1ClonePush () {
         printf "\ninstance %s is not qualified for blue-green step 1. continue to next instance\n" "$line"
         continue
       fi'
-      
+
       ZONE=${line%-$MISSION}
-    
+
+      uid=$(isUUID $ZONE)
+      if [[ $uid != "0" ]]; then
+        printf "the instance %s does not appear to be a regulated service zone id. continue identify next instance\n" "$ZONE" | tee -a ~failedBgStep1ClonePush
+        continue
+      fi
+
       echo "Updating $ZONE.."      
-      
+
       ref=$(hasEnvVar "$ZONE" 'UPDATED: '$MISSION)    
       if [[ $ref == "0" ]]; then
         printf "instance %s had been completed step1. continue to next instance\n" "$ZONE" | tee -a ~failedBgStep1ClonePush
         continue
       fi
-      
+
       ref=$(cat ~allInsts | grep -e "$ZONE-$MISSION")
       if [[ ! -z "$ref" ]]; then
         printf "instance %s has a cloned instance from step 1. continue identify next instance\n" "$ZONE" | tee -a ~failedBgStep1ClonePush
         continue
       fi
-      
+
       mkdir -p push
       cp ./manifest.yml ./push/manifest.yml
-      
+
       #cat ./push/manifest.yml
-      {
-        setEnvs      
-        echo "Manifest file updated"    
-      } || {
-        echo "failed update the manifest file. proceed to next instance"
-        echo "${ZONE}" >> ~failedBgStep1ClonePush
+
+      ref=$(setEnvs "$ZONE")
+      if [[ $ref != "0" ]]; then
+        printf "failed set up env vars for instance %s" "$ZONE" | tee -a ~failedBgStep1ClonePush
         continue
-      }
-      
-      {
-        pushService | tee -a ~output
-        if grep -q FAILED output.txt; then
-          echo "Service update unsuccessful. proceed to next instance"
-          echo "${ZONE}" >> ~failedBgStep1ClonePush
-        else
-          setStep1CompletedEnv ${ZONE}
-          #cf set-env ${ZONE} UPDATED '2022'
-          echo "service ${ZONE} updated successful" >> ~bgStep1ClonePush
-          
-        fi        
-      } || {
-        echo "service update unsuccessful. proceed to next instance"
-        echo "${ZONE}" >> ~failedBgStep1ClonePush
-      }
+      fi
+
+      printf "manifest file updated for instance %s" "$ZONE"
+
+      pushService > ~output
+      ref=$(cat ~output | grep -e 'FAILED')
+      if [[ ! -z $ref ]]; then
+        printf "instance %s update unsuccessful. proceed to next instance" "$ZONE" | tee -a ~failedBgStep1ClonePush
+      else
+        setStep1CompletedEnv ${ZONE}
+        printf "service %s updated successful" "$ZONE" | tee -a ~bgStep1ClonePush          
+      fi        
       
   done < ~insts
     
