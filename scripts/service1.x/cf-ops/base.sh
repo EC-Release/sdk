@@ -59,15 +59,19 @@ function getEnvs () {
 #$1 env file name to look for
 function setEnvs(){
 
-    while read line; do       
-       op=$(cat $1 | grep $line | cut -d ' ' -f2)
-       eval "sed -i -e 's|{{ZONE}}|$op|g' ./push/manifest.yml"
-    done < field_list.txt    
-    
-    eval "sed -i -e 's|{{DOCKER_USERNAME}}|$DOCKER_USERNAME|g' ./push/manifest.yml"
-    eval "sed -i -e 's|{{GITHUB_TOKEN}}|$GITHUB_TOKEN|g' ./push/manifest.yml"    
-    
-    eval "sed -i -e 's|{{MISSION}}|$MISSION|g' ./push/manifest.yml" 
+  while read line; do       
+    op=$(cat $1 | grep $line | cut -d ' ' -f2)
+    if [[ -z $op ]]; then
+      printf "1"
+    fi
+    eval "sed -i -e 's|{{$line}}|$op|g' ./push/manifest.yml"
+  done < field_list.txt
+
+  eval "sed -i -e 's|{{DOCKER_USERNAME}}|$DOCKER_USERNAME|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{GITHUB_TOKEN}}|$GITHUB_TOKEN|g' ./push/manifest.yml"    
+
+  eval "sed -i -e 's|{{MISSION}}|$MISSION|g' ./push/manifest.yml"
+  printf "0"
 }
 
 #$1: trgtInstName
