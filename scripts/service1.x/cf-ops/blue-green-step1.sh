@@ -67,23 +67,29 @@ function bgStep1ClonePush () {
 
     wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml    
     
-    if [[ "$PRIORITY_FILE" != "0" ]]; then
-      cat $PRIORITY_FILE > ./service_list.txt
-    else 
-      cf a | grep -E 'started|stopped' | awk '$1 == /-2022/ {print $1}' > ./service_list.txt
-    fi
+    printf "\nget appointed instances..\n"
+    getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
+    cat ~insts
+
+    #if [[ "$PRIORITY_FILE" != "0" ]]; then
+    #  cat $PRIORITY_FILE > ./service_list.txt
+    #else 
+    #  cf a | grep -E 'started|stopped' | awk '$1 == /-2022/ {print $1}' > ./service_list.txt
+    #fi
     
-    findInstsQualifiedForStep1
+    #findInstsQualifiedForStep1
     
     while read line; do
     
-      qualifiedInst=$(cat ~findInstsQualifiedForStep1.txt | grep -e $line)
+      : 'qualifiedInst=$(cat ~findInstsQualifiedForStep1.txt | grep -e $line)
       if [[ -z "$qualifiedInst"]]; then
         printf "\ninstance %s is not qualified for blue-green step 1. continue to next instance\n" "$line"
         continue
-      fi
+      fi'
       
-      ZONE=$line
+      #ZONE=${line%-$MISSION}-$MISSION
+    
+      ZONE=${line}
       echo "Updating $ZONE.."
       
       {
@@ -91,7 +97,7 @@ function bgStep1ClonePush () {
         echo "Fetched ENVs"      
       } || {
         echo "failed fetched envs for ${ZONE}. proceed to next instance"
-        echo "${ZONE}" > ./err_ins.txt
+        echo "${ZONE}" >> ~failedBgStep1ClonePush
         
         continue
       }
@@ -99,6 +105,7 @@ function bgStep1ClonePush () {
       op=$(cat values.txt | grep UPDATED | cut -d ' ' -f2)
       if [[ "$op" == *"$MISSION"* ]]; then
         echo "instance $ZONE has been marked as updated.　proceed to next instance"
+        echo "${ZONE}" >> ~failedBgStep1ClonePush
         continue
       fi
       
@@ -111,7 +118,7 @@ function bgStep1ClonePush () {
         echo "Manifest file updated"    
       } || {
         echo "failed update the manifest file. proceed to next instance"
-        echo "${ZONE}" > ./err_ins.txt
+        echo "${ZONE}" >> ~failedBgStep1ClonePush
         continue
       }
       
@@ -119,22 +126,20 @@ function bgStep1ClonePush () {
         pushService | tee output.txt
         if grep -q FAILED output.txt; then
           echo "Service update unsuccessful. proceed to next instance"
-          echo "${ZONE}" >> ./../err_ins.txt
+          echo "${ZONE}" > ~failedBgStep1ClonePush
         else
           setStep1CompletedEnv ${ZONE}
           #cf set-env ${ZONE} UPDATED '2022'
-          echo "Service ${ZONE} updated successful"
+          echo "service ${ZONE} updated successful" > ~bgStep1ClonePush
+          
         fi        
       } || {
         echo "service update unsuccessful. proceed to next instance"
+        echo "${ZONE}" > ~failedBgStep1ClonePush
       }
       
-    done < service_list.txt
+    done < ~allInsts
     
     echo "update completed."    
-         
-    {
-      echo "instance list failed during the update.."
-      cat err_ins.txt      
-    }
+
 }
