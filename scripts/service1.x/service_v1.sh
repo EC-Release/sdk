@@ -36,7 +36,10 @@ else
   1000)
     login
     printf "\nexecute blue-green step 1\n\n"
-    bgStep1ClonePush
+    {
+      bgStep1ClonePush
+    }
+    
     mkdir -p logs
     
     [[ -e ~debugger ]] && cp ~debugger ./logs/debug.log
