@@ -71,15 +71,15 @@ function bgStep1ClonePush () {
   getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
   cat ~insts
 
-    #if [[ "$PRIORITY_FILE" != "0" ]]; then
-    #  cat $PRIORITY_FILE > ./service_list.txt
-    #else 
-    #  cf a | grep -E 'started|stopped' | awk '$1 == /-2022/ {print $1}' > ./service_list.txt
-    #fi
+  #if [[ "$PRIORITY_FILE" != "0" ]]; then
+  #  cat $PRIORITY_FILE > ./service_list.txt
+  #else 
+  #  cf a | grep -E 'started|stopped' | awk '$1 == /-2022/ {print $1}' > ./service_list.txt
+  #fi
+
+  #findInstsQualifiedForStep1
     
-    #findInstsQualifiedForStep1
-    
-  while read line; do
+  while read -r line; do
     
       : 'qualifiedInst=$(cat ~findInstsQualifiedForStep1.txt | grep -e $line)
       if [[ -z "$qualifiedInst"]]; then
@@ -87,22 +87,20 @@ function bgStep1ClonePush () {
         continue
       fi'
       
-      : '#ZONE=${line%-$MISSION}-$MISSION
+      #ZONE=${line%-$MISSION}-$MISSION
     
       ZONE=${line}
       echo "Updating $ZONE.."
       
-      {
-        getEnvs
-        echo "Fetched ENVs"      
-      } || {
-        echo "failed fetched envs for ${ZONE}. proceed to next instance"
-        echo "${ZONE}" >> ~failedBgStep1ClonePush
-        
+      getEnvs > ~tmp
+      ref=$(cat ~tmp | grep -e 'FAILED')
+      if [[ ! -z $ref ]]; then
+        printf "\nfailed fetched envs for %s. proceed to next instance\n" "$ZONE"
+        printf "%s\n" "$ZONE" >> ~failedBgStep1ClonePush
         continue
-      }
+      fi
       
-      op=$(cat values.txt | grep UPDATED | cut -d ' ' -f2)
+      op=$(cat ~tmp | grep UPDATED | cut -d ' ' -f2)
       if [[ "$op" == *"$MISSION"* ]]; then
         echo "instance $ZONE has been marked as updated.　proceed to next instance"
         echo "${ZONE}" >> ~failedBgStep1ClonePush
@@ -136,7 +134,7 @@ function bgStep1ClonePush () {
       } || {
         echo "service update unsuccessful. proceed to next instance"
         echo "${ZONE}" >> ~failedBgStep1ClonePush
-      }'
+      }
       
   done < ~insts
     
