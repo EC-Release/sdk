@@ -49,8 +49,8 @@ else
     mkdir -p logs
     
     [[ -e ~debugger ]] && cp ~debugger ./logs/debug.log
-    cp ~findInstsQualifiedForStep1 ./logs/insts-qualified-step1.log
-    cp ~failedFindInstsQualifiedForStep1 ./logs/insts-failed-qualified-step1.log
+    [[ -e ~findInstsQualifiedForStep1 ]] && cp ~findInstsQualifiedForStep1 ./logs/insts-qualified-step1.log
+    [[ -e ~failedFindInstsQualifiedForStep1 ]] && cp ~failedFindInstsQualifiedForStep1 ./logs/insts-failed-qualified-step1.log
     
     ;;
   1006)
