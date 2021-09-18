@@ -92,7 +92,13 @@ function bgStep1ClonePush () {
       
       ref=$(hasEnvVar "$ZONE" 'UPDATED: '$MISSION)    
       if [[ $ref == "0" ]]; then
-        printf "instance %s had been completed step1. continue to next instance\n" "$ZONE"
+        printf "instance %s had been completed step1. continue to next instance\n" "$ZONE" | tee -a ~failedBgStep1ClonePush
+        continue
+      fi
+      
+      ref=$(cat ~allInsts | grep -e "$ZONE-$MISSION")
+      if [[ ! -z "$ref" ]]; then
+        printf "instance %s has a cloned instance from step 1. continue identify next instance\n" "$ZONE" | tee -a ~failedBgStep1ClonePush
         continue
       fi
       
