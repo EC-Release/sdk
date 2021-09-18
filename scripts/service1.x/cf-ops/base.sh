@@ -42,8 +42,8 @@ function getAllInsts () {
 #getAppointedInsts return appointed instances for the workflow
 function getAppointedInsts () {
   if [[ $PRIORITY_FILE == "0" ]]; then
-     printf "getting all cf instances..\n"
-     cat ~allInsts > ~tmp
+    printf "getting all cf instances..\n"
+    cat ~allInsts > ~tmp
   else 
     printf "getting appointed cf instances..\n"
     cat $PRIORITY_FILE > ~tmp
@@ -51,7 +51,7 @@ function getAppointedInsts () {
   cat ~tmp
 }
 
-function getEnvs(){
+function getEnvs () {
     {
       rm values.txt
       echo "removed existing values.txt. continue updating ${ZONE}"
