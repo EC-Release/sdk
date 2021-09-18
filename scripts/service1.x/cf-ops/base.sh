@@ -11,7 +11,7 @@
 #  author: apolo.yasuda@ge.com
 #
 
-#hasEnvVar is to verify of the env var $1 exists in the app name $1
+#hasEnvVar is to verify of the env var $2 exists in the app name $1
 # $1: <app-name>
 # $2: Env Key keyword
 function hasEnvVar () {
@@ -24,6 +24,15 @@ function hasEnvVar () {
     
     printf "1"
 }
+
+#getEnvVar is to get the env var $2 in the app name $1
+# $1: <app-name>
+# $2: Env Key keyword
+#function getEnvVar () {
+#  cf e $1 > ~tmp
+#  ref=$(cat ~tmp | grep -e "$2" | awk '{print $2}')
+#  printf "%s" "$ref"
+#}
 
 function login () {
     #echo  cf login -a ${CF_API} -u ${CF_USR} -p ${CF_PWD} -o ${ORG} -s ${SPACE}
@@ -51,20 +60,28 @@ function getAppointedInsts () {
   cat ~tmp
 }
 
-function getEnvs () {
-    cf env ${ZONE} > ~tmp
-    cat ~tmp
-}
+#function getEnvs () {
+#    cf env $1 > ~tmp
+#    cat ~tmp
+#}
 
-#$1 env file name to look for
+#$1: app name
 function setEnvs(){
-
-  while read line; do       
-    op=$(cat $1 | grep $line | cut -d ' ' -f2)
+  cf env $1 > ~tmp 2>&1
+  ref=$(cat ~tmp | grep -e 'FAILED')
+  if [[ ! -z $ref ]]; then
+    printf "1"
+    return
+  fi
+  
+  while read line; do
+    ref1=$(cat ~tmp | grep $line | cut -d ' ' -f2)
     if [[ -z $op ]]; then
       printf "1"
+      return
     fi
-    eval "sed -i -e 's|{{$line}}|$op|g' ./push/manifest.yml"
+    
+    eval "sed -i -e 's|{{$line}}|$ref1|g' ./push/manifest.yml"
   done < field_list.txt
 
   eval "sed -i -e 's|{{DOCKER_USERNAME}}|$DOCKER_USERNAME|g' ./push/manifest.yml"
