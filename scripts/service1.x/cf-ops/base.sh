@@ -56,10 +56,11 @@ function getEnvs () {
     cat ~tmp
 }
 
+#$1 env file name to look for
 function setEnvs(){
 
     while read line; do       
-       op=$(cat values.txt | grep $line | cut -d ' ' -f2)
+       op=$(cat $1 | grep $line | cut -d ' ' -f2)
        eval "sed -i -e 's|{{ZONE}}|$op|g' ./push/manifest.yml"
     done < field_list.txt    
     
