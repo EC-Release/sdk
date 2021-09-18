@@ -65,11 +65,11 @@ function findInstsQualifiedForStep1 () {
 
 function bgStep1ClonePush () {
 
-    wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml    
+  wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml    
     
-    printf "\nget appointed instances..\n"
-    getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
-    cat ~insts
+  printf "\nget appointed instances..\n"
+  getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
+  cat ~insts
 
     #if [[ "$PRIORITY_FILE" != "0" ]]; then
     #  cat $PRIORITY_FILE > ./service_list.txt
@@ -79,7 +79,7 @@ function bgStep1ClonePush () {
     
     #findInstsQualifiedForStep1
     
-    while read line; do
+  while read line; do
     
       : 'qualifiedInst=$(cat ~findInstsQualifiedForStep1.txt | grep -e $line)
       if [[ -z "$qualifiedInst"]]; then
@@ -138,8 +138,8 @@ function bgStep1ClonePush () {
         echo "${ZONE}" >> ~failedBgStep1ClonePush
       }'
       
-    done < ~allInsts
+  done < ~insts
     
-    echo "update completed."    
+  echo "update completed."    
 
 }
