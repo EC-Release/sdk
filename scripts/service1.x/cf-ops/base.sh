@@ -43,25 +43,17 @@ function getAllInsts () {
 function getAppointedInsts () {
   if [[ $PRIORITY_FILE == "0" ]]; then
     printf "getting all cf instances..\n"
-    cat ~allInsts > ~tmp
+    cp ~allInsts ~tmp
   else 
     printf "getting appointed cf instances..\n"
-    cat $PRIORITY_FILE > ~tmp
+    cp $PRIORITY_FILE ~tmp
   fi
   cat ~tmp
 }
 
 function getEnvs () {
-    {
-      rm values.txt
-      echo "removed existing values.txt. continue updating ${ZONE}"
-    } || {
-      echo "no values.txt found. continue updating ${ZONE}"
-    }
-    
-    printf "\n\n***** begin of cf env vars for %s\n\n" "${ZONE}"
-    cf env ${ZONE} | tee values.txt
-    printf "\n\n***** end of cf env vars for %s\n\n" "${ZONE}"
+    cf env ${ZONE} > ~tmp
+    cat ~tmp
 }
 
 function setEnvs(){
