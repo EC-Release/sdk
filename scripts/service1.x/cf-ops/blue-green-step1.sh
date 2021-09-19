@@ -47,7 +47,7 @@ function instQualifiedForStep1 () {
     return
   fi
     
-  printf "%s unknown status instance %s has\n" "$__UKN" "$1"
+  printf "%s unknown status instance %s" "$__UKN" "$1"
   return
 }
 
@@ -65,8 +65,6 @@ function findInstsQualifiedForStep1 () {
   done < ~insts
   
 }
-
-
 
 function bgStep1ClonePush () {
 
