@@ -33,21 +33,12 @@ else
   case $OPS_NAME in
   1000)
     login
+    
     printf "\nexecute blue-green step 1\n\n"
-    {
-      bgStep1ClonePush
-    } && {
     
-      mkdir -p logs
-    
-      [[ -e ~debugger ]] && cp ~debugger ./logs/debug.log
-      [[ -e ~failedBgStep1ClonePush ]] && cp ~failedBgStep1ClonePush ./logs/insts-failed-step1.log
-      [[ -e ~bgStep1ClonePush ]] && cp ~bgStep1ClonePush ./logs/insts-completed-step1.log
-      
-      exit 0
-    } || {
-      exit 1
-    }
+    trap 'checkInLogger bgStep1ClonePush "$LINENO" "$?" "$BASH_COMMAND"' EXIT ERR RETURN
+    bgStep1ClonePush
+    trap - EXIT ERR RETURN
     ;;
   1003)    
     login
