@@ -60,7 +60,7 @@ function findInstsQualifiedForStep1 () {
   while read -r line; do
          
     ref=$(instQualifiedForStep1 $line)
-    logger 'findInstsQualifiedForStep1' $ref
+    logger 'findInstsQualifiedForStep1' "$ref"
         
   done < ~insts
   
@@ -76,7 +76,7 @@ function bgStep1ClonePush () {
   while read -r line; do
     
     ref=$(instQualifiedForStep1 $line)
-    logger 'bgStep1ClonePush' $ref    
+    logger 'bgStep1ClonePush' "$ref"    
     if [[ $ref == *"$__PAS"* ]]; then
       mkdir -p push
       cp ./manifest.yml ./push/manifest.yml
