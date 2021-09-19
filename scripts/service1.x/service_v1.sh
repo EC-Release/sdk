@@ -36,7 +36,7 @@ else
     
     printf "\nexecute blue-green step 1\n\n"
     
-    trap 'checkInLogger \'bgStep1ClonePush\' "$LINENO" "$?" "$BASH_COMMAND"' EXIT ERR RETURN
+    trap 'checkInLogger "bgStep1ClonePush" "$LINENO" "$?" "$BASH_COMMAND"' EXIT ERR RETURN
     bgStep1ClonePush
     trap - EXIT ERR RETURN
     ;;
