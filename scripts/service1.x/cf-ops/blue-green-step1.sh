@@ -11,6 +11,13 @@
 #  author: apolo.yasuda@ge.com
 #
 
+set -e
+__ERR="EC_ERR"
+__PAS="EC_PAS"
+__UKN="EC_UKN"
+__DBG="EC_DBG"
+__DBG_TMP="~debugger"
+__DBG_FLE="debug.log"
 
 function pushService () {
     cat ./push/manifest.yml        
@@ -21,6 +28,38 @@ function pushService () {
     
 }
 
+#$1 cf app name
+function instQualifiedForStep1 () {  
+  
+  url=$(findCurrentRouting $1)
+  if [[ -z $url ]]; then
+    printf "[EC_ERR] instance %s does not have a routing." "$1"
+    return
+  fi
+
+  zon=$(echo $url | cut -d'.' -f 1)
+  uid=$(isUUID $zon)
+  if [[ $uid != "0" ]]; then
+    printf "%s instance url %s does not appear to be a service instance." "$__ERR" "$url"
+    return
+  fi    
+
+  instStep1=$(cat ~allInsts | grep -e $1'-'$MISSION)
+  if [[ ! -z "$instStep1" ]]; then
+    printf "%s instance %s has had a cloned instance." "$__ERR" "$1"
+    return
+  fi
+
+  instStep2=$(hasEnvVar $1 'UPDATED: '$MISSION)
+  if [[ -z "$instStep2" ]]; then
+    printf "%s instance %s is not updated and qualified for the step1." "$__PAS" "$1"
+    return
+  fi
+    
+  printf "%s unknown status instance %s has\n" "$__UKN" "$1"
+  return
+}
+
 function findInstsQualifiedForStep1 () {
     
   printf "\nget instances without step1 suffix..\n"
@@ -28,39 +67,36 @@ function findInstsQualifiedForStep1 () {
   
   printf "\nloop into instances without step1 suffix..\n"
   while read -r line; do
-    
-    url=$(findCurrentRouting $line)
-    if [[ -z $url ]]; then
-      printf "instance %s does not have a routing. continue identify next instance\n" "$line" | tee -a ~failedFindInstsQualifiedForStep1
-      continue
-    fi
-    
-    zon=$(echo $url | cut -d'.' -f 1)
-    uid=$(isUUID $zon)
-    if [[ $uid != "0" ]]; then
-      printf "\ninstance url %s does not appear to be a service instance. continue identify next instance\n" "$url" | tee -a ~failedFindInstsQualifiedForStep1
-      continue
-    fi    
-    
-    instStep1=$(cat ~allInsts | grep -e $line'-'$MISSION)
-    if [[ ! -z "$instStep1" ]]; then
-      printf "\ninstance %s has had a cloned instance. continue identify next instance\n" "$line" | tee -a ~failedFindInstsQualifiedForStep1
-      continue
-    fi
-    
-    instStep2=$(hasEnvVar $line 'UPDATED: '$MISSION)
-       
-    if [[ -z "$instStep2" ]]; then
-      printf "\ninstance %s has not been updated. added to the list" "$line"
-      printf "$line\n" >> ~findInstsQualifiedForStep1
-    fi
-    
+         
+    ref=$(instQualifiedForStep1 $line)
+    logger 'findInstsQualifiedForStep1' $ref
+        
   done < ~insts
   
-  {
-    rm ~insts
-  }
+}
+
+#$1: function name
+#$2: log output
+function logger () {
+  if [[ $2 == *"$__ERR"* ]]; then
+    printf "%s\n" "$2" | tee -a ~$__ERR$1
+    return
+  fi
   
+  if [[ $2 == *"$__PAS"* ]]; then
+    printf "%s\n" "$2" | tee -a ~$__PAS$1
+    return
+  fi
+  
+  if [[ $2 == *"$__UKN"* ]]; then
+    printf "%s\n" "$2" | tee -a ~$__UKN$1
+    return
+  fi
+  
+  if [[ $2 == *"$__DBG"* ]]; then
+    printf "%s\n" "$2" | tee -a ~$__DBG
+    return
+  fi
 }
 
 function bgStep1ClonePush () {
@@ -69,70 +105,38 @@ function bgStep1ClonePush () {
   printf "\nget appointed instances..\n"
   getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
   cat ~insts
-
-  #if [[ "$PRIORITY_FILE" != "0" ]]; then
-  #  cat $PRIORITY_FILE > ./service_list.txt
-  #else 
-  #  cf a | grep -E 'started|stopped' | awk '$1 == /-2022/ {print $1}' > ./service_list.txt
-  #fi
-
-  #findInstsQualifiedForStep1
     
   while read -r line; do
     
-      : 'qualifiedInst=$(cat ~findInstsQualifiedForStep1.txt | grep -e $line)
-      if [[ -z "$qualifiedInst"]]; then
-        printf "\ninstance %s is not qualified for blue-green step 1. continue to next instance\n" "$line"
-        continue
-      fi'
-
-      ZONE=${line%-$MISSION}
-
-      uid=$(isUUID $ZONE)
-      if [[ $uid != "0" ]]; then
-        printf "the instance %s does not appear to be a regulated service zone id. continue identify next instance\n" "$ZONE" | tee -a ~failedBgStep1ClonePush
-        continue
-      fi
-
-      echo "Updating $ZONE.."      
-
-      
-      ref=$(cat ~allInsts | grep -e "$ZONE-$MISSION")
-      if [[ ! -z "$ref" ]]; then
-        printf "instance %s has a cloned instance from step 1. continue identify next instance\n" "$ZONE" | tee -a ~failedBgStep1ClonePush
-        continue
-      fi
-
-      ref=$(hasEnvVar "$ZONE" 'UPDATED: '$MISSION)    
-      if [[ $ref == "0" ]]; then
-        printf "instance %s had been completed step1. continue to next instance\n" "$ZONE" | tee -a ~failedBgStep1ClonePush
-        continue
-      fi
-
+    ref=$(instQualifiedForStep1 $line)
+    logger 'bgStep1ClonePush' $ref    
+    if [[ $ref == *"$__PAS"* ]]; then
       mkdir -p push
       cp ./manifest.yml ./push/manifest.yml
-
-      #cat ./push/manifest.yml
-
-      ref=$(setEnvs "$ZONE")
+    
+      ref=$(setEnvs "$line")
       if [[ $ref != "0" ]]; then
-        printf "failed set up env vars for instance %s" "$ZONE" | tee -a ~failedBgStep1ClonePush
+        ref=$(printf "%s failed set up env vars for instance %s" "$__ERR" "$line")
+        logger 'bgStep1ClonePush' "$ref"
         continue
       fi
-
-      printf "manifest file updated for instance %s" "$ZONE"
-
-      pushService > ~output
-      ref=$(cat ~output | grep -e 'FAILED')
+      
+      cat ./push/manifest.yml >> "$__DBG_TMP"
+      
+      ref=$(pushService | grep -e 'FAILED')
       if [[ ! -z $ref ]]; then
-        printf "instance %s update unsuccessful. proceed to next instance" "$ZONE" | tee -a ~failedBgStep1ClonePush
+        ref=$(printf "%s instance %s update unsuccessful. proceed to next instance" "$__ERR" "$line")
+        logger 'bgStep1ClonePush' "$ref"
+        continue
       else
-        setStep1CompletedEnv ${ZONE}
-        printf "service %s updated successful" "$ZONE" | tee -a ~bgStep1ClonePush          
+        setStep1CompletedEnv "$line"
+        ref=$(printf "%s service %s updated successful" "$__PAS" "$line")
+        logger 'bgStep1ClonePush' "$ref"        
       fi        
+    
+    fi
       
   done < ~insts
     
-  echo "update completed."    
-
+  echo "update completed."
 }
