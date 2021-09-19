@@ -113,3 +113,11 @@ function updateDockerCred () {
   printf "1"
 }
 
+#$1 function name
+function checkInLogger () {
+  [[ -e "$__DBG_TMP" ]] && cp "$__DBG_TMP" ./logs/"$__DBG_FLE"
+  [[ -e "~$__ERR$1" ]] && cp ~procStep2 ./logs/insts-completed-step2.log
+  [[ -e ~failedProcStep2Insts ]] && cp ~failedProcStep2Insts ./logs/insts-failed-step2.log
+  [[ -e ~unknownProcStep2Insts ]] && cp ~unknownProcStep2Insts ./logs/insts-unknown-step2.log
+}
+
