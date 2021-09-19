@@ -68,11 +68,11 @@ function findInstsQualifiedForStep1 () {
 
 function bgStep1ClonePush () {
 
-  wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml
   printf "\nget appointed instances..\n"
   getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
   cat ~insts
-    
+  
+  wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml  
   while read -r line; do
     
     ref=$(instQualifiedForStep1 $line)
