@@ -11,6 +11,14 @@
 #  author: apolo.yasuda@ge.com
 #
 
+set -e
+__ERR="EC_ERR"
+__PAS="EC_PAS"
+__UKN="EC_UKN"
+__DBG="EC_DBG"
+__DBG_TMP="~debugger"
+__DBG_FLE="debug.log"
+
 #hasEnvVar is to verify of the env var $2 exists in the app name $1
 # $1: <app-name>
 # $2: Env Key keyword
@@ -119,5 +127,29 @@ function checkInLogger () {
   [[ -e "~$__ERR$1" ]] && cp ~procStep2 ./logs/insts-completed-step2.log
   [[ -e ~failedProcStep2Insts ]] && cp ~failedProcStep2Insts ./logs/insts-failed-step2.log
   [[ -e ~unknownProcStep2Insts ]] && cp ~unknownProcStep2Insts ./logs/insts-unknown-step2.log
+}
+
+#$1: function name
+#$2: log output
+function logger () {
+  if [[ $2 == *"$__ERR"* ]]; then
+    printf "%s\n" "$2" | tee -a ~$__ERR$1
+    return
+  fi
+  
+  if [[ $2 == *"$__PAS"* ]]; then
+    printf "%s\n" "$2" | tee -a ~$__PAS$1
+    return
+  fi
+  
+  if [[ $2 == *"$__UKN"* ]]; then
+    printf "%s\n" "$2" | tee -a ~$__UKN$1
+    return
+  fi
+  
+  if [[ $2 == *"$__DBG"* ]]; then
+    printf "%s\n" "$2" | tee -a ~$__DBG
+    return
+  fi
 }
 
