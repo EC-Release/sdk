@@ -144,13 +144,16 @@ function updateDockerCred () {
 #$3: return/exit code
 #$4: last cmd
 function checkInLogger () {
+    
+  printf "\n\nthe script exited at line number %s, w/ code %s, and the command %s\n" "$2" "$3" "$4"
+  printf "\ncheck-in logs for the function %s\n" "$1"
+
   ref=$(strCamel2Dash "$1")
   [[ -e "~$__DBG$1" ]] && cp "~$__DBG$1" ./logs/"$ref$__DBG_FIL_EXT"."$__LOG_FIL_EXT"
   [[ -e "~$__PAS$1" ]] && cp "~$__PAS$1" ./logs/"$ref$__PAS_FIL_EXT"."$__LOG_FIL_EXT"
   [[ -e "~$__ERR$1" ]] && cp "~$__ERR$1" ./logs/"$ref$__ERR_FIL_EXT"."$__LOG_FIL_EXT"
   [[ -e "~$__UKN$1" ]] && cp "~$__UKN$1" ./logs/"$ref$__UKN_FIL_EXT"."$__LOG_FIL_EXT"
   
-  printf "\n\nthe script exited at line number %s, w/ code %s, and the command %s\n" "$2" "$3" "$4"
 }
 
 #$1: function name
