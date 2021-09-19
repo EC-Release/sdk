@@ -16,8 +16,26 @@ __ERR="EC_ERR"
 __PAS="EC_PAS"
 __UKN="EC_UKN"
 __DBG="EC_DBG"
-__DBG_TMP="~debugger"
-__DBG_FLE="debug.log"
+
+__ERR_FIL_EXT="-err"
+__PAS_FIL_EXT="-pas"
+__UKN_FIL_EXT="-ukn"
+__DBG_FIL_EXT="-dbg"
+
+__LOG_FIL_EXT=".log"
+
+
+#transform EC-specific naming
+#$1 camel string
+function strCamel2Dash() {                                                                                                                                             
+    sed --expression 's/\([A-Z]\)/-\L\1/g' --expression 's/^-//' <<< "$1"                                                                                                                             
+}
+
+#transform EC-specific naming
+#$1 dash string
+function strDash2Camel() {                                                                                                                                                                                                                                                                
+    echo $1 | awk -F"-" '{for(i=1;i<=NF;i++){$i=toupper(substr($i,1,1)) substr($i,2)}} 1' OFS=""                                                                                                                                                                                          
+}  
 
 #hasEnvVar is to verify of the env var $2 exists in the app name $1
 # $1: <app-name>
@@ -123,10 +141,11 @@ function updateDockerCred () {
 
 #$1 function name
 function checkInLogger () {
-  [[ -e "$__DBG_TMP" ]] && cp "$__DBG_TMP" ./logs/"$__DBG_FLE"
-  [[ -e "~$__ERR$1" ]] && cp ~procStep2 ./logs/insts-completed-step2.log
-  [[ -e ~failedProcStep2Insts ]] && cp ~failedProcStep2Insts ./logs/insts-failed-step2.log
-  [[ -e ~unknownProcStep2Insts ]] && cp ~unknownProcStep2Insts ./logs/insts-unknown-step2.log
+  ref=$(strCamel2Dash "$1")
+  [[ -e "~$__DBG$1" ]] && cp "~$__DBG$1" ./logs/"$ref$__DBG_FIL_EXT"."$__LOG_FIL_EXT"
+  [[ -e "~$__PAS$1" ]] && cp "~$__PAS$1" ./logs/"$ref$__PAS_FIL_EXT"."$__LOG_FIL_EXT"
+  [[ -e "~$__ERR$1" ]] && cp "~$__ERR$1" ./logs/"$ref$__ERR_FIL_EXT"."$__LOG_FIL_EXT"
+  [[ -e "~$__UKN$1" ]] && cp "~$__UKN$1" ./logs/"$ref$__UKN_FIL_EXT"."$__LOG_FIL_EXT"
 }
 
 #$1: function name
@@ -148,8 +167,15 @@ function logger () {
   fi
   
   if [[ $2 == *"$__DBG"* ]]; then
-    printf "%s\n" "$2" | tee -a ~$__DBG
+    printf "%s\n" "$2" | tee -a ~$__DBG$1
     return
   fi
+}
+
+#$1: function name
+#$2: log output
+function debugger () {
+  ref=$(echo $2 | awk -v dbg="$__DBG" '{ printf ("%s\n%s",dbg,$1); }')
+  logger "$1" "$ref"
 }
 
