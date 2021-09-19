@@ -88,7 +88,7 @@ function bgStep1ClonePush () {
         continue
       fi
       
-      cat ./push/manifest.yml >> "$__DBG_TMP"
+      debugger 'bgStep1ClonePush' "$(cat ./push/manifest.yml)"
       
       ref=$(pushService | grep -e 'FAILED')
       if [[ ! -z $ref ]]; then
