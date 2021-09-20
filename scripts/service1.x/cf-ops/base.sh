@@ -64,6 +64,15 @@ function login () {
     #echo  cf login -a ${CF_API} -u ${CF_USR} -p ${CF_PWD} -o ${ORG} -s ${SPACE}
     cf login -a ${CF_API} -u ${CF_USR} -p ${CF_PWD} -o ${ORG} -s ${SPACE}
     getAllInsts
+    getAllRoutes
+}
+
+#getAppointedInsts return appointed instances for the workflow
+function getAllRoutes () {
+  #sleep 1
+  printf "\ncaching all cf routes..\n"
+  cf routes > ~allRoutes
+  #cat ~instsAll
 }
 
 #getAppointedInsts return appointed instances for the workflow
