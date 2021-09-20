@@ -27,8 +27,9 @@ __LOG_FIL_EXT=".log"
 
 #transform EC-specific naming
 #$1 camel string
-function strCamel2Dash() {                                                                                                                                             
-    sed --expression 's/\([A-Z]\)/-\L\1/g' --expression 's/^-//' <<< "$1"                                                                                                                             
+function strCamel2Dash() {
+    echo $1 | sed 's/\([a-z0-9]\)\([A-Z]\)/\1-\L\2/g'
+    #sed --expression 's/\([A-Z]\)/-\L\1/g' --expression 's/^-//' <<< "$1"                                                                                                                             
 }
 
 #transform EC-specific naming
@@ -149,10 +150,10 @@ function checkInLogger () {
   printf "\ncheck-in logs for the function %s\n" "$1"
 
   ref=$(strCamel2Dash "$1")
-  [[ -e "~$__DBG$1" ]] && mv "~$__DBG$1" ./logs/"$ref$__DBG_FIL_EXT"."$__LOG_FIL_EXT"
-  [[ -e "~$__PAS$1" ]] && mv "~$__PAS$1" ./logs/"$ref$__PAS_FIL_EXT"."$__LOG_FIL_EXT"
-  [[ -e "~$__ERR$1" ]] && mv "~$__ERR$1" ./logs/"$ref$__ERR_FIL_EXT"."$__LOG_FIL_EXT"
-  [[ -e "~$__UKN$1" ]] && mv "~$__UKN$1" ./logs/"$ref$__UKN_FIL_EXT"."$__LOG_FIL_EXT"
+  [[ -e "~$__DBG$1" ]] && mv "~$__DBG$1" ./logs/"$ref$__DBG_FIL_EXT$__LOG_FIL_EXT"
+  [[ -e "~$__PAS$1" ]] && mv "~$__PAS$1" ./logs/"$ref$__PAS_FIL_EXT$__LOG_FIL_EXT"
+  [[ -e "~$__ERR$1" ]] && mv "~$__ERR$1" ./logs/"$ref$__ERR_FIL_EXT$__LOG_FIL_EXT"
+  [[ -e "~$__UKN$1" ]] && mv "~$__UKN$1" ./logs/"$ref$__UKN_FIL_EXT$__LOG_FIL_EXT"
   
 }
 
