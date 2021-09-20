@@ -28,8 +28,7 @@ __LOG_FIL_EXT=".log"
 #transform EC-specific naming
 #$1 camel string
 function strCamel2Dash() {
-    echo $1 | sed 's/\([a-z0-9]\)\([A-Z]\)/\1-\L\2/g'
-    #sed --expression 's/\([A-Z]\)/-\L\1/g' --expression 's/^-//' <<< "$1"                                                                                                                             
+    echo $1 | sed 's/\([a-z0-9]\)\([A-Z]\)/\1-\L\2/g'                                                                                                                          
 }
 
 #transform EC-specific naming
