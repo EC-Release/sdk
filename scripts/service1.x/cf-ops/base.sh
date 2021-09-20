@@ -102,13 +102,13 @@ function setEnvs(){
   fi
   
   while read line; do
-    ref1=$(cat ~tmp | grep $line | cut -d ' ' -f2)
-    if [[ -z $op ]]; then
+    ref=$(cat ~tmp | grep $line | awk '{print $2}')
+    if [[ -z $ref ]]; then
       printf "%s instance %s missing env variable (%s)" "$__ERR" "$1" "$line"       
       return
     fi
     
-    eval "sed -i -e 's|{{$line}}|$ref1|g' ./push/manifest.yml"
+    eval "sed -i -e 's|{{$line}}|$ref|g' ./push/manifest.yml"
   done < field_list.txt
 
   eval "sed -i -e 's|{{DOCKER_USERNAME}}|$DOCKER_USERNAME|g' ./push/manifest.yml"
