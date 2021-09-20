@@ -77,32 +77,33 @@ function bgStep1ClonePush () {
   while read -r line; do
     
     ref=$(instQualifiedForStep1 $line)
-    logger 'bgStep1ClonePush' "$ref"    
-    if [[ $ref == *"$__PAS"* ]]; then
-      mkdir -p push
-      cp ./manifest.yml ./push/manifest.yml
-    
-      ref=$(setEnvs "$line")
-      if [[ $ref != "0" ]]; then
-        ref=$(printf "%s failed set up env vars for instance %s" "$__ERR" "$line")
-        logger 'bgStep1ClonePush' "$ref"
-        continue
-      fi
-      
-      debugger 'bgStep1ClonePush' "$(cat ./push/manifest.yml)"
-      
-      ref=$(pushService | grep -e 'FAILED')
-      if [[ ! -z $ref ]]; then
-        ref=$(printf "%s instance %s update unsuccessful. proceed to next instance" "$__ERR" "$line")
-        logger 'bgStep1ClonePush' "$ref"
-        continue
-      else
-        setStep1CompletedEnv "$line"
-        ref=$(printf "%s service %s updated successful" "$__PAS" "$line")
-        logger 'bgStep1ClonePush' "$ref"        
-      fi        
-    
+    logger 'instQualifiedForStep1' "$ref"    
+    if [[ $ref != *"$__PAS"* ]]; then
+      continue
     fi
+      
+    mkdir -p push    
+    cp ./manifest.yml ./push/manifest.yml
+    
+    ref=$(setEnvs "$line")
+    logger 'setEnvs' "$ref"  
+    if [[ $ref != *"$__PAS"* ]]; then
+        #ref=$(printf "%s failed set up env vars for instance %s" "$__ERR" "$line")
+        #logger 'bgStep1ClonePush' "$ref"
+      continue
+    fi
+      
+    debugger 'bgStep1ClonePush' "$(cat ./push/manifest.yml)"
+      
+    ref=$(pushService $line)
+    logger 'pushService' "$ref"  
+    if [[ $ref != *"$__PAS"* ]]; then
+      continue
+    fi
+      
+    setStep1CompletedEnv "$line"
+    ref=$(printf "%s service %s updated successful in step 1" "$__PAS" "$line")
+    logger 'bgStep1ClonePush' "$ref"        
       
   done < ~insts
     
