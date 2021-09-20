@@ -58,7 +58,6 @@ function findInstsQualifiedForStep1 () {
   getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
   cat ~insts
   
-  wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml  
   while read -r line; do
     
     ref=$(instQualifiedForStep1 $line)
@@ -69,7 +68,7 @@ function findInstsQualifiedForStep1 () {
       
   done < ~insts
   
-  echo "update completed."
+  echo "finding completed."
   checkInLogger 'instQualifiedForStep1'
   return 0
 }
