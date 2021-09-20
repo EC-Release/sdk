@@ -96,14 +96,15 @@ function setEnvs(){
   cf env $1 > ~tmp 2>&1
   ref=$(cat ~tmp | grep -e 'FAILED')
   if [[ ! -z $ref ]]; then
-    printf "1"
+    printf "%s instance %s failed cf env cmd." "$__ERR" "$1"
+    debugger 'setEnvs' "$(cat ~tmp)"
     return
   fi
   
   while read line; do
     ref1=$(cat ~tmp | grep $line | cut -d ' ' -f2)
     if [[ -z $op ]]; then
-      printf "1"
+      printf "%s instance %s missing env variable (%s)" "$__ERR" "$1" "$line"       
       return
     fi
     
@@ -114,7 +115,7 @@ function setEnvs(){
   eval "sed -i -e 's|{{GITHUB_TOKEN}}|$GITHUB_TOKEN|g' ./push/manifest.yml"    
 
   eval "sed -i -e 's|{{MISSION}}|$MISSION|g' ./push/manifest.yml"
-  printf "0"
+  printf "%s instance %s updated env variables successful" "$__PAS" "$line"
 }
 
 #$1: trgtInstName
