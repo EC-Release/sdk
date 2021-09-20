@@ -83,8 +83,9 @@ function bgStep1ClonePush () {
       continue
     fi
       
-    mkdir -p push    
-    cp ./manifest.yml ./push/manifest.yml
+    printf "continue push the cloned instance for service %s" "$line"
+    mkdir -p push
+    cp ./manifest.yml ./push/manifest.yml    
     
     ref=$(setEnvs "$line")
     logger 'setEnvs' "$ref"  
