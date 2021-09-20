@@ -11,7 +11,7 @@
 #  author: apolo.yasuda@ge.com
 #
 
-set -e
+set +e
 __ERR="EC_ERR"
 __PAS="EC_PAS"
 __UKN="EC_UKN"
