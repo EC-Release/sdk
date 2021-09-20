@@ -106,4 +106,6 @@ function bgStep1ClonePush () {
   done < ~insts
     
   echo "update completed."
+  
+  return 0
 }
