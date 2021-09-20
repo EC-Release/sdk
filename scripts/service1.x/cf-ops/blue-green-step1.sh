@@ -41,13 +41,14 @@ function instQualifiedForStep1 () {
     return
   fi
 
-  instStep2=$(hasEnvVar $1 'UPDATED: '$MISSION)
-  if [[ -z "$instStep2" ]]; then
-    printf "%s instance %s is not updated and qualified for the step1." "$__PAS" "$1"
-    return
-  fi
+  #condition deprecated
+  #instStep2=$(hasEnvVar $1 'UPDATED: '$MISSION)
+  #if [[ -z "$instStep2" ]]; then
+  #  printf "%s instance %s is not updated and qualified for the step1." "$__PAS" "$1"
+  #  return
+  #fi
     
-  printf "%s unknown status instance %s" "$__UKN" "$1"
+  printf "%s instance %s meets requirement for blue-green step 1" "$__PAS" "$1"
   return
 }
 
