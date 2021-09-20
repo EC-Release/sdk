@@ -47,11 +47,7 @@ else
     printf "\nidentify instances qualified for step1\n\n"
     # find instances that have no suffix "E.g. -2022" and are qualified for running bg step 1
     findInstsQualifiedForStep1
-    mkdir -p logs
-    
-    [[ -e ~debugger ]] && cp ~debugger ./logs/debug.log
-    [[ -e ~findInstsQualifiedForStep1 ]] && cp ~findInstsQualifiedForStep1 ./logs/insts-qualified-step1.log
-    [[ -e ~failedFindInstsQualifiedForStep1 ]] && cp ~failedFindInstsQualifiedForStep1 ./logs/insts-failed-qualified-step1.log
+    exit 0
     
     ;;
   1006)
