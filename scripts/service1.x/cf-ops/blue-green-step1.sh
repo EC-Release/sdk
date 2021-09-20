@@ -24,7 +24,7 @@ function instQualifiedForStep1 () {
   
   url=$(findCurrentRouting $1)
   if [[ -z $url ]]; then
-    printf "[EC_ERR] instance %s does not have a routing." "$1"
+    printf "%s instance %s does not have a routing." "$__ERR" "$1"
     return
   fi
 
