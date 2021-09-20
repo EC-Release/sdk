@@ -161,22 +161,22 @@ function checkInLogger () {
 #$2: log output
 function logger () {
   if [[ $2 == *"$__ERR"* ]]; then
-    printf "%s\n" "$2" | tee -a ~$__ERR$1
+    printf "[build:%s] %s\n" "$EC_BUILD" "$2" | tee -a ~$__ERR$1
     return
   fi
   
   if [[ $2 == *"$__PAS"* ]]; then
-    printf "%s\n" "$2" | tee -a ~$__PAS$1
+    printf "[build:%s] %s\n" "$EC_BUILD" "$2" | tee -a ~$__PAS$1
     return
   fi
   
   if [[ $2 == *"$__UKN"* ]]; then
-    printf "%s\n" "$2" | tee -a ~$__UKN$1
+    printf "[build:%s] %s\n" "$EC_BUILD" "$2" | tee -a ~$__UKN$1
     return
   fi
   
   if [[ $2 == *"$__DBG"* ]]; then
-    printf "%s\n" "$2" | tee -a ~$__DBG$1
+    printf "[build:%s] %s\n" "$EC_BUILD" "$2" | tee -a ~$__DBG$1
     return
   fi
 }
