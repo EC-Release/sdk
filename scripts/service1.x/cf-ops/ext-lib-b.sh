@@ -15,16 +15,17 @@
 function findInstOfOrigin () {
 
   #theOrigInst=$(echo $1 | awk -F'-2022' '{print $1}')
-  theOrigInst=${1%-"$MISSION"}
+  theOrigInst=$(cat allRoutes | grep -e "$1" | awk '{print $4}')
 
-  cf app $theOrigInst > ~tmp 2>&1
-  getApp=$(cat ~tmp | grep -e 'FAILED')
+  #cf app $theOrigInst > ~tmp 2>&1
+  #getApp=$(cat ~tmp | grep -e 'FAILED')
 
-  if [[ -z $getApp ]]; then
-    printf "$theOrigInst"
+  if [[ ! -z $theOrigInst ]]; then
+    #printf "%s app name %s is identified" "$__PAS" "$theOrigInst"
+    printf "%s" "$theOrigInst"
     return
   fi
-
+  
   #getEnv=$(cf e $theOrigInst | grep -e 'UPDATED: '$MISSION)
   : 'instStep1=$(hasEnvVar "$theOrigInst" 'UPDATED: '$MISSION)
   #echo $instStep1
@@ -33,8 +34,9 @@ function findInstOfOrigin () {
     return
   fi'
 
+  
   # if have some doubts
-  printf "$1 (unknown instance)\n" >> ~unknownProcStep2Insts
+  #printf "$1 (unknown instance)\n" >> ~unknownProcStep2Insts
 }
 
 
