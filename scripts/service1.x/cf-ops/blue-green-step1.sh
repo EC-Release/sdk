@@ -77,7 +77,8 @@ function bgStep1ClonePush () {
   while read -r line; do
     
     ref=$(instQualifiedForStep1 $line)
-    logger 'instQualifiedForStep1' "$ref"    
+    logger 'instQualifiedForStep1' "$ref"
+    checkInLogger 'instQualifiedForStep1'
     if [[ $ref != *"$__PAS"* ]]; then
       continue
     fi
@@ -87,6 +88,7 @@ function bgStep1ClonePush () {
     
     ref=$(setEnvs "$line")
     logger 'setEnvs' "$ref"  
+    checkInLogger 'setEnvs'
     if [[ $ref != *"$__PAS"* ]]; then
         #ref=$(printf "%s failed set up env vars for instance %s" "$__ERR" "$line")
         #logger 'bgStep1ClonePush' "$ref"
@@ -96,7 +98,8 @@ function bgStep1ClonePush () {
     debugger 'bgStep1ClonePush' "$(cat ./push/manifest.yml)"
       
     ref=$(pushService $line)
-    logger 'pushService' "$ref"  
+    logger 'pushService' "$ref"
+    checkInLogger 'pushService'
     if [[ $ref != *"$__PAS"* ]]; then
       continue
     fi
@@ -106,8 +109,8 @@ function bgStep1ClonePush () {
     logger 'bgStep1ClonePush' "$ref"        
       
   done < ~insts
-    
-  echo "update completed."
   
+  echo "update completed."
+  checkInLogger 'bgStep1ClonePush'
   return 0
 }
