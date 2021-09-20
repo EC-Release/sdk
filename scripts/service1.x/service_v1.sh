@@ -11,7 +11,7 @@
 #  author: apolo.yasuda@ge.com
 #
 
-echo "import library & tools"
+echo "import libraries & tools.."
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/helper.sh)
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/base.sh)
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/ext-lib-a.sh)
@@ -30,15 +30,17 @@ if [[ ! -z "${VCAP_APPLICATION}" ]]; then
     ./run.sh
 else
 
+  trap 'checkInLogger "bgStep1ClonePush" "$LINENO" "$?" "$BASH_COMMAND"' EXIT ERR RETURN
+    
   case $OPS_NAME in
   1000)
     login
     
     printf "\nexecute blue-green step 1\n\n"
     
-    trap 'checkInLogger "bgStep1ClonePush" "$LINENO" "$?" "$BASH_COMMAND"' EXIT ERR RETURN
     bgStep1ClonePush
-    trap - EXIT ERR RETURN
+    #trap - EXIT ERR RETURN
+    exit 0
     ;;
   1003)    
     login
