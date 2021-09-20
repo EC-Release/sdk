@@ -54,17 +54,24 @@ function instQualifiedForStep1 () {
 
 function findInstsQualifiedForStep1 () {
     
-  printf "\nget instances without step1 suffix..\n"
-  getAppointedInsts | awk 'NR!=1 && $1 !~ /-'$MISSION'/ {print $1}' > ~insts
+  printf "\nget appointed instances..\n"
+  getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
+  cat ~insts
   
-  printf "\nloop into instances without step1 suffix..\n"
+  wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml  
   while read -r line; do
-         
+    
     ref=$(instQualifiedForStep1 $line)
-    logger 'findInstsQualifiedForStep1' "$ref"
-        
+    logger 'instQualifiedForStep1' "$ref"
+    if [[ $ref != *"$__PAS"* ]]; then
+      continue
+    fi      
+      
   done < ~insts
   
+  echo "update completed."
+  checkInLogger 'instQualifiedForStep1'
+  return 0
 }
 
 function bgStep1ClonePush () {
