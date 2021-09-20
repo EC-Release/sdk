@@ -30,7 +30,7 @@ if [[ ! -z "${VCAP_APPLICATION}" ]]; then
     ./run.sh
 else
 
-  trap 'checkInLogger "bgStep1ClonePush" "$LINENO" "$?" "$BASH_COMMAND"' EXIT ERR RETURN
+  #trap 'checkInLogger "bgStep1ClonePush" "$LINENO" "$?" "$BASH_COMMAND"' EXIT ERR RETURN
     
   case $OPS_NAME in
   1000)
