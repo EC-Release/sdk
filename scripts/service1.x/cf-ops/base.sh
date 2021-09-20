@@ -146,7 +146,7 @@ function updateDockerCred () {
 #$4: last cmd
 function checkInLogger () {
     
-  printf "\n\nthe script exited at line number %s, w/ code %s, and the command %s\n" "$2" "$3" "$4"
+  #printf "\n\nthe script exited at line number %s, w/ code %s, and the command %s\n" "$2" "$3" "$4"
   printf "\ncheck-in logs for the function %s\n" "$1"
 
   ref=$(strCamel2Dash "$1")
