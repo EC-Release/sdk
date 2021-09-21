@@ -19,9 +19,10 @@ function pushService () {
     ref=$(cat ~tmp | grep -e 'FAILED')    
     if [[ -z "$ref" ]]; then
       printf "0"
+      return
     fi
     
-    cd -
+    cd -  &> /dev/null
     printf "1"
 }
 
