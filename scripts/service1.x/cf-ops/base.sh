@@ -20,7 +20,7 @@ __DBG="EC_DBG"
 __ERR_FIL_EXT="-err"
 __PAS_FIL_EXT="-pas"
 __UKN_FIL_EXT="-ukn"
-__DBG_FIL_EXT="-dbg"
+__DBG_FIL_NAM="debug"
 
 __LOG_FIL_EXT=".log"
 
@@ -106,25 +106,36 @@ function setEnvs(){
   ref=$(cat ~tmp | grep -e 'FAILED')
   if [[ ! -z $ref ]]; then
     printf "%s instance %s failed cf env cmd." "$__ERR" "$1"
-    debugger 'setEnvs' "$(cat ~tmp)"
+    #debugger 'validateEnvs' "$(cat ~tmp)"
     return
   fi
   
+  missingFields=""
   while read line; do
     ref=$(cat ~tmp | grep $line | awk '{print $2}')
     if [[ -z $ref ]]; then
-      printf "%s instance %s missing env variable (%s)" "$__ERR" "$1" "$line"       
-      return
+      missingFields="${missingFields}, ${line}"
+      continue
     fi
     
     eval "sed -i -e 's|{{$line}}|$ref|g' ./push/manifest.yml"
   done < field_list.txt
-
+  
+  if [[ -z "$missingFields" ]]; then
+    printf "%s instance %s is missing env variables (%s)" "$__ERR" "$1" "$line"
+    return
+  fi
+  
+  
   eval "sed -i -e 's|{{DOCKER_USERNAME}}|$DOCKER_USERNAME|g' ./push/manifest.yml"
   eval "sed -i -e 's|{{GITHUB_TOKEN}}|$GITHUB_TOKEN|g' ./push/manifest.yml"    
 
   eval "sed -i -e 's|{{MISSION}}|$MISSION|g' ./push/manifest.yml"
   printf "%s instance %s updated env variables successful" "$__PAS" "$line"
+  
+  debugger 'setEnvs' "$(cat ~tmp)"
+
+  checkInLogger 'setEnvs'
 }
 
 #$1: trgtInstName
@@ -159,7 +170,7 @@ function checkInLogger () {
   printf "\ncheck-in logs for the function %s\n" "$1"
 
   ref=$(strCamel2Dash "$1")
-  [[ -e "~$__DBG$1" ]] && mv "~$__DBG$1" ./logs/"$ref$__DBG_FIL_EXT$__LOG_FIL_EXT"
+  [[ -e "~$__DBG$1" ]] && cat "~$__DBG$1" >> ./logs/"$__DBG_FIL_NAM$__LOG_FIL_EXT" && rm "~$__DBG$1"
   [[ -e "~$__PAS$1" ]] && mv "~$__PAS$1" ./logs/"$ref$__PAS_FIL_EXT$__LOG_FIL_EXT"
   [[ -e "~$__ERR$1" ]] && mv "~$__ERR$1" ./logs/"$ref$__ERR_FIL_EXT$__LOG_FIL_EXT"
   [[ -e "~$__UKN$1" ]] && mv "~$__UKN$1" ./logs/"$ref$__UKN_FIL_EXT$__LOG_FIL_EXT"
@@ -193,7 +204,7 @@ function logger () {
 #$1: function name
 #$2: log output
 function debugger () {
-  ref=$(echo $2 | awk -v dbg="$__DBG" '{ printf ("%s\n%s",dbg,$1); }')
+  ref=$(echo $2 | awk -v dbg="${__DBG}: line:${LINENO}, ret:${?} cmd:${BASH_COMMAND}" '{ printf ("%s\n%s",dbg,$1); }')
   logger "$1" "$ref"
 }
 
