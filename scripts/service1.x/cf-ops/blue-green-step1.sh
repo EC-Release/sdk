@@ -71,22 +71,22 @@ function findInstsQualifiedForStep1 () {
     
     appName=$(findInstOfOrigin "$line")
     if [[ -z "$appName" ]]; then
-      printf "%s findInstOfOrigin could not identify associated instance with the name (%s)\n" "$__ERR" "$line"
+      ref=$(printf "%s findInstOfOrigin could not identify associated instance with the name (%s)\n" "$__ERR" "$line")
+      logger 'findInstOfOrigin' "$ref"
       continue
     fi
     
     ref=$(instQualifiedForStep1 $appName)
     if [[ $ref != *"$__PAS"* ]]; then
       logger 'instQualifiedForStep1' "$ref"
-      checkInLogger 'instQualifiedForStep1'
       continue
     fi
-      
+
+    printf "%s findInstsQualifiedForStep1 successfully verified instance (%s)\n" "$__PAS" "$line"
   done < ~insts
   
-  printf "%s findInstsQualifiedForStep1 successfully verified instance (%s)\n" "$__PAS" "$line"
-  #echo "finding completed."
-  #checkInLogger 'instQualifiedForStep1'
+  checkInLogger 'findInstOfOrigin'
+  checkInLogger 'instQualifiedForStep1'
   return
 }
 
