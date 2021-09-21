@@ -54,33 +54,14 @@ else
     login
     printf "\nidentify instances qualified for the step 2\n\n"
     findInstsQualifiedForStep2
-    cat ~findInstsQualifiedForStep2
-    mkdir -p logs
-    
-    [[ -e ~debugger ]] && cp ~debugger ./logs/debug.log
-    cp ~findInstsQualifiedForStep2 ./logs/insts-qualified-step2.log
-    cp ~failedFindInstsQualifiedForStep2 ./logs/insts-failed-qualified-step2.log
-    
+    exit 0
     ;;
   1002)
     login
-    #printf "\identify instances qualified for the step 2\n\n"
-    #findInstsQualifiedForStep2
-    #~findInstsQualifiedForStep2.txt
-    #cat ~findInstsQualifiedForStep2.txt
     
     printf "\nexecute blue-green step 2\n\n"
     procStep2
-    #cat ~procStep2.txt
-    mkdir -p logs
-    #cp ~findInstsQualifiedForStep2 ./logs/insts-qualified-4-step2.log
-    printf "\nadd debugger\n\n"
-    [[ -e ~debugger ]] && cp ~debugger ./logs/debug.log
-    [[ -e ~procStep2 ]] && cp ~procStep2 ./logs/insts-completed-step2.log
-    [[ -e ~failedProcStep2Insts ]] && cp ~failedProcStep2Insts ./logs/insts-failed-step2.log
-    [[ -e ~unknownProcStep2Insts ]] && cp ~unknownProcStep2Insts ./logs/insts-unknown-step2.log
-    printf "\ncompleted step 2\n\n"
-    
+    exit 0
     ;;
   1004)
     printf "\nclean up and remove the original instances\n\n"
