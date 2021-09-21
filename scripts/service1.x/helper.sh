@@ -11,6 +11,10 @@
 #  author: apolo.yasuda@ge.com
 #
 
+function getRandomStr () {
+  tr -dc A-Za-z0-9 </dev/urandom | head -c 20 ; echo ''
+}
+
 #check if the string $1 is a UUID
 function isUUID () {
 
