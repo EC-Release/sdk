@@ -11,6 +11,7 @@
 #  author: RamaRao.Srikakulapu@ge.com
 #
 
+#deprecated
 # find the routing based on $1
 # $1: <app name>
 function findCurrentRouting () {
