@@ -69,17 +69,25 @@ function findInstsQualifiedForStep1 () {
   
   while read -r line; do
     
-    ref=$(instQualifiedForStep1 $line)
-    logger 'instQualifiedForStep1' "$ref"
-    if [[ $ref != *"$__PAS"* ]]; then
+    appName=$(findInstOfOrigin "$line")
+    if [[ -z "$appName" ]]; then
+      printf "%s findInstOfOrigin could not identify associated instance with the name (%s)\n" "$__ERR" "$line"
       continue
-    fi      
+    fi
+    
+    ref=$(instQualifiedForStep1 $appName)
+    if [[ $ref != *"$__PAS"* ]]; then
+      logger 'instQualifiedForStep1' "$ref"
+      checkInLogger 'instQualifiedForStep1'
+      continue
+    fi
       
   done < ~insts
   
-  echo "finding completed."
-  checkInLogger 'instQualifiedForStep1'
-  return 0
+  printf "%s findInstsQualifiedForStep1 successfully verified instance (%s)\n" "$__PAS" "$line"
+  #echo "finding completed."
+  #checkInLogger 'instQualifiedForStep1'
+  return
 }
 
 function bgStep1ClonePush () {
@@ -90,19 +98,23 @@ function bgStep1ClonePush () {
   
   while read -r line; do
     
-    ref=$(instQualifiedForStep1 $line)
-    logger 'instQualifiedForStep1' "$ref"
+    appName=$(findInstOfOrigin "$line")
+    if [[ -z "$appName" ]]; then
+      printf "%s findInstOfOrigin could not identify associated instance with the name (%s)\n" "$__ERR" "$line"
+      continue
+    fi
+    
+    ref=$(instQualifiedForStep1 $appName)
     if [[ $ref != *"$__PAS"* ]]; then
+      logger 'instQualifiedForStep1' "$ref"
       continue
     fi
       
-    printf "continue push the cloned instance for service %s\n" "$line"
+    printf "continue push the cloned instance for service %s\n" "$appName"
     
-    ref=$(setEnvs "$line")
-    logger 'setEnvs' "$ref"  
+    ref=$(setEnvs "$appName")
     if [[ $ref != *"$__PAS"* ]]; then
-        #ref=$(printf "%s failed set up env vars for instance %s" "$__ERR" "$line")
-        #logger 'bgStep1ClonePush' "$ref"
+      logger 'setEnvs' "$ref"  
       continue
     fi
       
