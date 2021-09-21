@@ -11,13 +11,11 @@
 #  author: RamaRao.Srikakulapu@ge.com
 #
 
-#deprecated
 # find the routing based on $1
 # $1: <app name>
 function findCurrentRouting () {
     
-    cf app $1 > ~tmp 2>&1
-    current_routes=$(cat ~tmp | grep routes | awk -F':' '{print $2}' | xargs)
+    current_routes=$(cat ~allRoutes | grep $1 | awk '$2 !~ /-2022/ {print $2"."$3}')
     
     if [[ ! -z "$current_routes" ]]; then
       printf "$current_routes"
