@@ -82,7 +82,8 @@ function findInstsQualifiedForStep1 () {
       continue
     fi
 
-    printf "%s findInstsQualifiedForStep1 successfully verified instance (%s)\n" "$__PAS" "$line"
+    ref=$(printf "%s findInstsQualifiedForStep1 successfully verified instance (%s)\n" "$__PAS" "$line")
+    logger 'findInstsQualifiedForStep1' "$ref"
   done < ~insts
   
   checkInLogger 'findInstOfOrigin'
