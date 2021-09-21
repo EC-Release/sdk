@@ -24,14 +24,7 @@ function isUUID () {
 
 #check if the string $1 is a UUID
 function findUUID () {
-
-  ref=$(echo $1 | grep -Po '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}')
-  if [[ ! -z "$ref" ]]; then
-      printf "0"
-  else
-      printf "1"
-  fi
-
+  echo $1 | grep -Po '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
 }
 
 
