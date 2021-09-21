@@ -15,7 +15,7 @@
 # $1: <app name>
 function findCurrentRouting () {
     
-    current_routes=$(cat ~allRoutes | grep $1 | awk '$2 !~ /-2022/ {print $2"."$3}')
+    current_routes=$(cat $__CACHED_ALL_ROUTES | grep $1 | awk '$2 !~ /-2022/ {print $2"."$3}')
     
     if [[ ! -z "$current_routes" ]]; then
       printf "$current_routes"
