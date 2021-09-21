@@ -22,7 +22,7 @@ function isUUID () {
 
 }
 
-#check if the string $1 is a UUID
+#check if the string $1 contains a UUID
 function findUUID () {
   echo $1 | grep -Po '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
 }
