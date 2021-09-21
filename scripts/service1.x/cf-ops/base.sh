@@ -72,13 +72,16 @@ function login () {
     getAllInsts
     getAllRoutes
     cacheTemplateEnv
+    
+    #temp
+    cat $__CACHED_TEMPLATE_ENV
 }
 
 function cacheTemplateEnv () {
   #sleep 1
   ref=$(eval '$'$__EC_TEMPLATE_INST)  
   printf "\ncaching template env vars from %s..\n" "$ref"  
-  cf env $ref > $__CACHED_TEMPLATE_ENV
+  cf env $ref | grep -e ':' | awk '$1 ~ /:/ && $1 !~ "\"" && $1 !~ "-" {print}' > $__CACHED_TEMPLATE_ENV
 }
 
 #getAppointedInsts return appointed instances for the workflow
