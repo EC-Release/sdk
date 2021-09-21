@@ -129,6 +129,7 @@ function bgStep1ClonePush () {
     #debugger 'bgStep1ClonePush' "$(cat ./push/manifest.yml)"
       
     ref=$(pushService "$appName")
+    echo '$ref: "'$ref'"'
     if [[ "$ref" != "0" ]]; then
       ref1=$(printf "%s pushService for instance %s unsuccessful\n" "$__ERR" "$appName")
       logger 'pushService' "$ref1"
