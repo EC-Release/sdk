@@ -35,9 +35,9 @@ function instQualifiedForStep1 () {
     return
   fi    
 
-  instStep1=$(cat ~allInsts | grep -e $uid'-'$MISSION)
+  instStep1=$(cat ~allInsts | grep -e $zon'-'$MISSION)
   if [[ ! -z "$instStep1" ]]; then
-    printf "%s instance %s has had a cloned instance %s" "$__ERR" "$1" $uid'-'$MISSION
+    printf "%s instance %s has had a cloned instance %s" "$__ERR" "$1" $zon'-'$MISSION
     return
   fi
 
