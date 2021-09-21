@@ -35,14 +35,14 @@ function instQualifiedForStep1 () {
     return
   fi    
 
-  instStep1=$(cat ~allInsts | grep -e $zon'-'$MISSION)
+  instStep1=$(cat $__CACHED_ALL_INSTS | grep -e $zon'-'$MISSION)
   if [[ ! -z "$instStep1" ]]; then
     printf "%s instance %s has had a cloned instance %s\n" "$__ERR" "$1" $zon'-'$MISSION
     return
   fi
   
   ref=$(verifyEnvs "$1")
-  echo '$verifyEnvs: '$ref
+  #echo '$verifyEnvs: '$ref
   #logger 'verifyEnvs' "$ref"
   #checkInLogger 'verifyEnvs'
   if [[ $ref != *"$__PAS"* ]]; then
