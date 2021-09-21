@@ -74,7 +74,7 @@ function login () {
     cacheTemplateEnv
     
     #temp
-    cat $__CACHED_TEMPLATE_ENV
+    #cat $__CACHED_TEMPLATE_ENV
 }
 
 function cacheTemplateEnv () {
@@ -119,6 +119,9 @@ function getAppointedInsts () {
 
 #$1: app name
 function verifyEnvs(){
+  mkdir -p push
+  cp ./manifest.yml ./push/manifest.yml    
+    
   cf env $1 > ~tmp 2>&1
   ref=$(cat ~tmp | grep -e 'FAILED')
   if [[ ! -z $ref ]]; then
@@ -266,4 +269,3 @@ function debugger () {
   ref=$(echo $2 | awk -v dbg="${__DBG}: line:${LINENO}, ret:${?} cmd:${BASH_COMMAND}" '{ printf ("%s\n%s",dbg,$1); }')
   logger "$1" "$ref"
 }
-
