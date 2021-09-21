@@ -88,7 +88,7 @@ function cacheTemplateEnv () {
 function getAllRoutes () {
   #sleep 1
   printf "\ncaching all cf routes..\n"
-  cf routes > ~allRoutes
+  cf routes > $__CACHED_ALL_ROUTES
   #cat ~instsAll
 }
 
@@ -96,7 +96,7 @@ function getAllRoutes () {
 function getAllInsts () {
   #sleep 1
   printf "\ncaching all cf instances..\n"
-  cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > ~allInsts
+  cf a | grep -e 'started' -e 'stopped' | awk '{print $1}' > $__CACHED_ALL_INSTS
   #cat ~instsAll
 }
 
@@ -104,7 +104,7 @@ function getAllInsts () {
 function getAppointedInsts () {
   if [[ $PRIORITY_FILE == "0" ]]; then
     printf "getting all cf instances..\n"
-    cp ~allInsts ~tmp
+    cp __CACHED_ALL_INSTS ~tmp
   else 
     printf "getting appointed cf instances..\n"
     cp $PRIORITY_FILE ~tmp
