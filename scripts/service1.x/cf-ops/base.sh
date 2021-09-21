@@ -121,8 +121,8 @@ function setEnvs(){
     eval "sed -i -e 's|{{$line}}|$ref|g' ./push/manifest.yml"
   done < field_list.txt
   
-  if [[ -z "$missingFields" ]]; then
-    printf "%s instance %s is missing env variables (%s)" "$__ERR" "$1" "$line"
+  if [[ ! -z "$missingFields" ]]; then
+    printf "%s instance %s is missing env variables (%s)" "$__ERR" "$1" "$missingFields"
     return
   fi
   
