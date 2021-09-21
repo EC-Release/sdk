@@ -110,7 +110,7 @@ function bgStep1ClonePush () {
       continue
     fi
       
-    printf "continue push the cloned instance for service %s\n" "$appName"
+    printf "continue push the cloned instance for instance %s\n" "$line"
     
     ref=$(setEnvs "$appName")
     if [[ $ref != *"$__PAS"* ]]; then
@@ -118,24 +118,24 @@ function bgStep1ClonePush () {
       continue
     fi
       
-    #debugger 'bgStep1ClonePush' "$(cat ./push/manifest.yml)"
+    debugger 'bgStep1ClonePush' "$(cat ./push/manifest.yml)"
       
-    ref=$(pushService $line)
-    logger 'pushService' "$ref"
+    ref=$(pushService $appName)
     if [[ $ref != *"$__PAS"* ]]; then
+      logger 'pushService' "$ref"    
       continue
     fi
       
-    setStep1CompletedEnv "$line"
-    ref=$(printf "%s service %s updated successful in step 1\n" "$__PAS" "$line")
-    logger 'bgStep1ClonePush' "$ref"        
+    setStep1CompletedEnv "$appName"
+    printf "%s instance %s updated successful in step 1\n" "$__PAS" "$line")
+    #logger 'bgStep1ClonePush' "$ref"        
       
   done < ~insts
   
-  echo "\n\nupdate completed.\n\n"
+  #echo "\n\nupdate completed.\n\n"
   checkInLogger 'instQualifiedForStep1'
   checkInLogger 'setEnvs'
   checkInLogger 'pushService'
-  checkInLogger 'bgStep1ClonePush'
+  #checkInLogger 'bgStep1ClonePush'
   return 0
 }
