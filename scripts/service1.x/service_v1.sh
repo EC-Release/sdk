@@ -56,6 +56,7 @@ else
     login
     printf "\nidentify instances qualified for the step 2\n\n"
     findInstsQualifiedForStep2
+    checkInLogger 'findInstsQualifiedForStep2'
     exit 0
     ;;
   1002)
@@ -63,6 +64,7 @@ else
     
     printf "\nexecute blue-green step 2\n\n"
     procStep2
+    checkInLogger 'procStep2'
     exit 0
     ;;
   1004)
