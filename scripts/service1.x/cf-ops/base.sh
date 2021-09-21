@@ -24,6 +24,12 @@ __DBG_FIL_NAM="debug"
 
 __LOG_FIL_EXT=".log"
 
+__EC_TEMPLATE_INST="EC_TEMPLATE_INST"
+
+__CACHED_TEMPLATE_ENV="~templateEnv"
+__CACHED_ALL_ROUTES="~allRoutes"
+__CACHED_ALL_INSTS="~allInsts"
+
 
 #transform EC-specific naming
 #$1 camel string
@@ -65,6 +71,14 @@ function login () {
     cf login -a ${CF_API} -u ${CF_USR} -p ${CF_PWD} -o ${ORG} -s ${SPACE}
     getAllInsts
     getAllRoutes
+    cacheTemplateEnv
+}
+
+function cacheTemplateEnv () {
+  #sleep 1
+  ref=$(eval '$'$__EC_TEMPLATE_INST)  
+  printf "\ncaching template env vars from %s..\n" "$ref"  
+  cf env $ref > $__CACHED_TEMPLATE_ENV
 }
 
 #getAppointedInsts return appointed instances for the workflow
