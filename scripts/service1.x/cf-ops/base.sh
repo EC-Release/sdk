@@ -126,16 +126,11 @@ function setEnvs(){
     return
   fi
   
-  
   eval "sed -i -e 's|{{DOCKER_USERNAME}}|$DOCKER_USERNAME|g' ./push/manifest.yml"
   eval "sed -i -e 's|{{GITHUB_TOKEN}}|$GITHUB_TOKEN|g' ./push/manifest.yml"    
 
   eval "sed -i -e 's|{{MISSION}}|$MISSION|g' ./push/manifest.yml"
   printf "%s instance %s updated env variables successful" "$__PAS" "$line"
-  
-  debugger 'setEnvs' "$(cat ~tmp)"
-
-  checkInLogger 'setEnvs'
 }
 
 #$1: trgtInstName
