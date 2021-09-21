@@ -92,38 +92,53 @@ function procStep2 () {
   count=-1
   while read -r line; do
     (( count++ ))
+        
+    ref=$(instQualified4Step2 $line)
+    if [[ $ref != *"$__PAS"* ]]; then
+      logger 'instQualified4Step2' "$ref"
+      continue
+    fi
     
-    trgtInstName=${line%-$MISSION}-$MISSION
+    url=$(findCurrentRouting "$line")
+    if [[ -z $url ]]; then
+      ref=$(printf "%s instance %s does not have a routing.\n" "$__ERR" "$line")
+      logger 'procStep2' "$ref"
+      continune
+    fi
+
+    zon=$(echo $url | cut -d'.' -f 1)
+    uid=$(isUUID $zon)
+    if [[ $uid != "0" ]]; then
+      ref=$(printf "%s instance url %s does not appear to be a service instance.\n" "$__ERR" "$url")
+      logger 'procStep2' "$ref"      
+      continue
+    fi
+  
+    trgtInstName=${zon%-$MISSION}-$MISSION
     origInstName=$(findInstOfOrigin $line)
     if [[ -z "$origInstName" ]]; then
       ref=$(printf "%s app %s does not have URL routing\n" "$__ERR" "$1")
-      logger 'findInstOfOrigin' "$ref"
+      logger 'procStep2' "$ref"
       continue
     fi
-    
-    ref=$(instQualified4Step2 $line)
-    logger 'instQualified4Step2' "$ref"
-    if [[ $ref != *"$__PAS"* ]]; then
-      continue
-    fi
-    
+        
     ref1=$(updateInstURL $origInstName $trgtInstName)
-    if [[ $ref1 != "0" ]]; then
+    if [[ "$ref1" != "0" ]]; then
       ref2=$(printf "%s instance %s failed in updateInstURL\n" "$__ERR" "$origInstName")
       logger 'procStep2' "$ref2"
       continue
     fi
 
     ref3=$(setStep2CompletedEnv $trgtInstName)
-    if [[ $ref3 != "0" ]]; then 
+    if [[ "$ref3" != "0" ]]; then 
       ref4=$(printf "%s instance %s failed in setStep2CompletedEnv\n" "$__ERR" "$origInstName")
       logger 'procStep2' "$ref4"
       continue       
     fi
       
     ref5=$(procDone "$origInstName" "$trgtInstName" "$count")
-    logger 'procDone' "$ref5"
-    if [[ $ref5 != *"$__PAS"* ]]; then      
+    if [[ "$ref5" != *"$__PAS"* ]]; then
+      logger 'procDone' "$ref5"    
       continue
     fi
     
@@ -133,10 +148,12 @@ function procStep2 () {
     #temp
     #return
   done < ~insts
-  echo "step2 update completed."
-  checkInLogger 'procStep2'
+  
+  echo "\n\nstep2 update completed.\n\n"
+  
+  #checkInLogger 'procStep2'
   checkInLogger 'procDone'
   checkInLogger 'instQualified4Step2'
-  checkInLogger 'findInstOfOrigin'
+  #checkInLogger 'findInstOfOrigin'
   return 0
 }
