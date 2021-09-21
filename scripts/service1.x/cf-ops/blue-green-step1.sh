@@ -24,20 +24,20 @@ function instQualifiedForStep1 () {
   
   url=$(findCurrentRouting $1)
   if [[ -z $url ]]; then
-    printf "%s instance %s does not have a routing." "$__ERR" "$1"
+    printf "%s instance %s does not have a routing.\n" "$__ERR" "$1"
     return
   fi
 
   zon=$(echo $url | cut -d'.' -f 1)
   uid=$(isUUID $zon)
   if [[ $uid != "0" ]]; then
-    printf "%s instance url %s does not appear to be a service instance." "$__ERR" "$url"
+    printf "%s instance url %s does not appear to be a service instance.\n" "$__ERR" "$url"
     return
   fi    
 
   instStep1=$(cat ~allInsts | grep -e $zon'-'$MISSION)
   if [[ ! -z "$instStep1" ]]; then
-    printf "%s instance %s has had a cloned instance %s" "$__ERR" "$1" $zon'-'$MISSION
+    printf "%s instance %s has had a cloned instance %s\n" "$__ERR" "$1" $zon'-'$MISSION
     return
   fi
 
@@ -48,7 +48,7 @@ function instQualifiedForStep1 () {
   #  return
   #fi
     
-  printf "%s instance %s meets requirement for blue-green step 1" "$__PAS" "$1"
+  printf "%s instance %s meets requirement for blue-green step 1\n" "$__PAS" "$1"
   return
 }
 
@@ -88,7 +88,7 @@ function bgStep1ClonePush () {
       continue
     fi
       
-    printf "continue push the cloned instance for service %s" "$line"
+    printf "continue push the cloned instance for service %s\n" "$line"
     mkdir -p push
     cp ./manifest.yml ./push/manifest.yml    
     
@@ -109,12 +109,12 @@ function bgStep1ClonePush () {
     fi
       
     setStep1CompletedEnv "$line"
-    ref=$(printf "%s service %s updated successful in step 1" "$__PAS" "$line")
+    ref=$(printf "%s service %s updated successful in step 1\n" "$__PAS" "$line")
     logger 'bgStep1ClonePush' "$ref"        
       
   done < ~insts
   
-  echo "update completed."
+  echo "\n\nupdate completed.\n\n"
   checkInLogger 'instQualifiedForStep1'
   checkInLogger 'setEnvs'
   checkInLogger 'pushService'
