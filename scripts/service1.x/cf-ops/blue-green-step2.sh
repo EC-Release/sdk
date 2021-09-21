@@ -11,6 +11,33 @@
 #  author: apolo.yasuda@ge.com
 #
 
+#$1: instance app name
+function instQualified4Step2 () {
+  origInstName=$(findInstOfOrigin $1)
+    
+  if [[ -z "$origInstName" ]]; then
+    printf "%s app %s does not have URL routing\n" "$__ERR" "$1"
+    return   
+  fi
+  
+  ref=$(findUUID "$origInstName")
+  if [[ -z "$ref" ]]; then
+    printf "%s instance %s does not appear to be a service instance\n" "$__ERR" "$origInstName"
+    return
+  fi
+  
+  ref1=$(cat ~allInsts | grep -e "$ref-$MISSION")
+  if [[ -z "$ref1" ]]; then
+    printf "%s instance %s does not have a cloned instance from step1\n" "$__ERR" "$origInstName"
+    return
+  fi
+
+  ref2=$(hasEnvVar "$ref-$MISSION" 'UPDATED: '$MISSION'-DONE')    
+  if [[ $ref2 != "0" ]]; then
+    printf "%s cloned instance %s does not have env var set in step 2\n" "$__PAS" "$ref-$MISSION"
+  fi
+}
+
 function findInstsQualifiedForStep2 () {
   
   printf "\nget appointed instances..\n"
@@ -20,38 +47,17 @@ function findInstsQualifiedForStep2 () {
   printf "\nloop into instances in the appointed instance list..\n"
   while read -r line; do
     
-    theInst=${line%-$MISSION}
-    
-    instStep1=$(cat ~allInsts | grep -e "$theInst-$MISSION")
-    if [[ -z "$instStep1" ]]; then
-      printf "instance %s does not have a cloned instance from step1. continue identify next instance\n" "$theInst" | tee -a ~failedFindInstsQualifiedForStep2
+    ref=$(instQualified4Step2 $line)
+    logger 'instQualified4Step2' "$ref"
+    if [[ $ref != *"$__PAS"* ]]; then
       continue
-    fi
-    
-    url=$(findCurrentRouting $theInst)
-    if [[ -z $url ]]; then
-      printf "instance %s does not have a routing. continue identify next instance\n" "$line" | tee -a ~failedFindInstsQualifiedForStep2
-      continue
-    fi
-    
-    zon=$(echo $url | cut -d'.' -f 1)
-    uid=$(isUUID $zon)
-    if [[ $uid != "0" ]]; then
-      printf "the routing url %s does not appear to be a regulated URL for the instance %s. continue identify next instance\n" "$url" "$theInst" | tee -a ~failedFindInstsQualifiedForStep2
-      continue
-    fi
-    
-    instStep2=$(hasEnvVar "$theInst-$MISSION" 'UPDATED: '$MISSION)    
-    if [[ $instStep2 == "0" ]]; then
-      printf "\ninstance %s is valid for step2. added to the list" "$theInst"
-      printf "$theInst\n" >> ~findInstsQualifiedForStep2
     fi
     
   done < ~insts
   
-  {
-    rm ~insts
-  }
+  echo "finding completed."
+  checkInLogger 'instQualified4Step2'
+  return 0
   
 }
 
@@ -62,18 +68,17 @@ function procDone () {
 
     : 'ref=$(restageTheNewApp "$2")
     if [[ $ref != "0" ]]; then
-      printf "instance %s failed in restageTheNewApp. continue to next instance.\n" "$1" | tee ~failedProcStep2Insts
+      printf "instance %s failed in restageTheNewApp.\n" "$1" | tee ~failedProcStep2Insts
       continue    
     fi'
     
     ref=$(updateDockerCred "$2" "$3")
     if [[ $ref != "0" ]]; then
-      printf "instance %s failed in updateDockerCred. continue to next instance.\n" "$1" | tee ~failedProcStep2Insts
+      printf "%s instance %s failed in updateDockerCred.\n" "$__ERR" "$1"
       return    
     fi
 
-    printf "instance %s has completed blue-green step 2 and added to the list\n" "$1"
-    printf "%s\n" "$1" >> ~procStep2
+    printf "%s instance %s has completed blue-green step 2 and added to the list\n" "$__PAS" "$1"
 }
 
 function procStep2 () {
@@ -89,40 +94,49 @@ function procStep2 () {
     (( count++ ))
     
     trgtInstName=${line%-$MISSION}-$MISSION
-    origInstName=$(findInstOfOrigin $trgtInstName)
-    
-    if [[ -z "$origInstName" ]]; then    
-      printf "app %s is not qualified for the step2. continue to next instance.\n" "$line" | tee ~failedProcStep2Insts
-      continue     
-    fi
-    
-    instStep2=$(hasEnvVar "$trgtInstName" 'UPDATED: '$MISSION'-DONE')    
-    if [[ $instStep2 == "0" ]]; then
-      printf "instance %s had been completed step2. continue to app restage/update\n" "$origInstName"
-      procDone "$origInstName" "$trgtInstName" "$count"
+    origInstName=$(findInstOfOrigin $line)
+    if [[ -z "$origInstName" ]]; then
+      ref=$(printf "%s app %s does not have URL routing\n" "$__ERR" "$1")
+      logger 'findInstOfOrigin' "$ref"
       continue
     fi
     
-    ref=$(updateInstURL $origInstName $trgtInstName)
-    if [[ $ref != "0" ]]; then
-      printf "instance %s failed in updateInstURL. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts
+    ref=$(instQualified4Step2 $line)
+    logger 'instQualified4Step2' "$ref"
+    if [[ $ref != *"$__PAS"* ]]; then
+      continue
+    fi
+    
+    ref1=$(updateInstURL $origInstName $trgtInstName)
+    if [[ $ref1 != "0" ]]; then
+      ref2=$(printf "%s instance %s failed in updateInstURL\n" "$__ERR" "$origInstName")
+      logger 'procStep2' "$ref2"
       continue
     fi
 
-    ref=$(setStep2CompletedEnv $trgtInstName)
-    if [[ $ref != "0" ]]; then 
-      printf "instance %s failed in setStep2CompletedEnv. continue to next instance.\n" "$origInstName" | tee ~failedProcStep2Insts
+    ref3=$(setStep2CompletedEnv $trgtInstName)
+    if [[ $ref3 != "0" ]]; then 
+      ref4=$(printf "%s instance %s failed in setStep2CompletedEnv\n" "$__ERR" "$origInstName")
+      logger 'procStep2' "$ref4"
       continue       
     fi
       
-    procDone "$origInstName" "$trgtInstName" "$count"
+    ref5=$(procDone "$origInstName" "$trgtInstName" "$count")
+    logger 'procDone' "$ref5"
+    if [[ $ref5 != *"$__PAS"* ]]; then      
+      continue
+    fi
+    
+    ref6=$(printf "%s instance %s has completed blue-green step 2 and added to the list\n" "$__PAS" "$1")
+    logger 'procStep2' "$ref6"
     
     #temp
     #return
   done < ~insts
-  
-  {
-    rm ~insts ~tmp
-  }
-
+  echo "step2 update completed."
+  checkInLogger 'procStep2'
+  checkInLogger 'procDone'
+  checkInLogger 'instQualified4Step2'
+  checkInLogger 'findInstOfOrigin'
+  return 0
 }
