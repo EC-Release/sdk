@@ -159,44 +159,37 @@ function verifyEnvs(){
 function setEnvs(){
   
   ref=$(verifyEnvs "$1")
-  logger 'verifyEnvs' "$ref"
-  checkInLogger 'verifyEnvs'
+  #logger 'verifyEnvs' "$ref"
+  #checkInLogger 'verifyEnvs'
   if [[ $ref != *"$__PAS"* ]]; then
       printf "%s instance %s failed verifying env variables" "$__ERR" "$1"
       return
-  fi  
+  fi
  
-  eval "sed -i -e 's|{{DOCKER_USERNAME}}|$DOCKER_USERNAME|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{GITHUB_TOKEN}}|$GITHUB_TOKEN|g' ./push/manifest.yml"    
-
-  eval "sed -i -e 's|{{MISSION}}|$MISSION|g' ./push/manifest.yml"
+  #~tmp
+ 
+  while read line; do
   
-  
-  eval "sed -i -e 's|{{ADMIN_PWD}}|$ADMIN_PWD|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{ADMIN_USR}}|$ADMIN_USR|g' ./push/manifest.yml"
-  
-  eval "sed -i -e 's|{{CF_API}}|$CF_API|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{CF_LOGIN}}|$CF_LOGIN|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{CF_PWD}}|$CF_PWD|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{CF_USR}}|$CF_USR|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{NUREGO_TKN_INS}}|$NUREGO_TKN_INS|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{NUREGO_TKN_PWD}}|$NUREGO_TKN_PWD|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{NUREGO_TKN_URL}}|$NUREGO_TKN_URL|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{NUREGO_TKN_USR}}|$NUREGO_TKN_USR|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{NUREGO_USAGE_FEATURE_ID}}|$NUREGO_USAGE_FEATURE_ID|g' ./push/manifest.yml" 
-  eval "sed -i -e 's|{{NUREGO_FEATURE_ID}}|$NUREGO_FEATURE_ID|g' ./push/manifest.yml" 
-  eval "sed -i -e 's|{{NUREGO_API_KEY}}|$NUREGO_API_KEY|g' ./push/manifest.yml" 
-  eval "sed -i -e 's|{{NUREGO_ENDPOINT}}|$NUREGO_ENDPOINT|g' ./push/manifest.yml" 
-  eval "sed -i -e 's|{{NR_KEY}}|$NR_KEY|g' ./push/manifest.yml" 
-  eval "sed -i -e 's|{{EC_PRVT_PWD}}|$EC_PRVT_PWD|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{ENV}}|2022|g' ./push/manifest.yml"
-  
-  eval "sed -i -e 's|{{ZAC_SERVICE_ID}}|$ZAC_SERVICE_ID|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{ZAC_UAA}}|$ZAC_UAA|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{ZAC_URL}}|$ZAC_URL|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{ZAC_CLIENT_ID}}|$ZAC_CLIENT_ID|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{ZAC_CLIENT_SECRET}}|$ZAC_CLIENT_SECRET|g' ./push/manifest.yml"
+    key=$(echo $line | awk '{print $1}')
+    key=$(echo ${key%:})
+    val=$(echo $line | grep "$key" | awk '{print $2}')
+    if [[ -z "$val" ]]; then
+        printf "%s instance %s failed parsing env key/value in this line (%s)" "$__ERR" "$1" "$line"
+        return
+    fi
     
+    ref=$(cat field_list.txt | grep -e "$key")
+    if [[ -z "$ref" ]]; then    
+      eval "sed -i -e 's|{{$key}}|$val|g' ./push/manifest.yml"    
+    fi
+    
+  done < $__CACHED_TEMPLATE_ENV
+  
+  #eval "sed -i -e 's|{{DOCKER_USERNAME}}|$DOCKER_USERNAME|g' ./push/manifest.yml"
+  #eval "sed -i -e 's|{{GITHUB_TOKEN}}|$GITHUB_TOKEN|g' ./push/manifest.yml"    
+
+  eval "sed -i -e 's|{{MISSION}}|$MISSION|g' ./push/manifest.yml"  
+  
   printf "%s instance %s updated env variables successful" "$__PAS" "$1"
 }
 
