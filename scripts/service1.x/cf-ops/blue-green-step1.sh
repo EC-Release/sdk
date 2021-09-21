@@ -40,7 +40,15 @@ function instQualifiedForStep1 () {
     printf "%s instance %s has had a cloned instance %s\n" "$__ERR" "$1" $zon'-'$MISSION
     return
   fi
-
+  
+  ref=$(verifyEnvs "$1")
+  logger 'verifyEnvs' "$ref"
+  checkInLogger 'verifyEnvs'
+  if [[ $ref != *"$__PAS"* ]]; then
+      printf "%s instance %s failed verify env variables" "$__ERR" "$1"
+      return
+  fi  
+  
   #condition deprecated
   #instStep2=$(hasEnvVar $1 'UPDATED: '$MISSION)
   #if [[ -z "$instStep2" ]]; then
