@@ -101,7 +101,7 @@ function getAppointedInsts () {
 #}
 
 #$1: app name
-function setEnvs(){
+function verifyEnvs(){
   cf env $1 > ~tmp 2>&1
   ref=$(cat ~tmp | grep -e 'FAILED')
   if [[ ! -z $ref ]]; then
@@ -132,6 +132,20 @@ function setEnvs(){
     return
   fi
   
+  printf "%s verify instance %s env variables successful" "$__PAS" "$1"
+}
+
+#$1: app name
+function setEnvs(){
+  
+  ref=$(verifyEnvs "$1")
+  logger 'verifyEnvs' "$ref"
+  checkInLogger 'verifyEnvs'
+  if [[ $ref != *"$__PAS"* ]]; then
+      printf "%s instance %s failed verifying env variables" "$__ERR" "$1"
+      return
+  fi  
+ 
   eval "sed -i -e 's|{{DOCKER_USERNAME}}|$DOCKER_USERNAME|g' ./push/manifest.yml"
   eval "sed -i -e 's|{{GITHUB_TOKEN}}|$GITHUB_TOKEN|g' ./push/manifest.yml"    
 
@@ -157,13 +171,13 @@ function setEnvs(){
   eval "sed -i -e 's|{{EC_PRVT_PWD}}|$EC_PRVT_PWD|g' ./push/manifest.yml"
   eval "sed -i -e 's|{{ENV}}|2022|g' ./push/manifest.yml"
   
-  eval "sed -i -e 's|{{ZAC_SERVICE_ID}}|ZAC_SERVICE_ID|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{ZAC_UAA}}|ZAC_UAA|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{ZAC_URL}}|ZAC_URL|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{ZAC_CLIENT_ID}}|ZAC_CLIENT_ID|g' ./push/manifest.yml"
-  eval "sed -i -e 's|{{ZAC_CLIENT_SECRET}}|ZAC_CLIENT_SECRET|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{ZAC_SERVICE_ID}}|$ZAC_SERVICE_ID|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{ZAC_UAA}}|$ZAC_UAA|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{ZAC_URL}}|$ZAC_URL|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{ZAC_CLIENT_ID}}|$ZAC_CLIENT_ID|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{ZAC_CLIENT_SECRET}}|$ZAC_CLIENT_SECRET|g' ./push/manifest.yml"
     
-  printf "%s instance %s updated env variables successful" "$__PAS" "$line"
+  printf "%s instance %s updated env variables successful" "$__PAS" "$1"
 }
 
 #$1: trgtInstName
