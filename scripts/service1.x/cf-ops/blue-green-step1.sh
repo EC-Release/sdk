@@ -42,6 +42,7 @@ function instQualifiedForStep1 () {
   fi
   
   ref=$(verifyEnvs "$1")
+  echo '$verifyEnvs: '$ref
   #logger 'verifyEnvs' "$ref"
   #checkInLogger 'verifyEnvs'
   if [[ $ref != *"$__PAS"* ]]; then
