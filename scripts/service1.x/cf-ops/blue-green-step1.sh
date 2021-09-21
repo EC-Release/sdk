@@ -42,8 +42,8 @@ function instQualifiedForStep1 () {
   fi
   
   ref=$(verifyEnvs "$1")
-  logger 'verifyEnvs' "$ref"
-  checkInLogger 'verifyEnvs'
+  #logger 'verifyEnvs' "$ref"
+  #checkInLogger 'verifyEnvs'
   if [[ $ref != *"$__PAS"* ]]; then
       printf "%s instance %s failed verify env variables" "$__ERR" "$1"
       return
