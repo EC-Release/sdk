@@ -137,8 +137,9 @@ function setEnvs(){
 
   eval "sed -i -e 's|{{MISSION}}|$MISSION|g' ./push/manifest.yml"
   
-  #
-  #eval "sed -i -e 's|{{ADMIN_TKN}}|$ADMIN_TKN|g' ./push/manifest.yml"
+  
+  eval "sed -i -e 's|{{ADMIN_PWD}}|$ADMIN_PWD|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{ADMIN_USR}}|$ADMIN_USR|g' ./push/manifest.yml"
   
   eval "sed -i -e 's|{{CF_API}}|$CF_API|g' ./push/manifest.yml"
   eval "sed -i -e 's|{{CF_LOGIN}}|$CF_LOGIN|g' ./push/manifest.yml"
@@ -149,7 +150,19 @@ function setEnvs(){
   eval "sed -i -e 's|{{NUREGO_TKN_URL}}|$NUREGO_TKN_URL|g' ./push/manifest.yml"
   eval "sed -i -e 's|{{NUREGO_TKN_USR}}|$NUREGO_TKN_USR|g' ./push/manifest.yml"
   eval "sed -i -e 's|{{NUREGO_USAGE_FEATURE_ID}}|$NUREGO_USAGE_FEATURE_ID|g' ./push/manifest.yml" 
+  eval "sed -i -e 's|{{NUREGO_FEATURE_ID}}|$NUREGO_FEATURE_ID|g' ./push/manifest.yml" 
+  eval "sed -i -e 's|{{NUREGO_API_KEY}}|$NUREGO_API_KEY|g' ./push/manifest.yml" 
+  eval "sed -i -e 's|{{NUREGO_ENDPOINT}}|$NUREGO_ENDPOINT|g' ./push/manifest.yml" 
+  eval "sed -i -e 's|{{NR_KEY}}|$NR_KEY|g' ./push/manifest.yml" 
+  eval "sed -i -e 's|{{EC_PRVT_PWD}}|$EC_PRVT_PWD|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{ENV}}|2022|g' ./push/manifest.yml"
   
+  eval "sed -i -e 's|{{ZAC_SERVICE_ID}}|ZAC_SERVICE_ID|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{ZAC_UAA}}|ZAC_UAA|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{ZAC_URL}}|ZAC_URL|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{ZAC_CLIENT_ID}}|ZAC_CLIENT_ID|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{ZAC_CLIENT_SECRET}}|ZAC_CLIENT_SECRET|g' ./push/manifest.yml"
+    
   printf "%s instance %s updated env variables successful" "$__PAS" "$line"
 }
 
