@@ -85,9 +85,8 @@ function bgStep1ClonePush () {
 
   printf "\nget appointed instances..\n"
   getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
-  cat ~insts
+  cat ~insts  
   
-  wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml  
   while read -r line; do
     
     ref=$(instQualifiedForStep1 $line)
@@ -97,8 +96,6 @@ function bgStep1ClonePush () {
     fi
       
     printf "continue push the cloned instance for service %s\n" "$line"
-    mkdir -p push
-    cp ./manifest.yml ./push/manifest.yml    
     
     ref=$(setEnvs "$line")
     logger 'setEnvs' "$ref"  
@@ -108,7 +105,7 @@ function bgStep1ClonePush () {
       continue
     fi
       
-    debugger 'bgStep1ClonePush' "$(cat ./push/manifest.yml)"
+    #debugger 'bgStep1ClonePush' "$(cat ./push/manifest.yml)"
       
     ref=$(pushService $line)
     logger 'pushService' "$ref"
