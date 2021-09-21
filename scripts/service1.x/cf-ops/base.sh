@@ -79,7 +79,7 @@ function login () {
 
 function cacheTemplateEnv () {
   #sleep 1
-  ref=$(eval '$'$__EC_TEMPLATE_INST)  
+  ref=$(eval 'echo $'$__EC_TEMPLATE_INST)
   printf "\ncaching template env vars from %s..\n" "$ref"  
   cf env $ref | grep -e ':' | awk '$1 ~ /:/ && $1 !~ "\"" && $1 !~ "-" {print}' > $__CACHED_TEMPLATE_ENV
 }
