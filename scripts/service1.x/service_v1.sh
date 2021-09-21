@@ -36,10 +36,8 @@ else
     
   case $OPS_NAME in
   1000)
-    login
-    
-    printf "\nexecute blue-green step 1\n\n"
-    
+    login    
+    printf "\nexecute blue-green step 1\n\n"    
     bgStep1ClonePush
     checkInLogger 'bgStep1ClonePush'
     #trap - EXIT ERR RETURN
