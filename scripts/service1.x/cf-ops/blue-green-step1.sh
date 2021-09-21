@@ -15,6 +15,7 @@ function pushService () {
     cat ./push/manifest.yml        
     cd ./push
     cf push --no-start > ~tmp 2>&1
+    cat ~tmp
     ref=$(cat ~tmp | grep -e 'FAILED')    
     if [[ -z "$ref" ]]; then
       printf "0"
