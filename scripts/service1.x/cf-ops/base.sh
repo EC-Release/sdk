@@ -110,12 +110,18 @@ function setEnvs(){
     return
   fi
   
-  missingFields=""
+  missingFields='=>'
   while read line; do
+    
     ref=$(cat ~tmp | grep $line | awk '{print $2}')
+    
     if [[ -z $ref ]]; then
-      missingFields="${missingFields}, ${line}"
-      continue
+      if [[ $line=="ADMIN_TKN" ]]; then
+        ref=$(getRandomStr)
+      else
+        missingFields="${missingFields}, ${line}"
+        continue
+      fi
     fi
     
     eval "sed -i -e 's|{{$line}}|$ref|g' ./push/manifest.yml"
@@ -130,6 +136,20 @@ function setEnvs(){
   eval "sed -i -e 's|{{GITHUB_TOKEN}}|$GITHUB_TOKEN|g' ./push/manifest.yml"    
 
   eval "sed -i -e 's|{{MISSION}}|$MISSION|g' ./push/manifest.yml"
+  
+  #
+  #eval "sed -i -e 's|{{ADMIN_TKN}}|$ADMIN_TKN|g' ./push/manifest.yml"
+  
+  eval "sed -i -e 's|{{CF_API}}|$CF_API|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{CF_LOGIN}}|$CF_LOGIN|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{CF_PWD}}|$CF_PWD|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{CF_USR}}|$CF_USR|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{NUREGO_TKN_INS}}|$NUREGO_TKN_INS|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{NUREGO_TKN_PWD}}|$NUREGO_TKN_PWD|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{NUREGO_TKN_URL}}|$NUREGO_TKN_URL|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{NUREGO_TKN_USR}}|$NUREGO_TKN_USR|g' ./push/manifest.yml"
+  eval "sed -i -e 's|{{NUREGO_USAGE_FEATURE_ID}}|$NUREGO_USAGE_FEATURE_ID|g' ./push/manifest.yml" 
+  
   printf "%s instance %s updated env variables successful" "$__PAS" "$line"
 }
 
