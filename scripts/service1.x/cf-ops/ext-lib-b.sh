@@ -39,7 +39,6 @@ function findInstOfOrigin () {
   #printf "$1 (unknown instance)\n" >> ~unknownProcStep2Insts
 }
 
-
 # unmap the url route $2 from the app name $1
 # $1: <app name>
 # $2: <URL route>
