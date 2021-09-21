@@ -15,8 +15,13 @@ function pushService () {
     cat ./push/manifest.yml        
     cd ./push
     cf push --no-start > ~tmp 2>&1
-    cat ~tmp
+    
+    if [[ $(cat ~tmp) != *"FAILED"* ]]; then
+      printf "0"
+    fi
+    
     cd -
+    printf "1"
 }
 
 #$1 cf app name
@@ -123,8 +128,9 @@ function bgStep1ClonePush () {
     #debugger 'bgStep1ClonePush' "$(cat ./push/manifest.yml)"
       
     ref=$(pushService "$appName")
-    if [[ "$ref" != *"$__PAS"* ]]; then
-      logger 'pushService' "$ref"    
+    if [[ "$ref" != "0" ]]; then
+      ref1=$(printf "%s pushService for instance %s unsuccessful\n" "$__ERR" "$appName")
+      logger 'pushService' "$ref1"
       continue
     fi
       
