@@ -105,7 +105,7 @@ function bgStep1ClonePush () {
       continue
     fi
     
-    ref=$(instQualifiedForStep1 $appName)
+    : 'ref=$(instQualifiedForStep1 $appName)
     if [[ $ref != *"$__PAS"* ]]; then
       logger 'instQualifiedForStep1' "$ref"
       continue
@@ -129,7 +129,7 @@ function bgStep1ClonePush () {
       
     setStep1CompletedEnv "$appName"
     printf "%s instance %s updated successful in step 1\n" "$__PAS" "$line")
-    #logger 'bgStep1ClonePush' "$ref"        
+    #logger 'bgStep1ClonePush' "$ref"'
       
   done < ~insts
   
