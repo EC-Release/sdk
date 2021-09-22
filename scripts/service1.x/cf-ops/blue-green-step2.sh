@@ -120,7 +120,7 @@ function procStep2 () {
     trgtInstName=${zon%-$MISSION}-$MISSION
     origInstName=$(findInstOfOrigin $line)
     if [[ -z "$origInstName" ]]; then
-      ref=$(printf "%s app %s does not have URL routing\n" "$__ERR" "$1")
+      ref=$(printf "%s app %s does not have URL routing\n" "$__ERR" "$line")
       logger 'procStep2' "$ref"
       continue
     fi
@@ -145,7 +145,7 @@ function procStep2 () {
       continue
     fi
     
-    ref6=$(printf "%s instance %s has completed blue-green step 2 and added to the list\n" "$__PAS" "$1")
+    ref6=$(printf "%s instance %s has completed blue-green step 2 and added to the list\n" "$__PAS" "$origInstName")
     logger 'procStep2' "$ref6"
     
     #temp
@@ -157,6 +157,63 @@ function procStep2 () {
   #checkInLogger 'procStep2'
   checkInLogger 'procDone'
   checkInLogger 'instQualified4Step2'
+  #checkInLogger 'findInstOfOrigin'
+  return 0
+}
+
+function procDoneStep2 () {
+
+  printf "\nget appointed instances..\n"
+  getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
+  cat ~insts
+  
+  printf "\nloop into instances in the appointed instance list..\n"
+  
+  count=-1
+  while read -r line; do
+    (( count++ ))
+    
+    url=$(findCurrentRouting "$line")
+    if [[ -z $url ]]; then
+      ref=$(printf "%s instance %s does not have a routing.\n" "$__ERR" "$line")
+      logger 'procDoneStep2' "$ref"
+      continune
+    fi
+
+    zon=$(echo $url | cut -d'.' -f 1)
+    uid=$(isUUID $zon)
+    if [[ $uid != "0" ]]; then
+      ref=$(printf "%s instance url %s does not appear to be a service instance.\n" "$__ERR" "$url")
+      logger 'procDoneStep2' "$ref"      
+      continue
+    fi
+  
+    trgtInstName=${zon%-$MISSION}-$MISSION
+    origInstName=$(findInstOfOrigin $line)
+    if [[ -z "$origInstName" ]]; then
+      ref=$(printf "%s app %s does not have URL routing\n" "$__ERR" "$line")
+      logger 'procDoneStep2' "$ref"
+      continue
+    fi
+      
+    ref5=$(procDone "$origInstName" "$trgtInstName" "$count")
+    if [[ "$ref5" != *"$__PAS"* ]]; then
+      logger 'procDone' "$ref5"    
+      continue
+    fi
+    
+    ref6=$(printf "%s instance %s updated successfully\n" "$__PAS" "$origInstName")
+    logger 'procDoneStep2' "$ref6"
+    
+    #temp
+    #return
+  done < ~insts
+  
+  echo "\n\nstep2 update completed.\n\n"
+  
+  #checkInLogger 'procStep2'
+  checkInLogger 'procDone'
+  #checkInLogger 'procDoneStep2'
   #checkInLogger 'findInstOfOrigin'
   return 0
 }
