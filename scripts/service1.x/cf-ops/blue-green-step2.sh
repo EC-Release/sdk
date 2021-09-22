@@ -103,7 +103,7 @@ function procStep2 () {
     fi
     
     url=$(findCurrentRouting "$line")
-    if [[ -z $url ]]; then
+    if [[ -z "$url" ]]; then
       ref=$(printf "%s instance %s does not have a routing.\n" "$__ERR" "$line")
       logger 'procStep2' "$ref"
       continune
