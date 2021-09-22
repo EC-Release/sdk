@@ -206,9 +206,9 @@ function updateDockerCred () {
   
   #echo $op >> ~debugger
   #cat ~tmp >> ~debugger
-  
+  cat ~tmp
   ref1=$(cat ~tmp | grep -e 'FAILED')
-  echo '$ref1: '$ref1
+  
   if [[ -z "$ref1" ]]; then
     printf "0"
     return
