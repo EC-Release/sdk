@@ -202,7 +202,7 @@ function updateDockerCred () {
   b=$(eval echo '$ec_'$ref'_username')
   op=$(printf "CF_DOCKER_PASSWORD=%s cf push %s --docker-image %s --docker-username %s" "$a" "$1" "$ec_img" "$b")
   #echo '$op: '$op
-  $op > ~tmp 2>&1
+  eval $op > ~tmp 2>&1
   
   #echo $op >> ~debugger
   #cat ~tmp >> ~debugger
