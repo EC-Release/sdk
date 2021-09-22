@@ -76,6 +76,7 @@ function procDone () {
     fi'
     
     ref=$(updateDockerCred "$2" "$3")
+    echo '$ref: '$ref
     if [[ $ref != "0" ]]; then
       printf "%s instance %s failed in updateDockerCred with the output %s.\n" "$__ERR" "$1" "$ref"
       return    
@@ -209,7 +210,7 @@ function procDoneStep2 () {
     #return
   done < ~insts
   
-  echo "\n\nstep2 update completed.\n\n"
+  printf "\n\nstep2 update completed.\n\n"
   
   #checkInLogger 'procStep2'
   checkInLogger 'procDone'
