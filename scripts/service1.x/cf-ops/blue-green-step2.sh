@@ -124,7 +124,7 @@ function procStep2 () {
       logger 'procStep2' "$ref"
       continue
     fi
-        
+    
     ref1=$(updateInstURL $origInstName $trgtInstName)
     if [[ "$ref1" != "0" ]]; then
       ref2=$(printf "%s instance %s failed in updateInstURL\n" "$__ERR" "$origInstName")
@@ -139,11 +139,11 @@ function procStep2 () {
       continue       
     fi
       
-    : 'ref5=$(procDone "$origInstName" "$trgtInstName" "$count")
+    ref5=$(procDone "$origInstName" "$trgtInstName" "$count")
     if [[ "$ref5" != *"$__PAS"* ]]; then
       logger 'procDone' "$ref5"    
       continue
-    fi'
+    fi
     
     ref6=$(printf "%s instance %s has completed blue-green step 2 and added to the list\n" "$__PAS" "$origInstName")
     logger 'procStep2' "$ref6"
@@ -152,7 +152,7 @@ function procStep2 () {
     #return
   done < ~insts
   
-  echo "\n\nstep2 update completed.\n\n"
+  printf "\n\nstep2 update completed.\n\n"
   
   #checkInLogger 'procStep2'
   #checkInLogger 'procDone'
