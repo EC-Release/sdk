@@ -179,7 +179,7 @@ function procDoneStep2 () {
       logger 'procDoneStep2' "$ref"
       continue
     fi
-
+    echo '$url: '$url
     zon=$(echo $url | cut -d'.' -f 1)
     uid=$(isUUID $zon)
     if [[ $uid != "0" ]]; then
