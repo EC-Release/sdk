@@ -196,6 +196,7 @@ function setEnvs(){
 #$1: trgtInstName
 #$2: current instance index
 function updateDockerCred () {
+  [[ -e manifest.yml ]] && rm manifest.yml
   eval $(parse_yaml docker-creds.yml)
   ref=$(expr $2 % 4)
   a=$(eval echo '$ec_'$ref'_token')
@@ -206,9 +207,8 @@ function updateDockerCred () {
   
   #echo $op >> ~debugger
   #cat ~tmp >> ~debugger
-  cat ~tmp
-  ref1=$(cat ~tmp | grep -e 'FAILED')
-  
+  #cat ~tmp
+  ref1=$(cat ~tmp | grep -e 'FAILED')  
   if [[ -z "$ref1" ]]; then
     printf "0"
     return
