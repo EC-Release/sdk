@@ -18,8 +18,8 @@ function findCurrentRouting () {
     ref=$(findUUID "$1")
     
     echo '$ref: '$ref
-    cat $__CACHED_ALL_ROUTES | grep -e "$ref"
-    cat $__CACHED_ALL_ROUTES | grep -e "$ref" | awk 'length($2)==36 {print $2"."$3}'
+    echo 'cat $__CACHED_ALL_ROUTES | grep -e "$ref"' $(cat $__CACHED_ALL_ROUTES | grep -e "$ref")
+    echo 'cat $__CACHED_ALL_ROUTES | grep -e "$ref" | awk length($2)==36 {print $2"."$3}' $(cat $__CACHED_ALL_ROUTES | grep -e "$ref" | awk 'length($2)==36 {print $2"."$3}')
     #echo "$ref1"
     
     #echo '$current_routes:' "$current_routes"
