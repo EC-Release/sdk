@@ -75,11 +75,16 @@ function procDone () {
       continue    
     fi'
     
-    ref=$(updateDockerCred "$2" "$3")
+    : 'ref=$(updateDockerCred "$2" "$3")
     if [[ $ref != "0" ]]; then
       printf "%s instance %s failed in updateDockerCred.\n" "$__ERR" "$1"
       return    
-    fi
+    fi'
+    
+    updateDockerCred "$2" "$3"
+    printf "%s instance %s failed in updateDockerCred.\n" "$__ERR" "$1"
+    return    
+    
 
     printf "%s instance %s has completed blue-green step 2 and added to the list\n" "$__PAS" "$1"
 }
