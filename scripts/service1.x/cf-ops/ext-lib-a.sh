@@ -15,7 +15,8 @@
 # $1: <app name>
 function findCurrentRouting () {
     
-    current_routes=$(cat $__CACHED_ALL_ROUTES | grep $1 | awk 'length($2)==36 {print $2"."$3}')
+    ref=$(findUUID "$1")
+    current_routes=$(cat $__CACHED_ALL_ROUTES | grep -e "$ref" | awk 'length($2)==36 {print $2"."$3}')
     
     if [[ ! -z "$current_routes" ]]; then
       printf "$current_routes"
