@@ -139,11 +139,11 @@ function procStep2 () {
       continue       
     fi
       
-    ref5=$(procDone "$origInstName" "$trgtInstName" "$count")
+    : 'ref5=$(procDone "$origInstName" "$trgtInstName" "$count")
     if [[ "$ref5" != *"$__PAS"* ]]; then
       logger 'procDone' "$ref5"    
       continue
-    fi
+    fi'
     
     ref6=$(printf "%s instance %s has completed blue-green step 2 and added to the list\n" "$__PAS" "$origInstName")
     logger 'procStep2' "$ref6"
@@ -155,7 +155,7 @@ function procStep2 () {
   echo "\n\nstep2 update completed.\n\n"
   
   #checkInLogger 'procStep2'
-  checkInLogger 'procDone'
+  #checkInLogger 'procDone'
   checkInLogger 'instQualified4Step2'
   #checkInLogger 'findInstOfOrigin'
   return 0
