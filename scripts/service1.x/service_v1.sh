@@ -82,10 +82,13 @@ else
     printf "\nrestort instance to the original state.\n\n"
     ;;
   1001)
+    login
+    
     printf "\nfinding problematic instances\n\n"
     getProblemInstances
   #"1001" | "1002")
-    [[ -e ~debugger ]] && cp ~debugger ./logs/debug.log
+    checkInLogger 'getProblemInstances'
+    exit 0
     ;;
   *)
     printf "\nno operations found\n\n"
