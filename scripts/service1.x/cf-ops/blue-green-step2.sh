@@ -48,10 +48,13 @@ function findInstsQualifiedForStep2 () {
   while read -r line; do
     
     ref=$(instQualified4Step2 $line)
-    logger 'instQualified4Step2' "$ref"
     if [[ $ref != *"$__PAS"* ]]; then
+      logger 'instQualified4Step2' "$ref"    
       continue
     fi
+    
+    ref1=$(printf "%s instance %s passed the verification for step 2\n" "$__PAS" "$line")
+    logger 'findInstsQualifiedForStep2' "$ref1"
     
   done < ~insts
   
