@@ -15,11 +15,11 @@
 function findInstOfOrigin () {
 
   #theOrigInst=$(echo $1 | awk -F'-2022' '{print $1}')
-  echo 'cat $__CACHED_ALL_ROUTES | grep -e "$1"'
-  cat $__CACHED_ALL_ROUTES | grep -e "$1"
+  #echo 'cat $__CACHED_ALL_ROUTES | grep -e "$1"'
+  #cat $__CACHED_ALL_ROUTES | grep -e "$1"
  
-  
-  theOrigInst=$(cat $__CACHED_ALL_ROUTES | grep -e "$1" | awk '{print $4}')
+  #__CACHED_ALL_ROUTES
+  theOrigInst=$(cat $__CACHED_ALL_ROUTES | grep -e "$1" | awk '$2 !~ /-2022/ {print $4}')
 
   #cf app $theOrigInst > ~tmp 2>&1
   #getApp=$(cat ~tmp | grep -e 'FAILED')
