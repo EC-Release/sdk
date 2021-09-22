@@ -18,17 +18,20 @@ function findInstOfOrigin () {
   #echo 'cat $__CACHED_ALL_ROUTES | grep -e "$1"'
   #cat $__CACHED_ALL_ROUTES | grep -e "$1"
  
+  ref=$(findUUID "$1")
+  cat $__CACHED_ALL_ROUTES | grep -e "$ref" | awk 'length($2)==36 {print $4}'
+  
   #__CACHED_ALL_ROUTES
-  theOrigInst=$(cat $__CACHED_ALL_ROUTES | grep -e "$1" | awk '$2 !~ /-2022/ {print $4}')
+  #theOrigInst=$(cat $__CACHED_ALL_ROUTES | grep -e "$1" | awk '$2 !~ /-2022/ {print $4}')
 
   #cf app $theOrigInst > ~tmp 2>&1
   #getApp=$(cat ~tmp | grep -e 'FAILED')
 
-  if [[ ! -z $theOrigInst ]]; then
+  #if [[ ! -z $theOrigInst ]]; then
     #printf "%s app name %s is identified" "$__PAS" "$theOrigInst"
-    printf "%s" "$theOrigInst"
-    return
-  fi
+  #  printf "%s" "$theOrigInst"
+  #  return
+  #fi
   
   #getEnv=$(cf e $theOrigInst | grep -e 'UPDATED: '$MISSION)
   : 'instStep1=$(hasEnvVar "$theOrigInst" 'UPDATED: '$MISSION)
