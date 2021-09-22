@@ -120,7 +120,7 @@ function procStep2 () {
     trgtInstName=${zon%-$MISSION}-$MISSION
     origInstName=$(findInstOfOrigin $line)
     if [[ -z "$origInstName" ]]; then
-      ref=$(printf "%s app %s does not have URL routing\n" "$__ERR" "$line")
+      ref=$(printf "%s app %s does not have a URL routing which contains MISSION \n" "$__ERR" "$line")
       logger 'procStep2' "$ref"
       continue
     fi
@@ -191,7 +191,7 @@ function procDoneStep2 () {
     trgtInstName=${zon%-$MISSION}-$MISSION
     origInstName=$(findInstOfOrigin $line)
     if [[ -z "$origInstName" ]]; then
-      ref=$(printf "%s app %s does not have URL routing\n" "$__ERR" "$line")
+      ref=$(printf "%s app %s does not have URL routing which contains MISSION\n" "$__ERR" "$line")
       logger 'procDoneStep2' "$ref"
       continue
     fi
