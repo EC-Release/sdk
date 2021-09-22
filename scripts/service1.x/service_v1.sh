@@ -67,6 +67,14 @@ else
     checkInLogger 'procStep2'
     exit 0
     ;;
+  1007)
+    login
+    
+    printf "\nupdate credential for instances have completed the blue-green step 2\n\n"
+    procDoneStep2
+    checkInLogger 'procDoneStep2'
+    exit 0
+    ;;
   1004)
     printf "\nclean up and remove the original instances\n\n"
     ;;
