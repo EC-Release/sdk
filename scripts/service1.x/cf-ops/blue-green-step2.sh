@@ -77,7 +77,7 @@ function procDone () {
     
     ref=$(updateDockerCred "$2" "$3")
     echo '$ref: '$ref
-    if [[ $ref != "0" ]]; then
+    if [[ "$ref" != "0" ]]; then
       printf "%s instance %s failed in updateDockerCred with the output %s.\n" "$__ERR" "$1" "$ref"
       return    
     fi    
