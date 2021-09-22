@@ -177,7 +177,7 @@ function procDoneStep2 () {
     if [[ -z $url ]]; then
       ref=$(printf "%s instance %s does not have a routing.\n" "$__ERR" "$line")
       logger 'procDoneStep2' "$ref"
-      continune
+      continue
     fi
 
     zon=$(echo $url | cut -d'.' -f 1)
