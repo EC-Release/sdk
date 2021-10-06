@@ -9,7 +9,7 @@ Engineers @EC embrace automation. With LEAN Agile doctrine in mind, our presence
 ### Behavioral Data Persistency
 @EC, we do not succumb any usage data owned by the subscribers to any authoritative business/entities and instead, EC provides a set of software utilities (e.g. distributed/embedded dataset) to collect the connectivity of data usage (optional) to help our subscribers better understand the usage for any business purposes.
 ### Zero-Trust Security
-@EC, we give the security privilige/our loyalty to our subscribers. We do not worship, or voluntarily give-in the domain trust to any cloud providers/vendors (i.e. aws, azure, gcloud) even it means to be a **"managed"** opensource project, this is to maintain the sustainable security model with Zero-tolerant No-trust policy promoted by National Institute of Standards and Technology ([NIST No-Trust paper](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf)), and aligning with our continue effort in chartering with [CVE](https://cve.mitre.org/).
+@EC, we give the security privilige/our loyalty to our subscribers. We do not worship, or voluntarily give-in the domain trust to any cloud providers/vendors (i.e. aws, azure, gcloud, serviceNow, smartsheet) even it means to be a **"managed"** opensource project, this is to maintain the sustainable security model with Zero-tolerant No-trust policy promoted by National Institute of Standards and Technology ([NIST No-Trust paper](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf)), and aligning with our continue effort in chartering with [CVE](https://cve.mitre.org/).
 
 
 ## Disclaimer
