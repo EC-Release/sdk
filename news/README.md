@@ -1,7 +1,7 @@
 ## Release Theme (2021.10)
 
 ### Visualisation. A Unified Control-Plane
-EC Portal which currently in beta, providing pretigeous subscribers the first-handed experience in visualising the connectivty via the existing agent (1.x/2.x) topology. Additionally, it further enables the process-level control-access with a browser-basis unix terminal without any dependancies from any ISVs. All you need is a modern browser to unlease the power of the control-plane.
+EC Portal which currently in beta, providing subscribers the first-hand experience in visualising the connectivty via the existing agent (1.x/2.x) topology. Additionally, it further enables the process-level control-access with a browser-basis unix terminal without any dependancies from any ISVs. All you need is a modern browser to unlease the power of the control-plane.
 ### Segmental Business Governance
 Since 2.x beta release (introduced in the 4rd quarter '20), EC @R&D began pivoting on its tenency model named Security-Domain Controller (SDC). The tenancy model @SDC not only gives the security governance back to individual subscriber/business unit, but assists the EC connectivity-as-a-service to achieve the **true De-Centralisation** (based on [LIBRA, an opensource blockchain project](https://github.com/LIBRA-Release/libra)), making the **"De-Central"** no longer just a slogan. 
 ### Machine-Driven Business Operation
