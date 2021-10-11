@@ -1,5 +1,11 @@
 ## Release Theme (2021.10)
 
+### EC2.0 End to End Connectivity
+Deploy an EC2.0 gateway in EKS environment with SDC integration and test the end to end connectivity with renewed model 
+### Machine learning SDC Integration and Packaging
+Integrate the machine learning application with one of Security Domain Conreollers (SDC) and packgaged to run in a containerized enviroment. 
+### Certificates Renewal
+Certificates update to Enterprise connect 1.x service instances running in cloud foundry US West, Europe and Gov Cloud environments.
 ### Visualisation. A Unified Control-Plane
 EC Portal which currently in beta, providing subscribers the first-hand experience in visualising the connectivty via the existing agent (1.x/2.x) topology. Additionally, it enables the process-level control-access with a browser-basis unix terminal without any dependancies from any ISVs. All you need is a modern browser to unlease the power of the control-plane.
 ### Segmental Business Governance
