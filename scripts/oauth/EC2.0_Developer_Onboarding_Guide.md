@@ -11,7 +11,8 @@ Every EC developer should have license to access the resources
 
 Note: Passphrase is secured and can't be recovered. So please save the passphrase in a secure location. 
 
-(create-license.png)
+<img width="1178" alt="create-license-request" src="https://user-images.githubusercontent.com/38732583/137537515-33f26b63-e7e9-4704-90b0-84a6f6371451.png">
+
 
 - Workflow will create the PR as result to create the license and reviewers will approve the PR based on details to generate the license
 
@@ -22,6 +23,9 @@ Note: Passphrase is secured and can't be recovered. So please save the passphras
 - Go to [certifactory](https://github.com/EC-Release/certifactory) repo and go to 'Actions'
 
 - Select 'Hash Generator (Beta)' workflow. Fill the form with license id and passphrase
+
+<img width="1152" alt="hash-generator" src="https://user-images.githubusercontent.com/38732583/137540272-db3918e3-829b-4ce9-8393-aa2ebe8c876f.png">
+
 
 - Email will be generated with generated owner hash and valid for 90 days
 
