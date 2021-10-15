@@ -3,9 +3,10 @@
 ### On Oct-15 '21
 
 #### **Meeting Subject**: KT Series - SDC Integration with DC Service Cloud 
+#### **Audience**: developers, stakeholders, anybody who wants to understand more about SDC.
 
 As part of this KT series, we are providing the following information that is crucial for integration with SDC:
-1. Link to the [SDC onboarding Guide](https://github.com/ramaraosrikakulapu/sdk/blob/disty/scripts/oauth/EC2.0_Developer_Onboarding_Guide.md)
+1. Link to the [SDC onboarding Guide](https://github.com/ramaraosrikakulapu/sdk/blob/disty/scripts/oauth/EC2.0_Developer_Onboarding_Guide.md).
 2. Links to the SDC Swagger APIs that are available to be consumed for SDC integration. The swagger documentation provides all the details as to how these APIs can be utilized on need basis.
     1. Universal WebApp APIs - These APIs are organized into 3 sections and can be used to perform the following functions:
         1. Dataset: designed to allow users to perform CRUD operations on the Dataset.
