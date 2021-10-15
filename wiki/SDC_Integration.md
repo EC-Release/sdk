@@ -28,10 +28,11 @@ Here is the [swagger-link](https://dc-oauth-sso.run.aws-usw02-dev.ice.predix.io/
 3. In addition to this, we will show a working demo of ML-Portal that is validating the token through SDC APIs.
 4. We will also show a working demo of EC-Portal that is already integrated with SDC.
 
-Here is the agenda for each day:
-Monday - Basic intro of SDC
-Tuesday - Intermediate session
-Wednesday - Advanced topics
-Thursday - demo
+#### Here is the agenda for each day:
+
+1. Monday - Basic intro of SDC
+2. Tuesday - Intermediate session
+3. Wednesday - Advanced topics
+4. Thursday - demo
 
 We are looking forward to work with our sister teams and share our knowledge on how to implement SDC so that we all can comply with the SDC guidelines to build a secure & stable system.
