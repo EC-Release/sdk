@@ -83,5 +83,7 @@ Below steps will help to deploy seeder application in a CF environment
 
 - Go to the swagger page of deployed app 
 
+- Use admin hash generated while creating the license Or generated from [Owner hash generation](https://github.com/ramaraosrikakulapu/sdk/blob/disty/scripts/oauth/EC2.0_Developer_Onboarding_Guide.md#owner-hash-generation)
+
 <img width="1056" alt="gen-refresh-hash" src="https://user-images.githubusercontent.com/38732583/137744568-f45dbdba-230d-4256-b709-ecba1c1b66e2.png">
 
