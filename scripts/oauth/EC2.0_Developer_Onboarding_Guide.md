@@ -37,9 +37,9 @@ Note: Following activity can be performed only by licensed user and have access 
 
 - Go to the SDC swagger page like [ec-oauth-sso](https://ec-oauth-sso.run.aws-usw02-dev.ice.predix.io/v1.2beta/assets/swagger-ui/) and authenticate with license id and refreshed hash
 
-(add-license-to-sdc.png)
-
 - Use "POST /{rev}/licenses" API to add new license to SDC
+
+<img width="1059" alt="Add-license-to-sdc" src="https://user-images.githubusercontent.com/38732583/137737629-e7b17128-1810-41d2-b4af-7ee4196f11b9.png">
 
 #### Deploy seeder application
 
@@ -73,7 +73,7 @@ Below steps will help to deploy seeder application in a CF environment
 
 - Use any application in cluster for `EC_SEED_NODE` property
 
-- Start the application
+- Start the application in cf or deploy application in EKS with [helmcharts](https://github.com/EC-Release/helmcharts/tree/disty/webportal)
 
     ```
     cf start <application-name>
