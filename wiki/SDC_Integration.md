@@ -34,3 +34,13 @@ As part of this KT series, we are providing the following information that is cr
 4. Thursday - demo
 
 We are looking forward to work with our sister teams and share our knowledge on how to implement SDC so that we all can comply with the SDC guidelines to build a secure & stable system.
+
+#### SDC KT
+10/18:
+Following are the topics covered -
+
+Introduction to SDC, architecture and high level overview
+SDC features - multiple tenancy capabilities
+SDC integration with GE federated service
+SDC custom scopes and mapping to default OIDC scopes
+Deployment topology in EKS
