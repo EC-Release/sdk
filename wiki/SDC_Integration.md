@@ -1,31 +1,30 @@
 ## SDC Integration for DC Service Cloud
 
 ### On Oct-19 '21
+**Meeting Subject**: KT Series - SDC Integration with DC Service Cloud 
 
-MoM SDC KT - 10/19/2021:
-
-Attendees: Srinivas, Deepak, Shubham, Shruti, Mahesh, Srujana, Firdous, Ripu, Chia, Ram, Puja
-
+**Attendees**: Srinivas, Deepak, Shubham, Shruti, Mahesh, Srujana, Firdous, Ripu, Chia, Ram, Puja
 1. Provided high-level architecture overview of APIs and their usage for SDC as well as embedded db
 2. Provided all the details about Universal WebApp APIs by showing sample requests & responses:
-   1. Showed how we can use “Dataset” APIs to perform Create/Read/Update/Delete operations on a dataset in embedded db in a flexible & secured manner.
-   2. Showed how we can use “System” APIs to get the list of seeders in the cluster.
-   3. Showed how we can use “Cryptography” APIs to get ‘refreshed-hash’ from Owner’s hash.  
+    1. Showed how we can use “Dataset” APIs to perform Create/Read/Update/Delete operations on a dataset in embedded db in a flexible & secured manner.
+    2. Showed how we can use “System” APIs to get the list of seeders in the cluster.
+    3. Showed how we can use “Cryptography” APIs to get ‘refreshed-hash’ from Owner’s hash.  
 3. Explained about Owner’s hash & Refreshed-hash and why we use them.
 4. Provided high-level overview of LIBRA and why we are using it for SDC.
 5. Provided high-level overview of Blockchain Clusters and why we maintain two separate Clusters - one for SDC and the other for data-storage.
 6. Provided details about SDC APIs:
-   1. Explained “Scope” APIs and how they can be used to perform CRUD operations to define internal scopes.
-   2. Explained “OIDC Scope APIs” and how they can be used to handle OIDC integrations.
-   3. Explained how “System” APIs can be used to restart SDC instances and get seeder information.
-   4. Explained how “User” APIs can be used to manage User information.
-   5. Explained how “Licensing” works through “Tenancy” APIs and how we use x509 for encryption & security.
-   6. Explained how “Transaction” APIs can be used to create & manage new subscriptions.
+    1. Explained “Scope” APIs and how they can be used to perform CRUD operations to define internal scopes.
+    2. Explained “OIDC Scope APIs” and how they can be used to handle OIDC integrations.
+    3. Explained how “System” APIs can be used to restart SDC instances and get seeder information.
+    4. Explained how “User” APIs can be used to manage User information.
+    5. Explained how “Licensing” works through “Tenancy” APIs and how we use x509 for encryption & security.
+    6. Explained how “Transaction” APIs can be used to create & manage new subscriptions.
 7. Explained how Transaction-flow works and how Subscriptions are translated into digital-transactions.
 
 ### On Oct-18 '21
+**Meeting Subject**: KT Series - SDC Integration with DC Service Cloud 
 
-Attendees: Mahesh, Firdous, Srujana, Deepak, Prasad, Shubham, Chia, Puja and Ram
+**Attendees**: Mahesh, Firdous, Srujana, Deepak, Prasad, Shubham, Chia, Puja and Ram
 
 Topics covered in KT session - 
 - Introduction to SDC, architecture and high level overview
