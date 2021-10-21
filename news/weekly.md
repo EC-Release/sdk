@@ -5,10 +5,20 @@
 #### Customer Engagement:
 1. today's call did not go as planned as the attendee gave no show.
 
+#### EC 2.x
+1. [DTEC-186](https://ge-dw.aha.io/features/DTEC-186) Continue SDC Training series on daily basis. Document/KT the usage of SDC/Unified WebApp APIs by the demo of ML Portal & EC Portal integrations. (Team)
+2. [DTEC-179](https://ge-dw.aha.io/features/DTEC-179) Integrate ML API Endpoint with UI, so that the user can upload EC Service Logs from UI. (Puja)
+3. [DTEC-180](https://ge-dw.aha.io/features/DTEC-180) Containerize the ML-Portal as a single app with ML-API Endpoint being embedded in UI to make it more user-friendly, so that the users can use a single endpoint to access the api-endpoint as well as the UI. (Puja)
+
 ### EC Team Update (2021.10.20)
 #### Ops Supports:
 1. Ops continues struggling in several service updated, regardless the [preliminary progress on the documentation](https://github.build.ge.com/digital-connect-devops/ec-ccl-214-migration) we have supported, there is no documentation effort done. The project labeled **Perceptive Prod EC Issue** is another example in repeating the effort over [the similar issue](https://spo-mydrive.ge.com/:o:/g/personal/212359746_ge_com/ElLLpJEbi2xLlVPDDxLUke4BhQw5Sd5XcBwlUTt4e4q1tg?e=WydGBg)
 2. The support priority resulting in the product team had to cancel the SDC occurence series and push back key deliverables.
+
+#### EC 2.x
+1. [DTEC-179](https://ge-dw.aha.io/features/DTEC-179) Integrate ML API Endpoint with UI, so that the user can upload EC Service Logs from UI. (Puja)
+2. [DTEC-180](https://ge-dw.aha.io/features/DTEC-180) Containerize the ML-Portal as a single app with ML-API Endpoint being embedded in UI to make it more user-friendly, so that the users can use a single endpoint to access the api-endpoint as well as the UI. (Puja)
+
 
 ### EC Team Update (2021.10.19)
 
@@ -29,10 +39,30 @@
    3. Document the adoption progress and share feedback from the group to the group. (Team)
    4. Work with developers to PRs the document/Wiki for the SDC usage/high-level concept. (Team)
    5. Document MoM for each KT session. (Team)
-   6. [DTEC-179](https://ge-dw.aha.io/features/DTEC-179) Document/KT the usage of SDC/Unified WebApp APIs by the demo of ML Portal integration. (Team)
-   7. [DTEC-185](https://ge-dw.aha.io/features/DTEC-185) Create Microsoft Threat-Models for security engaging purpose. (Puja)
-2. [DTEC-175](https://ge-dw.aha.io/features/DTEC-175) Continue on developing the e2e connectivity demo. (ay/Ram)
-3. [DTEC-178](https://ge-dw.aha.io/features/DTEC-178) Document user guide for SDC/EC 2.x adoption. PRs in progress. (Team)
+   6. [DTEC-186](https://ge-dw.aha.io/features/DTEC-186) Continue SDC Training series on daily basis. Document/KT the usage of SDC/Unified WebApp APIs by the demo of ML Portal & EC Portal integrations. (Team)
+2. [DTEC-179](https://ge-dw.aha.io/features/DTEC-179) Integrate ML API Endpoint with UI, so that the user can upload EC Service Logs from UI. (Puja)
+3. [DTEC-180](https://ge-dw.aha.io/features/DTEC-180) Containerize the ML-Portal as a single app with ML-API Endpoint being embedded in UI to make it more user-friendly, so that the users can use a single endpoint to access the api-endpoint as well as the UI. (Puja)
+4. [DTEC-175](https://ge-dw.aha.io/features/DTEC-175) Continue on developing the e2e connectivity demo. (ay/Ram)
+5. [DTEC-178](https://ge-dw.aha.io/features/DTEC-178) Document user guide for SDC/EC 2.x adoption. PRs in progress. (Team)
+
+### SDC KT (2021.10.19)
+**Attendees**: Srinivas, Deepak, Shubham, Shruti, Mahesh, Srujana, Firdous, Ripu, Chia, Ram, Puja
+1. Provided high-level architecture overview of APIs and their usage for SDC as well as embedded db
+2. Provided all the details about Universal WebApp APIs by showing sample requests & responses:
+    1. Showed how we can use “Dataset” APIs to perform Create/Read/Update/Delete operations on a dataset in embedded db in a flexible & secured manner.
+    2. Showed how we can use “System” APIs to get the list of seeders in the cluster.
+    3. Showed how we can use “Cryptography” APIs to get ‘refreshed-hash’ from Owner’s hash.  
+3. Explained about Owner’s hash & Refreshed-hash and why we use them.
+4. Provided high-level overview of LIBRA and why we are using it for SDC.
+5. Provided high-level overview of Blockchain Clusters and why we maintain two separate Clusters - one for SDC and the other for data-storage.
+6. Provided details about SDC APIs:
+    1. Explained “Scope” APIs and how they can be used to perform CRUD operations to define internal scopes.
+    2. Explained “OIDC Scope APIs” and how they can be used to handle OIDC integrations.
+    3. Explained how “System” APIs can be used to restart SDC instances and get seeder information.
+    4. Explained how “User” APIs can be used to manage User information.
+    5. Explained how “Licensing” works through “Tenancy” APIs and how we use x509 for encryption & security.
+    6. Explained how “Transaction” APIs can be used to create & manage new subscriptions.
+7. Explained how Transaction-flow works and how Subscriptions are translated into digital-transactions.
 
 ### SDC KT (2021.10.18)
 Following are the topics covered -
