@@ -1,9 +1,14 @@
 ### EC Team Update (2021.10.21)
 #### Ops Supports:
-1. **Perceptive Prod EC Issue** again..
+**Perceptive Prod EC Issue** 
+1. Intermittant connection failure when connecting to onprem API 'emsappo-prd.cloud.ge.com' from EKS TC
+2. Upon debug, identified API is resolvable from EKS. So advised to test connectivity with no EC
 
 #### Customer Engagement:
+**Upgrade Wabtec SMTP to prod env**:
 1. today's call did not go as planned as the attendee gave no show.
+2. Updated EC client with new configuration under production subscription
+3. Shared the EC server script with customer to update and relaunch
 
 ### EC Team Update (2021.10.20)
 #### Ops Supports:
