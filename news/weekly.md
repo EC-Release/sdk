@@ -1,3 +1,13 @@
+### EC Team Update (2021.10.22)
+#### Customer Engagement:
+**Upgrade Wabtec npn-prod env**:
+1. EC Server agent throwing 'glist not found' error
+2. Identified the root cause and found 2 server agents are running, which causes the glist error and the issue is fixed.
+3. Working on other issue for fixing the connectivity at gateway to create session object for EC connection
+
+**Service instances memory optimization**:
+1. Working on fix to reduce the consumed memory by EC service instances in US West CF environment.
+
 ### EC Team Update (2021.10.21)
 #### Ops Supports:
 **Perceptive Prod EC Issue** 
