@@ -8,6 +8,11 @@
 **Service instances memory optimization**:
 1. Working on fix to reduce the consumed memory by EC service instances in US West CF environment.
 
+#### EC 2.x
+1. [DTEC-186](https://ge-dw.aha.io/features/DTEC-186) Continue SDC Training series on daily basis. Document/KT the usage of SDC/Unified WebApp APIs by the demo of ML Portal & EC Portal integrations. (Team)
+2. [DTEC-179](https://ge-dw.aha.io/features/DTEC-179) Integrate ML API Endpoint with UI, so that the user can upload EC Service Logs from UI. (Puja)
+3. [DTEC-180](https://ge-dw.aha.io/features/DTEC-180) Containerize the ML-Portal as a single app with ML-API Endpoint being embedded in UI to make it more user-friendly, so that the users can use a single endpoint to access the api-endpoint as well as the UI. (Puja)
+
 ### EC Team Update (2021.10.21)
 #### Ops Supports:
 **Perceptive Prod EC Issue** 
