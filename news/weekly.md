@@ -1,3 +1,17 @@
+### EC Team Update (2021.10.26)
+#### Customer Engagement:
+**Aviation DMRO stage env**:
+1. EC server agents showing 'glist not found' error
+2. Identified 2 server agents in unsed state and not restarted after cert migration and causing the empty glist error
+3. Restarted the unused EC server agents and all EC connections started functioning normal
+
+### EC Team Update (2021.10.25)
+#### Customer Engagement:
+**Upgrade Wabtec non-prod env**:
+1. Genpact QA EC connection - fixed and confirmed by customers
+2. Upgraded SMTP connection to prod - confirmed by customers
+3. Genpact EC connection - WIP (Pending with customers to update the scripts)
+
 ### EC Team Update (2021.10.22)
 #### Customer Engagement:
 **Upgrade Wabtec npn-prod env**:
