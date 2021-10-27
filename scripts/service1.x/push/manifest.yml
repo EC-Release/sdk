@@ -2,7 +2,7 @@
 applications:
  - name: {{ZONE}}-{{MISSION}}
    host: {{ZONE}}-{{MISSION}}
-   memory: {{MEMORY}}
+   memory: 128M
 docker:
     image: enterpriseconnect/service:v1
     #username: {{DOCKER_USERNAME}}
