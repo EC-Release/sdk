@@ -17,7 +17,7 @@ if [[ ! -z "${EC_PPS}" ]]; then
 fi
 
 if [[ ! -z "${PORT}" ]]; then
-  export EC_GPT=$PORT
+  export EC_GPT=:$PORT
 fi
 
 if [[ $* == *-cvt* ]]; then
