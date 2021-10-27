@@ -104,7 +104,7 @@ function getAllInsts () {
 function getAppointedInsts () {
   if [[ $PRIORITY_FILE == "0" ]]; then
     printf "getting all cf instances..\n"
-    cp __CACHED_ALL_INSTS ~tmp
+    cp $__CACHED_ALL_INSTS ~tmp
   else 
     printf "getting appointed cf instances..\n"
     cp $PRIORITY_FILE ~tmp
