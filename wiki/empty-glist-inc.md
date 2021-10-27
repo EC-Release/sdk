@@ -12,4 +12,5 @@ A EC 1.x Server agent stops working due to an empty gateway list rendered by the
 ### Impacted EC connections
 Aviation DMRO - stage
 Wabtech GENEYSIS - stage
-Perceptives SAP ERP's
+Perceptives SAP ERP's - prod
+Corp Sandbox preprod
