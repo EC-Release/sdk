@@ -2,6 +2,7 @@
 applications:
  - name: {{ZONE}}-{{MISSION}}
    host: {{ZONE}}-{{MISSION}}
+   memory: {{MEMORY}}
 docker:
     image: enterpriseconnect/service:v1
     #username: {{DOCKER_USERNAME}}
