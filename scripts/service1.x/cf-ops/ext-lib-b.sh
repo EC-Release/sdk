@@ -60,3 +60,16 @@ function updateInstURL () {
 
   printf "0"
 }
+
+function adhocMemScaling () {
+  cf a > ~tmp
+  cat ~tmp | grep -e '-2022' | grep -e 'started' | awk '$4=="1G" {print $1}' > ~adhoc
+  while read -r line; do
+    
+cf scale $line -m 128M <<MSG
+yes
+MSG
+    
+  done < ~adhoc
+  
+}
