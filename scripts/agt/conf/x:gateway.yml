@@ -18,7 +18,7 @@ ec-config:
   # group to permit the access of connectivity
   subGroup:  
   - name: x-pilot
-    ids: ["0dd8ab7b-9b78-4283-ad21-586636f7bad1", "055fd56b-bdfb-4de7-9453-404f6750203b", "eb4945e8-8693-4aef-a34a-c97b81e1c163"]
+    ids: ["4b160bb1-6b5b-4271-b68b-e4ebf0845b49",$EC_CID]
   - name: x-postgres
     ids: ["0dd8ab7b-9b78-4283-ad21-586636f7bad1", "<some-other-uuid1>"]
   #plugins:
