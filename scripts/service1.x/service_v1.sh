@@ -81,6 +81,12 @@ else
   1005)
     printf "\nrestort instance to the original state.\n\n"
     ;;
+  1008)
+    login    
+    printf "\nad-hoc memory scaling on 2022 insts (1G->128M)\n\n"
+    adhocMemScaling
+    exit 0
+    ;;
   1001)
     login
     
