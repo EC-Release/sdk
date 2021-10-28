@@ -10,9 +10,9 @@
 #### Service Update
 - Team exercise for creating the automation script to mitigate the memory usage.
 - Analysis a possible business impact.
-- Team to deployed the script ASAP to avoid any memory spike usage/charges from @Predix.
+- Team concluded to deploy the script ASAP to avoid any memory spike charges from @Predix. [See log](https://github.com/EC-Release/service-update/runs/4024281070?check_suite_focus=true)
 - Team decided to de-prioritise the collaboration as the broker remains unchanged.
-- Team will work on the broker improvement to mitigate any service subscription.
+- Team will work on the broker improvement to mitigate any service subscription going forward.
 
 #### EC Service Tile
 There appears to be some broken linkage to EC subscription @Predix.io, but the concern has been clarified by Mary @Digital
