@@ -62,9 +62,9 @@ Note: Passphrase is secured and can't be recovered. So please save the passphras
   helm dependency update sdc-app
   ```
   
-- Update values.yaml ad referenced [here](https://github.com/EC-Release/helmcharts/blob/v1/k8s/oauth/values.yaml) and update following details - 
-  - `global.oauthConfig` section
-  - `withIngress`/`withExtIngress` sections
+- Update values.yaml as referenced [here](https://github.com/EC-Release/helmcharts/blob/v1/k8s/oauth/values.yaml) and update following sections - 
+  - `global.oauthConfig`
+  - `withIngress`/`withExtIngress`
 
 - Verify the componenets
 
