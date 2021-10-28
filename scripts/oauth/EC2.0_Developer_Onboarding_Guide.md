@@ -29,6 +29,68 @@ Note: Passphrase is secured and can't be recovered. So please save the passphras
 
 - Email will be generated with generated owner hash and valid for 90 days
 
+#### Deploy SDC
+
+##### Deploy SDC in EKS
+
+**Notes**: Following steps involve usage of helm and kubectl. So please make sure to install them. Also should be able to connect to the EKS environment (using gossamer3 or etc)
+
+- Create the DNS request with pretty name you want against the ELB deployed infront of EKS
+
+- Create application with helm
+  
+  ```
+  helm create sdc-app
+  ```
+  
+- Add oauth dependencies to charts.yaml
+
+  ```
+  dependencies:
+  - name: oauth
+    version: 0.1.6
+    repository: "https://raw.githubusercontent.com/EC-Release/helmcharts/disty/oauth/0.1.6"
+  ```
+  
+  Please find the latest oauth helm packages [here](https://github.com/EC-Release/helmcharts/tree/disty/oauth)
+  
+- No additional components required. So delete all components in templates folder.
+
+- Update the dependencies
+
+  ```
+  helm dependency update sdc-app
+  ```
+  
+- Update values.yaml ad referenced [here](https://github.com/EC-Release/helmcharts/blob/v1/k8s/oauth/values.yaml) and update following details - 
+  - `global.oauthConfig` section
+  - `withIngress`/`withExtIngress` sections
+
+- Verify the componenets
+
+  ```
+  helm template sdc-app sdc-app -f sdc-app/values.yaml
+  ```
+  
+- Install SDC app in EKS
+
+  ```
+  helm install sdc-app sdc-app -f sdc-app/values.yaml
+  ```
+
+##### Deploy SDC in CF
+
+- Push the application to the CF
+
+  ```
+  cf push sdc-app --docker-image enterpriseconnect/api:v1.2beta --no-start
+  ```
+
+- Set the [environment variables](https://github.com/EC-Release/helmcharts/blob/d1cccc17cdc60e6182ae212c0cfa17e233e4d154/k8s/oauth/values.yaml#L101) to the application by `cf set-env` command
+
+- Restage the app
+
+
 #### Add license to SDC
 
 - Select the SDC component to add license
