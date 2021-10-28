@@ -1,3 +1,23 @@
+### EC Team Update (2021.10.27)
+#### Sprint Demo
+##### EC 2.x CAAS Demo.
+- Begin with the feature details, 
+- LEAN value stream, 
+- config/settings, 
+- then jump in to the end-to-end demo with SSH connectivity.
+- Made the video available in Teams recording.
+
+#### Service Update
+- Team exercise for creating the automation script to mitigate the memory usage.
+- Analysis a possible business impact.
+- Team to deployed the script ASAP to avoid any memory spike usage/charges from @Predix.
+- Team decided to de-prioritise the collaboration as the broker remains unchanged.
+- Team will work on the broker improvement to mitigate any service subscription.
+
+#### EC Service Tile
+There appears to be some broken linkage to EC subscription @Predix.io, but the concern has been clarified by Mary @Digital
+
+
 ### EC Team Update (2021.10.26)
 #### Customer Engagement:
 **Aviation DMRO stage env**:
