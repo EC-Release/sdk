@@ -1,5 +1,34 @@
 ## SDC Integration for DC Service Cloud
 
+### On Oct-25 '21
+**Meeting Subject**: KT Series - SDC Hands-on II
+**Attendees**: Ram, Puja, Shubham, Nirat, Temina, Srinivas, Mike, Ripu, Mahesh, Deepak, Marion
+1. Recap from the Hands-on I
+2. Explain the steps to validate a product subscription and break down to the following-
+    3. Register Local Scopes.
+    4. Create Scope Indexes.
+    5. Validate SDC Bearer Token
+    6. Validate User Detail.
+    7. Validate Transaction Detail
+3. Introduce the transactional digital currency exchange with its usage in SDC, and the data expected in the SDC API.
+
+
+### On Oct-21 '21
+**Meeting Subject**: KT Series - SDC Hands-on I
+**Attendees**: Prasad, Puja, Deepak, Mahesh, Virgillio, Shubham, Firdous, Nirat, Ajay, Ram, Apolo, Srinivas
+1. Explain the License Acquirement, Seeder Framework, with typescript code snippet (SDC Flow), and the flow to validate Subscription.
+2. Explain the Steps to get licensed.
+    1. How to get licensed
+    2. Submit Beta License Request.
+    3. Attend minimum three SDC Training sessions.
+    4. Score 80/100 in the Knowledge Test.
+    5. Owner of a Seeder instance. 
+    6. Owner of a SDC instance.
+3. walk-thru a typescript code-snippet.
+
+
+
+
 ### On Oct-19 '21
 **Meeting Subject**: KT Series - SDC Integration with DC Service Cloud 
 
