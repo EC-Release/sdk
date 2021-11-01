@@ -1,3 +1,13 @@
+### EC Team Update (2021.10.29)
+#### Customer Engagement:
+- Perceptive SAP ERP's - Deploy EC client in EKS with custom agent version
+
+### EC Team Update (2021.10.28)
+#### Customer Engagement:
+- Aviation AOA non prod EC Server. Fixed the network route to the service instance.
+- 'no glist found' error for power ec connections
+- KT Session and demo on EKS topology and SDC deployment
+
 ### EC Team Update (2021.10.27)
 #### Sprint Demo
 ##### EC 2.x CAAS Demo.
