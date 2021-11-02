@@ -28,7 +28,7 @@ EC team wishes to clarify the confusion with some technical insight, and to rais
 
 ### Inaccurate Statement
 
-A statement by a Ops member suggested that the cert-renewal process[7] **might have been the cause of this** issue impacting its business ops. <br><br> 
+A statement by a Ops member suggested that the cert-renewal process[7] **might have been the cause of an** issue impacting its business ops. <br><br> 
 EC team considers the customer's statement understated our supports value, and underminds the support efforts we extended to the customer. The statement may also lead to internal disputes, with productivity costs to the business unit.<br><br>
 We wish to clarify any concerns resulting from reading such suggestion/statement below by publishing the records, the logs, and supplemental references associated with our support efforts for future training purpose.
 
