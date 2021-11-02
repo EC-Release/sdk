@@ -103,7 +103,7 @@ Two issues and its goal/result are all mis-matched. Please refer to [the backgro
 > I don’t believe you have clearly articulated what is meant by "If Ops does not know how to shoulder the responsibility of its very decision of migrating existing agent connectivity from vm-2-vm,"... <br><br>
 The best I can tell is from what you have provided is the ops team advised the product team of certain certs that needed to be updated and that maybe it was an incomplete list.
 
-The ghost-server issue[8] is mainly caused by an ongoing task labeled "CCL Server Migration" by the Ops resources (refer to [the question "what do you mean end this migration"](what-do-you-mean-end-this-migration)) NOT by the cert-renewal process[7]<br><br>
+The ghost-server issue[8] is mainly caused by an ongoing task labeled "CCL Server Migration" by the Ops resources (refer to [the question "what do you mean end this migration"](#what-do-you-mean-end-this-migration)) NOT by the cert-renewal process[7]<br><br>
 The customer (Ops team) has not acquired the knowledge of the cert-renewal process[7], therefore cannot tell the difference of a x509 cert.
 
 Furthermore, during the cert-renewal process[7], product team had ensured all active-in-use service instances were updated properly, regardless the completion of the list. See Project Cert-Renewal Notes[3].
