@@ -51,7 +51,7 @@ On Jul-27 in the team's release planning (2021.9), we announced the feature[9] t
 On Aug-12, a meeting series created in the effort to support a request initiated by customer (GE Digital-Connect Ops) to upgrade[1] existing agent/connectivity instances from v212 to v214. A entirely different goal/objective/step to the cert-based renewal process[7].
 
 #### Announce "CCL Server" Migration
-On Aug-25, messages[quote-1|quote-2] sent from the customer (DC Ops) show their decision to end this migration[1].<br><br>
+On Aug-25, messages[quote-1|quote-2] sent from the customer (DC Ops) show their decision to end this upgrade[1].<br><br>
 Note that in the message[quote-1|quote-2], it clearly indicates that **there will be a server-agent instances migration action taken by the customer, this would apply to several server-agent instances labeled "CCL Server".**<br><br>
 [quote-1] & [2]
 > **We are in a hurry to get out of CCL servers to issue decommission request by the end of September**. Timeline is tied to Coretech's ask of 3-months to decommission old infra and stop billing our org for it. Sep 30 date ensures we don't pay for any CCL hardware in Q1 next year. We don't have the budget for it and it is not something we control.<br><br>
@@ -111,7 +111,7 @@ Furthermore, during the cert-renewal process[7], product team had ensured all ac
 
 
 ### Reference
-[1] [Project Agent Migration by EC](https://github.build.ge.com/digital-connect-devops/ec-ccl-214-migration) <br>
+[1] [Project Agent Upgrade by EC](https://github.build.ge.com/digital-connect-devops/ec-ccl-214-migration) <br>
 [2] Project Agent CCL server migration from vm-2-vm by Customer (Ops). refer to the email body "Fw: EC Migration - Change in direction" <br>
 [3] [Project Cert-Renewal Notes](https://github.com/EC-Release/service-update/blob/service-renewal-2022/docs/project-2022-renewal.md) <br>
 [4] [Customer Incident Notes](https://github.com/EC-Release/service-update/blob/service-renewal-2022/docs/customer-incidents.md) <br>
