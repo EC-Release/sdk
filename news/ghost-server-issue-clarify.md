@@ -1,24 +1,23 @@
 ## Ghost Server Supports Issue (2021.11.1)
 
 ### Table of contents
-1. [Background](#introduction)
-2. [Inaccurate Statement](#paragraph1)
-    1. [Sub paragraph](#subparagraph1)
-3. [The Support Narative](#paragraph2)
-    1. [Announce of Cert-Renewal Process]()
-    2. [Request Upgrade of Existing Agent]()
-    3. [Announce "CCL Server" Migration]()
-    4. [Confirm Cert-Renewal Process]()
-    5. [Begin Cert-Renewal Process]()
-    6. [Post Cert-Renewal Process]
-    7. [CCL Server Migration led to the ghost-server issue]
-    8. [Document, Document, Never Stop documenting]
-4. [Customer Q&A]
-    1. [what do you mean "end this migration"]
-    2. [What is in fact correct?]
-    3. [what is a ghost server? How is it relevant?]
-    4. [in one or two sentences what was the issue]
-    5. [Interpretation of the Statement]
+1. [Background](#background)
+2. [Inaccurate Statement](#inaccurate-statement)
+3. [The Support Narative](#the-support-narative)
+    1. [Announce of Cert-Renewal Process](#announce-of-cert-renewal-process)
+    2. [Request Upgrade of Existing Agent](#request-upgrade-of-existing-agent)
+    3. [Announce "CCL Server" Migration](#announce-ccl-server-migration)
+    4. [Confirm Cert-Renewal Process](#confirm-cert-renewal-process)
+    5. [Begin Cert-Renewal Process](#begin-cert-renewal-process)
+    6. [Post Cert-Renewal Process](#post-cert-renewal-process)
+    7. [CCL Server Migration led to the ghost-server issue](#ccl-server-migration-led-to-the-ghost-server-issue)
+    8. [Document, Document, Never Stop documenting](#document-document-never-stop-documenting)
+4. [Customer Q&A](#customer-qa)
+    1. [what do you mean "end this migration"](#what-do-you-mean-end-this-migration)
+    2. [What is in fact correct?](#what-is-in-fact-correct)
+    3. [what is a ghost server? How is it relevant?](#what-is-a-ghost-server-how-is-it-relevant)
+    4. [in one or two sentences what was the issue](#in-one-or-two-sentences-what-was-the-issue)
+    5. [Interpretation of the Statement]()
 5. [Reference]
 
 
@@ -87,6 +86,7 @@ please refer to the [announce ccl server migration](#announce-ccl-server-migrati
 #### What is in fact correct?
 > saying “assumes” implies that in this context that it is not correct. What is in fact correct?
 >>  ..confirmed that Ops has assumed.. Please reach out to "Sthapit, Nirat" for the detail. The message is documented.
+
 [This is to confirm](#confirm-cert-renewal-process) that Ops is aware of the cert-renewal process[7]
 
 
@@ -95,6 +95,7 @@ refer to Ghost-server issue[8], and incidents documented in [4], [5].
 
 #### in one or two sentences what was the issue
 > ultimately are you simply saying that some servers were missed to have their certificates updated? If not, bottom line, in one or two sentences what was the issue.
+
 Two issues and its goal/result are all mis-matched. Please refer to [the background](#background). Please refer to [Interpretation of the Statement]() for the issue, and the root cause of the issue.
 
 
