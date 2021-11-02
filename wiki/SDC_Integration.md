@@ -1,5 +1,16 @@
 ## SDC Integration for DC Service Cloud
 
+### On Oct-28 '21
+- **Meeting Subject**: KT Series - SDC Hands-on III
+- **Presenter**: Ram
+- **Attendees**: Virgilio, Marion Sadia, Pragyan, Shubham, Firdous, Shruthi, Nirat, Srinivas, Mahesh, Ajay, Deepak, Ritu, Prasad, Puja and ay
+1. Introduction to EKS Topology
+   1. SDC components with ingress based on access
+   2. Application connectivity to SDC
+2. Deploy SDC in EKS - demo
+3. Deploy SDC in CF - demo
+4. Updated document with steps
+
 ### On Oct-25 '21
 - **Meeting Subject**: KT Series - SDC Hands-on II
 - **Presenter**: ay
