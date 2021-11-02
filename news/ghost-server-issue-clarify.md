@@ -13,10 +13,10 @@
     7. [CCL Server Migration led to the ghost-server issue](#ccl-server-migration-led-to-the-ghost-server-issue)
     8. [Document, Document, Never Stop documenting](#document-document-never-stop-documenting)
 4. [Customer Q&A](#customer-qa)
-    1. [what do you mean "end this migration"](#what-do-you-mean-end-this-migration)
+    1. [What do you mean "end this migration"](#what-do-you-mean-end-this-migration)
     2. [What is in fact correct?](#what-is-in-fact-correct)
-    3. [what is a ghost server? How is it relevant?](#what-is-a-ghost-server-how-is-it-relevant)
-    4. [in one or two sentences what was the issue](#in-one-or-two-sentences-what-was-the-issue)
+    3. [What is a ghost server? How is it relevant?](#what-is-a-ghost-server-how-is-it-relevant)
+    4. [In one or two sentences what was the issue](#in-one-or-two-sentences-what-was-the-issue)
     5. [Interpretation of the Statement](#interpretation-of-the-statement)
 5. [Reference](#reference)
 
