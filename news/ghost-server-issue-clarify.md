@@ -17,7 +17,7 @@
     2. [What is in fact correct?](#what-is-in-fact-correct)
     3. [What is a ghost server? How is it relevant?](#what-is-a-ghost-server-how-is-it-relevant)
     4. [In one or two sentences what was the issue](#in-one-or-two-sentences-what-was-the-issue)
-    5. [Interpretation of the Statement](#interpretation-of-the-statement)
+    5. [More Clarification of The Statement](#more-clarification-for-the-statement)
 5. [Reference](#reference)
 
 
@@ -96,14 +96,14 @@ refer to Ghost-server issue[8], and incidents documented in [4], [5].
 #### In one or two sentences what was the issue
 > ultimately are you simply saying that some servers were missed to have their certificates updated? If not, bottom line, in one or two sentences what was the issue.
 
-Two issues and its goal/result are all mis-matched. Please refer to [the background](#background). Please refer to [Interpretation of the Statement]() for the issue, and the root cause of the issue.
+The issue and its goal/result are all mis-matched. Please refer to [the background](#background). Please refer to [More Clarification for the Statement](#more-clarification-for-the-statement) for the issue, and the root cause of the issue.
 
 
 #### More Clarification for the Statement
 > I don’t believe you have clearly articulated what is meant by "If Ops does not know how to shoulder the responsibility of its very decision of migrating existing agent connectivity from vm-2-vm,"... <br><br>
 The best I can tell is from what you have provided is the ops team advised the product team of certain certs that needed to be updated and that maybe it was an incomplete list.
 
-The ghost-server issue[8] is mainly caused by an ongoing task labeled "CCL Server Migration" by the Ops resources (refer to [the question "what do you mean end this migration"](#what-do-you-mean-end-this-migration)) NOT by the cert-renewal process[7]<br><br>
+The connectivity issue customer has experienced is caused by the ghost-server issue[8], as a direct result of an ongoing task labeled "CCL Server Migration" by the Ops resources (refer to [the question "what do you mean end this migration"](#what-do-you-mean-end-this-migration)) absolutely NOT by the cert-renewal process[7]<br><br>
 The customer (Ops team) has not acquired the knowledge of the cert-renewal process[7], therefore cannot tell the difference of a x509 cert.
 
 Furthermore, during the cert-renewal process[7], product team had ensured all active-in-use service instances were updated properly, regardless the completion of the list. See Project Cert-Renewal Notes[3].
