@@ -24,7 +24,7 @@
 ### Background
 In the effort to assist the customer's (GE Digital-Connect Ops) product troubleshooting, a confusion in between cert-renewal process[7] and [ccl server migration](#announce-ccl-server-migration) unfortunetely has arised. The customer has since reached out to get a clarity over its confusion.
 
-EC team is to share the technical insight, the years of experience in asssisting the customer, and to raise the awareness of the importance of the documentation effort in troubleshooting sessions to avoid a mis-configuration in business adoption.
+EC team wishes to clarify the confusion with some technical insight, and to raise the awareness of the importance of the documentation effort in troubleshooting sessions to avoid a mis-configuration in business adoption.
 
 ### Inaccurate Statement
 
