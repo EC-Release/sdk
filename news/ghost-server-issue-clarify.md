@@ -17,8 +17,8 @@
     2. [What is in fact correct?](#what-is-in-fact-correct)
     3. [what is a ghost server? How is it relevant?](#what-is-a-ghost-server-how-is-it-relevant)
     4. [in one or two sentences what was the issue](#in-one-or-two-sentences-what-was-the-issue)
-    5. [Interpretation of the Statement]()
-5. [Reference]
+    5. [Interpretation of the Statement](#interpretation-of-the-statement)
+5. [Reference](#reference)
 
 
 ### Background
