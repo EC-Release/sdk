@@ -19,6 +19,7 @@
     3. [what is a ghost server? How is it relevant?]
     4. [in one or two sentences what was the issue]
     5. [Interpretation of the Statement]
+5. [Reference]
 
 
 ### Background
@@ -108,7 +109,7 @@ Furthermore, during the cert-renewal process[7], product team had ensured all ac
 
 
 
-#### Reference:
+### Reference
 [1] [Project Agent Migration by EC](https://github.build.ge.com/digital-connect-devops/ec-ccl-214-migration) <br>
 [2] Project Agent CCL server migration from vm-2-vm by Customer (Ops). refer to the email body "Fw: EC Migration - Change in direction" <br>
 [3] [Project Cert-Renewal Notes](https://github.com/EC-Release/service-update/blob/service-renewal-2022/docs/project-2022-renewal.md) <br>
