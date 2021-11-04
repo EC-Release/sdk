@@ -48,9 +48,9 @@
 
 
 ### On Oct-19 '21
-**Meeting Subject**: KT Series - SDC Integration with DC Service Cloud 
-**Presenter**: Puja
-**Attendees**: Srinivas, Deepak, Shubham, Shruti, Mahesh, Srujana, Firdous, Ripu, Chia, Ram, Puja
+- **Meeting Subject**: KT Series - SDC Integration with DC Service Cloud 
+- **Presenter**: Puja
+- **Attendees**: Srinivas, Deepak, Shubham, Shruti, Mahesh, Srujana, Firdous, Ripu, Chia, Ram, Puja
 1. Provided high-level architecture overview of APIs and their usage for SDC as well as embedded db
 2. Provided all the details about Universal WebApp APIs by showing sample requests & responses:
     1. Showed how we can use “Dataset” APIs to perform Create/Read/Update/Delete operations on a dataset in embedded db in a flexible & secured manner.
@@ -72,9 +72,9 @@
 
 
 ### On Oct-18 '21
-**Meeting Subject**: KT Series - SDC Integration with DC Service Cloud 
-**Presenter**: Ram
-**Attendees**: Mahesh, Firdous, Srujana, Deepak, Prasad, Shubham, Chia, Puja and Ram
+- **Meeting Subject**: KT Series - SDC Integration with DC Service Cloud 
+- **Presenter**: Ram
+- **Attendees**: Mahesh, Firdous, Srujana, Deepak, Prasad, Shubham, Chia, Puja and Ram
 
 Topics covered in KT session - 
 - Introduction to SDC, architecture and high level overview
