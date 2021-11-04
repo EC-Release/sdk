@@ -2,11 +2,19 @@
 #### Customer Engagement:
 - Perceptive SAP ERP's - Deploy EC client in EKS with custom agent version
 
+#### EC 2.x
+1. [DTEC-180](https://ge-dw.aha.io/features/DTEC-180) Containerize the ML-Portal as a single app with ML-API Endpoint being embedded in UI to make it more user-friendly, so that the users can use a single endpoint to access the api-endpoint as well as the UI. Consolidate ML-App (including frontend & backend) into a single image & containerize into a single container. (Puja)
+
+
 ### EC Team Update (2021.10.28)
 #### Customer Engagement:
 - Aviation AOA non prod EC Server. Fixed the network route to the service instance.
 - 'no glist found' error for power ec connections
 - KT Session and demo on EKS topology and SDC deployment
+
+#### EC 2.x
+1. [DTEC-180](https://ge-dw.aha.io/features/DTEC-180) Containerize the ML-Portal as a single app with ML-API Endpoint being embedded in UI to make it more user-friendly, so that the users can use a single endpoint to access the api-endpoint as well as the UI. Consolidate ML-App (including frontend & backend) into a single image & containerize into a single container. (Puja)
+
 
 ### EC Team Update (2021.10.27)
 #### Sprint Demo
@@ -27,6 +35,9 @@
 #### EC Service Tile
 There appears to be some broken linkage to EC subscription @Predix.io, but the concern has been clarified by Mary @Digital
 
+#### EC 2.x
+1. [DTEC-180](https://ge-dw.aha.io/features/DTEC-180) Containerize the ML-Portal as a single app with ML-API Endpoint being embedded in UI to make it more user-friendly, so that the users can use a single endpoint to access the api-endpoint as well as the UI. Consolidate ML-App (including frontend & backend) into a single image & containerize into a single container. (Puja)
+
 
 ### EC Team Update (2021.10.26)
 #### Customer Engagement:
@@ -35,12 +46,19 @@ There appears to be some broken linkage to EC subscription @Predix.io, but the c
 2. Identified 2 server agents in unsed state and not restarted after cert migration and causing the empty glist error
 3. Restarted the unused EC server agents and all EC connections started functioning normal
 
+#### EC 2.x
+1. [DTEC-180](https://ge-dw.aha.io/features/DTEC-180) Containerize the ML-Portal as a single app with ML-API Endpoint being embedded in UI to make it more user-friendly, so that the users can use a single endpoint to access the api-endpoint as well as the UI. Consolidate ML-App (including frontend & backend) into a single image & containerize into a single container. (Puja)
+
 ### EC Team Update (2021.10.25)
 #### Customer Engagement:
 **Upgrade Wabtec non-prod env**:
 1. Genpact QA EC connection - fixed and confirmed by customers
 2. Upgraded SMTP connection to prod - confirmed by customers
 3. Genpact EC connection - WIP (Pending with customers to update the scripts)
+
+#### EC 2.x
+1. [DTEC-180](https://ge-dw.aha.io/features/DTEC-180) Containerize the ML-Portal as a single app with ML-API Endpoint being embedded in UI to make it more user-friendly, so that the users can use a single endpoint to access the api-endpoint as well as the UI. Consolidate ML-App (including frontend & backend) into a single image & containerize into a single container. (Puja)
+
 
 ### EC Team Update (2021.10.22)
 #### Customer Engagement:
@@ -55,6 +73,7 @@ There appears to be some broken linkage to EC subscription @Predix.io, but the c
 #### EC 2.x
 1. [DTEC-179](https://ge-dw.aha.io/features/DTEC-179) Integrate ML API Endpoint with UI, so that the user can upload EC Service Logs from UI. (Puja)
 2. [DTEC-180](https://ge-dw.aha.io/features/DTEC-180) Containerize the ML-Portal as a single app with ML-API Endpoint being embedded in UI to make it more user-friendly, so that the users can use a single endpoint to access the api-endpoint as well as the UI. (Puja)
+
 
 ### EC Team Update (2021.10.21)
 #### Ops Supports:
@@ -73,10 +92,6 @@ There appears to be some broken linkage to EC subscription @Predix.io, but the c
 2. [DTEC-179](https://ge-dw.aha.io/features/DTEC-179) Integrate ML API Endpoint with UI, so that the user can upload EC Service Logs from UI. (Puja)
 3. [DTEC-180](https://ge-dw.aha.io/features/DTEC-180) Containerize the ML-Portal as a single app with ML-API Endpoint being embedded in UI to make it more user-friendly, so that the users can use a single endpoint to access the api-endpoint as well as the UI. (Puja)
 
-#### EC 2.x
-1. [DTEC-186](https://ge-dw.aha.io/features/DTEC-186) Continue SDC Training series on daily basis. Document/KT the usage of SDC/Unified WebApp APIs by the demo of ML Portal & EC Portal integrations. (Team)
-2. [DTEC-179](https://ge-dw.aha.io/features/DTEC-179) Integrate ML API Endpoint with UI, so that the user can upload EC Service Logs from UI. (Puja)
-3. [DTEC-180](https://ge-dw.aha.io/features/DTEC-180) Containerize the ML-Portal as a single app with ML-API Endpoint being embedded in UI to make it more user-friendly, so that the users can use a single endpoint to access the api-endpoint as well as the UI. (Puja)
 
 ### EC Team Update (2021.10.20)
 #### Ops Supports:
