@@ -11,6 +11,9 @@
 3. Deploy SDC in CF - demo
 4. Updated document with steps
 
+[Here is the link to the video of this KT session](https://web.microsoftstream.com/video/dc1d2799-ab5e-47f4-b3af-4ed4f59fad6f)
+
+
 ### On Oct-25 '21
 - **Meeting Subject**: KT Series - SDC Hands-on II
 - **Presenter**: ay
@@ -23,6 +26,8 @@
     6. Validate User Detail.
     7. Validate Transaction Detail
 3. Introduce the transactional digital currency exchange with its usage in SDC, and the data expected in the SDC API.
+
+[Here is the link to the video of this KT session](https://web.microsoftstream.com/video/ee55d969-2ff6-4575-a723-0d3a533fa550)
 
 
 ### On Oct-21 '21
@@ -39,13 +44,13 @@
     6. Owner of a SDC instance.
 3. walk-thru a typescript code-snippet.
 
-
+[Here is the link to the video of this KT session](https://web.microsoftstream.com/video/1aa54809-cf24-4a83-a882-a59691f21538)
 
 
 ### On Oct-19 '21
-**Meeting Subject**: KT Series - SDC Integration with DC Service Cloud 
-
-**Attendees**: Srinivas, Deepak, Shubham, Shruti, Mahesh, Srujana, Firdous, Ripu, Chia, Ram, Puja
+- **Meeting Subject**: KT Series - SDC Integration with DC Service Cloud 
+- **Presenter**: Puja
+- **Attendees**: Srinivas, Deepak, Shubham, Shruti, Mahesh, Srujana, Firdous, Ripu, Chia, Ram, Puja
 1. Provided high-level architecture overview of APIs and their usage for SDC as well as embedded db
 2. Provided all the details about Universal WebApp APIs by showing sample requests & responses:
     1. Showed how we can use “Dataset” APIs to perform Create/Read/Update/Delete operations on a dataset in embedded db in a flexible & secured manner.
@@ -63,10 +68,13 @@
     6. Explained how “Transaction” APIs can be used to create & manage new subscriptions.
 7. Explained how Transaction-flow works and how Subscriptions are translated into digital-transactions.
 
-### On Oct-18 '21
-**Meeting Subject**: KT Series - SDC Integration with DC Service Cloud 
+[Here is the link to the video of this KT session](https://web.microsoftstream.com/video/9da1884b-d3d5-4c43-8891-92c52a1f4a6f)
 
-**Attendees**: Mahesh, Firdous, Srujana, Deepak, Prasad, Shubham, Chia, Puja and Ram
+
+### On Oct-18 '21
+- **Meeting Subject**: KT Series - SDC Integration with DC Service Cloud 
+- **Presenter**: Ram
+- **Attendees**: Mahesh, Firdous, Srujana, Deepak, Prasad, Shubham, Chia, Puja and Ram
 
 Topics covered in KT session - 
 - Introduction to SDC, architecture and high level overview
@@ -74,6 +82,8 @@ Topics covered in KT session -
 - SDC integration with GE federated service
 - SDC custom scopes and mapping to default OIDC scopes
 - Deployment topology in EKS
+
+[Here is the link to the video of this KT session](https://web.microsoftstream.com/video/93f3166d-f212-4882-867c-71f8c695f4a9)
 
 
 ### On Oct-15 '21
