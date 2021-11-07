@@ -16,7 +16,7 @@
 
     The "**Gateway**" mode handles security handshakes, IP filtering, and seeks for the permission from a EC service instance by passing on the Client/Server credentials to authorising requests. Upon authenticated, the Gateway will then perform two-way binding (Client/Server), induce a session, and then signify requesters for the readiness.
 
-![image](https://user-images.githubusercontent.com/20440873/127664178-865d9b20-6086-4f40-a436-67813cf2e312.png)
+![EC-Usecase](https://user-images.githubusercontent.com/38732583/140664340-1792a8ab-636e-4832-99eb-9d1db31698b9.png)
 
 
 ### How to deploy
