@@ -1,3 +1,24 @@
+### EC Team Update (2021.11.04)
+#### Customer Engagement:
+DPOD - DTE Maximo Integration - Phase 2
+
+- UAT testing is in progress by DTE and going fine
+- Initial discussion on production EC env setup
+- Should send the details to network team to update the firewall rules
+
+### EC Team Update (2021.11.03)
+#### Retro on empty glist issue
+
+Here is the idea sharing notes - 
+
+- In general, After getting the bearer token and public certs, EC server will make call POST /api/gateways and get gateway list (glist) from the service. EC Service will send all registered gateways as response.
+- But recent issue, EC servers are getting the empty glist, instead of real gateway list (though gateways are up and running)
+- This is because of ghost EC Server agents, which were not restarted after cert migration.
+- Since ghost EC servers are not restarted, they are still running with old certs and throwing the 'Invalid cert issuer' error and then suspecting these ghost EC servers are updating the glist to empty.
+- Expected functionality - It will delete only gateway url from glist, which mentioned in server script. But have to recreate the scenario.
+- However, as discussed, EC servers must be maintained well. Customers/ops must be aware of where and what server agents are running. That will help to avoid making unnecessary API calls to EC Service.
+- As an enhancement, agent can have flexibility to report to EC Service with details like agent id, grouop or location. So that we can stop the unused agents and controlled remotely.
+
 ### EC Team Update (2021.10.29)
 #### Customer Engagement:
 - Perceptive SAP ERP's - Deploy EC client in EKS with custom agent version
