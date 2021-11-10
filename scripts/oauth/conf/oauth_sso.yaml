@@ -67,6 +67,8 @@ ec-config:
           "healthcare.admin.read": ["@CORP Healthcare Admin"]
           "ec.licensed.admin": ["@CORP EC WebUI Admin"]
           "ec.licensed.user": ["@CORP EC WebUI User"]
+          # tag the scope to all authenticated oidc users
+          "ec.guest.user": ["*"]
         # deprecated
         #use scopeFieldType to indicate whether the scope field is in a array format, or a simply divider by character e.g. "read, write", "user:guest:admin", etc. For divider character, use ",", ":", " ", "$", "@" etc.
         #scopeFieldType: "array"
