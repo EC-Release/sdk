@@ -4,7 +4,8 @@ ec-config:
       apt: $EC_PORT
       dbg: true
       tls: false
-      tim: $IsTimeController
+      # deprecated
+      #tim: $IsTimeController
       sed: $EC_SEED_NODE
       hst: $EC_SEED_HOST      
     #group to define the authentication method of the connectivity.  
