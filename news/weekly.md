@@ -1,3 +1,22 @@
+### EC Team Update (2021.11.08)
+#### Customer Engagement:
+Wabtec - Genpact Production outage
+
+- Genpact customer reached EC team to investiage the `TNS listener` issue for connecting to wabtec database
+- Identified there was an outage in the weekend for database and changes were not made to the EC server scripts, which are running in wabtec env
+- Requested wabtec team to update the EC server and restart and connections are back to normal
+
+DPOD - DTE Maximo Integration - Phase 2 - Stage env instability
+
+- Agents were down again and notified by DTE team. Upon investigation, monitoring scripts were not enabled and requested again.
+
+
+### EC Team Update (2021.11.05)
+#### Customer Engagement:
+DPOD - DTE Maximo Integration - Phase 2 - Stage env instability
+
+- Upon the investigation identified, EC agents were stopped running in new VM machines and requested operations team to enable the monitoring scripts on agents.
+
 ### EC Team Update (2021.11.04)
 #### Customer Engagement:
 DPOD - DTE Maximo Integration - Phase 2
