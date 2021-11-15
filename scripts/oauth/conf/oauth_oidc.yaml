@@ -30,7 +30,7 @@ ec-config:
         #"http://url/to/oauth/user/api"
         userURL: $EC_OIDC_USER_PATH
         #uathScopes used for the custom scopes admitted to oidc IdP
-        authScopes: ["read:user","user:email","read:org"]        
+        #authScopes: ["read:user","user:email","read:org"]        
         userHttpMethod: "GET"
         userHttpHeaders: ["Authorization: token <token>","X-Custom-Header:Hello-World","Conten-Type:application/json"]
         # available field-mapping for the local user. unmapped or fail-to-map fields will remain empty.
@@ -60,9 +60,9 @@ ec-config:
         clientSecret: $EC_OIDC_CSC
         #when not present, user will inherit the local scopes
         scopeIndex:
-          "read:user": ["admin.read","subs.read"]
-          "user:email": ["admin.read"]
-          "read:org": ["admin.read"]
+          "read:user": ["read:user","user:email"]
+          "user:email": ["read:org"]
+          "read:org": ["user:emai"]
         # deprecated
         #use scopeFieldType to indicate whether the scope field is in a array format, or a simply divider by character e.g. "read, write", "user:guest:admin", etc. For divider character, use ",", ":", " ", "$", "@" etc.
         #scopeFieldType: "array"
