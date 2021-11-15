@@ -55,6 +55,7 @@ ec-config:
         clientSecret: $EC_OIDC_CSC
         #when not present, user will inherit the local scopes
         scopeIndex:
+          "guest": ["openid","profile"]
           "admin.read": ["@CORP EC WebUI Admin","@CORP EC WebUI AppOps","@CORP EC WebUI User"]
           "subs.read": ["@CORP EC WebUI Admin","@CORP EC WebUI AppOps","@CORP EC WebUI User"]
           "app.auth": ["@CORP EC WebUI Admin","@CORP EC WebUI AppOps"]
