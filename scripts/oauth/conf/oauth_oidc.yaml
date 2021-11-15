@@ -60,9 +60,8 @@ ec-config:
         clientSecret: $EC_OIDC_CSC
         #when not present, user will inherit the local scopes
         scopeIndex:
-          "read:user": ["read:user","user:email"]
-          "user:email": ["read:org"]
-          "read:org": ["user:emai"]
+          "admin.read": ["read:user","user:email"]
+          "subs.read": ["read:org"]
         # deprecated
         #use scopeFieldType to indicate whether the scope field is in a array format, or a simply divider by character e.g. "read, write", "user:guest:admin", etc. For divider character, use ",", ":", " ", "$", "@" etc.
         #scopeFieldType: "array"
