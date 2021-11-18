@@ -30,7 +30,7 @@ ec-config:
         # deprecated
         #authScopes used for the custom scopes admitted to oidc IdP. required by sso vendor
         #authScopes: ["openid","profile"] 
-        userHttpHeaders: ["Authorization:Bearer <token>","Conten-Type:application/json"]
+        userHttpHeaders: ["Authorization:Bearer <token>","Content-Type:application/json"]
         userHttpMethod: "POST"
         # available field-mapping for the local user. unmapped or fail-to-map fields will remain empty.
         # the rest available-to-map fields can be found here https://enterprise-connect.github.io/web-ui/webui-assets/godoc/wzschema.html#UserDetail
