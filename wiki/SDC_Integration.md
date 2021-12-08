@@ -1,31 +1,80 @@
 ## SDC Integration for DC Service Cloud
 
+### On Oct-28 '21
+- **Meeting Subject**: KT Series - SDC Hands-on III
+- **Presenter**: Ram
+- **Attendees**: Virgilio, Marion Sadia, Pragyan, Shubham, Firdous, Shruthi, Nirat, Srinivas, Mahesh, Ajay, Deepak, Ritu, Prasad, Puja and ay
+1. Introduction to EKS Topology
+   1. SDC components with ingress based on access
+   2. Application connectivity to SDC
+2. Deploy SDC in EKS - demo
+3. Deploy SDC in CF - demo
+4. Updated document with steps
+
+[Here is the link to the video of this KT session](https://web.microsoftstream.com/video/dc1d2799-ab5e-47f4-b3af-4ed4f59fad6f)
+
+
+### On Oct-25 '21
+- **Meeting Subject**: KT Series - SDC Hands-on II
+- **Presenter**: ay
+- **Attendees**: Ram, Puja, Shubham, Nirat, Temina, Srinivas, Mike, Ripu, Mahesh, Deepak, Marion
+1. Recap from the Hands-on I
+2. Explain the steps to validate a product subscription and break down to the following-
+    3. Register Local Scopes.
+    4. Create Scope Indexes.
+    5. Validate SDC Bearer Token
+    6. Validate User Detail.
+    7. Validate Transaction Detail
+3. Introduce the transactional digital currency exchange with its usage in SDC, and the data expected in the SDC API.
+
+[Here is the link to the video of this KT session](https://web.microsoftstream.com/video/ee55d969-2ff6-4575-a723-0d3a533fa550)
+
+
+### On Oct-21 '21
+- **Meeting Subject**: KT Series - SDC Hands-on I
+- **Presenter**: ay
+- **Attendees**: Prasad, Puja, Deepak, Mahesh, Virgillio, Shubham, Firdous, Nirat, Ajay, Ram, Apolo, Srinivas
+1. Explain the License Acquirement, Seeder Framework, with typescript code snippet (SDC Flow), and the flow to validate Subscription.
+2. Explain the Steps to get licensed.
+    1. How to get licensed
+    2. Submit Beta License Request.
+    3. Attend minimum three SDC Training sessions.
+    4. Score 80/100 in the Knowledge Test.
+    5. Owner of a Seeder instance. 
+    6. Owner of a SDC instance.
+3. walk-thru a typescript code-snippet.
+
+[Here is the link to the video of this KT session](https://web.microsoftstream.com/video/1aa54809-cf24-4a83-a882-a59691f21538)
+
+
 ### On Oct-19 '21
-
-MoM SDC KT - 10/19/2021:
-
-Attendees: Srinivas, Deepak, Shubham, Shruti, Mahesh, Srujana, Firdous, Ripu, Chia, Ram, Puja
-
+- **Meeting Subject**: KT Series - SDC Integration with DC Service Cloud 
+- **Presenter**: Puja
+- **Attendees**: Srinivas, Deepak, Shubham, Shruti, Mahesh, Srujana, Firdous, Ripu, Chia, Ram, Puja
 1. Provided high-level architecture overview of APIs and their usage for SDC as well as embedded db
 2. Provided all the details about Universal WebApp APIs by showing sample requests & responses:
-   1. Showed how we can use “Dataset” APIs to perform Create/Read/Update/Delete operations on a dataset in embedded db in a flexible & secured manner.
-   2. Showed how we can use “System” APIs to get the list of seeders in the cluster.
-   3. Showed how we can use “Cryptography” APIs to get ‘refreshed-hash’ from Owner’s hash.  
+    1. Showed how we can use “Dataset” APIs to perform Create/Read/Update/Delete operations on a dataset in embedded db in a flexible & secured manner.
+    2. Showed how we can use “System” APIs to get the list of seeders in the cluster.
+    3. Showed how we can use “Cryptography” APIs to get ‘refreshed-hash’ from Owner’s hash.  
 3. Explained about Owner’s hash & Refreshed-hash and why we use them.
 4. Provided high-level overview of LIBRA and why we are using it for SDC.
 5. Provided high-level overview of Blockchain Clusters and why we maintain two separate Clusters - one for SDC and the other for data-storage.
 6. Provided details about SDC APIs:
-   1. Explained “Scope” APIs and how they can be used to perform CRUD operations to define internal scopes.
-   2. Explained “OIDC Scope APIs” and how they can be used to handle OIDC integrations.
-   3. Explained how “System” APIs can be used to restart SDC instances and get seeder information.
-   4. Explained how “User” APIs can be used to manage User information.
-   5. Explained how “Licensing” works through “Tenancy” APIs and how we use x509 for encryption & security.
-   6. Explained how “Transaction” APIs can be used to create & manage new subscriptions.
+    1. Explained “Scope” APIs and how they can be used to perform CRUD operations to define internal scopes.
+    2. Explained “OIDC Scope APIs” and how they can be used to handle OIDC integrations.
+    3. Explained how “System” APIs can be used to restart SDC instances and get seeder information.
+    4. Explained how “User” APIs can be used to manage User information.
+    5. Explained how “Licensing” works through “Tenancy” APIs and how we use x509 for encryption & security.
+    6. Explained how “Transaction” APIs can be used to create & manage new subscriptions.
 7. Explained how Transaction-flow works and how Subscriptions are translated into digital-transactions.
 
-### On Oct-18 '21
+[Here is the link to the video of this KT session](https://web.microsoftstream.com/video/9da1884b-d3d5-4c43-8891-92c52a1f4a6f)
 
-Attendees: Mahesh, Firdous, Srujana, Deepak, Prasad, Shubham, Chia, Puja and Ram
+
+### On Oct-18 '21
+- **Meeting Subject**: KT Series - SDC Integration with DC Service Cloud 
+- **Presenter**: Ram
+- **Attendees**: Mahesh, Firdous, Srujana, Deepak, Prasad, Shubham, Chia, Puja and Ram
 
 Topics covered in KT session - 
 - Introduction to SDC, architecture and high level overview
@@ -33,6 +82,8 @@ Topics covered in KT session -
 - SDC integration with GE federated service
 - SDC custom scopes and mapping to default OIDC scopes
 - Deployment topology in EKS
+
+[Here is the link to the video of this KT session](https://web.microsoftstream.com/video/93f3166d-f212-4882-867c-71f8c695f4a9)
 
 
 ### On Oct-15 '21
