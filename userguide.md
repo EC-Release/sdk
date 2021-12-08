@@ -1,325 +1,228 @@
-## This is the User Guide for EC Adoption
+# Enterprise Connect (EC) User Guide
+
+### Contents
+
+* Introduction:
+* What is Enterprise Connect?
+* Why Do You Need Enterprise Connect?
+* Characteristics of Enterprise Connect:
+* Where Do You Find the EC Service?
+* Components of Enterprise Connect (EC).
+  * EC Client:
+  * EC Server:
+  * EC Gateway:
+  * VLAN Plugin:
+  * TLS Plugin:
+  * Fuse Mode:
+* Connectivity between Discrete Networks:
+  * Through Firewall:
+  * Through Enterprise Connect (EC)
+* Steps Involved in Deploying the EC Service:
+* How Things Flow in Enterprise Connect?
+  * Connecting On-premise Data Sources to Predix/Cloud
+  * Connecting Predix Data Sources to On-premise-ETL
+* More about How Things Flow in Enterprise Connect
+* Authentication (OAuth 2.0)
+* Enterprise Connect Service Setup
+
 
 ### Introduction
-**EC** stands for "**Enterprise-Connect**", it is a professional assembly led by a group of researchers, and engineers (ec-research@ge.com) who have common vision of the de-centralisation network, currently sponsored by General Electric. It has the following main components:
-1. **EC Service**: Currently built in Cloud-Foundry, the EC Service is a Single-Tenant, Self-contained, Async-Ops microservice. EC service is endorsed by the GE security team and is available as a GA release. The service breaks down into the following functions:
-    * Usage reporting
-    * System performance/health check
-    * Account managing
-    * Security validation
-    * Two-way digital certs
-    * Management UI
 
-2. **EC Agent**: To make EC conformed to the design pattern of the TURN protocol (Traversal Using Relays around NAT, RFC5766) for the sake of its extendibility, sustainability, and compatibility of mass-computing (Cloud Computing), it is essentially equipped with three explicit functional modes- **Client**, **Server**, and **Gateway**, of each may operate independently without one another.
+Enterprise Connect (EC) is a micro service offered as part of the Predix environment.  It acts as a middleware to connect and transfer data between two discrete networks. Though the Enterprise Connect service is offered as part of Predix, it can connect any two independent networks. Therefore, it can even be used in a different environment such as Amazon Web Services (AWS).
 
-    When in the "**Client**" mode, the agent provisions a resource access and is subsumed by host applications whereas the "**Server**" which has sole access to a target resource, is tasked to transmitting the data flow between the resource and a Gateway.
+### What is Enterprise Connect?
 
-    The "**Gateway**" mode handles security handshakes, IP filtering, and seeks for the permission from a EC service instance by passing on the Client/Server credentials to authorising requests. Upon authenticated, the Gateway will then perform two-way binding (Client/Server), induce a session, and then signify requesters for the readiness.
+Enterprise Connect is a service that enables you to establish a secure and scalable connection between any cloud environment and your enterprise resources. As a service, it connects any two networks governed by different transmission protocols. Data passes through Enterprise Connect before getting routed to its destination.
 
-![EC-Usecase](https://user-images.githubusercontent.com/38732583/140664340-1792a8ab-636e-4832-99eb-9d1db31698b9.png)
+![image](https://user-images.githubusercontent.com/38732583/145247241-d5241a61-d4bd-482f-9cfd-71aa2608d765.png)
 
+### Why Do You Need Enterprise Connect?
 
-### How to deploy
-The deployment primarily involes 2 steps-
-#### 1. Create EC-Service:
-This tutorial presumed that you have installed the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli), have an active account with the [platform](https://www.predix.io/), and had previously deployed a Cloud Foundry UAA instance. Here are the step-through commands:
-```
-~/.$ cf cs enterprise-connect Beta <service_name> -c \
-'{"trustedIssuerIds":["https://<predix-uaa-instance-uri>/oauth/token"]}'
-```
-```
-~/.$ cf bs cs <gateway_mode_agent_application> <service_name>
-```
-```
-~/.$ cf env <gateway_mode_agent_application>
-...
-{
-    "credentials": {
-     "ec-info": {
-      "ids": [
-       "iCCjhs",
-       "HCCGUD"
-      ],
-      "trustedIssuerIds": [
-       "https://688431e9-2228-49e5-95b2-1062612425ffs.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token"
-      ],
-      "admin-token": "YWRtaW46OUVEMTkxdEBY3YjgtOWQ4My00ZmRhLWFkZDNjNjFiMWY1"
-     },
-     "service-uri": "https://131967b8-xxxx-4fda-xxxx-454dxxxxb1f5.run.aws-usw02-pr.ice.predix.io",
-     "usage-doc": "https://github.com/Enterprise-connect/sdk/wiki",
-     "zone": {
-      "http-header-name": "Predix-Zone-Id",
-      "http-header-value": "131967b8-xxxx-4fda-xxxx-454dxxxxb1f5",
-      "oauth-scope": "enterprise-connect.zones.131967b8-xxxx-4fda-xxxx-454dxxxxb1f5.user"
-     }
-    },
-    "label": "enterprise-connect",
-    "name": "chia-ec-43",
-    "plan": "Beta",
-    "provider": null,
-    "syslog_drain_url": null,
-    "tags": [],
-    "volume_mounts": []
-   }
-}
-...
-```
+Enterprises that leverage data to enhance the productivity of their assets are better equipped to become market leaders. Therefore, data from industrial devices needs to be captured for the purpose of analysis.
 
-**Add the above oauth-scope to your client/user in the UAA Authority**
-[Click here to add the EC scope to UAA](https://docs.cloudfoundry.org/uaa/uaa-user-management.html)
+Internet of Things (IoT) brought about revolutionary changes in the way we, as a society, operate. There are millions of IoT-enabled devices that are installed to track and monitor a multitude of things. The devices constantly and continuously stream data, which needs to be captured, analysed, and transformed into actionable insights.
 
-Once the EC-Service is created, we can start with the deployment of the EC-Agent.
+The Enterprise Connect service, which can connect any two independent networks, empowers enterprises to transfer data for the purpose of analysis.
 
-#### 2. Deploy Agent SDK:
-**Agent Usage** (Flags that can be used to configure EC-Agents):
-```
-$ ./agent_darwin_sys_213 -h
-loading application parameters..
-Usage of ./agent_darwin_sys_213:
-  -aid string
-    	Specify the agent Id assigned by the EC Service. You may find it in the Cloud Foundry VCAP_SERVICE
-  -api
-    	Operate agent in HTTP mode.
-  -apt string
-    	Specify the EC http endpoint port# if the agent when -api is set. (default "17990")
-  -bkl string
-    	Specify the ip(s) blocklist in the IPv4/IPv6 format. Concatenate ips by comma. E.g. 10.20.30.5, 2002:4559:1FE2::4559:1FE2
-  -cer
-    	Show EC Agent Cert.
-  -cfg string
-    	Specify the config file to launch the agent.
-  -cid string
-    	Specify the client Id to auto-refresh the OAuth2 token.
-  -cps int
-    	Specify the Websocket compression-ratio for agent's inter-communication purpose. E.g. [0-9]. "0" is no compression whereas "9" is the best. "-1" indicates system default. "-2" is HuffmanOnly. See RFC 1951 for more detail.
-  -crt string
-    	Specify the relative path of a digital certificate to operate the EC agent. (.pfx, .cer, .p7s, .der, .pem, .crt)
-  -csc string
-    	Specify the client secret to auto-refresh the OAuth2 token.
-  -dat string
-    	Specify the string to be encrypted.
-  -dbg
-    	Turn on debug mode. This will introduce more error information. E.g. connection error.
-  -dec
-    	Decrypt the string for validation. can combine with the flags (-dec -pth <dir-pvtkey> -psp <passphrase> -dat <encypted-data>) for one-step decryption.
-  -dur int
-    	Specify the duration for the next token refresh in seconds. (default 100 years)
-  -enc
-    	Encrypt the string for validation.
-  -fdw string
-    	Specify a file to download from the client agent.
-  -fup string
-    	Specify a file to upload to the server agent.
-  -gen
-    	Generate a certificate request for the usage validation purpose.
-  -gpt string
-    	Specify the gateway port# in fuse-mode. (gw:server|gw:client) (default "8990")
-  -grp string
-    	GroupID needed for Agent Client/Server.
-  -gsg
-    	Generate the signature based on the given private key string(-pks), passphrase (-psp), and message (-dat) to be signed.
-  -hca string
-    	Specify a port# to turn on the Healthcheck API. This flag is always on when in the "gateway mode" with the provisioned local port. Upon provisioned, the api is available at <agent_uri>/health.
-  -hst string
-    	Specify the EC Gateway URI. E.g. wss://<somedomain>:8989
-  -inf
-    	The Product Information.
-  -lpt string
-    	Specify the default EC port#. (default "7990")
-  -mod string
-    	Specify the EC Agent Mode in "client", "server", or "gateway". (default "agent")
-  -oa2 string
-    	Specify URL of the OAuth2 provisioner. E.g. https://<somedomain>/oauth/token
-  -osg string
-    	Signature string in base64 encoded format.
-  -pbk string
-    	Base64 encoded certificate string.
-  -pct string
-    	Specify the relative path to a TLS cert when operate as the gateway as desired. E.g. ./path/to/cert.pem.
-  -pks string
-    	Specify the private key in base64 encoded format to decrypt the token from the agent. E.g. -pkg LS0tLS1CRUdJTiBSU0EgU..
-  -pky string
-    	Specify the relative path to a TLS key when operate as the gateway as desired. E.g. ./path/to/key.pem.
-  -plg
-    	Enable EC plugin list. This requires the plugins.yml file presented in the agent path.
-  -psp string
-    	Specify the passphrase of the private key, combined with the flags (-dec -pth <dir-pvtkey> -psp <passphrase> -dat <encypted-data>) for one-step decryption.
-  -pth string
-    	Specify the directory to the certificate/key.
-  -pxy string
-    	Specify a local Proxy service. E.g. http://hello.world.com:8080
-  -rht string
-    	Specify the Resource Host if the "server" mode is set. E.g. <someip>, <somedomain>. value will be discard when TLS is specified.
-  -rnw
-    	Renew a previous-issued x509 certificate.
-  -rpt string
-    	Specify the Resource Port# if the "server" mode is set. E.g. 8989, 38989 (default "0")
-  -sgn
-    	Start a CA Cert-Signing process.
-  -shc
-    	Health API requires basic authentication for Health APIs.
-  -smp
-    	Simplifying the output for integration purpose.
-  -sst string
-    	Specify the EC Service URI. E.g. https://<service.of.predix.io>
-  -tid string
-    	Specify the Target EC Server Id if the "client" mode is set
-  -tkn string
-    	Specify the OAuth Token. The token may expire depending on your OAuth provisioner. This flag is ignored if OAuth2 Auto-Refresh were set.
-  -tsd
-    	Check the timestamp of the EC token (-dat) 
-  -tse
-    	Create a EC-compatible Token, with publickey (-pbk) and an optional 32-digits uuid (-dat). 
-  -ver
-    	Show EC Agent's version.
-  -vfy
-    	Verify the legitimacy of a digital certificate.
-  -vln
-    	Enable support for EC VLAN Network.
-  -vsg
-    	Verify the signature based on the given public key string (-pbk), passphrase, original message (-osg), and the signature (-dat), all are base64 encoded.
-  -wtl string
-    	Specify the ip(s) whitelist in the cidr net format. Concatenate ips by comma. E.g. 89.24.9.0/24, 7.6.0.0/16 (default "0.0.0.0/0,::/0")
-  -zon string
-    	Specify the Zone/Service Inst. Id. required in the "gateway" mode.
-```
+The Predix, a Platform-as-a-Service (PaaS) offering from GE Digital, is built on an open-source cloud computing platform called Cloud Foundry. The Enterprise Connect service is offered as a microservice as part of the Predix Cloud Foundry.
 
-##### Validation
-```
-## Verify the checksum
-### Linux
-```bash
-$ sha256 ./path/to/file/ecagent_linux_sys
-b3bf9cd9686e
-$ awk 's=index($0,"b3bf9cd9686e") { print "line=" NR, "start position=" s}' checksum.txt
-line=2 start position=1
-```
-##### Mac OS
-```
-$ shasum -a 256 ./path/to/file/ecagent_linux_sys
-b3bf9cd9686e
-$ awk 's=index($0,"b3bf9cd9686e") { print "line=" NR, "start position=" s}' checksum.txt
-line=2 start position=1
-```
-##### Windows
-```bash
-c: \> CertUtil -hashfile C:\path\to\file\ecagent_windows.exe sha256
-b3bf9cd9686e (find the checksum in the checksum.txt)
-```
+### Characteristics of Enterprise Connect:
+
+•	Enterprise Connect is a Software-as-a-Service (SaaS) platform 
+
+•	A single instance of Enterprise Connect service can serve only one customer (single tenancy)
+
+•	Is a system that contains many smaller software systems (self-contained microservice)
+
+•	Has the ability to perform asynchronous operations.
+
+### Where Do You Find the EC Service?
+
+•	The Cloud Foundry Marketplace (CFM) offers a host of services on the Predix platform. When you log into the Predix environment and visit the Cloud Foundry marketplace, you will find several services listed out there and Enterprise Connect (EC) is one among them.
+
+•	As of now, Enterprise Connect (EC) is being offered as a service as part of the Predix Cloud Foundry environment. However, there are future plans to make the EC run anywhere including Amazon Web Services (AWS).
+
+•	As Enterprise Connect (EC) is offered as a service, those who want to use it must subscribe to it.
+
+![image](https://user-images.githubusercontent.com/38732583/145245189-839a5b4d-2df3-4241-b086-3d5dc4aa42ec.png)
+
+•	If you have a Predix account, you may visit the site www.predix.io and log into your account. In your services dashboard you will find all the services that you subscribed to.
 
 
-### How to Create Connection
+### Components of Enterprise Connect (EC).
 
-#### Traditional mode
+Enterprise Connect (EC), being a self-contained micro service, has six (6) components.
 
-![image](https://github.com/ramaraosrikakulapu/sdk/blob/v1/images/EC_Tradtional.png)
+•	EC Server
 
-Gateway example
+•	EC Client
 
-Flag | Mandatory | Description
---- | --- | ---
-`mod` | Yes | Agent mode - gateway
-`gpt` | Yes | Gateway port number
-`zon` | Yes | EC Subscription Id
-`sst` | Yes | EC Service URI
-`tkn` | Yes | EC Service admin token
-`hst` | Yes | Gateway URI
-`dbg` | No | Debugger. Default 'false'
-`wtl` | No | Whitelist IP's
-`bkl` | No | Blacklist IP's
+•	EC Gateway
 
-```
-./agent -mod gateway -gpt {gateway-port} \
- -zon {ec-subscription-id} \
- -sst https://{service-uri} \
- -tkn {ec-admin-token} \
- -hst {gateway-uri} \
- -dbg
-```
+•	VLAN Plugin
 
-Server example
+•	TLS Plugin
 
-Flag | Mandatory | Description
---- | --- | ---
-`mod` | Yes | Agent mode - server
-`aid` | Yes | Server agent id
-`grp` | Yes | Agent group which combines server and client agent id's
-`zon` | Yes | EC Subscription Id
-`sst` | Yes | EC Service URI
-`hst` | Yes | Gateway URL - wss://{gateway-uri}/agent
-`oa2` | Yes | OAuth URL for agent authentication
-`cid` | Yes | OAuth client id
-`csc` | Yes | OAuth client secret
-`dur` | Yes | OAuth token expiry time in secs
-`rht` | Yes | Remote host DNS name or IP range
-`rpt` | Yes | Remore port for connectivity
-`dbg` | No | Debugger. Default 'false'
-`hca` | No | Agent health port number
+•	Fuse Mode
 
-```
-./agent -mod server -aid {server-agent-id} \
--grp {agent-group} \
--cid {uaa-client-id} -csc {uaa-client-secret} -dur {oauth-token-dur} \
--oa2 https://{oauth-uri}/oauth/token \
--hst wss://{gateway-uri}/agent \
--sst https://{service-uri} \
--zon {ec-subscription-id} \
--rht {remote-host} -rpt {remote-port} -hca {agent-health-port} -dbg
-```
+#### EC Client: 
+The EC client, though an agent, has the ability to act as a gateway also. It appears on the side of the source system (a client application) and enables it to communicate with the server.
+#### EC Server: 
+The EC Server, though an agent, has also got the ability to act as a gateway. It appears on the side of the target system (a database) and communicates with the database through a driver to fulfill a request.
+#### EC Gateway: 
+The EC gateway acts as a middleware between the EC Client and the EC Server and routes the requests to their right destinations as there may be multiple EC Clients and Servers.
+#### VLAN Plugin: 
+A virtual LAN that enables you to connect to multiple target systems at a time from the client.
+#### TLS Plugin: 
+A TLS (Transport Layer Security) Plugin is used when you want to talk to a secure API. For example, there are some APIs that allow communication only through secure channels such as HTTPS and don’t permit the use of any unsecure channels such as Port 80 or http. In such instances, the TLS plugin comes in handy.
+#### Fuse Mode: 
+In the traditional mode, you have three components namely, EC Client, EC Server, and EC Gateway that constitute the Enterprise Connect (EC) service. This arrangement ensures connectivity when you have multiple clients and servers and there is a need to be connected through a gateway.
+However, if you have a requirement where you need only a single EC connection, then you can combine the EC Gateway with either EC Client or EC Server. In that case, you need only two EC components (instead of three in case of a traditional mode).
 
-Client example
+•	Either a Gateway with server and a client (GW Server and Client)
 
-Flag | Mandatory | Description
---- | --- | ---
-`mod` | Yes | Agent mode - client
-`aid` | Yes | Client agent id
-`tid` | Yes | Server agent id
-`grp` | Yes | Agent group which combines server and client agent id's
-`hst` | Yes | Gateway URL - wss://{gateway-uri}/agent
-`oa2` | Yes | OAuth URL for agent authentication
-`cid` | Yes | OAuth client id
-`csc` | Yes | OAuth client secret
-`dur` | Yes | OAuth token expiry time in secs
-`lpt` | Yes | Client agent running host port for connectivity from applications
-`dbg` | No | Debugger. Default 'false'
-`hca` | No | Agent health port number
-`sts` | No | Status endpoint port. Only for agents later than 214
-```
-./agent -mod client -aid {client-agent-id} \
--tid {server-agent-id} \
--grp {agent-group} \
--cid {uaa-client-id} -csc {uaa-client-secret} -dur {oauth-token-dur} \
--oa2 https://{oauth-uri}/oauth/token \
--hst wss://{gateway-uri}/agent \
--lpt {local-port} -hca {agent-health-port} -dbg
-```
+•	Or a Gateway with client and a Server (GW Client and Server)
 
-#### VLAN
+Such an arrangement is termed as a Fuse Mode or direct connection.
 
-Virtual LAN will create a secure connection between source and multiple target systems by mirroring the target system details in source network settings. It means, one client agent can connect to multiple server agents with one EC connection. Client agent can decide to which target system it should make connection and will update network settings accordingly.
+### Connectivity between Discrete Networks:
 
-Please refer the below pages for EC connection with VLAN plugin based on EC Client agent host os - 
+You can easily connect to an internal database while you are connected to the VPN on your device. However, if you try to access a database either from an AWS VPC or Azure environment, you face difficulty as there is no direct connectivity between the two discrete networks. So, what are the options available to overcome the problem?
 
-[linux](https://github.com/EC-Release/sdk/tree/v1/plugins/vln#vlan-plugin)
+#### Through Firewall:
 
-[windows](https://github.com/EC-Release/sdk/wiki/Windows-VLAN)
+One of the solutions to overcome the problem is through the creation of a firewall.
+
+When you make an API call, it passes through your organization’s proxy, which in turn passes through the secure protocol (https).
+
+However, if you are dealing with a database that doesn’t connect with https, then you need something on Transmission Control Protocol (TCP) level access.
+
+You need to create a firewall between the Virtual Private Cloud (VPC) and the database, and through the firewall we can connect to the database. So, this is one of the approaches to overcome the problem of connectivity between discrete networks.
 
 
-#### TLS
+### Through Enterprise Connect (EC)
+The other way to overcome the problem is through the Enterprise Connect service.
+ 
+•	To access the Predix database, you need to deploy two agents, namely Enterprise Connect (EC) server and Enterprise Connect (EC) Client.
+
+![image](https://user-images.githubusercontent.com/38732583/145246034-20d5b65d-758c-45af-ba5f-0662db724ebb.png)
 
 
-### How to perform the basic troubleshooting for my connection
-Please visit our [Issues-tracker](https://github.com/EC-Release/sdk/issues) for various commonly encountered issues and their resolution.
+•	You initialize the request to access data from the Virtual Private Cloud (VPC) and the request is sent to the EC Client.
 
-### References
-1. https://github.com/EC-Release/sdk/wiki
-2. https://github.com/EC-Release/sdk/wiki/EC-Service
-3. https://github.com/EC-Release/sdk/wiki/EC-Agent
-4. https://github.com/EC-Release/sdk/wiki/EC-Agent-Usage
-5. https://github.com/EC-Release/sdk/wiki/Create-EC-Service
-6. https://github.com/EC-Release/sdk/issues
-7. https://github.com/Enterprise-connect/sdk
-8. https://github.com/cloudfoundry/cli
-9. https://www.predix.io/
-10. https://docs.cloudfoundry.org/uaa/uaa-user-management.html
-11. https://www.ge.com/digital/documentation/predix-services/INGZiMmIzMjctOWU1YS00NGVlLThjNzgtYmRjNmMxMjA4Njcw.html
+•	The EC Client in turn sends the request to the EC Server and the request is routed through the EC Gateway. And, the EC Server communicates with the database to fulfil the request.
+
+•	The EC Gateway, the heart of the Enterprise Connect service, acts as a router to route requests. It knows from where the request originated and where to send the data.
+
+•	The connectivity between the VPC and the EC client is governed by the Transmission Control Protocol (TCP). In the same way, connectivity between the EC Server and the database is also governed by TCP.
+
+•	However, the connectivity between the two agents, namely the EC Client and the EC Server, is governed by a secure WebSocket (https).
+
+
+### Steps Involved in Deploying the EC Service:
+
+To deploy the Enterprise Connect (EC) service, you need to follow the below steps.
+
+![image](https://user-images.githubusercontent.com/38732583/145246099-98fe8b4b-861d-48ee-80ba-4ab016fbf3b0.png)
+
+•	First, you need to subscribe for the Enterprise Connect (EC) service.
+
+•	Thereafter, you need to deploy a gateway (a middleware) under the EC service.
+
+•	The next step involves the installation of the EC server and configure it. The EC server, after coming into existence, reports to the EC gateway and a super connection will be established between the two, which facilitates accessing data from the database.
+
+•	Next, you need to deploy the EC Client and the AWS Virtual Private Cloud (VPC) will establish a connection with it. When the EC Client sends a request to the gateway, the gateway knows to which EC server the request needs to be forwarded as there might be multiple EC clients and servers. The Gateway has the knowledge regarding all the EC Clients and servers that are part of the network and the knowledge enables it to route the requests without errors.
+
+
+### How Things Flow in Enterprise Connect?
+
+The Enterprise Connect service ensures two-way communication between the Predix Cloud and enterprise resources.
+
+•	Connect on-premise data sources to Predix cloud
+
+•	Connect Predix data sources to on-premise – ETL
+
+There are two prerequisites that you need to meet before you start using the Enterprise Connect service. 
+
+•	An active Predix cloud account
+
+•	Installation of Cloud Foundry CLI (Command Line Interface)
+
+![image](https://user-images.githubusercontent.com/38732583/145246295-747ae562-4193-4666-a9f5-6873368b3e8b.png)
+
+
+#### Connecting On-premise Data Sources to Predix/Cloud
+
+•	An EC Client sends a request to an EC Server and the request gets routed through the EC Gateway. The transmission happens through secure WebSocket.
+
+•	The EC server fulfils the request by sharing the required data.
+
+
+#### Connecting Predix Data Sources to On-premise-ETL
+
+![image](https://user-images.githubusercontent.com/38732583/145246394-027947d8-3e58-45aa-a890-581b79d3bc61.png)
+
+•	A request is sent to the Enterprise Connect (EC) client. The transmission of the request is governed by TCP (Transmission Control Protocol). 
+
+•	The EC client relays the request to the EC Server. The request gets routed through the EC Gateway and gets transmitted through a secure WebSocket (HTTPS).
+
+•	The server, in turn communicates with the Predix Postgres service to fulfil the request.
+
+•	The data is extracted by an ETL (Extract, Transform and Load) tool and the users can explore the data visualizations provided by the ETL application to gain insights into the data.
+
+Note: Postgres service allows you to store data securely and retrieve it at the request of other software applications.
+
+
+### More about How Things Flow in Enterprise Connect
+
+•	ELT tools mostly run behind a VPN. Therefore, we use the Enterprise Connect service to facilitate connectivity between the ETL tools and the Predix Cloud.
+
+•	The components of the Enterprise Connect namely, EC Client, EC Server, and EC Gateway create a tunnel between the Cloud Foundry and the VPN Network.
+
+•	In this particular instance, the Predix Postgres database is the target system. It could even be something else such as Amazon Web Services (AWS). In that case, you need to install the Enterprise Connect server in the AWS environment to enable it to access the corresponding database or SFDC (SalesForce Dot Com) servers.
+
+•	And similarly, since the client runs behind the VPN, you have to install the client on that network. Since the client needs to read data from the VPN, you need to install the EC Client behind the firewall. Sometimes you may have to read data from Azure service. In that case, you have to install the EC client in the corresponding client applications.
+
+•	Here, the ETL tools such as Informatica and Talend are client applications, but the applications can even be based on Oracle SQL, Python, or Spring Boot.
+
+•	Ideally, if the ETL tools and the database are in the same network, they can talk to the database directly. But if they are part of two different networks, the ETL tool, which is a client application tool, has to talk to the EC client. The EC client connects to the EC server and the server, in turn, will contact the Postgress database for the fulfilment of the request.
+
+•	Enterprise Connect (EC) service can connect any two independent networks. The connectivity can be between Cloud Foundry and on-premise, on-premise and AWS, or AWS and Azure.
+
+
+### Authentication (OAuth 2.0)
+
+Any agent, whether it is an EC Client or EC Server, before making an API call, should get validated against the User Account and Authentication (UAA). The Enterprise Connect (EC) service uses the Cloud Foundry User Account and Authentication (CF UAA) to manage the identity of the request and authorize the provision of service.
+
+![image](https://user-images.githubusercontent.com/38732583/145246588-b7507028-df31-4460-821e-fb78f4e376cf.png)
+
+
+### Enterprise Connect Service Setup
+
+Subscribe to the Predix Cloud platform (Predix User Account and Authentication service). You can either use the UAA dashboard or the Cloud Foundry command line interface (CLI) to create and configure your service.
+
+Next, you need to create an Enterprise Connect service instance in the Predix environment by signing into your Predix account.
+
+To find a step-by-step procedure to create an Enterprise Connect (EC) service instance, please navigate to the below page:
+https://www.ge.com/digital/documentation/edge-software/r_Enterprise_Connect_service_setup.html
+
