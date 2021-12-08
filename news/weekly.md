@@ -132,7 +132,6 @@ There appears to be some broken linkage to EC subscription @Predix.io, but the c
 2. [DTEC-179](https://ge-dw.aha.io/features/DTEC-179) Integrate ML API Endpoint with UI, so that the user can upload EC Service Logs from UI. (Puja)
 3. [DTEC-180](https://ge-dw.aha.io/features/DTEC-180) Containerize the ML-Portal as a single app with ML-API Endpoint being embedded in UI to make it more user-friendly, so that the users can use a single endpoint to access the api-endpoint as well as the UI. (Puja)
 
-
 ### EC Team Update (2021.10.20)
 #### Ops Supports:
 1. Ops continues struggling in several service updated, regardless the [preliminary progress on the documentation](https://github.build.ge.com/digital-connect-devops/ec-ccl-214-migration) we have supported, there is no documentation effort done. The project labeled **Perceptive Prod EC Issue** is another example in repeating the effort over [the similar issue](https://spo-mydrive.ge.com/:o:/g/personal/212359746_ge_com/ElLLpJEbi2xLlVPDDxLUke4BhQw5Sd5XcBwlUTt4e4q1tg?e=WydGBg)
