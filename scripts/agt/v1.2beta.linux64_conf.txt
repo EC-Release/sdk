@@ -7,12 +7,7 @@ wget -q --show-progress -O ~/.ec/agt/conf/x:server.yml https://raw.githubusercon
 
 # tbc add more conf files
 
-{
-  rm ~/.ec/agent
-} || {
-  printf "\n no agent binary found!\n\n"
-}
-
+[[ -e ~/.ec/agent ]] && rm ~/.ec/agent || printf "\n no agent binary found!\n\n"
 
 # default if AGENT_REV is present in env
 AGENT_REV_LOCAL=$AGENT_REV
