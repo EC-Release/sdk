@@ -209,7 +209,7 @@ Note: Postgres service allows you to store data securely and retrieve it at the 
 
 •	Enterprise Connect (EC) service can connect any two independent networks. The connectivity can be between Cloud Foundry and on-premise, on-premise and AWS, or AWS and Azure.
 
-
+This is an edited version.
 ### Authentication (OAuth 2.0)
 
 Any agent, whether it is an EC Client or EC Server, before making an API call, should get validated against the User Account and Authentication (UAA). The Enterprise Connect (EC) service uses the Cloud Foundry User Account and Authentication (CF UAA) to manage the identity of the request and authorize the provision of service.
