@@ -26,4 +26,5 @@ Table of contents to EC developer guide (self managed subscriptions) -
 - Trobleshooting tips
   - Common issues
   - Health page
-   
+   Introduction:
+Enterprise Connect is a service that enables you to establish a secure and scalable connection between any cloud environment and your enterprise resources. As a service, it connects any two networks governed by different transmission protocols. Data passes through Enterprise Connect before getting routed to its destination. 
