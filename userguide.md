@@ -28,7 +28,7 @@
 
 ### Introduction
 
-Enterprise Connect (EC) is a micro service offered as part of the Predix environment.  It acts as a middleware to connect and transfer data between two discrete networks. Though the Enterprise Connect service is offered as part of Predix, it can connect any two independent networks. Therefore, it can even be used in a different environment such as Amazon Web Services (AWS).
+Enterprise Connect (EC) is a micro service offered as part of the Predix environment. It acts as a middleware to connect and transfer data between two discrete networks. Though the Enterprise Connect service is offered as part of Predix, it can connect any two independent networks. Therefore, it can even be used in a different environment, such as Amazon Web Services (AWS).
 
 ### What is Enterprise Connect?
 
@@ -38,9 +38,9 @@ Enterprise Connect is a service that enables you to establish a secure and scala
 
 ### Why Do You Need Enterprise Connect?
 
-Enterprises that leverage data to enhance the productivity of their assets are better equipped to become market leaders. Therefore, data from industrial devices needs to be captured for the purpose of analysis.
+Enterprises that leverage data to enhance the productivity of their assets are better equipped to become market leaders. Therefore, data from enterprise-owned devices needs to be captured for the purpose of analysis.
 
-Internet of Things (IoT) brought about revolutionary changes in the way we, as a society, operate. There are millions of IoT-enabled devices that are installed to track and monitor a multitude of things. The devices constantly and continuously stream data, which needs to be captured, analysed, and transformed into actionable insights.
+The Internet of Things (IoT) and Big Data have brought about revolutionary changes in the way we, as a society, operate. There are millions of IoT-enabled devices that are installed to track and monitor a multitude of things. The devices constantly and continuously stream data, which needs to be captured, analysed, and transformed into actionable insights.
 
 The Enterprise Connect service, which can connect any two independent networks, empowers enterprises to transfer data for the purpose of analysis.
 
@@ -54,13 +54,13 @@ The Predix, a Platform-as-a-Service (PaaS) offering from GE Digital, is built on
 
 •	Is a system that contains many smaller software systems (self-contained microservice)
 
-•	Has the ability to perform asynchronous operations.
+•	Has the ability to perform asynchronous operations
 
 ### Where Do You Find the EC Service?
 
-•	The Cloud Foundry Marketplace (CFM) offers a host of services on the Predix platform. When you log into the Predix environment and visit the Cloud Foundry marketplace, you will find several services listed out there and Enterprise Connect (EC) is one among them.
+•	The Cloud Foundry Marketplace (CFM) offers a host of services on the Predix platform. When you log into the Predix environment and visit the Cloud Foundry marketplace, you will find several services listed there and Enterprise Connect (EC) is one of them.
 
-•	As of now, Enterprise Connect (EC) is being offered as a service as part of the Predix Cloud Foundry environment. However, there are future plans to make the EC run anywhere including Amazon Web Services (AWS).
+•	As of now, Enterprise Connect (EC) is being offered as a service as part of the Predix Cloud Foundry environment. However, there are future plans to make the EC run anywhere, including Amazon Web Services (AWS).
 
 •	As Enterprise Connect (EC) is offered as a service, those who want to use it must subscribe to it.
 
@@ -96,8 +96,8 @@ A virtual LAN that enables you to connect to multiple target systems at a time f
 #### TLS Plugin: 
 A TLS (Transport Layer Security) Plugin is used when you want to talk to a secure API. For example, there are some APIs that allow communication only through secure channels such as HTTPS and don’t permit the use of any unsecure channels such as Port 80 or http. In such instances, the TLS plugin comes in handy.
 #### Fuse Mode: 
-In the traditional mode, you have three components namely, EC Client, EC Server, and EC Gateway that constitute the Enterprise Connect (EC) service. This arrangement ensures connectivity when you have multiple clients and servers and there is a need to be connected through a gateway.
-However, if you have a requirement where you need only a single EC connection, then you can combine the EC Gateway with either EC Client or EC Server. In that case, you need only two EC components (instead of three in case of a traditional mode).
+In the traditional mode, you have three components, namely EC Client, EC Server, and EC Gateway, that constitute the Enterprise Connect (EC) service. This arrangement ensures connectivity when you have multiple clients and servers and there is a need to be connected through a gateway.
+However, if you have a requirement where you need only a single EC connection, then you can combine the EC Gateway with either an EC Client or an EC Server. In that case, you need only two EC components (instead of three in the case of a traditional mode).
 
 •	Either a Gateway with server and a client (GW Server and Client)
 
@@ -107,7 +107,7 @@ Such an arrangement is termed as a Fuse Mode or direct connection.
 
 ### Connectivity between Discrete Networks:
 
-You can easily connect to an internal database while you are connected to the VPN on your device. However, if you try to access a database either from an AWS VPC or Azure environment, you face difficulty as there is no direct connectivity between the two discrete networks. So, what are the options available to overcome the problem?
+You can easily connect to an internal database while you are connected to the VPN on your device. However, if you try to access a database either from an AWS VPC or Azure environment, you will face difficulty as there is no direct connectivity between the two discrete networks. So, what are the options available to overcome the problem?
 
 #### Through Firewall:
 
