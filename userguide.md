@@ -115,7 +115,7 @@ One of the solutions to overcome the problem is through the creation of a firewa
 
 When you make an API call, it passes through your organization’s proxy, which in turn passes through the secure protocol (https).
 
-However, if you are dealing with a database that doesn’t connect with https, then you need something on Transmission Control Protocol (TCP) level access.
+However, if you are dealing with a database that doesn’t connect with https, then you need something at Transmission Control Protocol (TCP) level access.
 
 You need to create a firewall between the Virtual Private Cloud (VPC) and the database, and through the firewall we can connect to the database. So, this is one of the approaches to overcome the problem of connectivity between discrete networks.
 
@@ -173,7 +173,7 @@ There are two prerequisites that you need to meet before you start using the Ent
 
 #### Connecting On-premise Data Sources to Predix/Cloud
 
-•	An EC Client sends a request to an EC Server and the request gets routed through the EC Gateway. The transmission happens through secure WebSocket.
+•	An EC Client sends a request to an EC Server and the request gets routed through the EC Gateway. The transmission happens through a secure WebSocket.
 
 •	The EC server fulfils the request by sharing the required data.
 
@@ -205,14 +205,14 @@ Note: Postgres service allows you to store data securely and retrieve it at the 
 
 •	Here, the ETL tools such as Informatica and Talend are client applications, but the applications can even be based on Oracle SQL, Python, or Spring Boot.
 
-•	Ideally, if the ETL tools and the database are in the same network, they can talk to the database directly. But if they are part of two different networks, the ETL tool, which is a client application tool, has to talk to the EC client. The EC client connects to the EC server and the server, in turn, will contact the Postgress database for the fulfilment of the request.
+•	Ideally, if the ETL tools and the database are in the same network, they should be able to communicate directly with the database. But if they are part of two different networks, the ETL tool, which is a client application tool, has to talk to the EC client. The EC client connects to the EC server, and the server, in turn, will contact the Postgress database for the fulfilment of the request.
 
 •	Enterprise Connect (EC) service can connect any two independent networks. The connectivity can be between Cloud Foundry and on-premise, on-premise and AWS, or AWS and Azure.
 
 
 ### Authentication (OAuth 2.0)
 
-Any agent, whether it is an EC Client or EC Server, before making an API call, should get validated against the User Account and Authentication (UAA). The Enterprise Connect (EC) service uses the Cloud Foundry User Account and Authentication (CF UAA) to manage the identity of the request and authorize the provision of service.
+Any agent, whether it is an EC Client or an EC Server, before making an API call, should get validated against the User Account and Authentication (UAA). The Enterprise Connect (EC) service uses the Cloud Foundry User Account and Authentication (CF UAA) to manage the identity of the request and authorize the provision of service.
 
 ![image](https://user-images.githubusercontent.com/38732583/145246588-b7507028-df31-4460-821e-fb78f4e376cf.png)
 
