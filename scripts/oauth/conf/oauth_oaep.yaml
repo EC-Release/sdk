@@ -5,7 +5,7 @@ ec-config:
       dbg: true
       tls: false
       # deprecated
-      #tim: $IS_TIMECONTRLR
+      # tim: $IS_TIMECONTRLR
       sed: $EC_SEED_NODE
       #local url accessisble to other seeds
       hst: $EC_SEED_HOST
