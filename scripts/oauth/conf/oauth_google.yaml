@@ -1,0 +1,67 @@
+ec-config:
+    conf:
+      mod: oauth2
+      apt: $EC_PORT
+      dbg: true
+      tls: false
+      # deprecated
+      #tim: $IS_TIMECONTRLR
+      sed: $EC_SEED_NODE
+      #local url accessisble to other seeds
+      hst: $EC_SEED_HOST
+    #group to define the authentication method of the connectivity.  
+    authGroup:   
+    # begin of test  
+    - validate: oidc
+      scope: ["admin.read","subs.read"]
+      #isOwner indicates if this oauth instance will use the auth keypair for the purpose of TLS 
+      isOwner: true
+      privateKey: $EC_PVTKEY
+      publicCrt: $EC_PUBCRT
+      description: "keypair for poc [ed449c749b72]"
+      #failURL redirects any failing authentications to.
+      failURL: $EC_OAUTH_FAIL_URL 
+      oidc:
+        vendor: google        
+        domain: $EC_OIDC_DOMAIN #https://helloOauthDomain.com
+        authPath: $EC_OIDC_AUTH_PATH #"/authorize"
+        tokenPath: $EC_OIDC_TOKEN_PATH #"/oauth/token"
+        #used for userPath calls. <token> will be replaced by the oauth token
+        #"http://url/to/oauth/user/api"
+        userURL: $EC_OIDC_USER_PATH
+        #uathScopes used for the custom scopes admitted to oidc IdP
+        #authScopes: ["read:user","user:email","read:org"]        
+        userHttpMethod: "GET"
+        userHttpHeaders: ["Authorization: token <token>","X-Custom-Header:Hello-World","Conten-Type:application/json"]
+        # available field-mapping for the local user. unmapped or fail-to-map fields will remain empty.
+        # the rest available-to-map fields can be found here https://enterprise-connect.github.io/web-ui/webui-assets/godoc/wzschema.html#UserDetail
+        userFieldIndex:
+          # required for validation
+          userId: "login"
+          # when present, the oa2 will look for the scopeIndex in the setting
+          scope: "scope"
+          # mail used for cross-references
+          email: "email"
+          # begin optional
+          fullName: ""
+          country: ""
+          dns: ""
+          locality: ""
+          organization: "organizations_url:login"
+          organizationalUnit: ""
+          postalCode: ""
+          province: ""
+          streetAddress: ""
+          role: ""
+          env: ""
+          license: ""
+          # end optional
+        clientId: $EC_OIDC_CID
+        clientSecret: $EC_OIDC_CSC
+        #when not present, user will inherit the local scopes
+        scopeIndex:
+          "admin.read": ["read:user","user:email"]
+          "subs.read": ["read:org"]
+        # deprecated
+        #use scopeFieldType to indicate whether the scope field is in a array format, or a simply divider by character e.g. "read, write", "user:guest:admin", etc. For divider character, use ",", ":", " ", "$", "@" etc.
+        #scopeFieldType: "array"
