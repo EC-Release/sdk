@@ -4,7 +4,8 @@ ec-config:
       apt: $EC_PORT
       dbg: true
       tls: false
-      tim: $IS_TIMECONTRLR
+      # deprecated
+      # tim: $IS_TIMECONTRLR
       sed: $EC_SEED_NODE
       #local url accessisble to other seeds
       hst: $EC_SEED_HOST
@@ -17,4 +18,4 @@ ec-config:
       isOwner: true
       privateKey: $EC_PVTKEY
       publicCrt: $EC_PUBCRT
-      description: "keypair for poc [ed449c749b72]"
+      description: "keypair for PoC"

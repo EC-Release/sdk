@@ -16,6 +16,10 @@ if [[ ! -z "${EC_PPS}" ]]; then
   export EC_PPS=$(agent -hsh -smp)
 fi
 
+if [[ ! -z "${PORT}" ]]; then
+  export EC_GPT=:$PORT
+fi
+
 if [[ $* == *-cvt* ]]; then
   touch /tmp/out.yaml          
   while test $# -gt 1; do

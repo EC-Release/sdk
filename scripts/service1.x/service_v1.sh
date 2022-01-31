@@ -11,9 +11,7 @@
 #  author: apolo.yasuda@ge.com
 #
 
-#temp. pls remove this line in release
-#sleep 10
-echo "import library & tools"
+echo "import libraries & tools.."
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/helper.sh)
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/base.sh)
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/ext-lib-a.sh)
@@ -21,6 +19,8 @@ source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/script
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/blue-green-step1.sh)
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/blue-green-step2.sh)
 source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/cf-ops/find-problem-instances.sh)
+
+wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml  
 curl -s -o $(pwd)/field_list.txt https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/service-update/main/field_list.txt
 curl -s -o $(pwd)/docker-creds.yml https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/service-update/main/docker-creds.yml
 
@@ -32,52 +32,48 @@ if [[ ! -z "${VCAP_APPLICATION}" ]]; then
     ./run.sh
 else
 
+  #trap 'checkInLogger "bgStep1ClonePush" "$LINENO" "$?" "$BASH_COMMAND"' EXIT ERR RETURN
+    
   case $OPS_NAME in
   1000)
-    login
-    printf "\nexecute blue-green step 1\n\n"
+    login    
+    printf "\nexecute blue-green step 1\n\n"    
     bgStep1ClonePush
-    mkdir -p logs
+    checkInLogger 'bgStep1ClonePush'
+    #trap - EXIT ERR RETURN
+    exit 0
     ;;
   1003)    
     login
     printf "\nidentify instances qualified for step1\n\n"
     # find instances that have no suffix "E.g. -2022" and are qualified for running bg step 1
     findInstsQualifiedForStep1
-    mkdir -p logs
-    {
-    cp ~findInstsQualifiedForStep1 ./logs/insts-qualified-step1.log
-    cp ~failedFindInstsQualifiedForStep1 ./logs/insts-failed-qualified-step1.log
-    }
+    checkInLogger 'findInstsQualifiedForStep1'
+    exit 0
+    
     ;;
   1006)
     login
     printf "\nidentify instances qualified for the step 2\n\n"
     findInstsQualifiedForStep2
-    cat ~findInstsQualifiedForStep2
-    mkdir -p logs
-    {
-    cp ~findInstsQualifiedForStep2 ./logs/insts-qualified-step2.log
-    cp ~failedFindInstsQualifiedForStep2 ./logs/insts-failed-qualified-step2.log
-    }
+    checkInLogger 'findInstsQualifiedForStep2'
+    exit 0
     ;;
   1002)
     login
-    #printf "\identify instances qualified for the step 2\n\n"
-    #findInstsQualifiedForStep2
-    #~findInstsQualifiedForStep2.txt
-    #cat ~findInstsQualifiedForStep2.txt
     
     printf "\nexecute blue-green step 2\n\n"
     procStep2
-    #cat ~procStep2.txt
-    mkdir -p logs
-    #cp ~findInstsQualifiedForStep2 ./logs/insts-qualified-4-step2.log
-    {
-    cp ~procStep2 ./logs/insts-completed-step2.log
-    cp ~failedProcStep2Insts ./logs/insts-failed-step2.log
-    cp ~unknownProcStep2Insts ./logs/insts-unknown-step2.log
-    }
+    checkInLogger 'procStep2'
+    exit 0
+    ;;
+  1007)
+    login
+    
+    printf "\nupdate credential for instances have completed the blue-green step 2\n\n"
+    procDoneStep2
+    checkInLogger 'procDoneStep2'
+    exit 0
     ;;
   1004)
     printf "\nclean up and remove the original instances\n\n"
@@ -85,10 +81,20 @@ else
   1005)
     printf "\nrestort instance to the original state.\n\n"
     ;;
+  1008)
+    login    
+    printf "\nad-hoc memory scaling on 2022 insts (1G->128M)\n\n"
+    adhocMemScaling
+    exit 0
+    ;;
   1001)
+    login
+    
     printf "\nfinding problematic instances\n\n"
     getProblemInstances
   #"1001" | "1002")
+    checkInLogger 'getProblemInstances'
+    exit 0
     ;;
   *)
     printf "\nno operations found\n\n"

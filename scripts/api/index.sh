@@ -16,6 +16,8 @@ wget -q --show-progress -O ~/.ec/scripts/exec.sh https://raw.githubusercontent.c
 #chmod +x ~/.ec/scripts/executor.sh ~/.ec/scripts/exec.sh ~/.ec/scripts/cli.sh
 chmod +x ~/.ec/scripts/exec.sh ~/.ec/scripts/cli.sh
 
+[[ -e ~/kubectl ]] && mv ~/kubectl /usr/local/bin/ && chmod +x /usr/local/bin/kubectl
+
 ls -la ~/.ec/scripts
 
 if [[ $# -gt 1 ]]; then

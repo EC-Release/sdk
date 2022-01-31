@@ -15,12 +15,8 @@
 # $1: <app name>
 function findCurrentRouting () {
     
-    cf app $1 > ~tmp 2>&1
-    current_routes=$(cat ~tmp | grep routes | awk -F':' '{print $2}' | xargs)
-    
-    if [[ ! -z "$current_routes" ]]; then
-      printf "$current_routes"
-    fi
+    ref=$(findUUID "$1")
+    cat $__CACHED_ALL_ROUTES | grep -e "$ref" | awk 'length($2)==36 {print $2"."$3}'
 }
 
 # set the env var in the app $1 as the completion of step2

@@ -14,29 +14,10 @@
 # $1: <app name>
 function findInstOfOrigin () {
 
-  #theOrigInst=$(echo $1 | awk -F'-2022' '{print $1}')
-  theOrigInst=${1%-"$MISSION"}
-
-  cf app $theOrigInst > ~tmp 2>&1
-  getApp=$(cat ~tmp | grep -e 'FAILED')
-
-  if [[ -z $getApp ]]; then
-    printf "$theOrigInst"
-    return
-  fi
-
-  #getEnv=$(cf e $theOrigInst | grep -e 'UPDATED: '$MISSION)
-  : 'instStep1=$(hasEnvVar "$theOrigInst" 'UPDATED: '$MISSION)
-  #echo $instStep1
-  if [[ $instStep1 == "0" ]]; then
-    printf "$theOrigInst"
-    return
-  fi'
-
-  # if have some doubts
-  printf "$1 (unknown instance)\n" >> ~unknownProcStep2Insts
+  ref=$(findUUID "$1")
+  cat $__CACHED_ALL_ROUTES | grep -e "$ref" | awk 'length($2)==36 {print $4}'
+  
 }
-
 
 # unmap the url route $2 from the app name $1
 # $1: <app name>
@@ -78,4 +59,17 @@ function updateInstURL () {
   fi
 
   printf "0"
+}
+
+function adhocMemScaling () {
+  cf a > ~tmp
+  cat ~tmp | grep -e '-2022' | grep -e 'started' | awk '$4=="1G" {print $1}' > ~adhoc
+  while read -r line; do
+    
+cf scale $line -m 128M <<MSG
+yes
+MSG
+    
+  done < ~adhoc
+  
 }

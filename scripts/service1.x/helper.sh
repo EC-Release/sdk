@@ -11,6 +11,10 @@
 #  author: apolo.yasuda@ge.com
 #
 
+function getRandomStr () {
+  tr -dc A-Za-z0-9 </dev/urandom | head -c 20 ; echo ''
+}
+
 #check if the string $1 is a UUID
 function isUUID () {
 
@@ -21,6 +25,12 @@ function isUUID () {
   fi
 
 }
+
+#check if the string $1 contains a UUID
+function findUUID () {
+  echo $1 | grep -Po '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+}
+
 
 function parse_yaml {
   local prefix=$2

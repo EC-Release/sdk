@@ -4,7 +4,8 @@ ec-config:
       apt: $EC_PORT
       dbg: true
       tls: false
-      tim: $IS_TIMECONTRLR
+      # deprected
+      #tim: $IS_TIMECONTRLR
       sed: $EC_SEED_NODE
       #local url accessisble to other seeds
       hst: $EC_SEED_HOST
@@ -27,8 +28,9 @@ ec-config:
         #used for userPath calls. <token> will be replaced by the oauth token
         #"http://url/to/oauth/user/api"
         userURL: $EC_OIDC_USER_PATH
+        # deprecated
         #uathScopes used for the custom scopes admitted to oidc IdP
-        authScopes: ["read:user","user:email","read:org"]        
+        #authScopes: ["read:user","user:email","read:org"]        
         userHttpMethod: "GET"
         userHttpHeaders: ["Authorization: token <token>","X-Custom-Header:AHA-Integration","Conten-Type:application/json"]
         # available field-mapping for the local user. unmapped or fail-to-map fields will remain empty.
@@ -58,8 +60,8 @@ ec-config:
         clientSecret: $EC_OIDC_CSC
         #when not present, user will inherit the local scopes
         scopeIndex:
-          "read:user": ["admin.read","subs.read"]
-          "user:email": ["admin.read"]
-          "read:org": ["admin.read"]
+          "admin.read": ["admin.read","subs.read"]
+          "subs.read": ["admin.read"]
+        # deprecated
         #use scopeFieldType to indicate whether the scope field is in a array format, or a simply divider by character e.g. "read, write", "user:guest:admin", etc. For divider character, use ",", ":", " ", "$", "@" etc.
-        scopeFieldType: "array"
+        #scopeFieldType: "array"

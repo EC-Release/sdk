@@ -22,7 +22,7 @@ ec-config:
       #failURL redirects any failing authentications to.
       failURL: $EC_OAUTH_FAIL_URL 
       oidc:
-        vendor: github        
+        vendor: google        
         domain: $EC_OIDC_DOMAIN #https://helloOauthDomain.com
         authPath: $EC_OIDC_AUTH_PATH #"/authorize"
         tokenPath: $EC_OIDC_TOKEN_PATH #"/oauth/token"

@@ -11,130 +11,142 @@
 #  author: apolo.yasuda@ge.com
 #
 
-
 function pushService () {
-    cat ./push/manifest.yml        
+    #cat ./push/manifest.yml        
     cd ./push
-    {
-      cf push
-    }
-    cd -
+    cf push --no-start > ~tmp 2>&1
+    #cat ~tmp
+    ref=$(cat ~tmp | grep -e 'FAILED')    
+    if [[ -z "$ref" ]]; then
+      printf "0"
+      return
+    fi
+    
+    cd -  &> /dev/null
+    printf "1"
+}
+
+#$1 cf app name
+function instQualifiedForStep1 () {  
+  
+  url=$(findCurrentRouting $1)
+  if [[ -z $url ]]; then
+    printf "%s instance %s does not have a routing.\n" "$__ERR" "$1"
+    return
+  fi
+
+  zon=$(echo $url | cut -d'.' -f 1)
+  uid=$(isUUID $zon)
+  if [[ $uid != "0" ]]; then
+    printf "%s instance url %s does not appear to be a service instance.\n" "$__ERR" "$url"
+    return
+  fi    
+
+  instStep1=$(cat $__CACHED_ALL_INSTS | grep -e $zon'-'$MISSION)
+  if [[ ! -z "$instStep1" ]]; then
+    printf "%s instance %s has had a cloned instance %s\n" "$__ERR" "$1" $zon'-'$MISSION
+    return
+  fi
+  
+  ref=$(verifyEnvs "$1")
+  #echo '$verifyEnvs: '$ref
+  #logger 'verifyEnvs' "$ref"
+  #checkInLogger 'verifyEnvs'
+  if [[ $ref != *"$__PAS"* ]]; then
+      printf "%s instance %s failed verify env variables" "$__ERR" "$1"
+      return
+  fi  
+  
+  #condition deprecated
+  #instStep2=$(hasEnvVar $1 'UPDATED: '$MISSION)
+  #if [[ -z "$instStep2" ]]; then
+  #  printf "%s instance %s is not updated and qualified for the step1." "$__PAS" "$1"
+  #  return
+  #fi
+    
+  printf "%s instance %s meets requirement for blue-green step 1\n" "$__PAS" "$1"
+  return
 }
 
 function findInstsQualifiedForStep1 () {
     
-  printf "\nget instances without step1 suffix..\n"
-  getAppointedInsts | awk 'NR!=1 && $1 !~ /-'$MISSION'/ {print $1}' > ~insts
+  printf "\nget appointed instances..\n"
+  getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
+  cat ~insts
   
-  printf "\nloop into instances without step1 suffix..\n"  
   while read -r line; do
     
-    url=$(findCurrentRouting $line)
-    if [[ -z $url ]]; then
-      printf "instance %s does not have a routing. continue identify next instance\n" "$line" | tee -a ~failedFindInstsQualifiedForStep1
+    appName=$(findInstOfOrigin "$line")
+    if [[ -z "$appName" ]]; then
+      ref=$(printf "%s findInstOfOrigin could not identify associated instance with the name (%s)\n" "$__ERR" "$line")
+      logger 'findInstOfOrigin' "$ref"
       continue
     fi
     
-    zon=$(echo $url | cut -d'.' -f 1)
-    uid=$(isUUID $zon)
-    if [[ $uid != "0" ]]; then
-      printf "\ninstance url %s does not appear to be a service instance. continue identify next instance\n" "$url" | tee -a ~failedFindInstsQualifiedForStep1
-      continue
-    fi    
-    
-    instStep1=$(cat ~allInsts | grep -e $line'-'$MISSION)
-    if [[ ! -z "$instStep1" ]]; then
-      printf "\ninstance %s has had a cloned instance. continue identify next instance\n" "$line" | tee -a ~failedFindInstsQualifiedForStep1
+    ref=$(instQualifiedForStep1 $appName)
+    if [[ $ref != *"$__PAS"* ]]; then
+      logger 'instQualifiedForStep1' "$ref"
       continue
     fi
-    
-    instStep2=$(hasEnvVar $line 'UPDATED: '$MISSION)
-       
-    if [[ -z "$instStep2" ]]; then
-      printf "\ninstance %s has not been updated. added to the list" "$line"
-      printf "$line\n" >> ~findInstsQualifiedForStep1
-    fi
-    
+
+    ref=$(printf "%s findInstsQualifiedForStep1 successfully verified instance (%s)\n" "$__PAS" "$line")
+    logger 'findInstsQualifiedForStep1' "$ref"
   done < ~insts
   
-  {
-    rm ~insts
-  }
-  
+  checkInLogger 'findInstOfOrigin'
+  checkInLogger 'instQualifiedForStep1'
+  return
 }
 
 function bgStep1ClonePush () {
 
-    wget -q --show-progress -O ./manifest.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/push/manifest.yml    
+  printf "\nget appointed instances..\n"
+  getAppointedInsts | awk 'NR!=1 {print $1}' > ~insts
+  cat ~insts  
+  
+  while read -r line; do
     
-    if [[ "$PRIORITY_FILE" != "0" ]]; then
-      cat $PRIORITY_FILE > ./service_list.txt
-    else 
-      cf a | grep -E 'started|stopped' | awk '$1 == /-2022/ {print $1}' > ./service_list.txt
+    appName=$(findInstOfOrigin "$line")
+    if [[ -z "$appName" ]]; then
+      printf "%s findInstOfOrigin could not identify associated instance with the name (%s)\n" "$__ERR" "$line"
+      continue
     fi
     
-    findInstsQualifiedForStep1
+    ref=$(instQualifiedForStep1 "$appName")
+    if [[ "$ref" != *"$__PAS"* ]]; then
+      logger 'instQualifiedForStep1' "$ref"
+      continue
+    fi
+      
+    printf "continue push the cloned instance for instance %s\n" "$line"
     
-    while read line; do
-    
-      qualifiedInst=$(cat ~findInstsQualifiedForStep1.txt | grep -e $line)
-      if [[ -z "$qualifiedInst"]]; then
-        printf "\ninstance %s is not qualified for blue-green step 1. continue to next instance\n" "$line"
-        continue
-      fi
+    ref=$(setEnvs "$appName")
+    if [[ "$ref" != *"$__PAS"* ]]; then
+      logger 'setEnvs' "$ref"  
+      continue
+    fi
+     
+    #re-visit 
+    #debugger 'bgStep1ClonePush' "$(cat ./push/manifest.yml)"
       
-      ZONE=$line
-      echo "Updating $ZONE.."
+    ref=$(pushService "$appName")
+    #echo '$ref: "'$ref'"'
+    if [[ "$ref" != "0" ]]; then
+      ref1=$(printf "%s pushService for instance %s unsuccessful\n" "$__ERR" "$appName")
+      logger 'pushService' "$ref1"
+      continue
+    fi
       
-      {
-        getEnvs
-        echo "Fetched ENVs"      
-      } || {
-        echo "failed fetched envs for ${ZONE}. proceed to next instance"
-        echo "${ZONE}" > ./err_ins.txt
-        
-        continue
-      }
+    setStep1CompletedEnv "$appName"
+    ref=$(printf "%s instance %s updated successful in step 1\n" "$__PAS" "$line")
+    logger 'bgStep1ClonePush' "$ref"
       
-      op=$(cat values.txt | grep UPDATED | cut -d ' ' -f2)
-      if [[ "$op" == *"$MISSION"* ]]; then
-        echo "instance $ZONE has been marked as updated.　proceed to next instance"
-        continue
-      fi
-      
-      mkdir -p push
-      cp ./manifest.yml ./push/manifest.yml
-      
-      #cat ./push/manifest.yml
-      {
-        setEnvs      
-        echo "Manifest file updated"    
-      } || {
-        echo "failed update the manifest file. proceed to next instance"
-        echo "${ZONE}" > ./err_ins.txt
-        continue
-      }
-      
-      {
-        pushService | tee output.txt
-        if grep -q FAILED output.txt; then
-          echo "Service update unsuccessful. proceed to next instance"
-          echo "${ZONE}" >> ./../err_ins.txt
-        else
-          setStep1CompletedEnv ${ZONE}
-          #cf set-env ${ZONE} UPDATED '2022'
-          echo "Service ${ZONE} updated successful"
-        fi        
-      } || {
-        echo "service update unsuccessful. proceed to next instance"
-      }
-      
-    done < service_list.txt
-    
-    echo "update completed."    
-         
-    {
-      echo "instance list failed during the update.."
-      cat err_ins.txt      
-    }
+  done < ~insts
+  
+  #echo "\n\nupdate completed.\n\n"
+  checkInLogger 'instQualifiedForStep1'
+  checkInLogger 'setEnvs'
+  checkInLogger 'pushService'
+  #checkInLogger 'bgStep1ClonePush'
+  return 0
 }

@@ -4,7 +4,8 @@ ec-config:
       apt: $EC_PORT
       dbg: true
       tls: false
-      tim: $IsTimeController
+      # deprecated
+      #tim: $IsTimeController
       sed: $EC_SEED_NODE
       hst: $EC_SEED_HOST      
     #group to define the authentication method of the connectivity.  
@@ -26,9 +27,10 @@ ec-config:
         #used for userPath calls. <token> will be replaced by the oauth token
         #"http://url/to/oauth/user/api"
         userURL: $EC_OIDC_USER_PATH
+        # deprecated
         #authScopes used for the custom scopes admitted to oidc IdP. required by sso vendor
-        authScopes: ["openid","profile"] 
-        userHttpHeaders: ["Authorization:Bearer <token>","Conten-Type:application/json"]
+        #authScopes: ["openid","profile"] 
+        userHttpHeaders: ["Authorization:Bearer <token>","Content-Type:application/json"]
         userHttpMethod: "POST"
         # available field-mapping for the local user. unmapped or fail-to-map fields will remain empty.
         # the rest available-to-map fields can be found here https://enterprise-connect.github.io/web-ui/webui-assets/godoc/wzschema.html#UserDetail
@@ -53,6 +55,7 @@ ec-config:
         clientSecret: $EC_OIDC_CSC
         #when not present, user will inherit the local scopes
         scopeIndex:
+          "guest": ["openid","profile"]
           "admin.read": ["@CORP EC WebUI Admin","@CORP EC WebUI AppOps","@CORP EC WebUI User"]
           "subs.read": ["@CORP EC WebUI Admin","@CORP EC WebUI AppOps","@CORP EC WebUI User"]
           "app.auth": ["@CORP EC WebUI Admin","@CORP EC WebUI AppOps"]
@@ -66,5 +69,8 @@ ec-config:
           "healthcare.admin.read": ["@CORP Healthcare Admin"]
           "ec.licensed.admin": ["@CORP EC WebUI Admin"]
           "ec.licensed.user": ["@CORP EC WebUI User"]
+          # tag the scope to all authenticated oidc users
+          "ec.guest.user": ["*"]
+        # deprecated
         #use scopeFieldType to indicate whether the scope field is in a array format, or a simply divider by character e.g. "read, write", "user:guest:admin", etc. For divider character, use ",", ":", " ", "$", "@" etc.
-        scopeFieldType: "array"
+        #scopeFieldType: "array"
