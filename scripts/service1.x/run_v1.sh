@@ -1,4 +1,52 @@
 #!/bin/bash
+#
+#  Copyright (c) 2020 General Electric Company. All rights reserved.
+#
+#  The copyright to the computer software herein is the property of
+#  General Electric Company. The software may be used and/or copied only
+#  with the written permission of General Electric Company or in accordance
+#  with the terms and conditions stipulated in the agreement/contract
+#  under which the software has been supplied.
+#
+
+: '# legacy env vars from CF1
+
+ADMIN_PWD
+ADMIN_TKN
+ADMIN_USR
+BASE
+
+EC_PRVT_PWD <service 2.x pphrase>
+EC_SETTINGS <group detail, account, etc.>
+ENV
+GITHUB_TOKEN
+PLAN_ID
+PLAN_NAME
+UPDATED
+ZONE
+
+# *S*AC
+ZAC_CLIENT_ID <DevID>
+ZAC_CLIENT_SECRET <Hash>
+ZAC_SERVICE_ID <EC-1.x>
+ZAC_UAA <SDC URL>
+ZAC_URL <SAC URL>
+
+# deprecated
+CF_API
+CF_LOGIN
+CF_PWD
+CF_USR
+NR_KEY
+NUREGO_API_KEY
+NUREGO_ENDPOINT
+NUREGO_FEATURE_ID
+NUREGO_TKN_INS
+NUREGO_TKN_PWD
+NUREGO_TKN_URL
+NUREGO_TKN_USR
+NUREGO_USAGE_FEATURE_ID'
+
 
 mkdir -p ./temp
 curl -s -o ./temp/service2.x.cer https://${GITHUB_TOKEN}@raw.githubusercontent.com/EC-Release/x509/main/crt-list/beta/c2211cb7-3ae6-4a8f-a6c4-01577615f318.cer
@@ -76,3 +124,5 @@ eval "sed -i -e 's#{BASE}#${EC_REV}#g' ./assets/swagger.json"
 eval "sed -i -e 's#{ENV}#${ENV}#g' ./assets/swagger.json"
 eval "sed -i -e 's#{APP_PATH}#/${REV}/index#g' ./assets/index.html"
 node ./app.js
+
+
