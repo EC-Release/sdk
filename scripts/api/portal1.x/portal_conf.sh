@@ -2,8 +2,8 @@
 mkdir -p ~/.ec/api/portal1.x/ ~/.ec/api/conf ~/.ec/tmp/portal
 
 # temp for PR https://github.com/EC-Release/web-ui/pull/112
-wget -q --show-progress -O ~/.ec/api/portal1.x/v1.1beta.tar.gz https://github.com/Subhash-vishwakarma/web-ui/archive/v1.1beta.tar.gz
-#wget -q --show-progress -O ~/.ec/api/portal1.x/v1.1beta.tar.gz https://github.com/EC-Release/web-ui/archive/v1.1beta.tar.gz
+# wget -q --show-progress -O ~/.ec/api/portal1.x/v1.1beta.tar.gz https://github.com/Subhash-vishwakarma/web-ui/archive/v1.1beta.tar.gz
+wget -q --show-progress -O ~/.ec/api/portal1.x/v1.1beta.tar.gz https://github.com/EC-Release/web-ui/archive/v1.1beta.tar.gz
 
 wget -q --show-progress -O ~/.ec/tmp/portal/v1.2beta.tar.gz https://github.com/EC-Release/ng-portal/archive/refs/heads/v1.2beta.tar.gz
 
