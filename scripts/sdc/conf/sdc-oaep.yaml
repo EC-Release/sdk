@@ -1,0 +1,21 @@
+ec-config:
+    conf:
+      mod: sdc
+      apt: $EC_PORT
+      dbg: true
+      tls: false
+      # deprecated
+      # tim: $IS_TIMECONTRLR
+      sed: $EC_SEED_NODE
+      #local url accessisble to other seeds
+      hst: $EC_SEED_HOST
+    #group to define the authentication method of the connectivity.  
+    authGroup:
+    - validate: oaep
+      scope: ["app.auth","cluster.user","ec.core.developer","ec.licensed.admin","ec.ops.admin","ec.licensed.user","ec.guest.readonly"]
+      #failURL redirects any failing authentications to.
+      failURL: $EC_OAUTH_FAIL_URL
+      isOwner: true
+      privateKey: $EC_PVTKEY
+      publicCrt: $EC_PUBCRT
+      description: "keypair for PoC"

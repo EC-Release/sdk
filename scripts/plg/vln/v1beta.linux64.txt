@@ -1,0 +1,7 @@
+
+mkdir -p ~/.ec/plg/vln
+wget -q --show-progress -O ~/.ec/plg/vln/vln_linux_sys https://github.com/EC-Release/sdk/raw/v1beta/plugins/vln/vln_linux_sys
+wget -q --show-progress -O ~/.ec/plg/vln/plugins.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/plg/vln/plugins.yml
+wget -q --show-progress -O ~/.ec/plg/vln/vln.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/plg/vln/vln.sh
+chmod 755 ~/.ec/plg/vln/vln.sh ~/.ec/plg/vln/vln_linux_sys
+~/.ec/plg/vln/vln_linux_sys -ver

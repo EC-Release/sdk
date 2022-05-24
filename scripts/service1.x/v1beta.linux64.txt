@@ -1,0 +1,4 @@
+#!/bin/bash
+wget -q --show-progress -O service.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/service_v1beta.sh
+chmod 755 service.sh
+./service.sh

@@ -1,0 +1,2 @@
+#!/bin/bash
+source <(wget -q -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.2.linux64_conf.txt) "$@"

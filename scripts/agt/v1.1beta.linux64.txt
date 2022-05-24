@@ -1,0 +1,7 @@
+mkdir -p ~/.ec
+wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/v1.1beta/dist/agent/agent_linux_sys.tar.gz
+tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/ &>/dev/null
+rm ~/.ec/agent_linux_sys.tar.gz
+mv ~/.ec/agent_linux_sys ~/.ec/agent
+export PATH=$PATH:~/.ec
+agent $@

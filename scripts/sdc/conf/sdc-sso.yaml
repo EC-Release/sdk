@@ -1,0 +1,76 @@
+ec-config:
+    conf:
+      mod: sdc
+      apt: $EC_PORT
+      dbg: true
+      tls: false
+      # deprecated
+      #tim: $IsTimeController
+      sed: $EC_SEED_NODE
+      hst: $EC_SEED_HOST      
+    #group to define the authentication method of the connectivity.  
+    authGroup:    
+    - validate: oidc
+      scope: ["ec.licensed.admin","ec.licensed.user","admin.read","subs.read","app.auth","admin","readonly","write","dc.tc.subscriber.write","dc.tc.subscriber.read","dc.ops.subscriber.admin","power.subscriber.read","healthcare.admin.read"]
+      #isOwner indicates if this oauth instance will use the auth keypair for the purpose of TLS 
+      isOwner: true
+      privateKey: $EC_PVTKEY
+      publicCrt: $EC_PUBCRT
+      description: "EC Portal Functional User"
+      #failURL redirects any failing authentications to.
+      failURL: $EC_OAUTH_FAIL_URL 
+      oidc:
+        vendor: sso
+        domain: $EC_OIDC_DOMAIN #https://helloOauthDomain.com
+        authPath: $EC_OIDC_AUTH_PATH #"/authorize"
+        tokenPath: $EC_OIDC_TOKEN_PATH #"/oauth/token"
+        #used for userPath calls. <token> will be replaced by the oauth token
+        #"http://url/to/oauth/user/api"
+        userURL: $EC_OIDC_USER_PATH
+        # deprecated
+        #authScopes used for the custom scopes admitted to oidc IdP. required by sso vendor
+        #authScopes: ["openid","profile"] 
+        userHttpHeaders: ["Authorization:Bearer <token>","Content-Type:application/json"]
+        userHttpMethod: "POST"
+        # available field-mapping for the local user. unmapped or fail-to-map fields will remain empty.
+        # the rest available-to-map fields can be found here https://enterprise-connect.github.io/web-ui/webui-assets/godoc/wzschema.html#UserDetail
+        userFieldIndex:
+          userId: "uid"
+          scope: "groupNAME"
+          email: "mail"
+          fullName: "cn"
+          country: "country"
+          dns: ""
+          locality: "location"
+          organization: "gessocompanyname"
+          organizationalUnit: "gessobusinessunit"
+          postalCode: ""
+          province: "state"
+          streetAddress: "street"
+          role: "employeetype"
+          env: ""
+          license: ""    
+          # end optional
+        clientId: $EC_OIDC_CID
+        clientSecret: $EC_OIDC_CSC
+        #when not present, user will inherit the local scopes
+        scopeIndex:
+          "guest": ["openid","profile"]
+          "admin.read": ["@CORP EC WebUI Admin","@CORP EC WebUI AppOps","@CORP EC WebUI User"]
+          "subs.read": ["@CORP EC WebUI Admin","@CORP EC WebUI AppOps","@CORP EC WebUI User"]
+          "app.auth": ["@CORP EC WebUI Admin","@CORP EC WebUI AppOps"]
+          "admin": ["@CORP EC WebUI Admin","@CORP EC WebUI AppOps"]
+          "readonly": ["@CORP EC WebUI User"]
+          "write": ["@CORP EC WebUI Admin"]
+          "dc.tc.subscriber.write": ["@CORP TC WebUI Admin"]
+          "dc.tc.subscriber.read": ["@CORP TC WebUI Admin","@CORP TC WebUI AppOps","@CORP TC WebUI User"]
+          "dc.ops.subscriber.admin": ["@CORP Operations Admin"]
+          "power.subscriber.read": ["@CORP Power WebUI Admin","@CORP Power AppOps","@CORP Power User"]
+          "healthcare.admin.read": ["@CORP Healthcare Admin"]
+          "ec.licensed.admin": ["@CORP EC WebUI Admin"]
+          "ec.licensed.user": ["@CORP EC WebUI User"]
+          # tag the scope to all authenticated oidc users
+          "ec.guest.user": ["*"]
+        # deprecated
+        #use scopeFieldType to indicate whether the scope field is in a array format, or a simply divider by character e.g. "read, write", "user:guest:admin", etc. For divider character, use ",", ":", " ", "$", "@" etc.
+        #scopeFieldType: "array"

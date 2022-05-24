@@ -1,0 +1,5 @@
+source <(wget -O - https://enterprise-connect.github.io/sdk/scripts/agt/v1.1beta.linux64.txt)
+agent -ver
+echo $0 $1 $2
+wget https://enterprise-connect.github.io/certifactory/cert-list/beta/
+#./agent -vst -pbk $(cat ./certs/cert-list/beta/8c58318b-2401-45c7-a1b2-3ad1cb778b78.cer|base64 -w0) -osg $(echo mytest|base64 -w0) -dat szFNGm5LoRyAg9NcIV5ZLWdUlT40c8pjOduSTlTXJvmsTqAoqZXGf26Co4Q2yXcj7AgXWmzTDKYCIKeINZWGwTRzpcD0D60MeJbQuLkJZFnUvxgyIuuGhJq4i1D+3ER4H0yHKyQqojyB7nElGEciQJ2yT4OggT0x76Cf/bT3HmVcWdOmevotkyt+XHmaKMtqWQb2jmiliHHvz9ko6+ZDjZjoPflw8OPDPFOc/JXOtz3yJ8ZDgjN+UGzYY+jNKs3FUo1xl9VAU1tuI5ELfJqG2HLSCsgtXKGTQ+UdXOO6gOC18khuPfTH0uN1YG0pp+IGyiQ4+Xz/aD25NMitkmS2bA==

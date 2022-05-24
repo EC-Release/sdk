@@ -1,0 +1,50 @@
+# default if AGENT_REV is present in env
+AGENT_REV_LOCAL=$AGENT_REV
+if [[ $AGENT_REV_LOCAL != "v1beta.fukuoka"* && $AGENT_REV_LOCAL != "1.0.0-b"* ]]; then
+  export AGENT_REV_LOCAL=v1beta.fukuoka.1727
+fi
+
+mkdir -p ~/.ec/agt/conf ~/.ec/agt/bin
+wget -q --show-progress -O ~/.ec/agt/conf/agent_v1beta.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/agent_v1beta.sh
+chmod +x ~/.ec/agt/conf/agent_v1beta.sh
+
+wget -q --show-progress -O ~/.ec/agt/conf/client.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/client.yml
+wget -q --show-progress -O ~/.ec/agt/conf/gateway.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/gateway.yml
+wget -q --show-progress -O ~/.ec/agt/conf/server.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/server.yml
+wget -q --show-progress -O ~/.ec/agt/conf/gw:client.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/gw:client.yml
+wget -q --show-progress -O ~/.ec/agt/conf/gw:server.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/conf/gw:server.yml
+
+{
+  wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/${AGENT_REV_LOCAL}/dist/agent_linux_sys.tar.gz
+} || {
+  printf "\ndownloading link appears broken. continue with the alternative\n"
+  rm ~/.ec/agent_linux_sys.tar.gz
+  wget -q --show-progress -O ~/.ec/agent_linux_sys.tar.gz https://github.com/EC-Release/sdk/raw/${AGENT_REV_LOCAL}/dist/ecagent_linux_sys.tar.gz
+}
+
+ls -la ~/.ec
+tar xvf ~/.ec/agent_linux_sys.tar.gz -C ~/.ec/agt/bin/ && rm ~/.ec/agent_linux_sys.tar.gz
+
+{
+  mv ~/.ec/agt/bin/agent_linux_sys ~/.ec/agt/bin/${AGENT_REV_LOCAL}
+} || {
+  printf "\nfile not found. continue with the alternative\n"
+  mv ~/.ec/agt/bin/ecagent_linux_sys ~/.ec/agt/bin/${AGENT_REV_LOCAL}
+}
+
+rm ~/.ec/agent
+
+chmod +x ~/.ec/agt/bin/${AGENT_REV_LOCAL}
+ls -la ~/.ec/agt/bin
+ln -s ~/.ec/agt/bin/${AGENT_REV_LOCAL} ~/.ec/agent
+
+# begin of test
+: '
+wget -q --show-progress -O ~/.ec/agt/bin/${AGENT_REV_LOCAL}_test https://raw.githubusercontent.com/EC-Release/sdk/disty/agent_v1beta
+chmod +x ~/.ec/agt/bin/${AGENT_REV_LOCAL}_test
+ln -s ~/.ec/agt/bin/${AGENT_REV_LOCAL}_test ~/.ec/agent
+'
+# end of test
+
+export PATH=$PATH:$HOME/.ec
+agent -ver

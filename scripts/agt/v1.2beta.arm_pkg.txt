@@ -1,0 +1,10 @@
+mkdir -p ~/.ec
+mkdir -p ~/.ec/conf
+wget -q --show-progress -O ~/.ec/agent_arm_sys.tar.gz https://github.com/EC-Release/sdk/raw/v1.2beta.reiwa.2/dist/agent/agent_arm_sys.tar.gz
+wget -q --show-progress -O ~/.ec/conf/service.yml https://ec-release.github.io/sdk/scripts/agt/conf/service.yml
+wget -q --show-progress -O ~/.ec/conf/agent1.2beta.sh https://ec-release.github.io/sdk/scripts/agt/conf/agent1.2beta.sh
+tar xvf ~/.ec/agent_arm_sys.tar.gz -C ~/.ec/ &>/dev/null
+rm ~/.ec/agent_arm_sys.tar.gz
+mv ~/.ec/agent_arm_sys ~/.ec/agent
+export PATH=$PATH:~/.ec
+agent $@

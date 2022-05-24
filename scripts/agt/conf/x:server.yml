@@ -1,0 +1,16 @@
+ec-config:
+  conf:
+    mod: x:server
+    grp: $EC_GRP
+    #grp: x-pilot
+    hst: $EC_HST
+    #hst: http://localhost:47990/agent
+    dbg: true
+    cid: $EC_CID
+    #cid: xxxxxx-e656-4fe5-96e0-ed449c749b72
+    oa2: $EC_OA2
+    #oa2: https://xxxxxxx.run.aws-usw02-dev.ice.predix.io/oauth/token
+    cps: 5
+    #limited the resource access to the following remote hosts.
+    rht: $EC_RHT
+    #rht: localhost:5432,localhost:8080,localhost:22 #no spaces; one string

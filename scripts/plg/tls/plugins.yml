@@ -1,0 +1,9 @@
+ec-plugin:
+  tls:
+    status: active
+    schema: {EC_TLS_SCHEMA}
+    hostname: {EC_TLS_HOSTNAME}
+    tlsport: "{EC_TLS_PORT}"
+    proxy: "{EC_TLS_PXY}"
+    port: "{EC_TLS_RPT}"
+    command: ./.ec/plg/tls/tls_linux_sys

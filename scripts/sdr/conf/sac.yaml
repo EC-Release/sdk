@@ -1,0 +1,16 @@
+ec-config:
+  conf:
+    mod: sdr
+    app: $EC_API_APP_NAME
+    apt: $EC_PORT
+    dbg: true
+    tls: $EC_TLS
+    oa2: $EC_API_OA2
+    cid: $EC_API_DEV_ID
+    sed: $EC_SEED_NODE
+    hst: $EC_SEED_HOST
+    agt: $EC_AGT_MODE
+    cps: 5
+  subGroup:
+  - name: $EC_AGT_GRP
+    ids: ["$EC_API_DEV_ID"]      

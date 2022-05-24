@@ -1,0 +1,6 @@
+mkdir -p ~/.ec/plg/tls
+wget -q --show-progress -O ~/.ec/plg/tls/tls_linux_sys https://github.com/EC-Release/sdk/raw/v1/plugins/tls/tls_linux_sys
+wget -q --show-progress -O ~/.ec/plg/tls/plugins.yml https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/plg/tls/plugins.yml
+wget -q --show-progress -O ~/.ec/plg/tls/tls.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/plg/tls/tls.sh
+chmod 755 ~/.ec/plg/tls/tls.sh ~/.ec/plg/tls/tls_linux_sys
+~/.ec/plg/tls/tls_linux_sys -ver

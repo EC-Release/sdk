@@ -1,0 +1,28 @@
+ec-config:
+  conf:    
+    mod: x:gateway
+    gpt: $EC_GPT
+    #gpt: ":47990"
+    dbg: true
+    hst: $EC_HST
+    #hst: http://localhost:47990    
+    sed: $EC_SED
+    #sed: https://dc-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/dcsc
+    cps: 5
+    cid: $EC_CID
+    #cid: d6d83337-e656-4fe5-96e0-xxxxxxxx
+    oa2: $EC_OA2
+    #oa2: https://xxxxx.run.aws-usw02-dev.ice.predix.io/oauth/token
+    #oa2: http://yasuda-pc:47992
+    tls: false
+  # group to permit the access of connectivity
+  subGroup:  
+  - name: x-pilot
+    ids: ["4b160bb1-6b5b-4271-b68b-e4ebf0845b49",$EC_CID]
+  - name: x-postgres
+    ids: ["0dd8ab7b-9b78-4283-ad21-586636f7bad1", "<some-other-uuid1>"]
+  #plugins:
+  #- name: vln
+  #  url: https://raw.githubusercontent.com/Enterprise-connect/sdk/{{revision}}/plugins/{{name}}/vln_darwin_sys
+  #- name: tls
+  #  url: https://raw.githubusercontent.com/Enterprise-connect/sdk/{{revision}}/plugins/{{name}}/tls_darwin_sys

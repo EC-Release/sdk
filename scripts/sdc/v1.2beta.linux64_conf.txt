@@ -1,0 +1,41 @@
+#!/bin/bash
+
+[[ -f "./~sdc" ]] && rm ./~sdc
+[[ -f "~/.ec/scripts/cli.sh" ]] && rm "~/.ec/scripts/cli.sh"
+[[ -f "~/.ec/scripts/proc.sh" ]] && rm "~/.ec/scripts/proc.sh" 
+[[ -f "~/.ec/scripts/exec.sh" ]] && rm "~/.ec/scripts/exec.sh"
+
+mkdir -p ~/.ec/scripts
+wget -q -O ~/.ec/scripts/cli.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/sdr/scripts/cli.sh &> /dev/null
+wget -q -O ~/.ec/scripts/proc.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/sdr/scripts/proc.sh &> /dev/null
+wget -q -O ~/.ec/scripts/exec.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/sdr/scripts/exec.sh &> /dev/null
+chmod +x ~/.ec/scripts/exec.sh ~/.ec/scripts/cli.sh ~/.ec/scripts/proc.sh
+
+if [[ ! -z "$SAC_TYPE" ]]; then
+  
+  export \
+  EC_AUTH_VALIDATE=oaep \
+  EC_SEED_HOST="$SAC_URL" \
+  EC_OAUTH_FAIL_URL="$SAC_URL" \
+  EC_SEED_NODE="$EC_NOD" \
+  EC_PPS="$EC_CSC"
+  
+  source <(wget -q -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/sdc/conf/sac.sh) "$@"  
+  exit 1
+fi
+
+mkdir -p ~/.ec/sdc/conf ~/.ec/sdc/oa2-assets
+
+echo " |_ adding sdc assets.."
+if [[ -z "$EC_DEV" ]]; then
+  mkdir -p ~/.ec/oauth/conf ~/.ec/oauth/oa2-assets
+  wget -q -O ~/.ec/oauth/v1.1beta.tar.gz https://github.com/EC-Release/web-ui-oa2/archive/v1.1beta.tar.gz
+  tar -xzf ~/.ec/oauth/v1.1beta.tar.gz --strip 1 -C ~/.ec/oauth/oa2-assets
+  rm ~/.ec/oauth/v1.1beta.tar.gz
+else
+  wget -q -O ~/.ec/sdc/1.2-b.tar.gz https://github.com/EC-Release/web-ui-oa2/archive/1.2-b.tar.gz
+  tar -xzf ~/.ec/sdc/1.2-b.tar.gz --strip 1 -C ~/.ec/sdc/oa2-assets
+  rm ~/.ec/sdc/1.2-b.tar.gz
+fi
+
+source <(wget -q -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/sdc/conf/sdc.sh) "$@"

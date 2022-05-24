@@ -1,0 +1,32 @@
+ec-config:
+  conf:
+    mod: sdr
+    app: $EC_API_APP_NAME
+    apt: $EC_PORT
+    dbg: true
+    tls: $EC_TLS
+    oa2: $EC_API_OA2
+    cid: $EC_API_DEV_ID
+    sed: $EC_SEED_NODE
+    hst: $EC_SEED_HOST
+    agt: $EC_AGT_MODE
+    cps: 5
+  # group to permit the access of connectivity
+  subGroup:
+  - name: $EC_AGT_GRP
+    ids: ["$EC_API_DEV_ID"]      
+  #available in oauth2, api, x:gateway, watcher, and svc for TLS purpose. ceredential can be used in both cred, and authGroup segments
+  # usage example: https://github.com/ayasuda-ge/service1.x/blob/1.1/test/e2e.sh#L146
+  cred:
+    privateKey: $EC_PVTKEY
+    publicCrt: $EC_PUBCRT
+  pxy:
+    iqry:
+      - from: ${EC_SEED_NODE_T}
+        to: ${EC_SEED_NODE_T}
+      - from: ${EC_SEED_NODE_D}
+        to: ${EC_SEED_NODE_D}  
+    path:
+      v1: ${RFD_URL}
+      v1.1: ${RFD_URL}
+      ui: ${RFD_URL}

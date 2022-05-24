@@ -1,0 +1,2 @@
+#!/bin/bash
+source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/sdr/index.sh) "$@"

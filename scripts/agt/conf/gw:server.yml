@@ -1,0 +1,16 @@
+ec-config:
+  conf:
+    mod: gw:server
+    gpt: "{EC_GPT}"
+    zon: {EC_ZON}
+    grp: {EC_GRP}
+    sst: {EC_SST}
+    dbg: {EC_DBG}
+    tkn: {EC_TKN}
+    aid: {EC_AID}
+    rpt: "{EC_RPT}"
+    rht: {EC_RHT}
+    plg: {EC_PLG}
+    hst: {EC_HST}
+    hca: "{EC_HCA}"
+    {EC_PXY}

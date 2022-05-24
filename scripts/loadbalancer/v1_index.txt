@@ -1,0 +1,8 @@
+#!/bin/bash
+
+mkdir -p ~/.ec/conf/lb/
+wget -q --show-progress -O ~/.ec/conf/lb/ec-nginx-server-block.conf https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/loadbalancer/conf/ec-nginx-server-block.conf
+wget -q --show-progress -O ~/.ec/conf/lb/ec-nginx.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/loadbalancer/conf/ec-nginx.sh
+wget -q --show-progress -O ~/.ec/conf/lb/nginx.conf https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/loadbalancer/conf/nginx.conf
+chmod +x ~/.ec/conf/lb/ec-nginx.sh
+. ~/.ec/conf/lb/ec-nginx.sh

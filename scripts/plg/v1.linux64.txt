@@ -1,0 +1,11 @@
+#!/bin/bash
+
+{
+    agent -ver
+} || {
+    source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/agt/v1.linux64_conf.txt)
+}
+
+source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/plg/tls/v1.linux64.txt)
+source <(wget -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/plg/vln/v1.linux64.txt)
+source ~/.ec/agt/conf/agent_v1.sh $@
