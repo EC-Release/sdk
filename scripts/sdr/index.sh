@@ -13,6 +13,10 @@ export \
 EC_AGT_MODE="x:gateway" \
 EC_AGT_GRP="svc-group"
 
+if [[ -f ".hash" ]]; then
+  export EC_CSC=$(cat ".hash")
+fi
+
 mkdir -p ~/.ec/scripts
 #wget -q --show-progress -O ~/.ec/scripts/executor.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/api/scripts/executor.sh
 wget -q -O ~/.ec/scripts/cli.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/sdr/scripts/cli.sh &> /dev/null
