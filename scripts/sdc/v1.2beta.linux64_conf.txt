@@ -11,6 +11,10 @@ wget -q -O ~/.ec/scripts/proc.sh https://raw.githubusercontent.com/EC-Release/sd
 wget -q -O ~/.ec/scripts/exec.sh https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/sdr/scripts/exec.sh &> /dev/null
 chmod +x ~/.ec/scripts/exec.sh ~/.ec/scripts/cli.sh ~/.ec/scripts/proc.sh
 
+if [[ -f ".hash" ]]; then
+  export EC_CSC=$(cat ".hash")
+fi
+
 if [[ ! -z "$SAC_TYPE" ]]; then
   
   export \
