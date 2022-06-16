@@ -14,9 +14,6 @@ fi
 
 if [[ -f ".hash" ]]; then
   export EC_CSC=$(cat ".hash")
-else
-  echo " ! exiting due to missing client secret .."
-  exit 1
 fi
 
 hn0=$(getURLHostname "$EC_API_OA2")
