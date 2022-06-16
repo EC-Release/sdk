@@ -51,6 +51,10 @@ echo "     |_ launching svc (${EC_SVC_ID})"
 
 export RFD_PRT=17991
 
+if [[ -f ".hash" ]]; then
+  export EC_CSC=$(cat ".hash")
+fi
+
 echo "      |_ [1]getting svc bearer tkn"
 BK=$(getSdcTkn $EC_CID $EC_CSC $EC_SAC_MSTR_URL)
 
