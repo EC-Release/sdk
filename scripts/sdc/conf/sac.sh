@@ -22,9 +22,8 @@ if [[ -z "$EC_CID" ]]; then
   exit 1
 fi
 
-if [[ ! -f ".hash" ]]; then
-  echo " ! exiting due to missing client secret .."
-  exit 1
+if [[ -f ".hash" ]]; then
+  export EC_CSC=$(cat ".hash")
 fi
 
 echo "     |_ loading master envs.."
