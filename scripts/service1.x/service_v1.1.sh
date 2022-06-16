@@ -74,6 +74,7 @@ op=$(echo "$ownrInf" | jq -r 'any(.SVC_LIST["'$EC_SVC_ID'"]; . == "'$ref'")')
 if [ "$op" != "true" ]; then
   echo "      |_ [!] unauthorised svc (id: ${EC_SVC_ID}; url: ${EC_SVC_URL}) deployment."  
   #echo "      [*] $ownrInf" | jq -r '.SVC_LIST["'$EC_SVC_ID'"]'
+  echo "      [*] op: ${op}"
   echo "      [*] ref: ${ref}"
   sleep 3
   exit 1
