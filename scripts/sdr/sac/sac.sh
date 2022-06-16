@@ -12,10 +12,6 @@ if [[ ! -z "${PORT}" ]]; then
   export EC_PORT=":$PORT"
 fi
 
-if [[ -f ".hash" ]]; then
-  export EC_CSC=$(cat ".hash")
-fi
-
 hn0=$(getURLHostname "$EC_API_OA2")
 pn0=$(getURLPort "$EC_API_OA2")      
 
