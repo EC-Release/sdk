@@ -39,15 +39,19 @@ case $EC_API_APP_NAME in
   *)
     export EC_API_APP_NAME="ec"
     
+    if [[ -f ".hash" ]]; then
+      export EC_CSC=$(cat ".hash")
+    fi
+    
     if [[ ! -z "$ZONE" ]]; then
-            
+      
       echo "        |_ boostrapping svc.."
       source <(wget -q -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/sdr/svc/svc1.1.sh)
       exit 1
     fi
     
     if [[ ! -z "$SAC_TYPE" ]]; then
-      
+
       export \
       EC_SEED_HOST="$SAC_URL" \
       EC_SEED_NODE="$EC_NOD" \
