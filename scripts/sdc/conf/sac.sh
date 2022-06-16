@@ -22,6 +22,11 @@ if [[ -z "$EC_CID" ]]; then
   exit 1
 fi
 
+if [[ ! -f ".hash" ]]; then
+  echo " ! exiting due to missing client secret .."
+  exit 1
+fi
+
 echo "     |_ loading master envs.."
   
 mkdir -p  "$HOME/.ec/sac-mstr/conf"
