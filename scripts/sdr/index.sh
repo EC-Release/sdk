@@ -37,11 +37,7 @@ case $EC_API_APP_NAME in
     source <(wget -q -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/sdr/dcsc1.x/portal.sh) &> /dev/null
     ;;
   *)
-    export EC_API_APP_NAME="ec"
-    
-    if [[ -f ".hash" ]]; then
-      export EC_CSC=$(cat ".hash")
-    fi
+    export EC_API_APP_NAME="ec"    
     
     if [[ ! -z "$ZONE" ]]; then
       
@@ -51,6 +47,11 @@ case $EC_API_APP_NAME in
     fi
     
     if [[ ! -z "$SAC_TYPE" ]]; then
+
+      
+      if [[ -f ".hash" ]]; then
+        export EC_CSC=$(cat ".hash")
+      fi
 
       export \
       EC_SEED_HOST="$SAC_URL" \
