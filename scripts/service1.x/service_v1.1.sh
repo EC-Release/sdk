@@ -63,9 +63,9 @@ echo "      |_ [2]fetching svc info"
 
 ownrInf=$(getData "$EC_SAC_SLAV_URL" "$EC_CID" "$BK")
 
-for row in $(echo "${ownrInf}" | jq -r '.SVC_LIST | keys[]'); do    
-   mkdir -p "~/pvc/prod/svcs/${row}"
-done
+#for row in $(echo "${ownrInf}" | jq -r '.SVC_LIST | keys[]'); do    
+#   mkdir -p "~/pvc/prod/svcs/${row}"
+#done
 
 export \
 RFD_URL="http://localhost:${RFD_PRT}" \
