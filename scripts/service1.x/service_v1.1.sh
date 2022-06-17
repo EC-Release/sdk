@@ -70,10 +70,10 @@ EC_SCRIPT_2=$(echo "$ownrInf" | jq -r '.SCRIPT_2') \
 EC_SCRIPT_3=$(echo "$ownrInf" | jq -r '.SCRIPT_3')
 
 ref=$(getURLHostnameAndPortAndScheme "$EC_SVC_URL")
-op=$(echo "$ownrInf" | jq -r 'any(.SVC_LIST[]; . == "'$ref'")')
+op=$(echo "$ownrInf" | jq -r 'any(.SVC_LIST["'$EC_SVC_ID'"]; . == "'$ref'")')
 if [ "$op" != "true" ]; then
   echo "      |_ [!] unauthorised svc (id: ${EC_SVC_ID}; url: ${EC_SVC_URL}) deployment."  
-  echo $ownrInf | jq -r '.SVC_LIST[]'
+  echo $ownrInf | jq -r '.SVC_LIST["'$EC_SVC_ID'"]'
   echo "      [*] op: ${op}"
   echo "      [*] ref: ${ref}"
   sleep 3
