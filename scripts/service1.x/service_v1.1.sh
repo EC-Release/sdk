@@ -63,6 +63,10 @@ echo "      |_ [2]fetching svc info"
 
 ownrInf=$(getData "$EC_SAC_SLAV_URL" "$EC_CID" "$BK")
 
+for row in $(echo "${ownrInf}" | jq -r '.SVC_LIST | keys[]'); do    
+   echo "svc: $row"
+done
+
 export \
 RFD_URL="http://localhost:${RFD_PRT}" \
 EC_SCRIPT_1=$(echo "$ownrInf" | jq -r '.SCRIPT_1') \
