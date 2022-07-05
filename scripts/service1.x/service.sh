@@ -48,7 +48,7 @@ EC_API_OA2="${EC_SAC_MSTR_URL}" \
 EC_API_DEV_ID="$EC_CID"
 
 
-echo " [o] starting svc app"
+echo " [o] starting svc (${EC_SVC_ID})"
 
 node ./app.js
 
