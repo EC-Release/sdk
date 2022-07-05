@@ -11,6 +11,12 @@
 #  author: apolo.yasuda@ge.com
 #
 
+source <(wget -q -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/service1.x/service.sh) "$@"
+
+# ensure below script not executed
+exit 0
+
+
 while [[ $(type -t getData) != function ]]
 do
   source <(wget -q -O - https://raw.githubusercontent.com/EC-Release/sdk/disty/scripts/libs/db.sh)
