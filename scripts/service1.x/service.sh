@@ -51,3 +51,5 @@ EC_API_DEV_ID="$EC_CID"
 echo " [o] starting svc app"
 
 node ./app.js
+
+sleep 5
