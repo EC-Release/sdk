@@ -47,7 +47,7 @@ EC_SEED_HOST="${EC_SVC_URL}" \
 EC_API_OA2="${EC_SAC_MSTR_URL}" \
 EC_API_DEV_ID="$EC_CID"
 
-
+ls -al ./
 echo " [o] starting svc (${EC_SVC_ID})"
 
 node ./app.js
