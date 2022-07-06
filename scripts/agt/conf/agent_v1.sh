@@ -19,6 +19,7 @@ function getProperty {
 }
 
 if [[ $# -ne 0 ]]; then
+    mkdir -p tmp && cd tmp
     agt "$@"
     return 0
 fi
