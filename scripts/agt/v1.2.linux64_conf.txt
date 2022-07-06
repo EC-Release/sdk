@@ -12,7 +12,8 @@ if [[ $AGENT_REV_LOCAL != "1.2-rc."* ]]; then
   AGENT_REV_LOCAL=1.2-rc.0.reiwa
 fi
 
-wget -q -O ~/.ec/tengu_linux_sys.tar.gz https://raw.githubusercontent.com/EC-Release/tengu/${AGENT_REV_LOCAL}/dist/tengu/tengu_linux_sys.tar.gz &> /dev/null
+
+wget -q -O ~/.ec/tengu_linux_sys.tar.gz https://raw.githubusercontent.com/EC-Release/sdk/disty/1.2.tar.gz &> /dev/null
 tar xvf ~/.ec/tengu_linux_sys.tar.gz -C ~/.ec/agt/bin/ &> /dev/null && rm ~/.ec/tengu_linux_sys.tar.gz
 mv "$HOME/.ec/agt/bin/tengu_linux_sys" "$HOME/.ec/agt/bin/$AGENT_REV_LOCAL"
 
